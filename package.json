@@ -1,0 +1,80 @@
+{
+  "name": "advancedrules",
+  "version": "1.0.0",
+  "description": "Advanced AI orchestration framework for software development",
+  "main": "src/index.js",
+  "scripts": {
+    "init": "node scripts/init.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "format": "prettier --write src/**/*.js",
+    "docs:build": "mkdocs build",
+    "docs:serve": "mkdocs serve",
+    "validate": "node scripts/validate.js"
+  },
+  "keywords": [
+    "ai",
+    "orchestration",
+    "software-development",
+    "automation",
+    "quality-assurance",
+    "code-generation"
+  ],
+  "author": "AdvancedRules Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "joi": "^17.11.0",
+    "axios": "^1.6.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/advancedrules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/advancedrules/issues"
+  },
+  "homepage": "https://github.com/yourusername/advancedrules#readme",
+  "config": {
+    "framework": {
+      "version": "1.0.0",
+      "ai_personas": [
+        "product_owner",
+        "planning",
+        "principal_engineer",
+        "codegen",
+        "security",
+        "qa",
+        "auditor",
+        "documentation"
+      ],
+      "execution_modes": [
+        "sequential",
+        "parallel",
+        "adaptive"
+      ]
+    }
+  }
+}

@@ -1,0 +1,146 @@
+# .cursorrules
+# AdvancedRules-domain-lab Project Configuration
+# Enterprise-grade development knowledge base with AI assistance
+
+# Project Overview
+- AdvancedRules: Comprehensive development knowledge base
+- Coverage: 36 technology domains across 6 categories
+- Purpose: AI-assisted development with best practices
+- Framework: PRE-START → PLAN → EXECUTE workflow
+
+# Architectural Standards
+- Follow Clean Architecture principles
+- Use domain-driven design patterns
+- Implement proper separation of concerns
+- Reference @docs/ADRs/ for architectural decisions
+- Maintain modular and scalable code structure
+- Use dependency injection patterns
+
+# Quality Standards
+- Maintain 90%+ test coverage for all production code
+- Follow technology-specific best practices from domain rules
+- Use proper error handling and logging throughout
+- Implement comprehensive input validation
+- Write self-documenting code with clear naming
+- Use static analysis tools (ESLint, Prettier, etc.)
+
+# Security Protocols
+- Sanitize all user inputs and external data
+- Use parameterized queries to prevent injection attacks
+- Validate OAuth scopes and authentication tokens
+- Follow OWASP guidelines for web security
+- Implement proper role-based access control
+- Log security events for audit purposes
+- Use HTTPS and secure communication protocols
+
+# Performance Standards
+- Optimize database queries and use proper indexing
+- Implement appropriate caching strategies
+- Use lazy loading for non-critical resources
+- Monitor Core Web Vitals and performance metrics
+- Implement proper pagination for large datasets
+- Use efficient data structures and algorithms
+
+# Testing Requirements
+- Unit tests for all functions and methods
+- Integration tests for component interactions
+- End-to-end tests for critical user workflows
+- Performance testing for bottlenecks
+- Security testing for vulnerability prevention
+- Maintain comprehensive test documentation
+
+# Documentation Standards
+- Keep README.md updated with project status
+- Document architectural decisions in @docs/ADRs/
+- Maintain technology-specific guides in domain rules
+- Update @docs/ folder regularly with changes
+- Use proper code comments for complex logic
+- Maintain API documentation (OpenAPI/Swagger)
+
+# Development Workflow
+- Use conventional commit messages (feat:, fix:, docs:, etc.)
+- Create feature branches from main branch
+- Require pull request reviews before merge
+- Follow PRE-START → PLAN → EXECUTE phases
+- Update @CHANGELOG.md for releases
+- Use proper git flow strategies
+
+# Technology Integration
+- Apply domain-specific rules from .mdc files
+- Follow framework best practices for each technology
+- Use proper TypeScript/JavaScript patterns
+- Implement responsive design principles
+- Use modern ES6+ features appropriately
+- Follow language-specific style guides
+
+# Code Organization
+- Group related functionality in logical modules
+- Use proper file naming conventions
+- Maintain consistent directory structure
+- Keep styles close to components
+- Use proper imports/exports
+- Implement proper error boundaries
+
+# Error Handling
+- Implement graceful error handling throughout
+- Log errors with proper context and stack traces
+- Provide user-friendly error messages
+- Handle edge cases and unexpected inputs
+- Implement proper fallback mechanisms
+- Use try-catch blocks appropriately
+
+# Monitoring and Observability
+- Implement proper logging throughout the application
+- Monitor application performance and health
+- Set up error tracking and alerting
+- Use proper metrics and dashboards
+- Implement health checks for critical services
+- Monitor security events and anomalies
+
+# Deployment Standards
+- Use environment-specific configurations
+- Implement proper health checks
+- Set up comprehensive logging
+- Monitor error rates and performance
+- Use blue-green deployment strategies
+- Implement proper rollback procedures
+- Use infrastructure as code (IaC) practices
+
+# Team Collaboration
+- Maintain clear communication channels
+- Document decisions and rationale
+- Share knowledge through documentation
+- Use proper code review processes
+- Maintain consistent coding standards
+- Foster continuous learning and improvement
+
+# Compliance and Standards
+- Follow industry best practices
+- Implement proper data protection measures
+- Use secure coding practices
+- Maintain audit trails for changes
+- Follow accessibility guidelines
+- Implement proper backup and recovery
+
+# Innovation and Learning
+- Stay updated with latest technology trends
+- Experiment with new approaches safely
+- Learn from failures and successes
+- Share knowledge across the team
+- Contribute to open source when appropriate
+- Attend conferences and workshops
+
+# Quality Gates
+- PRE-START Gate: Complete business analysis and client fit
+- Planning Gate: Complete technical design with architecture review
+- Development Gate: Code implementation with comprehensive testing
+- QA Gate: All tests passing with security validation
+- Deployment Gate: Production readiness with monitoring setup
+
+# Success Metrics
+- Code quality: Maintain high test coverage and low bug rates
+- Performance: Meet SLA requirements and performance benchmarks
+- Security: Zero critical vulnerabilities in production
+- Documentation: Keep all guides and APIs up to date
+- Team velocity: Maintain consistent delivery pace
+- Client satisfaction: Meet or exceed project expectations

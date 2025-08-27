@@ -1,0 +1,33 @@
+---
+description: "Proposal Builder — outcomes, scope, exclusions"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+<rule>
+name: proposal_builder
+triggers:
+  - command: "/proposal"
+inputs_optional:
+  - "memory-bank/plan/client_brief.md"
+  - "memory-bank/business/estimate_brief.md"
+  - "memory-bank/business/pricing.ratecard.yaml"
+outputs:
+  - "memory-bank/plan/proposal.md"
+actions:
+  - type: generate_file
+    path: "memory-bank/plan/proposal.md"
+    template: |
+      # Proposal (Goal-Level)
+      ## Outcomes
+      - <what success looks like; measurable>
+      ## In-Scope
+      - <deliverables list>
+      ## Out-of-Scope
+      - <explicit exclusions to prevent scope creep>
+      ## Timeline & Milestones
+      - <phases with acceptance gates>
+      ## Pricing
+      - <reference to ratecard; package or T&M>
+      ## Next Steps
+      - <clarifications needed; start conditions>

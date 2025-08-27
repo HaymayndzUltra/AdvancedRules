@@ -1,0 +1,24 @@
+---
+description: "Capacity Planner — avoid overcommitment"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+<rule>
+name: capacity_planner
+triggers:
+  - command: "/capacity"
+inputs_optional:
+  - "memory-bank/profile/availability.yaml"    # weekly hours, focus blocks
+  - "memory-bank/backlog/active_commitments.yaml"
+outputs:
+  - "memory-bank/business/capacity_report.md"
+actions:
+  - type: generate_file
+    path: "memory-bank/business/capacity_report.md"
+    template: |
+      # Capacity Report
+      - Weekly availability: <hrs>
+      - Hard constraints: <notes>
+      - Open slots next 4 weeks: <calc>
+      - Recommendation: <ACCEPT|WAITLIST|DECLINE>

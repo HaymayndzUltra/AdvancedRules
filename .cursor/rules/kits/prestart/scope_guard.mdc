@@ -1,0 +1,78 @@
+---
+description: "Scope Guard — baseline + change request workflow"
+globs: ["memory-bank/**", "templates/**"]
+alwaysApply: false
+---
+
+# 1) Baseline capture (from proposal)
+<rule>
+name: scope_baseline_set
+description: "Kunin ang In-Scope baseline bago magsimula."
+triggers:
+  - command: "/scope_baseline"
+filters:
+  - type: exists
+    path: "memory-bank/plan/proposal.md"
+outputs:
+  - "memory-bank/scope/baseline.yaml"
+  - "memory-bank/scope/scope_event_log.md"
+actions:
+  - type: generate_file
+    path: "memory-bank/scope/baseline.yaml"
+    template: |
+      in_scope:
+        - "<deliverable-1>"
+        - "<deliverable-2>"
+      out_of_scope:
+        - "<explicit-exclusion-1>"
+      acceptance_criteria:
+        - "<criterion-1>"
+  - type: generate_file
+    path: "memory-bank/scope/scope_event_log.md"
+    template: |
+      # Scope Event Log
+      - YYYY-MM-DD: baseline created
+  - type: suggest
+    message: "Scope baseline drafted. Edit items to match proposal.md."
+
+# 2) Change Request generator
+<rule>
+name: scope_change_request
+description: "Gumawa ng CR template para sa bagong request."
+triggers:
+  - command: "/cr_new"
+outputs:
+  - "memory-bank/scope/change_request.md"
+actions:
+  - type: generate_file
+    path: "memory-bank/scope/change_request.md"
+    template: |
+      # Change Request
+      ## Request
+      - Description:
+      - Rationale:
+      ## Impact
+      - Timeline:
+      - Cost:
+      - Risk:
+      ## Decision
+      - [ ] Approved
+      - [ ] Rejected
+      - [ ] Needs Clarification
+  - type: suggest
+    message: "CR drafted. Fill details, then attach to proposal for sign-off."
+
+# 3) Guard check (manual compare; goal-level)
+<rule>
+name: scope_guard_check
+description: "I-flag kung may bagong item na wala sa baseline."
+triggers:
+  - command: "/check_scope"
+inputs_optional:
+  - "memory-bank/scope/baseline.yaml"
+actions:
+  - type: suggest
+    message: |
+      Review new asks vs baseline.yaml. If outside in_scope, require CR.
+      Next: run /cr_new at isama sa scope_event_log.md
+</rule>

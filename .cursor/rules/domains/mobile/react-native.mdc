@@ -1,0 +1,48 @@
+---
+title: "React Native with Expo — v1"
+description: "React Native development with Expo best practices and patterns"
+globs: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js", "app/**/*.tsx"]
+alwaysApply: false
+priority: high
+---
+
+# React Native Development Rules
+
+## Technology Stack
+- **Framework**: React Native
+- **Language**: TypeScript/JavaScript
+- **Platform**: Expo
+- **Package Manager**: npm/yarn/pnpm
+
+## Core Principles
+- Use React Native components
+- Implement proper navigation
+- Handle platform differences
+- Optimize for mobile performance
+
+## Project Structure
+src/
+├─ components/    # Reusable components
+├─ screens/       # Screen components
+├─ navigation/    # Navigation setup
+├─ hooks/         # Custom hooks
+├─ utils/         # Utility functions
+└─ types/         # TypeScript definitions
+
+## Coding Standards
+- Use camelCase for variables and functions
+- Use PascalCase for components
+- Use descriptive names for props and state
+- Follow React Native conventions
+
+## Best Practices
+- Use proper navigation patterns
+- Implement proper error handling
+- Use platform-specific code when needed
+- Optimize for mobile performance
+
+## Common Patterns
+- Expo Router for navigation
+- Custom hooks for reusable logic
+- Platform-specific components
+- Proper state management

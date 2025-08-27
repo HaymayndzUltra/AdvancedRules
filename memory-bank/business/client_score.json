@@ -1,0 +1,13 @@
+{
+  "fit_score": 75,
+  "project_risk": "MEDIUM",
+  "complexity": "M",
+  "must_ask": [
+    "What is your timeline for this project?",
+    "Who will be the main point of contact?",
+    "What are your success criteria?",
+    "Do you have a budget range in mind?"
+  ],
+  "decline_reasons": [],
+  "notes": "Client seems reasonable but needs more details on scope and timeline."
+}

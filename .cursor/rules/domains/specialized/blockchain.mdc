@@ -1,0 +1,63 @@
+---
+title: "Blockchain Development — v1"
+description: "Blockchain and smart contract development best practices"
+globs: ["**/*.sol", "**/*.ts", "contracts/**/*.sol", "scripts/**/*.ts"]
+alwaysApply: false
+priority: medium
+---
+
+# Blockchain Development Rules
+
+## Technology Stack
+- **Language**: Solidity, TypeScript
+- **Framework**: Hardhat, Foundry
+- **Build Tool**: Hardhat, Foundry
+- **Package Manager**: npm, yarn
+- **Testing**: Hardhat, Foundry
+
+## Core Principles
+- Follow smart contract security best practices
+- Implement proper access control
+- Use safe math operations
+- Follow gas optimization techniques
+- Implement proper testing and auditing
+
+## Project Structure
+contracts/             # Smart contracts
+├─ interfaces/         # Contract interfaces
+├─ libraries/          # Contract libraries
+└─ implementations/    # Contract implementations
+scripts/               # Deployment scripts
+├─ deploy/            # Deployment scripts
+└─ verify/            # Verification scripts
+test/                  # Test files
+├─ unit/              # Unit tests
+└─ integration/       # Integration tests
+
+## Coding Standards
+- Use camelCase for variables and functions
+- Use descriptive names for functions and variables
+- Follow Solidity naming conventions
+- Use proper indentation (4 spaces)
+- Use NatSpec documentation
+
+## Best Practices
+- Implement proper access control
+- Use safe math operations
+- Implement proper error handling
+- Use gas optimization techniques
+- Implement proper testing
+
+## Common Patterns
+- Access control patterns
+- Upgradeable contracts
+- Proxy patterns
+- Gas optimization techniques
+- Security patterns
+
+## Testing Strategy
+- Write comprehensive unit tests
+- Implement integration tests
+- Use proper test networks
+- Test security scenarios
+- Maintain high test coverage

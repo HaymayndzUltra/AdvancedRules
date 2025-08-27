@@ -1,0 +1,62 @@
+---
+title: "Playwright Testing — v1"
+description: "Playwright end-to-end testing with best practices"
+globs: ["**/*.spec.ts", "**/*.spec.js", "tests/**/*.ts", "tests/**/*.js"]
+alwaysApply: false
+priority: high
+---
+
+# Playwright Testing Rules
+
+## Technology Stack
+- **Framework**: Playwright
+- **Language**: TypeScript, JavaScript
+- **Build Tool**: Playwright CLI
+- **Package Manager**: npm, yarn, pnpm
+- **Browsers**: Chromium, Firefox, WebKit
+
+## Core Principles
+- Write reliable end-to-end tests
+- Use page object model
+- Implement proper test isolation
+- Follow testing best practices
+- Use Playwright's built-in features
+
+## Project Structure
+tests/
+├─ e2e/               # End-to-end tests
+│   ├─ auth.spec.ts   # Authentication tests
+│   ├─ navigation.spec.ts
+│   └─ forms.spec.ts
+├─ fixtures/          # Test data
+├─ pages/             # Page objects
+└─ utils/             # Test utilities
+playwright.config.ts  # Playwright configuration
+
+## Coding Standards
+- Use camelCase for variables and functions
+- Use PascalCase for classes
+- Use descriptive names for tests and functions
+- Follow TypeScript conventions
+- Use proper indentation (2 spaces)
+
+## Best Practices
+- Use page object model
+- Implement proper test isolation
+- Use Playwright's built-in assertions
+- Implement proper error handling
+- Use Playwright's debugging tools
+
+## Common Patterns
+- Page object model
+- Test data management
+- Custom commands and utilities
+- Cross-browser testing
+- Visual regression testing
+
+## Testing Strategy
+- Write reliable end-to-end tests
+- Use proper test isolation
+- Implement parallel testing
+- Use Playwright's debugging tools
+- Maintain high test coverage

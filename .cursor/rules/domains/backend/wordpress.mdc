@@ -1,0 +1,66 @@
+---
+title: "WordPress Development — v1"
+description: "WordPress development with best practices and patterns"
+globs: ["**/*.php", "wp-content/**/*.php", "themes/**/*.php", "plugins/**/*.php"]
+alwaysApply: false
+priority: high
+---
+
+# WordPress Development Rules
+
+## Technology Stack
+- **Platform**: WordPress 6.0+
+- **Language**: PHP 8.0+
+- **Build Tool**: Webpack, Gulp
+- **Package Manager**: npm, Composer
+- **Database**: MySQL
+
+## Core Principles
+- Follow WordPress coding standards
+- Use WordPress hooks and filters
+- Implement proper security measures
+- Follow WordPress best practices
+- Use modern development tools
+
+## Project Structure
+wp-content/
+├─ themes/             # Theme files
+│   └─ your-theme/
+│       ├─ functions.php
+│       ├─ index.php
+│       ├─ style.css
+│       └─ assets/
+├─ plugins/            # Plugin files
+│   └─ your-plugin/
+│       ├─ your-plugin.php
+│       ├─ includes/
+│       └─ assets/
+└─ uploads/            # Media files
+
+## Coding Standards
+- Use camelCase for variables and functions
+- Use snake_case for WordPress functions
+- Use descriptive names for functions and variables
+- Follow WordPress coding standards
+- Use proper indentation (4 spaces)
+
+## Best Practices
+- Use WordPress hooks and filters
+- Implement proper security measures
+- Use WordPress's built-in functions
+- Implement proper error handling
+- Use WordPress's caching system
+
+## Common Patterns
+- Custom post types and taxonomies
+- WordPress hooks and filters
+- Plugin development patterns
+- Theme development patterns
+- WordPress REST API usage
+
+## Testing Strategy
+- Write unit tests with PHPUnit
+- Use WordPress testing framework
+- Implement integration tests
+- Test WordPress hooks and filters
+- Maintain high test coverage

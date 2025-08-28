@@ -41,17 +41,35 @@ commands:
       label: "Verify audit (Principal Engineer)"
       reason: "Audit gate passed; decide CONFIRM/CHALLENGE."
 
-  - id: flow.run
-    role_from: FLOW_EXECUTOR
-    trigger: execute_flow
+  - id: flow.lint
+    role_from: FLOW_VALIDATOR
+    trigger: lint_flow
     run:
-      shell: ["python3","tools/flow/flow_runner.py","{{flow_id}}","--dry-run"]
+      shell: ["arx","flow","lint","--flow={{flow_id}}"]
     requires:
       states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
       completed_steps_all_of: []
       gates_passed_all_of: []
     contexts:
-      must_exist: ["flow/flow_registry.yaml"]
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
+    emits:
+      sets_state: "FLOW_VALIDATION_COMPLETE"
+      add_completed_step: "flow_validation_complete"
+    ui:
+      label: "Lint Flow Definition"
+      reason: "Validate flow schema, references, and DAG structure."
+
+  - id: flow.run
+    role_from: FLOW_EXECUTOR
+    trigger: execute_flow
+    run:
+      shell: ["arx","flow","run","--flow={{flow_id}}","--task-id={{task_id}}","--dry-run"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
     emits:
       sets_state: "FLOW_EXECUTION_STARTED"
       add_completed_step: "flow_execution_started"
@@ -63,17 +81,17 @@ commands:
     role_from: FLOW_RENDERER
     trigger: render_flow
     run:
-      shell: ["python3","tools/flow/flow_linter.py","flow/flow_registry.yaml"]
+      shell: ["arx","flow","render","--flow={{flow_id}}","--out=.artifacts/{{flow_id}}.mmd"]
     requires:
       states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
       completed_steps_all_of: []
       gates_passed_all_of: []
     contexts:
-      must_exist: ["flow/flow_registry.yaml"]
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
     emits:
-      sets_state: "FLOW_VALIDATION_COMPLETE"
-      add_completed_step: "flow_validation_complete"
+      sets_state: "FLOW_RENDER_COMPLETE"
+      add_completed_step: "flow_render_complete"
     ui:
-      label: "Validate Flow Schema"
-      reason: "Lint and validate flow definitions with DAG analysis."
+      label: "Render Flow Diagram"
+      reason: "Generate visual flow diagrams in Mermaid format."
 YAML

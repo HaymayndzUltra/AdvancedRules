@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AdvancedRules Memory Document Schema",
+  "description": "Schema for memory bank documents in AdvancedRules framework",
+  "type": "object",
+  "required": ["type", "id", "content"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["plan", "report", "log", "artifact", "decision"],
+      "description": "Memory document type"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "description": "Unique document identifier"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Document title"
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Document content"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "author": {"type": "string"},
+        "created": {"type": "string", "format": "date-time"},
+        "updated": {"type": "string", "format": "date-time"},
+        "version": {"type": "string"},
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "flow_id": {"type": "string"},
+        "task_id": {"type": "string"},
+        "step_id": {"type": "string"}
+      },
+      "description": "Document metadata"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema_version": {"type": "string"},
+        "checksum": {"type": "string"},
+        "is_valid": {"type": "boolean"}
+      },
+      "description": "Validation information"
+    }
+  },
+  "additionalProperties": false
+}

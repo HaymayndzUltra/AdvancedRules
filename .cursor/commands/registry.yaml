@@ -1,0 +1,43 @@
+cat > .cursor/commands/registry.yaml <<'YAML'
+version: 1
+defaults:
+  one_step_policy: true
+  min_confidence: 0.9
+
+commands:
+  - id: planning → audit
+    role_from: PLANNING_AI
+    trigger: run_auditor
+    run:
+      shell: ["python3","tools/run_role.py","auditor_ai","--inputs","memory-bank/plan/Action_Plan.md"]
+    requires:
+      states_any_of: ["PLANNING_DONE"]
+      completed_steps_all_of: ["planning_gate_passed"]
+      gates_passed_all_of: ["PLANNING_GATE"]
+    contexts:
+      must_exist: ["memory-bank/plan/Action_Plan.md"]
+    emits:
+      sets_state: "AUDIT_IN_PROGRESS"
+      add_completed_step: "audit_started"
+    ui:
+      label: "Validate plan (Auditor)"
+      reason: "Planning complete + gate passed; validate with citations."
+
+  - id: audit→verify
+    role_from: AUDITOR_AI
+    trigger: run_principal_engineer
+    run:
+      shell: ["python3","tools/run_role.py","principal_engineer_ai","--inputs","memory-bank/plan/Summary_Report.md"]
+    requires:
+      states_any_of: ["AUDIT_DONE"]
+      completed_steps_all_of: ["audit_gate_passed"]
+      gates_passed_all_of: ["AUDIT_GATE"]
+    contexts:
+      must_exist: ["memory-bank/plan/Summary_Report.md"]
+    emits:
+      sets_state: "VERIFICATION_IN_PROGRESS"
+      add_completed_step: "verification_started"
+    ui:
+      label: "Verify audit (Principal Engineer)"
+      reason: "Audit gate passed; decide CONFIRM/CHALLENGE."
+YAML

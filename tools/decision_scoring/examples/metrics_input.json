@@ -1,0 +1,35 @@
+{
+  "context": {
+    "summary": "Sample input for metrics computation stub",
+    "evidence_paths": [
+      "file://memory-bank/context.md",
+      "tool://current_workflow"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "implement_feature",
+      "action_type": "NATURAL_STEP",
+      "explanation": "Implement the requested feature based on current context",
+      "preconds": ["exists:requirements.md", "exists:design.md"]
+    },
+    {
+      "id": "run_tests",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Execute test suite to validate current implementation",
+      "preconds": ["exists:test_files", "exists:implementation"]
+    },
+    {
+      "id": "update_docs",
+      "action_type": "NATURAL_STEP",
+      "explanation": "Update documentation to reflect recent changes",
+      "preconds": ["exists:changes.md"]
+    },
+    {
+      "id": "deploy_solution",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Deploy the completed solution to production",
+      "preconds": ["exists:test_results", "exists:approval"]
+    }
+  ]
+}

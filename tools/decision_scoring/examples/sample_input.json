@@ -1,0 +1,79 @@
+{
+  "sample_candidates": [
+    {
+      "id": "code_optimization",
+      "intent": 0.85,
+      "state": 0.90,
+      "evidence": 0.80,
+      "recency": 0.95,
+      "pref": 0.90,
+      "action_type": "NATURAL_STEP",
+      "explanation": "High-impact code optimization based on performance profiling"
+    },
+    {
+      "id": "refactoring",
+      "intent": 0.70,
+      "state": 0.60,
+      "evidence": 0.65,
+      "recency": 0.65,
+      "pref": 0.70,
+      "action_type": "NATURAL_STEP",
+      "explanation": "Medium-priority refactoring for code maintainability"
+    },
+    {
+      "id": "documentation",
+      "intent": 0.45,
+      "state": 0.40,
+      "evidence": 0.30,
+      "recency": 0.30,
+      "pref": 0.50,
+      "action_type": "NATURAL_STEP",
+      "explanation": "Low-priority documentation update"
+    },
+    {
+      "id": "security_fix",
+      "intent": 0.95,
+      "state": 0.95,
+      "evidence": 0.90,
+      "recency": 1.00,
+      "pref": 1.00,
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Critical security fix based on vulnerability scan"
+    },
+    {
+      "id": "ui_improvement",
+      "intent": 0.60,
+      "state": 0.55,
+      "evidence": 0.50,
+      "recency": 0.50,
+      "pref": 0.60,
+      "action_type": "NATURAL_STEP",
+      "explanation": "Minor UI improvement for user experience"
+    }
+  ],
+  "context_example": {
+    "context_summary": "Code review session with multiple improvement opportunities",
+    "evidence_paths": [
+      "file://memory-bank/code_review_notes.md",
+      "tool://performance_profiler",
+      "file://test_glob/security_scan_results.json"
+    ]
+  },
+  "expected_outputs": {
+    "conf_high_threshold": 0.75,
+    "conf_mid_threshold": 0.55,
+    "epsilon": 0.05,
+    "scoring_weights": {
+      "intent": 0.30,
+      "state": 0.25,
+      "evidence": 0.20,
+      "recency": 0.15,
+      "pref": 0.10
+    }
+  },
+  "usage_examples": {
+    "single_candidate": "python score.py --intent 0.85 --state 0.90 --evidence 0.80 --recency 0.95 --pref 0.90",
+    "evaluate_candidates": "python -c \"from score import DecisionScoringTool; tool = DecisionScoringTool(); result = tool.evaluate_candidates('Code review session', sample_candidates, evidence_paths); print(json.dumps(result, indent=2))\"",
+    "metrics_computation": "python compute_metrics.py --days 30 --output report.json"
+  }
+}

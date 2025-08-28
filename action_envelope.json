@@ -1,0 +1,19 @@
+{
+  "decision": "NEXT_STEP",
+  "chosen_id": "test_implementation",
+  "candidate": {
+    "id": "test_implementation",
+    "action_type": "NATURAL_STEP",
+    "scores": {
+      "intent": 0.85,
+      "state": 0.9,
+      "evidence": 0.8,
+      "recency": 0.95,
+      "pref": 0.9,
+      "final": 0.8724999999999999
+    },
+    "explanation": "Implement test cases for the decision scoring system",
+    "preconds": []
+  },
+  "exec_mode": "PLAN_ONLY"
+}

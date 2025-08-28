@@ -1,0 +1,48 @@
+{
+  "context": {
+    "summary": "Testing the deterministic CLI decision scoring tool",
+    "evidence_paths": [
+      "file://memory-bank/test_context.md",
+      "tool://test_runner",
+      "file://test_glob/results.json"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "test_implementation",
+      "metrics": {
+        "intent": 0.85,
+        "state": 0.90,
+        "evidence": 0.80,
+        "recency": 0.95,
+        "pref": 0.90
+      },
+      "action_type": "NATURAL_STEP",
+      "explanation": "Implement test cases for the decision scoring system"
+    },
+    {
+      "id": "run_validation",
+      "metrics": {
+        "intent": 0.80,
+        "state": 0.85,
+        "evidence": 0.85,
+        "recency": 0.80,
+        "pref": 0.85
+      },
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Run validation tests to ensure system integrity"
+    },
+    {
+      "id": "update_docs",
+      "metrics": {
+        "intent": 0.70,
+        "state": 0.75,
+        "evidence": 0.65,
+        "recency": 0.70,
+        "pref": 0.75
+      },
+      "action_type": "NATURAL_STEP",
+      "explanation": "Update documentation with latest changes"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "context": {
+    "summary": "Hand-off for GPT-5 — Decision Scoring + Safe Execution implementation and validation",
+    "evidence_paths": [
+      "file://memory-bank/business/client_score.json",
+      "file://memory-bank/business/capacity_report.md",
+      "file://memory-bank/business/pricing.ratecard.yaml",
+      "file://memory-bank/business/estimate_brief.md",
+      "file://memory-bank/plan/proposal.md",
+      "file://logs/decisions/20250828_142313.json",
+      "tool://decision_scoring/score.py",
+      "tool://decision_scoring/execute_envelope.sh"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "validate_system_readiness",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Validate all pre-start artifacts are present and decision scoring system is operational",
+      "preconds": [
+        "exists:memory-bank/business/client_score.json",
+        "exists:memory-bank/business/capacity_report.md",
+        "exists:memory-bank/business/pricing.ratecard.yaml",
+        "exists:memory-bank/business/estimate_brief.md",
+        "exists:memory-bank/plan/proposal.md",
+        "repo_indexed:true"
+      ],
+      "metrics": {
+        "intent": 0.95,
+        "state": 0.90,
+        "evidence": 0.85,
+        "recency": 0.90,
+        "pref": 0.88
+      },
+      "command": "echo DRY_RUN: validate_system_readiness --check-artifacts --verify-tools"
+    },
+    {
+      "id": "run_decision_scorer",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Execute decision scoring on current candidates and log results",
+      "preconds": [
+        "exists:decision_candidates.json",
+        "exists:tools/decision_scoring/score.py",
+        "exists:tools/decision_scoring/weights.json",
+        "exists:logs/decisions/"
+      ],
+      "metrics": {
+        "intent": 0.90,
+        "state": 0.85,
+        "evidence": 0.90,
+        "recency": 0.95,
+        "pref": 0.85
+      },
+      "command": "echo DRY_RUN: run_decision_scorer --input decision_candidates.json --weights tools/decision_scoring/weights.json --log-to logs/decisions/"
+    },
+    {
+      "id": "build_execution_envelope",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Build execution envelope based on latest decision for safe execution",
+      "preconds": [
+        "exists:logs/decisions/",
+        "latest_decision_exists:true",
+        "exists:tools/decision_scoring/execute_envelope.sh"
+      ],
+      "metrics": {
+        "intent": 0.88,
+        "state": 0.82,
+        "evidence": 0.80,
+        "recency": 0.88,
+        "pref": 0.82
+      },
+      "command": "echo DRY_RUN: build_execution_envelope --from-latest-decision --output action_envelope.json"
+    },
+    {
+      "id": "execute_safety_runner",
+      "action_type": "COMMAND_TRIGGER",
+      "explanation": "Execute the chosen action via safety runner for controlled execution",
+      "preconds": [
+        "exists:action_envelope.json",
+        "exists:tools/decision_scoring/execute_envelope.sh",
+        "envelope_valid:true"
+      ],
+      "metrics": {
+        "intent": 0.85,
+        "state": 0.80,
+        "evidence": 0.85,
+        "recency": 0.85,
+        "pref": 0.80
+      },
+      "command": "echo DRY_RUN: execute_safety_runner --envelope action_envelope.json --safe-mode"
+    },
+    {
+      "id": "analyze_decision_quality",
+      "action_type": "NATURAL_STEP",
+      "explanation": "Analyze decision quality metrics and scoring distribution for system validation",
+      "preconds": [
+        "exists:logs/decisions/",
+        "decision_log_count:>0"
+      ],
+      "metrics": {
+        "intent": 0.82,
+        "state": 0.78,
+        "evidence": 0.88,
+        "recency": 0.82,
+        "pref": 0.78
+      }
+    },
+    {
+      "id": "create_integration_guide",
+      "action_type": "NATURAL_STEP",
+      "explanation": "Create comprehensive integration guide for decision scoring system",
+      "preconds": [
+        "exists:docs/",
+        "system_documented:false"
+      ],
+      "metrics": {
+        "intent": 0.75,
+        "state": 0.70,
+        "evidence": 0.65,
+        "recency": 0.75,
+        "pref": 0.72
+      }
+    },
+    {
+      "id": "setup_monitoring_dashboard",
+      "action_type": "NATURAL_STEP",
+      "explanation": "Set up monitoring dashboard for decision scoring metrics and system health",
+      "preconds": [
+        "exists:logs/decisions/",
+        "monitoring_tools_available:true"
+      ],
+      "metrics": {
+        "intent": 0.70,
+        "state": 0.65,
+        "evidence": 0.60,
+        "recency": 0.70,
+        "pref": 0.68
+      }
+    }
+  ]
+}

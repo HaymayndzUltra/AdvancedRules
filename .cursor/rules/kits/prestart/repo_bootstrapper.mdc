@@ -1,6 +1,6 @@
 ---
 description: "Repo Bootstrapper — minimal, demo-ready scaffolds"
-globs: ["memory-bank/**", "templates/**"]
+globs: []
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: "Pricing Policy — ratecard & terms"
-globs: ["**/*"]
+globs: []
 alwaysApply: false
 ---
 

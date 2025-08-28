@@ -1,0 +1,136 @@
+# Code Quality Standards & Best Practices
+
+## 🎯 Universal Principles
+
+### 1. Code Readability
+- Use descriptive variable and function names
+- Write self-documenting code with clear intent
+- Maintain consistent formatting and indentation
+- Add meaningful comments for complex logic
+- Keep functions small and focused (single responsibility)
+
+### 2. Error Handling
+- Implement proper error handling and validation
+- Use meaningful error messages
+- Log errors appropriately for debugging
+- Handle edge cases and boundary conditions
+- Provide graceful degradation when possible
+
+### 3. Performance & Security
+- Optimize for readability first, performance second
+- Follow security best practices (OWASP guidelines)
+- Validate and sanitize all inputs
+- Use secure authentication and authorization
+- Implement proper logging without sensitive data exposure
+
+### 4. Testing & Documentation
+- Write unit tests for critical functionality
+- Maintain up-to-date documentation
+- Use consistent naming conventions
+- Document API endpoints and parameters
+- Include usage examples and code samples
+
+## 🏗️ Architecture Standards
+
+### 1. Project Structure
+- Follow established directory patterns
+- Separate concerns (models, views, controllers)
+- Use consistent file naming conventions
+- Organize code by feature or domain
+- Maintain clear separation of business logic
+
+### 2. Dependencies & Imports
+- Minimize external dependencies
+- Use specific version pinning
+- Regularly update dependencies for security
+- Document dependency purposes
+- Avoid circular dependencies
+
+### 3. Configuration Management
+- Use environment variables for configuration
+- Separate development, staging, and production configs
+- Never commit sensitive credentials
+- Use configuration validation
+- Implement feature flags for gradual rollouts
+
+## 🔧 Technology-Specific Standards
+
+### Frontend Development
+- Use semantic HTML elements
+- Implement responsive design principles
+- Follow accessibility guidelines (WCAG)
+- Optimize for performance (lazy loading, code splitting)
+- Use modern CSS practices (Grid, Flexbox, CSS Variables)
+
+### Backend Development
+- Implement proper API versioning
+- Use consistent HTTP status codes
+- Implement rate limiting and throttling
+- Use proper authentication and authorization
+- Implement comprehensive logging and monitoring
+
+### Database Design
+- Use meaningful table and column names
+- Implement proper indexing strategies
+- Follow normalization principles
+- Use transactions for data integrity
+- Implement proper backup and recovery procedures
+
+## 📝 Code Review Checklist
+
+### Before Committing
+- [ ] Code compiles/runs without errors
+- [ ] All tests pass
+- [ ] Code follows style guidelines
+- [ ] No sensitive data is exposed
+- [ ] Error handling is implemented
+- [ ] Documentation is updated
+
+### During Review
+- [ ] Code is readable and maintainable
+- [ ] Logic is correct and efficient
+- [ ] Security considerations are addressed
+- [ ] Performance implications are considered
+- [ ] Edge cases are handled
+- [ ] Tests cover new functionality
+
+## 🚀 Quality Assurance
+
+### Automated Checks
+- Use linting tools (ESLint, Pylint, etc.)
+- Implement pre-commit hooks
+- Run automated tests in CI/CD
+- Use static code analysis tools
+- Monitor code coverage metrics
+
+### Manual Review
+- Peer code reviews for all changes
+- Architecture review for major changes
+- Security review for sensitive features
+- Performance review for critical paths
+- Documentation review for user-facing changes
+
+## 📚 Reference Materials
+
+### Documentation
+- [README.md](mdc:README.md) - Project overview and setup
+- [FOLDER_STRUCTURE.md](mdc:FOLDER_STRUCTURE.md) - Project organization
+- [FRAMEWORK_SUMMARY.md](mdc:FRAMEWORK_SUMMARY.md) - Framework capabilities
+
+### Tools & Scripts
+- `npm run lint` - Code linting
+- `npm run test` - Test execution
+- `npm run format` - Code formatting
+- `npm run validate` - Project validation
+
+## 🎯 When to Apply These Standards
+
+- Writing new code or modifying existing code
+- Conducting code reviews
+- Setting up new projects or components
+- Implementing new features or bug fixes
+- Refactoring or optimizing existing code
+description:
+globs:
+alwaysApply: true
+---

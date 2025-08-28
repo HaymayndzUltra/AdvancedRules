@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/validation_report.frontmatter.schema.json",
+  "title": "Validation Report Frontmatter",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "date": { "type": "string" },
+    "version": { "type": ["string", "number"] },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": ["string", "integer"] },
+          "status": { "type": "string", "enum": ["CONFIRM", "CHALLENGE"] },
+          "rationale": { "type": "string" }
+        },
+        "required": ["status"]
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

@@ -1,6 +1,6 @@
 ---
 description: "Estimate Sizer — goal-level, risk-adjusted"
-globs: ["**/*"]
+globs: []
 alwaysApply: false
 ---
 

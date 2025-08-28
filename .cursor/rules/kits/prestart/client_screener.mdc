@@ -1,6 +1,6 @@
 ---
 description: "Client Screener — fit scoring + red flags"
-globs: ["**/*"]
+globs: []
 alwaysApply: false
 ---
 

@@ -1,0 +1,9 @@
+{
+  "contract_type": "fixed",
+  "escrow_funded": true,
+  "work_diary_ready": false,
+  "weekly_cap_hours": 0,
+  "offer_amount": 2500,
+  "project_deadline": "2024-01-31",
+  "notes": "Fixed-price contract for Feedback Collector MVP"
+}

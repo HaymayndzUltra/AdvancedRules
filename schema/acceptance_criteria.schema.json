@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/acceptance_criteria.schema.json",
+  "title": "Acceptance Criteria",
+  "type": "object",
+  "properties": {
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": ["string", "integer"] },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "priority": { "type": ["string", "integer"] },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["title"],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": ["criteria"],
+  "additionalProperties": true
+}
+

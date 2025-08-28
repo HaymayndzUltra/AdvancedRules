@@ -1,6 +1,6 @@
 ---
 description: "Capacity Planner — avoid overcommitment"
-globs: ["**/*"]
+globs: []
 alwaysApply: false
 ---
 

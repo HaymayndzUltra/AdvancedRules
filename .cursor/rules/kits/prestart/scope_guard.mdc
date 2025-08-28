@@ -1,6 +1,6 @@
 ---
 description: "Scope Guard — baseline + change request workflow"
-globs: ["memory-bank/**", "templates/**"]
+globs: []
 alwaysApply: false
 ---
 

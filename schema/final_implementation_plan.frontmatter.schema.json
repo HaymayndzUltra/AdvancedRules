@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/final_implementation_plan.frontmatter.schema.json",
+  "title": "Final Implementation Plan Frontmatter",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "date": { "type": "string" },
+    "version": { "type": ["string", "number"] },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": ["string", "integer"] },
+          "summary": { "type": "string" },
+          "owner": { "type": "string" },
+          "depends_on": { "type": "array", "items": { "type": ["string", "integer"] } },
+          "rollback": { "type": "string" }
+        },
+        "required": ["summary"],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

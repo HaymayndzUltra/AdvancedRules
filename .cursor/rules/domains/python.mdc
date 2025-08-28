@@ -1,0 +1,15 @@
+---
+kind: domain
+id: domain_python
+description: "Python project detector (globs-only)"
+globs: ["requirements.txt","pyproject.toml"]
+alwaysApply: false
+version:
+---
+
+
+# Domain: Python
+
+Attaches when Python markers are present to enable Python-specific suggestions.
+
+

@@ -1,0 +1,5 @@
+{
+  "conf_high": 0.75,
+  "conf_mid": 0.55,
+  "eps_gap": 0.05
+}

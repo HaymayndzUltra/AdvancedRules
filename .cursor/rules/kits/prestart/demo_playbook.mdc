@@ -1,6 +1,6 @@
 ---
 description: "Demo Playbook — 5–10 min demo flow (goal-level)"
-globs: ["memory-bank/**", "templates/**", "demos/**"]
+globs: []
 alwaysApply: false
 ---
 

@@ -1,0 +1,244 @@
+---
+title: "Frontend Coding Standards — v1"
+description: "Universal coding standards and best practices for all frontend development frameworks"
+globs: ["**/*.{ts,tsx,js,jsx,vue,svelte,html,css}", "src/**/*", "components/**/*"]
+alwaysApply: false
+priority: high
+---
+
+# Frontend Coding Standards
+
+## 🎯 **Core Development Principles**
+
+### **Code Quality Standards**
+- Follow DRY principle (Don't Repeat Yourself)
+- Write bug-free, fully functional code
+- Focus on readability over performance
+- Leave NO todos, placeholders, or missing pieces
+- Verify code is complete and thoroughly tested
+- Ensure all requested functionality is implemented
+
+### **Development Process**
+1. **Think Step-by-Step**: Describe your plan in detailed pseudocode
+2. **Confirm Requirements**: Verify understanding with user
+3. **Write Complete Code**: Implement all functionality without gaps
+4. **Verify Implementation**: Ensure code is fully functional
+5. **Test Thoroughly**: Validate all edge cases and scenarios
+
+## 🔧 **Coding Style Guidelines**
+
+### **Function Declarations**
+- Use `const` instead of `function` declarations
+- Example: `const handleClick = () => {}` instead of `function handleClick() {}`
+- Use arrow functions for consistency
+- Always define proper types when possible
+
+### **Early Returns**
+- Use early returns whenever possible to make code more readable
+- Avoid deep nesting with if-else statements
+- Return early for error conditions and edge cases
+- Example:
+```typescript
+// ✅ Good: Early return
+const processUser = (user: User | null) => {
+  if (!user) return null;
+  if (!user.isActive) return null;
+  
+  return user.process();
+};
+
+// ❌ Bad: Deep nesting
+const processUser = (user: User | null) => {
+  if (user) {
+    if (user.isActive) {
+      return user.process();
+    }
+  }
+  return null;
+};
+```
+
+### **Class Names and Styling**
+- Use `class:` instead of ternary operators in class tags whenever possible
+- Prefer Tailwind classes over custom CSS
+- Use descriptive class names
+- Example:
+```typescript
+// ✅ Good: Using class:
+<div class:bg-blue-500={isActive} class:bg-gray-300={!isActive} />
+
+// ❌ Bad: Ternary operator
+<div className={isActive ? 'bg-blue-500' : 'bg-gray-300'} />
+```
+
+## 🏷️ **Naming Conventions**
+
+### **Event Handler Functions**
+- **Prefix with "handle"** for all event handlers
+- Use descriptive names that indicate the action
+- Examples:
+  - `handleClick` for onClick events
+  - `handleKeyDown` for onKeyDown events
+  - `handleSubmit` for form submission
+  - `handleInputChange` for input changes
+  - `handleMouseEnter` for mouse events
+
+### **Variable and Function Names**
+- Use descriptive names that clearly indicate purpose
+- Avoid abbreviations unless they are standard (e.g., API, URL, HTTP)
+- Use camelCase for variables and functions
+- Use PascalCase for components and types
+- Examples:
+  - `userProfile` instead of `up`
+  - `isLoading` instead of `loading`
+  - `handleFormSubmission` instead of `handleSubmit`
+  - `validateEmailAddress` instead of `validateEmail`
+
+### **Component Names**
+- Use PascalCase for all component names
+- Make names descriptive and specific
+- Examples:
+  - `UserProfileCard` instead of `Card`
+  - `NavigationMenu` instead of `Nav`
+  - `ProductImageGallery` instead of `Gallery`
+
+## ♿ **Accessibility Standards**
+
+### **Interactive Elements**
+- Always include `tabindex="0"` for interactive elements
+- Implement proper `aria-label` attributes for screen readers
+- Use semantic HTML elements (`<button>`, `<nav>`, `<main>`)
+- Ensure keyboard navigation works properly
+
+### **Event Handling**
+- Implement both `on:click` and `on:keydown` handlers
+- Support Enter and Space key activation for buttons
+- Handle focus management properly
+- Provide visual feedback for interactive states
+
+### **Screen Reader Support**
+- Use proper ARIA attributes (`aria-label`, `aria-describedby`)
+- Implement proper heading hierarchy (h1, h2, h3)
+- Provide alt text for images
+- Use proper form labels and descriptions
+
+## 📝 **Code Implementation Requirements**
+
+### **Complete Implementation**
+- **NO TODO comments** - implement everything
+- **NO placeholder code** - write actual working code
+- **NO missing pieces** - ensure full functionality
+- **Include all required imports** - don't assume dependencies
+- **Proper error handling** - handle all edge cases
+- **Type safety** - use proper TypeScript types
+
+### **Import and Dependency Management**
+- Always include necessary imports at the top of files
+- Use proper import paths and aliases
+- Import only what you need (avoid `import *`)
+- Use relative imports for local files
+- Use absolute imports for external packages
+
+### **Error Handling**
+- Implement proper try-catch blocks
+- Handle async operations with proper error states
+- Provide user-friendly error messages
+- Log errors appropriately for debugging
+- Implement fallback UI for error states
+
+## 🧪 **Testing and Validation**
+
+### **Code Verification**
+- Test all code paths and scenarios
+- Verify edge cases are handled
+- Ensure error conditions work properly
+- Test with different data inputs
+- Validate accessibility requirements
+
+### **Quality Checklist**
+- [ ] Code compiles without errors
+- [ ] All functionality is implemented
+- [ ] No TODO or placeholder comments
+- [ ] Proper error handling implemented
+- [ ] Accessibility requirements met
+- [ ] Code follows naming conventions
+- [ ] All imports are included
+- [ ] Types are properly defined
+
+## 🔄 **Framework-Specific Adaptations**
+
+### **React/Next.js**
+- Use functional components with hooks
+- Implement proper dependency arrays
+- Use React.memo for performance optimization
+- Follow React best practices
+
+### **Vue.js**
+- Use Composition API over Options API
+- Implement proper reactive patterns
+- Use proper emit declarations
+- Follow Vue style guide
+
+### **Svelte**
+- Use proper reactive statements
+- Implement proper event handling
+- Use Svelte stores effectively
+- Follow Svelte conventions
+
+### **TypeScript**
+- Enable strict mode
+- Use proper type definitions
+- Avoid `any` type
+- Implement proper interfaces
+
+## 📚 **Best Practices Summary**
+
+### **Do's**
+✅ Write complete, working code  
+✅ Use descriptive names  
+✅ Implement proper error handling  
+✅ Follow accessibility guidelines  
+✅ Use early returns  
+✅ Test thoroughly  
+✅ Document complex logic  
+
+### **Don'ts**
+❌ Leave TODO comments  
+❌ Use placeholder code  
+❌ Skip error handling  
+❌ Ignore accessibility  
+❌ Use unclear names  
+❌ Assume dependencies  
+❌ Skip testing  
+
+## 🎯 **Implementation Example**
+
+### **Before (Incomplete)**
+```typescript
+// TODO: Implement user validation
+const validateUser = (user) => {
+  // Placeholder implementation
+  return true;
+};
+```
+
+### **After (Complete)**
+```typescript
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  age: number;
+}
+
+const validateUser = (user: User): boolean => {
+  if (!user) return false;
+  if (!user.name || user.name.trim().length === 0) return false;
+  if (!user.email || !user.email.includes('@')) return false;
+  if (user.age < 0 || user.age > 150) return false;
+  
+  return true;
+};
+```
+
+This coding standards file ensures consistent, high-quality code across all frontend frameworks while maintaining the specific requirements you outlined! 🚀

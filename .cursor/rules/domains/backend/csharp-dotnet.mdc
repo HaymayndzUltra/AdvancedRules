@@ -1,0 +1,165 @@
+# C# .NET Development Rules
+
+## Technology Stack
+- **Language**: C# 10+
+- **Framework**: .NET 6+
+- **Build Tool**: MSBuild, dotnet CLI
+- **Package Manager**: NuGet
+- **Architecture**: ASP.NET Core, Clean Architecture, MVC
+
+## Core Principles
+- Follow SOLID principles
+- Use object-oriented programming effectively
+- Implement proper exception handling
+- Write clean, readable, and maintainable code
+- Use modern C# features and patterns
+- Enable strict mode in all code
+- Default to private access modifier unless otherwise specified
+
+## Project Structure
+src/
+├─ YourProject/
+│   ├─ Controllers/     # API controllers
+│   ├─ Services/        # Business logic services
+│   ├─ Repositories/    # Data access layer
+│   ├─ Models/          # Data models and DTOs
+│   ├─ Validators/      # Fluent Validation classes
+│   ├─ Middleware/      # Custom middleware
+│   ├─ Extensions/      # Extension methods
+│   └─ Configuration/   # App settings
+├─ YourProject.Tests/   # Unit tests
+├─ YourProject.IntegrationTests/  # Integration tests
+├─ YourProject.sln      # Solution file
+└─ YourProject.csproj   # Project file
+
+## Coding Standards
+- Use PascalCase for classes, methods, and properties
+- Use camelCase for local variables and parameters
+- Use descriptive names for methods and variables
+- Follow C# naming conventions
+- Use proper indentation (4 spaces)
+- Enable nullable reference types
+- Use expression-bodied members where appropriate
+
+## Best Practices
+- Use meaningful variable names
+- Implement proper exception handling with try-catch
+- Use collections effectively (List<T>, Dictionary<K,V>)
+- Implement proper logging with Serilog
+- Use async/await for I/O-bound operations
+- Implement proper validation with Fluent Validation
+- Use dependency injection effectively
+
+## Common Patterns
+- Repository pattern for data access
+- Service layer for business logic
+- CQRS pattern for complex operations
+- Unit of Work pattern for transactions
+- Specification pattern for complex queries
+- Factory pattern for object creation
+- Observer pattern for event handling
+
+## Database Operations
+- Use Entity Framework Core for ORM
+- Implement Repository pattern for data access
+- Use LINQ for complex queries
+- Implement database migrations
+- Use async methods for database operations
+- Implement proper connection pooling
+- Use database transactions when needed
+
+## Validation
+- Use Fluent Validation for request validation
+- Create reusable validation rules
+- Validate all input data
+- Implement custom validators for complex scenarios
+- Use data annotations for simple validation
+- Validate models at multiple layers
+
+## Logging
+- Use Serilog for structured logging
+- Configure multiple sinks (file, console, database)
+- Log errors and events consistently
+- Use structured logging with correlation IDs
+- Implement proper log levels
+- Log performance metrics
+
+## Authentication & Authorization
+- Use JWT tokens for API authentication
+- Implement role-based authorization
+- Use ASP.NET Core Identity for user management
+- Implement proper password hashing
+- Use secure session management
+- Implement OAuth2 when needed
+
+## Security
+- Implement CSRF protection
+- Validate all input data
+- Use HTTPS in production
+- Implement proper CORS policies
+- Use security headers
+- Encrypt sensitive data
+- Follow OWASP guidelines
+
+## API Design
+- Use RESTful conventions
+- Implement proper HTTP status codes
+- Use API versioning for backward compatibility
+- Document APIs with Swagger/OpenAPI
+- Implement proper error responses
+- Use DTOs for data transfer
+- Implement proper rate limiting
+
+## Performance
+- Use caching (MemoryCache, Redis)
+- Implement async programming patterns
+- Optimize database queries
+- Use connection pooling
+- Implement proper pagination
+- Use background services for heavy operations
+- Monitor performance metrics
+
+## Testing
+- Write unit tests for business logic
+- Use MSTest, NUnit, or xUnit
+- Implement integration tests for APIs
+- Use Moq for mocking dependencies
+- Test all error scenarios
+- Maintain high test coverage
+- Use TestContainers for database tests
+
+## Error Handling
+- Implement global exception handling middleware
+- Return standardized error responses
+- Log all errors with context
+- Use custom exception types
+- Handle specific exception types appropriately
+- Implement proper error codes
+
+## Background Services
+- Use IHostedService for background tasks
+- Implement Hangfire for job scheduling
+- Use proper cancellation tokens
+- Handle service lifecycle properly
+- Implement proper error handling in background services
+
+## Configuration
+- Use strongly-typed configuration
+- Use User Secrets for development
+- Use environment variables for production
+- Implement configuration validation
+- Use Options pattern for configuration
+
+## Dependency Injection
+- Use built-in DI container
+- Register services with proper lifetimes
+- Use constructor injection
+- Implement proper service registration
+- Use factory pattern when needed
+
+## Monitoring & Health Checks
+- Implement health checks
+- Use Application Insights or similar
+- Monitor application metrics
+- Implement proper alerting
+- Use structured logging for monitoring

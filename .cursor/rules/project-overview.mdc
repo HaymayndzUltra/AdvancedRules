@@ -1,0 +1,44 @@
+# AdvancedRules AI Framework
+
+## 🏗️ Project Architecture
+
+AdvancedRules is a sophisticated AI orchestration framework that coordinates multiple specialized AI personas for high-quality software development outcomes.
+
+### Core Components
+- **Orchestrators**: `.cursor/rules/orchestrator/` - Central coordination systems
+- **AI Personas**: `.cursor/rules/roles/` - Specialized AI roles (Product Owner, Planning, Principal Engineer, etc.)
+- **Domain Knowledge**: `.cursor/rules/domains/` - Technology-specific rules (React, Python, FastAPI, etc.)
+- **Memory Bank**: `memory-bank/` - AI-generated artifacts and persistent memory
+- **Tools**: `tools/` - Execution scripts and utilities
+
+### Key Files
+- [README.md](mdc:README.md) - Comprehensive framework documentation
+- [FOLDER_STRUCTURE.md](mdc:FOLDER_STRUCTURE.md) - Detailed project structure
+- [FRAMEWORK_SUMMARY.md](mdc:FRAMEWORK_SUMMARY.md) - Framework overview
+- [workflow_state.json](mdc:workflow_state.json) - Current workflow state
+- [package.json](mdc:package.json) - Node.js project configuration
+
+### Quick Start Commands
+```bash
+# Pre-start readiness check
+python3 tools/prestart/prestart_composite.py
+
+# Quick start pipeline
+python3 tools/quickstart.py
+
+# Manual role execution
+python3 tools/run_role.py [role_name]
+```
+
+### Development Workflow
+1. **PRE-START**: Client screening, capacity planning, pricing
+2. **PLAN**: Product ownership, technical planning, architecture
+3. **EXECUTE**: Code generation, security review, QA testing
+4. **AUDIT**: Quality assurance, compliance validation
+5. **DELIVER**: Documentation, handoff, project closure
+
+## 🎯 When to Use This Rule
+- Understanding project structure and navigation
+- Identifying appropriate AI personas for tasks
+- Following development workflow phases
+- Locating relevant documentation and tools

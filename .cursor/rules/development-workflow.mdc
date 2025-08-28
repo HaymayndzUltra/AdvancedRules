@@ -1,0 +1,103 @@
+# Development Workflow & AI Persona Orchestration
+
+## 🔄 Development Lifecycle Phases
+
+### 1. PRE-START Phase
+**Purpose**: Validate project readiness and business requirements
+**Key Activities**:
+- Client screening and scoring
+- Capacity planning and availability
+- Pricing strategy and rate card setup
+- Risk assessment and mitigation
+- Proposal development
+
+**AI Personas**: Client Screener, Capacity Planner, Pricing Policy, Risk Catalog
+**Outputs**: `memory-bank/business/*`, `memory-bank/plan/proposal.md`
+
+### 2. PLAN Phase
+**Purpose**: Strategic planning and technical architecture
+**Key Activities**:
+- Product requirements and backlog
+- Technical architecture design
+- Project roadmap and milestones
+- Resource allocation and timeline
+
+**AI Personas**: Product Owner AI, Planning AI, Principal Engineer AI
+**Outputs**: `memory-bank/plan/*`, technical specifications, architecture docs
+
+### 3. EXECUTE Phase
+**Purpose**: Code generation and implementation
+**Key Activities**:
+- Automated code generation
+- Security review and validation
+- Quality assurance testing
+- Performance optimization
+
+**AI Personas**: Codegen AI, Security AI, QA AI
+**Outputs**: Source code, test results, security reports
+
+### 4. AUDIT Phase
+**Purpose**: Quality assurance and compliance validation
+**Key Activities**:
+- Code quality review
+- Security vulnerability assessment
+- Compliance validation
+- Performance benchmarking
+
+**AI Personas**: Auditor AI, Security AI, QA AI
+**Outputs**: Audit reports, compliance certificates, quality metrics
+
+### 5. DELIVER Phase
+**Purpose**: Project handoff and documentation
+**Key Activities**:
+- Documentation creation
+- Deployment preparation
+- Client handoff materials
+- Project closure
+
+**AI Personas**: Documentation AI, Principal Engineer AI
+**Outputs**: User manuals, deployment guides, handoff documents
+
+## 🎯 AI Persona Selection Guide
+
+### For Strategic Decisions
+- **Product Owner AI**: Business requirements, product strategy
+- **Planning AI**: Project planning, resource allocation
+- **Principal Engineer AI**: Technical architecture, engineering decisions
+
+### For Implementation
+- **Codegen AI**: Code generation, implementation
+- **Security AI**: Security analysis, vulnerability assessment
+- **QA AI**: Testing strategy, quality assurance
+
+### For Validation
+- **Auditor AI**: Compliance, quality validation
+- **Documentation AI**: Documentation, user guides
+
+## 🚀 Execution Commands
+
+```bash
+# Complete pipeline execution
+python3 tools/quickstart.py
+
+# Phase-specific execution
+python3 tools/run_role.py product_owner_ai
+python3 tools/run_role.py planning_ai
+python3 tools/run_role.py principal_engineer_ai
+python3 tools/run_role.py codegen_ai
+python3 tools/run_role.py security_ai
+python3 tools/run_role.py qa_ai
+python3 tools/run_role.py auditor_ai
+python3 tools/run_role.py documentation_ai
+
+# Decision scoring and orchestration
+python3 tools/decision_scoring/advanced_score.py
+```
+
+## 📊 Progress Tracking
+
+Monitor progress through:
+- [workflow_state.json](mdc:workflow_state.json) - Current phase and state
+- `memory-bank/` - Generated artifacts and outputs
+- `logs/` - Execution logs and audit trails
+- `rule_attach_log.json` - Rule application tracking

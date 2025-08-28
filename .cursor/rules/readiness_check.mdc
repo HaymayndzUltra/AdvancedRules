@@ -1,7 +1,10 @@
 ---
 description: "PRE-START Acceptance Gate for solo freelancer workflow"
-globs: ["**/*"]
-alwaysApply: true
+globs:
+  - "memory-bank/business/**"
+  - "memory-bank/upwork/offer_status.json"
+  - "memory-bank/plan/proposal.md"
+alwaysApply: false
 ---
 
 # PRE-START Acceptance Gate

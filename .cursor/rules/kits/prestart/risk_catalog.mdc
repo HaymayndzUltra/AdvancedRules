@@ -1,6 +1,6 @@
 ---
 description: "Risk Catalog — reusable list of common risks/mitigations"
-globs: ["memory-bank/**", "templates/**"]
+globs: []
 alwaysApply: false
 ---
 

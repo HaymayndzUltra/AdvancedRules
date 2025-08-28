@@ -32,7 +32,7 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 - **Specialized**: AI/ML, Blockchain, DevOps
 - **Utilities**: TypeScript, Database, Git, Clean Code
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Operational Quickstart)
 
 ### Prerequisites
 - Git
@@ -40,18 +40,22 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 - Python 3.8+ (for backend development)
 - Docker (for containerized development)
 
-### Installation
+### Run the solo-freelancer pipeline
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd AdvancedRules
+# Prestart / Upwork readiness
+python3 tools/prestart/prestart_composite.py
 
-# Install dependencies
-npm install
-pip install -r requirements.txt
+# One-command happy path
+python3 tools/quickstart.py
 
-# Initialize the framework
-npm run init
+# Or manual steps
+mkdir -p memory-bank/plan
+printf "Client brief" > memory-bank/plan/client_brief.md
+python3 tools/run_role.py product_owner_ai
+python3 tools/run_role.py planning_ai
+python3 tools/run_role.py auditor_ai
+python3 tools/run_role.py principal_engineer_ai --mode PEER_REVIEW
+python3 tools/run_role.py principal_engineer_ai --mode SYNTHESIS
 ```
 
 ### Configuration
@@ -70,13 +74,16 @@ npm run init
 5. **Quality Assurance**: QA AI and Security AI validate code quality
 6. **Audit & Deploy**: Auditor AI ensures compliance before deployment
 
-### Advanced Features
-- **Multi-Persona Coordination**: Execute complex workflows across multiple AI personas
-- **Quality Gates**: Automated validation checkpoints throughout development
-- **Memory Persistence**: Maintain context and knowledge across sessions
-- **Adaptive Execution**: Dynamic persona activation based on task complexity
+### Decision Scoring v3 + Trigger
+```bash
+# Score
+python3 tools/decision_scoring/advanced_score.py
 
-## 📁 Project Structure
+# Trigger (dry-run)
+python3 tools/orchestrator/trigger_next.py --dry-run --candidates tools/decision_scoring/examples/trigger_candidates.json
+```
+
+## 📁 Project Structure (key paths)
 
 ```
 AdvancedRules/
@@ -85,9 +92,9 @@ AdvancedRules/
 │   ├── roles/              # AI persona definitions
 │   └── domains/            # Domain-specific knowledge
 ├── memory-bank/            # AI-generated artifacts and memory
-├── src/                    # Application source code
+├── tools/                  # Runner, scoring, orchestrator, provenance, etc.
 ├── docs/                   # Documentation and ADRs
-└── tests/                  # Test suites and validation
+└── tests/                  # E2E + smoke tests
 ```
 
 ## 🎭 AI Personas

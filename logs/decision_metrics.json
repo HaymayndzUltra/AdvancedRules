@@ -1,0 +1,19 @@
+{
+  "2025-08-28": {
+    "counts": {
+      "decision": 1
+    },
+    "events": [
+      {
+        "type": "decision",
+        "decision": "ASK_CLARIFY",
+        "trace": {
+          "mode": "shadow",
+          "top": 0.5436386872370789,
+          "gap": 0.0006068201628397496
+        },
+        "ts": 1756383007.6857038
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "candidates": [
+    {
+      "id": "planning_from_backlog",
+      "action_type": "COMMAND_TRIGGER",
+      "risk": "LOW",
+      "scores": {"intent":0.9,"state":0.8,"evidence":0.7,"recency":0.6,"pref":0.5,"cost":0.1,"risk_penalty":0.0}
+    },
+    {
+      "id": "ask_for_details",
+      "action_type": "NATURAL_STEP",
+      "risk": "LOW",
+      "scores": {"intent":0.6,"state":0.6,"evidence":0.6,"recency":0.6,"pref":0.6,"cost":0.0,"risk_penalty":0.0}
+    }
+  ]
+}
+

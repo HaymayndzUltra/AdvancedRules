@@ -1,6 +1,6 @@
 ---
 description: "Proposal Builder — outcomes, scope, exclusions"
-globs: ["**/*"]
+globs: []
 alwaysApply: false
 ---
 

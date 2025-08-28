@@ -6,10 +6,13 @@ This guide documents the hand-off implementation of the Decision Scoring + Safe 
 ## Architecture
 
 ### Core Components
-- **Decision Scorer** (`tools/decision_scoring/score.py`): Evaluates candidates using weighted metrics
+- **Decision Scorer (v3)** (`tools/decision_scoring/advanced_score.py`): calibrated, exploration+shadow
 - **Safety Runner** (`tools/decision_scoring/execute_envelope.sh`): Executes actions in controlled environment
 - **Envelope Builder**: Creates execution envelopes based on scoring decisions
-- **Logging System**: Maintains decision logs in `logs/decisions/`
+- **Logging System**: Maintains decision logs in `logs/decisions/`; metrics in `logs/decision_metrics.json`
+- **Provenance** (`tools/artifacts/hash_index.py`): content hashes in `memory-bank/artifacts_index.json`
+- **Rule Attach Log** (`tools/rule_attach/detect.py`): append-only `rule_attach_log.json`
+- **State Engine** (`tools/orchestrator/state.py`): `workflow_state.json` with idempotent transitions
 
 ### Decision Flow
 ```mermaid
@@ -52,11 +55,16 @@ Create `decision_candidates.json` with the following schema:
 }
 ```
 
-### 2. Execute Decision Scoring
+### 2. Execute Decision Scoring (v3)
 ```bash
-mkdir -p logs/decisions
-TS="$(date +%Y%m%d_%H%M%S)"
-python3 tools/decision_scoring/score.py tools/decision_scoring/weights.json < decision_candidates.json | tee logs/decisions/$TS.json
+python3 tools/decision_scoring/advanced_score.py
+# or programmatically
+python3 - << 'PY'
+from tools.decision_scoring.advanced_score import score_candidates
+c=[{"id":"plan","action_type":"COMMAND_TRIGGER","risk":"LOW","scores":{"intent":0.9,"state":0.7,"evidence":0.6,"recency":0.4,"pref":0.5,"cost":0.2,"risk_penalty":0.1}},
+   {"id":"ask","action_type":"NATURAL_STEP","risk":"LOW","scores":{"intent":0.78,"state":0.7,"evidence":0.6,"recency":0.5,"pref":0.4,"cost":0.0,"risk_penalty":0.0}}]
+print(score_candidates(c, explore=True, shadow=True))
+PY
 ```
 
 ### 3. Build Execution Envelope
@@ -78,19 +86,16 @@ tools/decision_scoring/execute_envelope.sh action_envelope.json
 - **Recency**: Temporal relevance of information
 - **Preference**: User/system preferences and priorities
 
-### Weights Configuration
+### Weights/Thresholds/Calibration
 ```json
-{
-  "w_intent": 0.30,
-  "w_state": 0.25,
-  "w_evidence": 0.20,
-  "w_recency": 0.15,
-  "w_pref": 0.10,
-  "lambda_command_bias": 0.03,
-  "epsilon": 0.05,
-  "t_high": 0.75,
-  "t_mid": 0.55
-}
+// tools/decision_scoring/weights.json
+{"intent":0.30,"state":0.25,"evidence":0.20,"recency":0.15,"pref":0.10,"cost":-0.10,"risk_penalty":-0.20}
+
+// tools/decision_scoring/thresholds.json
+{"conf_high":0.75,"conf_mid":0.55,"eps_gap":0.05}
+
+// tools/decision_scoring/calibration.json
+{"alpha":1.0,"beta":0.0}
 ```
 
 ### Decision Gates
@@ -181,5 +186,8 @@ ls -la memory-bank/business/
 
 **Status**: ✅ IMPLEMENTED AND VALIDATED
 **Decision Log**: `logs/decisions/20250828_142955.json`
+**Metrics**: `logs/decision_metrics.json`
+**Provenance**: `memory-bank/artifacts_index.json`
+**Rule Attach**: `rule_attach_log.json`
 **Safety**: ✅ DRY_RUN execution confirmed
 **Documentation**: Complete integration guide created

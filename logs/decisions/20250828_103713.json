@@ -1,0 +1,52 @@
+{
+  "context_summary": "Testing the deterministic CLI decision scoring tool",
+  "candidates": [
+    {
+      "id": "test_implementation",
+      "action_type": "NATURAL_STEP",
+      "scores": {
+        "intent": 0.85,
+        "state": 0.9,
+        "evidence": 0.8,
+        "recency": 0.95,
+        "pref": 0.9,
+        "final": 0.8724999999999999
+      },
+      "explanation": "Implement test cases for the decision scoring system",
+      "preconds": []
+    },
+    {
+      "id": "run_validation",
+      "action_type": "COMMAND_TRIGGER",
+      "scores": {
+        "intent": 0.8,
+        "state": 0.85,
+        "evidence": 0.85,
+        "recency": 0.8,
+        "pref": 0.85,
+        "final": 0.7975
+      },
+      "explanation": "Run validation tests to ensure system integrity",
+      "preconds": []
+    },
+    {
+      "id": "update_docs",
+      "action_type": "NATURAL_STEP",
+      "scores": {
+        "intent": 0.7,
+        "state": 0.75,
+        "evidence": 0.65,
+        "recency": 0.7,
+        "pref": 0.75,
+        "final": 0.7075
+      },
+      "explanation": "Update documentation with latest changes",
+      "preconds": []
+    }
+  ],
+  "decision": {
+    "type": "NEXT_STEP",
+    "top": "test_implementation"
+  },
+  "timestamp": "2025-08-28T10:37:13"
+}

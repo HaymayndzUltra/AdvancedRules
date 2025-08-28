@@ -1,0 +1,238 @@
+# Security & Best Practices
+
+## 🛡️ Security Fundamentals
+
+### OWASP Top 10 Security Risks
+1. **Broken Access Control** - Implement proper authentication and authorization
+2. **Cryptographic Failures** - Use secure encryption and key management
+3. **Injection Attacks** - Validate and sanitize all inputs
+4. **Insecure Design** - Design with security in mind from the start
+5. **Security Misconfiguration** - Secure default configurations
+6. **Vulnerable Components** - Keep dependencies updated
+7. **Authentication Failures** - Implement strong authentication
+8. **Software and Data Integrity** - Verify software integrity
+9. **Security Logging Failures** - Comprehensive security logging
+10. **Server-Side Request Forgery** - Validate external requests
+
+### Security Principles
+- **Defense in Depth**: Multiple security layers
+- **Principle of Least Privilege**: Minimal required access
+- **Fail Securely**: Graceful failure without exposing information
+- **Security by Design**: Security from the beginning
+- **Continuous Security**: Ongoing security assessment
+
+## 🔐 Authentication & Authorization
+
+### Authentication Best Practices
+- **Multi-Factor Authentication (MFA)**: Require multiple verification methods
+- **Strong Password Policies**: Enforce complex password requirements
+- **Session Management**: Secure session handling and timeout
+- **Account Lockout**: Implement account protection against brute force
+- **Password Hashing**: Use bcrypt, Argon2, or PBKDF2
+
+### Authorization Implementation
+- **Role-Based Access Control (RBAC)**: Define user roles and permissions
+- **Attribute-Based Access Control (ABAC)**: Context-aware access decisions
+- **JWT Security**: Secure token handling and validation
+- **API Security**: Implement proper API authentication
+- **Resource Protection**: Protect sensitive resources and endpoints
+
+## 🚫 Input Validation & Sanitization
+
+### Input Validation Strategies
+- **Whitelist Validation**: Allow only known good input
+- **Type Validation**: Ensure correct data types
+- **Length Validation**: Enforce input length limits
+- **Format Validation**: Validate input formats (email, phone, etc.)
+- **Business Rule Validation**: Apply domain-specific validation rules
+
+### Sanitization Techniques
+- **HTML Sanitization**: Remove dangerous HTML/JavaScript
+- **SQL Injection Prevention**: Use parameterized queries
+- **XSS Prevention**: Encode output to prevent script injection
+- **File Upload Security**: Validate file types and content
+- **Command Injection Prevention**: Avoid shell command execution
+
+## 🔒 Data Protection
+
+### Data Encryption
+- **Data at Rest**: Encrypt stored data
+- **Data in Transit**: Use TLS/SSL for network communication
+- **Key Management**: Secure encryption key storage
+- **Sensitive Data**: Identify and protect PII and sensitive information
+- **Database Security**: Secure database connections and access
+
+### Privacy Protection
+- **Data Minimization**: Collect only necessary data
+- **Consent Management**: Implement proper consent mechanisms
+- **Data Retention**: Define and enforce data retention policies
+- **Right to be Forgotten**: Implement data deletion capabilities
+- **Privacy by Design**: Build privacy into system design
+
+## 🌐 Web Application Security
+
+### Frontend Security
+- **Content Security Policy (CSP)**: Prevent XSS attacks
+- **HTTPS Enforcement**: Require secure connections
+- **Secure Headers**: Implement security headers (HSTS, X-Frame-Options)
+- **Client-Side Validation**: Implement client-side validation (with server-side backup)
+- **Secure Storage**: Use secure storage for sensitive client data
+
+### Backend Security
+- **API Security**: Implement proper API authentication and rate limiting
+- **Input Validation**: Validate all server-side inputs
+- **Error Handling**: Don't expose sensitive information in errors
+- **Logging Security**: Log security events without sensitive data
+- **Dependency Management**: Keep dependencies updated and secure
+
+## 📱 Mobile Security
+
+### Mobile App Security
+- **Code Obfuscation**: Protect intellectual property
+- **Certificate Pinning**: Prevent man-in-the-middle attacks
+- **Secure Storage**: Use secure storage for sensitive data
+- **Network Security**: Implement secure network communication
+- **App Integrity**: Verify app integrity and prevent tampering
+
+### Platform Security
+- **iOS Security**: Follow Apple security guidelines
+- **Android Security**: Implement Android security best practices
+- **Permission Management**: Request minimal required permissions
+- **Biometric Authentication**: Implement secure biometric authentication
+- **Secure Communication**: Use secure protocols for API communication
+
+## 🧪 Security Testing
+
+### Automated Security Testing
+- **Static Application Security Testing (SAST)**: Code analysis for vulnerabilities
+- **Dynamic Application Security Testing (DAST)**: Runtime vulnerability scanning
+- **Dependency Scanning**: Check for known vulnerabilities in dependencies
+- **Container Security**: Scan container images for vulnerabilities
+- **Infrastructure Security**: Scan infrastructure for security issues
+
+### Manual Security Testing
+- **Penetration Testing**: Manual security assessment
+- **Code Review**: Security-focused code review
+- **Threat Modeling**: Identify and assess security threats
+- **Security Architecture Review**: Review security architecture
+- **Incident Response Testing**: Test incident response procedures
+
+## 🔧 Security Tools & Frameworks
+
+### Security Libraries
+- **OWASP ZAP**: Web application security scanner
+- **SonarQube**: Code quality and security analysis
+- **Snyk**: Dependency vulnerability scanning
+- **Bandit**: Python security linter
+- **ESLint Security**: JavaScript security linting
+
+### Security Headers
+```http
+# Security Headers Example
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self'
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+```
+
+### Security Configuration Examples
+
+#### Express.js Security
+```javascript
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+app.use(helmet());
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+}));
+```
+
+#### FastAPI Security
+```python
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+security = HTTPBearer()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://yourdomain.com"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
+```
+
+## 📊 Security Metrics & Monitoring
+
+### Security KPIs
+- **Vulnerability Count**: Track open security vulnerabilities
+- **Mean Time to Detection**: Time to detect security incidents
+- **Mean Time to Resolution**: Time to resolve security issues
+- **Security Test Coverage**: Coverage of security testing
+- **Incident Response Time**: Time to respond to security incidents
+
+### Security Monitoring
+- **Log Analysis**: Monitor security logs for suspicious activity
+- **Intrusion Detection**: Implement intrusion detection systems
+- **Anomaly Detection**: Detect unusual behavior patterns
+- **Threat Intelligence**: Monitor external threat intelligence
+- **Security Metrics Dashboard**: Track security metrics over time
+
+## 🚨 Incident Response
+
+### Incident Response Plan
+1. **Preparation**: Develop incident response procedures
+2. **Identification**: Detect and classify security incidents
+3. **Containment**: Limit the impact of security incidents
+4. **Eradication**: Remove the cause of security incidents
+5. **Recovery**: Restore normal operations
+6. **Lessons Learned**: Document and improve response procedures
+
+### Security Incident Types
+- **Data Breaches**: Unauthorized access to sensitive data
+- **Malware Infections**: Malicious software on systems
+- **DDoS Attacks**: Distributed denial of service attacks
+- **Phishing Attacks**: Social engineering attacks
+- **Insider Threats**: Malicious actions by authorized users
+
+## 📚 Reference Materials
+
+### Documentation
+- [README.md](mdc:README.md) - Project overview
+- [FOLDER_STRUCTURE.md](mdc:FOLDER_STRUCTURE.md) - Project structure
+- [FRAMEWORK_SUMMARY.md](mdc:FRAMEWORK_SUMMARY.md) - Framework capabilities
+
+### Security Resources
+- **OWASP**: Open Web Application Security Project
+- **NIST Cybersecurity Framework**: Cybersecurity best practices
+- **CIS Controls**: Critical security controls
+- **Security Headers**: Security header implementation guide
+- **OWASP Cheat Sheet Series**: Security implementation guides
+
+### Security Tools
+- `npm audit` - Check for known vulnerabilities
+- `safety check` - Python dependency security scanning
+- `gosec` - Go security linter
+- `spotbugs` - Java security analysis
+- `bandit` - Python security linter
+
+## 🎯 When to Apply Security Standards
+
+- Designing new applications or features
+- Implementing authentication and authorization
+- Handling user input and data
+- Configuring applications and infrastructure
+- Conducting security reviews and testing
+- Responding to security incidents
+- Updating dependencies and components
+description:
+globs:
+alwaysApply: true
+---

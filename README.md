@@ -36,6 +36,15 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 - **Reports**: Security findings, test plans, audit reports
 - **Logs**: Handoff logs, gate results, execution tracking
 
+### 6. Operational Stack (New)
+- **Runner + Plugins**: `tools/run_role.py`, `tools/runner/plugins/*` (per-role execution, event logging)
+- **Decision Scoring v3**: `tools/decision_scoring/advanced_score.py` (calibration, exploration, shadow) + metrics
+- **Trigger**: `tools/orchestrator/trigger_next.py` (scorer → registry)
+- **State Engine**: `tools/orchestrator/state.py` (idempotent transitions; `workflow_state.json`)
+- **Provenance**: `tools/artifacts/hash_index.py` → `memory-bank/artifacts_index.json`
+- **Attach Log**: `tools/rule_attach/detect.py` → `rule_attach_log.json`
+- **Observability**: `tools/observability/aggregate.py` → `logs/observability/summary.{json,md}`
+
 ### 5. Documentation (`docs/`)
 - **README**: Comprehensive framework documentation
 - **ADRs**: Architecture Decision Records system
@@ -55,6 +64,69 @@ AdvancedRules/
 ├── docs/ # Documentation and ADRs
 └── package.json # Node.js project configuration
 
+
+## ⚡ Operational Quickstart (Solo Freelancer Pipeline)
+
+### 1) Prestart / Readiness
+```bash
+python3 tools/prestart/prestart_composite.py
+```
+Ensures `memory-bank/upwork/offer_status.json` exists and prints preflight status.
+
+### 2) Minimal happy path
+```bash
+python3 tools/quickstart.py
+```
+Runs: readiness → product owner → planning → audit → PE peer review → PE synthesis.
+
+### 3) Manual steps (if preferred)
+```bash
+# Prepare client brief
+mkdir -p memory-bank/plan
+printf "Client brief" > memory-bank/plan/client_brief.md
+
+# Roles
+python3 tools/run_role.py product_owner_ai
+python3 tools/run_role.py planning_ai
+python3 tools/run_role.py auditor_ai
+python3 tools/run_role.py principal_engineer_ai --mode PEER_REVIEW
+python3 tools/run_role.py principal_engineer_ai --mode SYNTHESIS
+```
+
+### 4) Decision Scoring v3 and Trigger
+```bash
+# Score candidates (prints decision, trace, optional shadow)
+python3 tools/decision_scoring/advanced_score.py
+
+# Trigger next step from scorer result (dry-run prints mapped command)
+python3 tools/orchestrator/trigger_next.py --dry-run --candidates tools/decision_scoring/examples/trigger_candidates.json
+```
+
+### 5) Govern, Validate, Observe
+```bash
+# Governance policy checks
+python3 tools/rules/validate.py
+
+# Artifact schema checks
+python3 tools/schema/validate_artifacts.py
+
+# Observability summary
+python3 tools/observability/aggregate.py && sed -n '1,120p' logs/observability/summary.md
+```
+
+### 6) Provenance and Rule Attach
+```bash
+# Provenance index (auto-written on artifact emits)
+cat memory-bank/artifacts_index.json
+
+# Deterministic attach log
+python3 tools/rule_attach/detect.py --dry-run
+python3 tools/rule_attach/detect.py && head -n 1 rule_attach_log.json
+```
+
+## 🎯 What’s Included vs Deferred
+- Included: governance validator, role rules (guards), registry (tightened), runner plugins, readiness, decision scoring v3, trigger, state engine, provenance, attach log, observability, schemas, quickstart, tests.
+- Deferred (by choice): CI tests on PRs (only validator runs in CI until you port to your main repo).
 
 ## 🔧 Rules File Format
 

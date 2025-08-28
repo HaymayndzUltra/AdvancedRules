@@ -1,0 +1,24 @@
+---
+description: "Decision gate with neutral treatment of COMMAND_TRIGGER vs NATURAL_STEP"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Policy
+- Treat COMMAND_TRIGGER as a normal candidate type.
+- base_score = Σ w_k * metric_k; final_score = base_score - λ * is_command (λ default 0.03).
+- Apply gates:
+  - HIGH (≥0.75): NEXT_STEP (single winner).
+  - MID (0.55–0.75) and top-2 gap ≤ 0.05: OPTION_SET (2–3 best).
+  - LOW (<0.55): ASK_CLARIFY unless RISK ≥ MEDIUM → RISK_ALERT/ABSTAIN.
+- If NEXT_STEP is COMMAND_TRIGGER:
+  - Show exact command and why (evidence paths).
+  - If potentially destructive (write/delete/deploy/migrate), require DRY-RUN or confirmation.
+- Never force-pick a trigger; winner must have highest final_score with preconditions met.
+
+## Required Output (JSON only)
+{
+  "chosen": {"id":"...", "action_type":"...", "final_score":0.0},
+  "rationale": "2–3 sentences; cite evidence paths",
+  "evidence_paths": ["file://...","tool://..."]
+}

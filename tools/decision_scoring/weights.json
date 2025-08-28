@@ -1,0 +1,11 @@
+{
+  "w_intent": 0.3,
+  "w_state": 0.25,
+  "w_evidence": 0.2,
+  "w_recency": 0.15,
+  "w_pref": 0.1,
+  "lambda_command_bias": 0.03,
+  "epsilon": 0.05,
+  "t_high": 0.75,
+  "t_mid": 0.55
+}

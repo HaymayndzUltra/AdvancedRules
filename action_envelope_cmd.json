@@ -1,0 +1,20 @@
+{
+  "decision": "NEXT_STEP",
+  "chosen_id": "run_validation",
+  "candidate": {
+    "id": "run_validation",
+    "action_type": "COMMAND_TRIGGER",
+    "scores": {
+      "intent": 0.8,
+      "state": 0.85,
+      "evidence": 0.85,
+      "recency": 0.8,
+      "pref": 0.85,
+      "final": 0.7975
+    },
+    "explanation": "Run validation tests to ensure system integrity",
+    "preconds": [],
+    "command": "echo DRY_RUN: run_validation --no-write"
+  },
+  "exec_mode": "DRY_RUN"
+}

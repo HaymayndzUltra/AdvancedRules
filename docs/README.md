@@ -1,161 +1,177 @@
-# AdvancedRules AI Framework
+# AdvancedRules Documentation Hub
 
-A sophisticated AI orchestration framework that coordinates multiple AI personas to deliver high-quality software development outcomes.
+Welcome to the comprehensive documentation center for the AdvancedRules AI orchestration framework. This directory contains all documentation, guides, and reference materials for understanding, implementing, and extending the framework.
 
-## 🎯 Overview
+## 📚 Documentation Overview
 
-AdvancedRules is an intelligent framework that orchestrates specialized AI personas to handle different aspects of software development, from product planning to code generation and quality assurance.
+The `docs/` directory serves as the central knowledge repository for AdvancedRules, providing structured documentation that supports both users and developers of the framework.
 
-## 🏗️ Architecture
+## 📁 Directory Structure
 
-### Core Components
+```
+docs/
+├── README.md                    # This documentation hub overview
+├── INTEGRATION_GUIDE.md        # Decision scoring integration guide
+└── ADRs/                       # Architecture Decision Records
+    └── README.md              # ADR system documentation
+```
 
-#### Orchestrators
-- **Execution Orchestrator**: Central coordination hub for AI persona management
-- **Framework Memory Bridge**: Persistent memory and knowledge sharing
-- **Rules Master Toggle**: Central control system for framework activation
+## 🎯 Documentation Types
 
-#### AI Personas
-- **Product Owner AI**: Strategic product management and vision alignment
-- **Planning AI**: Project planning and roadmap development
-- **Principal Engineer AI**: Technical architecture and engineering decisions
-- **Codegen AI**: Automated code generation and implementation
-- **Security AI**: Security analysis and vulnerability assessment
-- **QA AI**: Quality assurance and testing strategy
-- **Auditor AI**: Compliance validation and quality auditing
+### 📖 Framework Guides
+- **[INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md)**: Comprehensive guide for integrating decision scoring and safe execution systems
+- **ADRs**: Architectural decisions and their rationales
 
-#### Domain Knowledge
-- **Frontend**: React, Vue, Svelte, Next.js, Tailwind
-- **Backend**: Python, FastAPI, Node.js, Java, Go
-- **Mobile**: React Native, Flutter, Android
-- **Testing**: Jest, Playwright, PHPUnit
-- **Specialized**: AI/ML, Blockchain, DevOps
-- **Utilities**: TypeScript, Database, Git, Clean Code
+### 🏗️ Architecture Documentation
+- **[ADRs/README.md](./ADRs/README.md)**: Architecture Decision Records system and process
+- **Framework Architecture**: Core system design and component interactions
 
-## 🚀 Getting Started (Operational Quickstart)
+### 🔧 Implementation Guides
+- **Decision Scoring**: Advanced scoring system implementation and usage
+- **Safe Execution**: Controlled execution environment setup and management
+- **Workflow Orchestration**: Multi-step workflow coordination patterns
 
-### Prerequisites
-- Git
-- Node.js 18+ (for frontend development)
-- Python 3.8+ (for backend development)
-- Docker (for containerized development)
+## 🚀 Quick Start for Documentation
 
-### Run the solo-freelancer pipeline
+### For New Users
+1. **Start Here**: Read this README for documentation overview
+2. **Framework Overview**: Check main [project README](../README.md)
+3. **Integration Guide**: Follow [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) for system setup
+4. **ADRs**: Review [ADRs/README.md](./ADRs/README.md) for architectural decisions
+
+### For Developers
+1. **System Architecture**: Understand core components and interactions
+2. **Extension Points**: Learn how to extend and customize the framework
+3. **Integration Patterns**: Study existing integrations and patterns
+4. **Best Practices**: Review architectural decisions and rationale
+
+## 📋 Key Documentation Resources
+
+### Core Framework
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| [Main README](../README.md) | Framework overview and quickstart | All users |
+| [Integration Guide](./INTEGRATION_GUIDE.md) | System integration and setup | Implementers |
+| [ADRs](./ADRs/) | Architectural decisions | Architects, Developers |
+
+### Operational Guides
+| Component | Documentation | Location |
+|-----------|---------------|----------|
+| Decision Scoring | Advanced scoring system | `tools/decision_scoring/README.md` |
+| Workflow Orchestration | State management and triggers | `tools/orchestrator/README.md` |
+| Memory Bank | Artifact management | `memory-bank/README.md` |
+| Tools Suite | Operational utilities | `tools/README.md` |
+
+## 🏛️ Architecture Decision Records (ADRs)
+
+The [ADRs](./ADRs/) directory contains formal documentation of significant architectural decisions:
+
+### Current ADRs
+- **Framework Architecture**: Core system design principles
+- **AI Persona Coordination**: Multi-persona orchestration patterns
+- **Memory Management**: Knowledge persistence and retrieval strategies
+
+### ADR Workflow
+1. **Proposal**: New architectural decisions are documented as ADRs
+2. **Review**: ADRs undergo peer review by relevant AI personas
+3. **Approval**: Accepted ADRs guide implementation
+4. **Implementation**: Decisions are implemented with ADR references
+5. **Maintenance**: ADRs are updated as implementation evolves
+
+## 🔄 Documentation Maintenance
+
+### Adding New Documentation
+1. **Identify Need**: Determine documentation requirements
+2. **Choose Format**: Select appropriate format (guide, reference, tutorial)
+3. **Create Content**: Write clear, comprehensive documentation
+4. **Review Process**: Have relevant AI personas review for accuracy
+5. **Publish**: Add to appropriate location and update this README
+
+### Documentation Standards
+- **Clear Structure**: Use consistent headings and formatting
+- **Code Examples**: Include practical, runnable examples
+- **Cross-References**: Link related documentation
+- **Version Control**: Keep documentation current with code changes
+- **Accessibility**: Write for both technical and non-technical audiences
+
+## 🎯 Framework Capabilities
+
+### Core Functionality
+- **AI Orchestration**: Coordinate multiple specialized AI personas
+- **Decision Scoring**: Advanced scoring system for action selection
+- **Safe Execution**: Controlled execution environment
+- **Memory Management**: Persistent knowledge and artifact storage
+- **Quality Assurance**: Automated validation and compliance checking
+
+### Integration Points
+- **External Systems**: Upwork, client management, project tools
+- **Development Workflow**: Git, CI/CD, deployment pipelines
+- **Quality Gates**: Automated validation at each stage
+- **Observability**: Comprehensive monitoring and logging
+
+## 🚀 Operational Quickstart
+
+For immediate framework usage, see the main [README](../README.md) quickstart section. For detailed integration instructions, refer to the [Integration Guide](./INTEGRATION_GUIDE.md).
+
+### Key Commands
 ```bash
-# Prestart / Upwork readiness
-python3 tools/prestart/prestart_composite.py
+# Framework overview
+cat ../README.md
 
-# One-command happy path
-python3 tools/quickstart.py
+# Integration setup
+cat ./INTEGRATION_GUIDE.md
 
-# Or manual steps
-mkdir -p memory-bank/plan
-printf "Client brief" > memory-bank/plan/client_brief.md
-python3 tools/run_role.py product_owner_ai
-python3 tools/run_role.py planning_ai
-python3 tools/run_role.py auditor_ai
-python3 tools/run_role.py principal_engineer_ai --mode PEER_REVIEW
-python3 tools/run_role.py principal_engineer_ai --mode SYNTHESIS
+# Architecture decisions
+cat ./ADRs/README.md
 ```
 
-### Configuration
-1. Copy `.env.example` to `.env`
-2. Configure your AI service credentials
-3. Set up your preferred development environment
-4. Configure the Rules Master Toggle
+## 🤝 Contributing to Documentation
 
-## 🔧 Usage
+### Contribution Guidelines
+1. **Content Quality**: Ensure accuracy and clarity
+2. **Format Consistency**: Follow established documentation patterns
+3. **Review Process**: Submit documentation for AI persona review
+4. **Version Control**: Use descriptive commit messages
+5. **Maintenance**: Keep documentation current with framework changes
 
-### Basic Workflow
-1. **Activate Framework**: Use Rules Master Toggle to activate required personas
-2. **Define Requirements**: Product Owner AI creates user stories and requirements
-3. **Plan Development**: Planning AI creates project roadmap and timeline
-4. **Generate Code**: Codegen AI implements features based on specifications
-5. **Quality Assurance**: QA AI and Security AI validate code quality
-6. **Audit & Deploy**: Auditor AI ensures compliance before deployment
+### Documentation Types to Contribute
+- **User Guides**: Step-by-step instructions for common tasks
+- **API References**: Technical documentation for framework APIs
+- **Troubleshooting**: Common issues and resolution steps
+- **Examples**: Practical implementation examples
+- **Best Practices**: Framework usage guidelines
 
-### Decision Scoring v3 + Trigger
-```bash
-# Score
-python3 tools/decision_scoring/advanced_score.py
+## 📞 Support & Resources
 
-# Trigger (dry-run)
-python3 tools/orchestrator/trigger_next.py --dry-run --candidates tools/decision_scoring/examples/trigger_candidates.json
-```
+### Getting Help
+- **Documentation Issues**: Report documentation problems via GitHub Issues
+- **Framework Support**: Check main project README for operational support
+- **Community**: Join discussions on GitHub Discussions
+- **Examples**: Review integration examples and use cases
 
-## 📁 Project Structure (key paths)
+### Additional Resources
+- **Framework Repository**: Main project documentation and code
+- **Tools Documentation**: Component-specific usage guides
+- **ADRs**: Architectural decision rationale and context
+- **Integration Examples**: Real-world implementation patterns
 
-```
-AdvancedRules/
-├── .cursor/rules/           # AI framework rules and personas
-│   ├── orchestrator/        # Core control systems
-│   ├── roles/              # AI persona definitions
-│   └── domains/            # Domain-specific knowledge
-├── memory-bank/            # AI-generated artifacts and memory
-├── tools/                  # Runner, scoring, orchestrator, provenance, etc.
-├── docs/                   # Documentation and ADRs
-└── tests/                  # E2E + smoke tests
-```
+## 🗺️ Roadmap & Future Documentation
 
-## 🎭 AI Personas
+### Planned Documentation
+- [ ] **API Reference**: Comprehensive framework API documentation
+- [ ] **Extension Guide**: How to extend and customize the framework
+- [ ] **Migration Guide**: Upgrading between framework versions
+- [ ] **Performance Guide**: Optimization and performance tuning
+- [ ] **Security Guide**: Security considerations and best practices
 
-### Product Owner AI
-- Translates business objectives into technical requirements
-- Creates user stories with acceptance criteria
-- Manages product backlog priorities
-- Defines success metrics and KPIs
-
-### Principal Engineer AI
-- Establishes technical architecture and standards
-- Makes critical engineering decisions
-- Ensures code quality and best practices
-- Manages technical debt and performance
-
-### Codegen AI
-- Generates production-ready code
-- Implements design patterns and principles
-- Ensures code quality and testing
-- Creates comprehensive documentation
-
-### Security AI
-- Identifies security vulnerabilities
-- Implements security best practices
-- Ensures compliance with security standards
-- Provides security testing and validation
-
-## 🔒 Security & Compliance
-
-- **Security First**: All code undergoes security review
-- **Compliance Ready**: Built-in support for industry standards
-- **Audit Trail**: Complete tracking of all decisions and changes
-- **Quality Gates**: Automated validation at every stage
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests and documentation
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Documentation**: Check the [docs/](docs/) directory
-- **Issues**: Report bugs and feature requests via GitHub Issues
-- **Discussions**: Join community discussions on GitHub Discussions
-
-## 🗺️ Roadmap
-
-- [ ] Enhanced AI persona coordination
-- [ ] Advanced memory management
-- [ ] Integration with external AI services
-- [ ] Real-time collaboration features
-- [ ] Advanced analytics and insights
+### Continuous Improvement
+- **User Feedback**: Incorporate user feedback into documentation
+- **Framework Evolution**: Update docs as framework capabilities expand
+- **Best Practices**: Document emerging patterns and techniques
+- **Community Contributions**: Encourage community documentation contributions
 
 ---
 
-**AdvancedRules** - Where AI meets software development excellence.
+**AdvancedRules Documentation Hub** - Your gateway to mastering AI orchestration! 📚🚀
+
+*For framework usage and operational guides, see the main [project README](../README.md). For architectural decisions, explore the [ADRs](./ADRs/) directory.*

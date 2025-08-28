@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AdvancedRules Task Schema",
+  "description": "Schema for task definitions in AdvancedRules framework",
+  "type": "object",
+  "required": ["id", "type", "description"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z_][a-z0-9_]*$",
+      "description": "Unique task identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["command", "analysis", "validation", "synthesis"],
+      "description": "Task execution type"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Human-readable task description"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Prerequisites that must be met"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Task execution parameters"
+    },
+    "timeout": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3600,
+      "description": "Maximum execution time in seconds"
+    },
+    "retry_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "default": 0,
+      "description": "Number of retry attempts allowed"
+    }
+  },
+  "additionalProperties": false
+}

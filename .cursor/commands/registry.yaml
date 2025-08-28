@@ -40,4 +40,40 @@ commands:
     ui:
       label: "Verify audit (Principal Engineer)"
       reason: "Audit gate passed; decide CONFIRM/CHALLENGE."
+
+  - id: flow.run
+    role_from: FLOW_EXECUTOR
+    trigger: execute_flow
+    run:
+      shell: ["python3","tools/flow/flow_runner.py","{{flow_id}}","--dry-run"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml"]
+    emits:
+      sets_state: "FLOW_EXECUTION_STARTED"
+      add_completed_step: "flow_execution_started"
+    ui:
+      label: "Execute Flow (Dry-run)"
+      reason: "Run declarative flow with safety guards and dry-run enforcement."
+
+  - id: flow.render
+    role_from: FLOW_RENDERER
+    trigger: render_flow
+    run:
+      shell: ["python3","tools/flow/flow_linter.py","flow/flow_registry.yaml"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml"]
+    emits:
+      sets_state: "FLOW_VALIDATION_COMPLETE"
+      add_completed_step: "flow_validation_complete"
+    ui:
+      label: "Validate Flow Schema"
+      reason: "Lint and validate flow definitions with DAG analysis."
 YAML

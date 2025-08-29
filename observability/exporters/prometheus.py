@@ -7,13 +7,28 @@ Exposes Prometheus metrics via HTTP server
 import argparse
 import os
 import time
-from prometheus_client import start_http_server
+from prometheus_client import start_http_server, CollectorRegistry, REGISTRY
+try:
+    # Available in prometheus_client when multiprocess mode is supported
+    from prometheus_client import multiprocess  # type: ignore
+except Exception:  # pragma: no cover
+    multiprocess = None
 from observability.collector import metrics_enabled
 
 
 def serve(port: int = 9108, addr: str = "0.0.0.0"):
     """Start the Prometheus metrics HTTP server"""
-    start_http_server(port, addr=addr)
+    # Support multiprocess mode if PROMETHEUS_MULTIPROC_DIR is set
+    registry = REGISTRY
+    mp_dir = os.getenv("PROMETHEUS_MULTIPROC_DIR")
+    if mp_dir:
+        if multiprocess is None:
+            print("[obs] PROMETHEUS_MULTIPROC_DIR set but multiprocess collector unavailable")
+        else:
+            registry = CollectorRegistry()
+            multiprocess.MultiProcessCollector(registry)
+
+    start_http_server(port, addr=addr, registry=registry)
     print(f"[obs] Prometheus exporter on http://{addr}:{port}/metrics")
     
     try:

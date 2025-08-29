@@ -83,7 +83,8 @@ TOKENS = Counter(
 INFLIGHT = Gauge(
     "ar_inflight_steps", 
     "Steps currently running", 
-    ["flow_id"]
+    ["flow_id"],
+    multiprocess_mode="livesum"
 )
 
 

@@ -21,10 +21,7 @@ jobs:
         run: |
           which arx
           arx --help
-          python - <<'PY'
-            import importlib; m=importlib.import_module("cli.main")
-            print("cli.main ok:", hasattr(m,"main"))
-          PY
+          python -c "import importlib; m=importlib.import_module('cli.main'); print('cli.main ok:', hasattr(m,'main'))"
 
       - name: RAG index (uses your CLI)
         env:

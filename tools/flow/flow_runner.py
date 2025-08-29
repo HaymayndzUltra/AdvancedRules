@@ -25,6 +25,26 @@ from enum import Enum
 import networkx as nx
 import re
 
+# Metrics instrumentation
+try:
+    from tools.instrumentation import instr
+    METRICS_AVAILABLE = True
+except ImportError:
+    # Graceful fallback if metrics not available
+    METRICS_AVAILABLE = False
+    class MockInstr:
+        @staticmethod
+        def flow_start(*args, **kwargs): pass
+        @staticmethod
+        def flow_end(*args, **kwargs): pass
+        @staticmethod
+        def step(*args, **kwargs): 
+            from contextlib import nullcontext
+            return nullcontext()
+        @staticmethod
+        def retry(*args, **kwargs): pass
+    instr = MockInstr()
+
 
 class ExecutionStatus(Enum):
     """Node execution status"""
@@ -114,10 +134,18 @@ class FlowRunner:
             "execution_log": []
         }
 
+        # Metrics: determine exec_mode, persona, and branch
+        exec_mode = "dry_run" if dry_run else "live"
+        persona = parameters.get("persona", "CODER_AI")
+        branch = parameters.get("branch") or self._get_current_branch()
+
         print(f"🚀 Executing flow: {flow_id}")
         print(f"   Dry-run: {dry_run}")
         print(f"   Parameters: {parameters}")
         print("=" * 50)
+
+        # Metrics: Record flow start
+        instr.flow_start(flow_id, persona, exec_mode, branch)
 
         try:
             # 1. Validate flow guards
@@ -133,10 +161,16 @@ class FlowRunner:
             # 4. Generate final summary
             summary = self._generate_execution_summary(flow_id, results, execution_context)
 
+            # Metrics: Record flow success
+            instr.flow_end(flow_id, persona, exec_mode, branch, success=True)
+            
             print(f"\n✅ Flow execution completed: {flow_id}")
             return summary
 
         except Exception as e:
+            # Metrics: Record flow failure
+            instr.flow_end(flow_id, persona, exec_mode, branch, success=False, reason=type(e).__name__)
+            
             print(f"\n❌ Flow execution failed: {e}")
             execution_context["execution_log"].append({
                 "timestamp": datetime.now().isoformat(),
@@ -272,6 +306,10 @@ class FlowRunner:
                     last_result = result
 
                     if attempt <= max_retries:
+                        # Metrics: Record retry
+                        persona = context.get("parameters", {}).get("persona", "CODER_AI")
+                        instr.retry(context["flow_id"], node_id, persona)
+                        
                         print(f"⚠️  Success condition failed, retrying in {retry_delay}s...")
                         time.sleep(retry_delay)
                         attempt += 1
@@ -288,6 +326,10 @@ class FlowRunner:
                 )
 
                 if attempt <= max_retries:
+                    # Metrics: Record retry
+                    persona = context.get("parameters", {}).get("persona", "CODER_AI")
+                    instr.retry(context["flow_id"], node_id, persona)
+                    
                     print(f"⚠️  Retrying in {retry_delay}s...")
                     time.sleep(retry_delay)
                     attempt += 1
@@ -309,47 +351,55 @@ class FlowRunner:
         """Execute node once (single attempt)"""
         start_time = datetime.now()
 
+        # Metrics: Extract metadata for step timing
+        flow_id = context["flow_id"]
+        persona = context.get("parameters", {}).get("persona", "CODER_AI")
+        exec_mode = "dry_run" if context.get("dry_run", True) else "live"
+        model = node_def.get("model", "unknown")  # Allow nodes to specify model
+
         # Prepare command with parameter substitution
         command = self._substitute_parameters(node_def["command"], context)
 
-        if context.get("dry_run", True):
-            # Dry run mode
-            print(f"🏃 Dry-run: {command}")
-            result = ExecutionResult(
-                node_id=node_id,
-                status=ExecutionStatus.SUCCESS,
-                exit_code=0,
-                stdout=f"DRY_RUN: {command}",
-                duration=(datetime.now() - start_time).total_seconds()
-            )
-        else:
-            # Real execution
-            try:
-                process = subprocess.run(
-                    command,
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                    timeout=timeout,
-                    cwd=Path.cwd()
-                )
-
+        # Metrics: Time step execution with context manager
+        with instr.step(flow_id, node_id, persona, model, exec_mode):
+            if context.get("dry_run", True):
+                # Dry run mode
+                print(f"🏃 Dry-run: {command}")
                 result = ExecutionResult(
                     node_id=node_id,
-                    status=ExecutionStatus.SUCCESS if process.returncode == 0 else ExecutionStatus.FAILED,
-                    exit_code=process.returncode,
-                    stdout=process.stdout,
-                    stderr=process.stderr,
+                    status=ExecutionStatus.SUCCESS,
+                    exit_code=0,
+                    stdout=f"DRY_RUN: {command}",
                     duration=(datetime.now() - start_time).total_seconds()
                 )
+            else:
+                # Real execution
+                try:
+                    process = subprocess.run(
+                        command,
+                        shell=True,
+                        capture_output=True,
+                        text=True,
+                        timeout=timeout,
+                        cwd=Path.cwd()
+                    )
 
-            except subprocess.TimeoutExpired:
-                result = ExecutionResult(
-                    node_id=node_id,
-                    status=ExecutionStatus.TIMEOUT,
-                    error_message=f"Command timed out after {timeout}s",
-                    duration=(datetime.now() - start_time).total_seconds()
-                )
+                    result = ExecutionResult(
+                        node_id=node_id,
+                        status=ExecutionStatus.SUCCESS if process.returncode == 0 else ExecutionStatus.FAILED,
+                        exit_code=process.returncode,
+                        stdout=process.stdout,
+                        stderr=process.stderr,
+                        duration=(datetime.now() - start_time).total_seconds()
+                    )
+
+                except subprocess.TimeoutExpired:
+                    result = ExecutionResult(
+                        node_id=node_id,
+                        status=ExecutionStatus.TIMEOUT,
+                        error_message=f"Command timed out after {timeout}s",
+                        duration=(datetime.now() - start_time).total_seconds()
+                    )
 
         # Generate action envelope v2
         result.envelope_v2 = self._generate_action_envelope_v2(node_id, result, context)
@@ -573,6 +623,21 @@ class FlowRunner:
         except Exception as e:
             print(f"❌ Test framework check failed: {e}")
             return False
+
+    def _get_current_branch(self) -> str:
+        """Get current git branch name for metrics"""
+        try:
+            result = subprocess.run(
+                ["git", "branch", "--show-current"], 
+                capture_output=True, 
+                text=True, 
+                timeout=5
+            )
+            if result.returncode == 0:
+                return result.stdout.strip() or "unknown"
+        except Exception:
+            pass
+        return "unknown"
 
 
 def main():

@@ -50,19 +50,44 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 - **ADRs**: Architecture Decision Records system
 - **Contributing**: Development guidelines and standards
 
-## 📁 File Structure
+## 📁 Directory Structure
 
+```
 AdvancedRules/
-├── .cursor/rules/ # AI framework rules and personas
-│ ├── orchestrator/ # Core control systems
-│ ├── roles/ # AI persona definitions
-│ ├── domains/ # Domain-specific knowledge
-│ ├── kits/ # Pre-start and Upwork automation
-│ └── utilities/ # Framework utilities and tools
-├── memory-bank/ # AI-generated artifacts and memory
-├── src/ # Application source code
-├── docs/ # Documentation and ADRs
-└── package.json # Node.js project configuration
+├── .cursor/
+│   ├── commands/           # Framework command definitions
+│   └── rules/              # AI framework rules and personas
+│       ├── orchestrator/   # Core control systems
+│       ├── roles/          # AI persona definitions
+│       ├── domains/        # Domain-specific knowledge
+│       ├── kits/           # Pre-start and Upwork automation
+│       ├── templates/      # Rule templates and examples
+│       └── advanced/       # Advanced framework components
+├── memory-bank/            # AI-generated artifacts and memory
+│   ├── business/           # Business artifacts and reports
+│   ├── plan/              # Project planning documents
+│   ├── checklists/        # Operational checklists
+│   └── upwork/            # Upwork integration data
+├── tools/                  # Framework utilities and automation
+│   ├── decision_scoring/   # Decision scoring system
+│   ├── orchestrator/       # Workflow orchestration
+│   ├── runner/            # Role execution engine
+│   ├── schema/            # Schema validation tools
+│   └── observability/     # Monitoring and logging
+├── docs/                   # Documentation and guides
+│   └── ADRs/              # Architecture Decision Records
+├── tests/                  # Testing framework
+│   ├── e2e/               # End-to-end tests
+│   └── smoke/             # Smoke tests
+├── schema/                 # JSON schema definitions
+├── logs/                   # System logs and metrics
+├── action_envelope*.json   # Action execution envelopes
+├── decision_candidates.json # Decision scoring candidates
+├── workflow_state.json     # Workflow state management
+├── package.json           # Node.js project configuration
+├── requirements.txt       # Python dependencies
+└── UPWORK_IMPLEMENTATION_GUIDE.md # Upwork integration guide
+```
 
 
 ## ⚡ Operational Quickstart (Solo Freelancer Pipeline)

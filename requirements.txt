@@ -1,1 +1,6 @@
 pytest
+chromadb
+sentence-transformers
+torch
+transformers
+networkx

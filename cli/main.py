@@ -50,6 +50,16 @@ def main():
             print("Make sure planning tools are properly installed")
             sys.exit(1)
 
+    elif subcommand == "memory":
+        # Import and delegate to memory commands
+        try:
+            from cli.ar_memory import main as memory_main
+            memory_main(sys.argv[2:])
+        except ImportError as e:
+            print(f"❌ Failed to import memory module: {e}")
+            print("Make sure memory tools are properly installed")
+            sys.exit(1)
+
     elif subcommand in ["--help", "-h", "help"]:
         print_usage()
 
@@ -73,6 +83,7 @@ def print_usage():
     print("Subcommands:")
     print("  flow     Flow management and execution")
     print("  tasks    Task planning and orchestration")
+    print("  memory   Hybrid memory (RAG) operations")
     print("  help     Show this help message")
     print("  version  Show version information")
     print()
@@ -86,6 +97,12 @@ def print_usage():
     print("  arx tasks plan <goal>                    Plan a new goal")
     print("  arx tasks print [task_id]               Print tasks")
     print("  arx tasks export [task_id]              Export tasks")
+    print()
+    print("Memory Commands:")
+    print("  arx memory index --src=<path>           Index content into memory")
+    print("  arx memory query --persona=<p> --q=<q>  Query memory for context")
+    print("  arx memory stats                         Show memory statistics")
+    print("  arx memory purge --persona=<p>           Purge persona memory")
     print()
     print("Examples:")
     print("  arx flow lint --flow=feature_request_to_pr")

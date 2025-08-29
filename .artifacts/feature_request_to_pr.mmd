@@ -1,0 +1,14 @@
+---
+title: Feature Request to Pull Request
+---
+flowchart TD
+    analyze_requirements["Analyze Feature Requirements<br/>(command)"]
+    design_solution["Design Technical Solution<br/>(command)"]
+    implement_feature["Implement Feature<br/>(command)"]
+    code_review["Code Review<br/>(command)"]
+    create_pr["Create Pull Request<br/>(command)"]
+
+    analyze_requirements -->|requirements_valid == true| design_solution
+    design_solution -->|design_approved == true| implement_feature
+    implement_feature -->|implementation_complete == true| code_review
+    code_review -->|review_passed == true| create_pr

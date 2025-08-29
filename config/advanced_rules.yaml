@@ -26,6 +26,7 @@ features:
   memory_validation: false
   decision_scoring_v3: false
   audit_enhancement: false
+  rag_memory: false  # NEW: Hybrid memory system (structured + vector)
 
 # Safety Gates
 gates:
@@ -41,6 +42,18 @@ gates:
     artifact_validation: true
     log_verification: true
     state_consistency: true
+
+# RAG Memory Configuration (when features.rag_memory=true)
+rag:
+  backend: chroma
+  persist_dir: .cache/chroma
+  embedding_model: BAAI/bge-m3
+  chunk_size: 1200
+  chunk_overlap: 180
+  namespaces:
+    coder: ["**/*.py", "**/*.ts", "**/*.js", "**/*.java", "**/*.cpp", "**/*.c", "**/*.h"]
+    tests: ["**/tests/**", "**/*test*", "**/*spec*"]
+    docs: ["docs/**", "**/*.md", "**/*.rst", "**/*.txt"]
 
 # Engine Protection
 engine:

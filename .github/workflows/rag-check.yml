@@ -4,13 +4,35 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
-      - run: pip install -r requirements.txt
-      - run: echo "AR_ENABLE_RAG=1" >> $GITHUB_ENV
-      - run: echo "AR_EMBED_MODEL=BAAI/bge-m3" >> $GITHUB_ENV
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install arx CLI
+        run: pip install -e .
+
+      - name: Set environment variables
+        run: |
+          echo "AR_ENABLE_RAG=1" >> $GITHUB_ENV
+          echo "AR_EMBED_MODEL=BAAI/bge-m3" >> $GITHUB_ENV
+
+      - name: Verify arx installation
+        run: |
+          arx help
+          arx version
+          arx memory doctor
+
       - name: Index dry smoke
         run: arx memory index --src=. --namespaces=coder --reindex
+
       - name: Query smoke
         run: arx memory query --persona=CODER_AI --query "flow_runner" --k=3

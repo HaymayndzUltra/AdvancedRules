@@ -1,0 +1,221 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "ARX • Flows Overview",
+    "tags": ["arx", "flows", "metrics"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "schemaVersion": 38,
+    "version": 1,
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "templating": {
+      "list": [
+        {
+          "name": "flow",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(ar_flow_started_total, flow_id)",
+          "current": {
+            "text": ".*",
+            "value": ".*"
+          },
+          "includeAll": true,
+          "multi": true,
+          "regex": "",
+          "refresh": 1,
+          "sort": 1
+        },
+        {
+          "name": "persona",
+          "type": "query",
+          "datasource": "Prometheus",
+          "query": "label_values(ar_flow_started_total, persona)",
+          "current": {
+            "text": ".*",
+            "value": ".*"
+          },
+          "includeAll": true,
+          "multi": true,
+          "refresh": 1,
+          "sort": 1
+        }
+      ]
+    },
+    "panels": [
+      {
+        "id": 1,
+        "type": "stat",
+        "title": "Flow Success Rate (5m)",
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "100 * (sum(rate(ar_flow_success_total{flow_id=~\"$flow\",persona=~\"$persona\"}[5m])) / clamp_min(sum(rate(ar_flow_started_total{flow_id=~\"$flow\",persona=~\"$persona\"}[5m])), 1e-9))",
+            "legendFormat": "Success Rate",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 80},
+                {"color": "green", "value": 95}
+              ]
+            }
+          }
+        },
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto"
+        }
+      },
+      {
+        "id": 2,
+        "type": "timeseries",
+        "title": "Step P95 Latency (ms)",
+        "gridPos": {
+          "h": 8,
+          "w": 18,
+          "x": 6,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum by (le, flow_id, step_id, persona) (rate(ar_step_latency_ms_bucket{flow_id=~\"$flow\",persona=~\"$persona\"}[5m])))",
+            "legendFormat": "{{flow_id}}/{{step_id}} - {{persona}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {
+                "mode": "none",
+                "group": "A"
+              },
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "bargauge",
+        "title": "Retries per Step (1h)",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "targets": [
+          {
+            "expr": "sum by (flow_id, step_id, persona) (increase(ar_step_retries_total{flow_id=~\"$flow\",persona=~\"$persona\"}[1h]))",
+            "legendFormat": "{{flow_id}}/{{step_id}} - {{persona}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "yellow", "value": 3},
+                {"color": "red", "value": 10}
+              ]
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "horizontal",
+          "displayMode": "gradient",
+          "showUnfilled": true
+        }
+      },
+      {
+        "id": 4,
+        "type": "timeseries",
+        "title": "Tokens Out by Model (1h)",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "targets": [
+          {
+            "expr": "sum by (model, persona) (increase(ar_tokens_total{direction=\"out\",persona=~\"$persona\"}[1h]))",
+            "legendFormat": "{{model}} - {{persona}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {
+                "mode": "normal",
+                "group": "A"
+              },
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "axisColorMode": "text",
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

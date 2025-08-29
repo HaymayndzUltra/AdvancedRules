@@ -4,3 +4,6 @@ sentence-transformers
 torch
 transformers
 networkx
+prometheus_client
+celery
+redis

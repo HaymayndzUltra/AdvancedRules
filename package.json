@@ -1,1 +1,78 @@
-{"name":"demo"}
+{
+  "name": "advancedrules-domain-lab",
+  "version": "2.0.0",
+  "description": "AdvancedRules Domain Lab - Enterprise-grade AI orchestration framework for comprehensive software development lifecycle management",
+  "main": "index.js",
+  "scripts": {
+    "start": "python3 tools/quickstart.py",
+    "prestart": "python3 tools/prestart/prestart_composite.py",
+    "validate": "python3 tools/schema/validate_artifacts.py --strict",
+    "score": "python3 tools/decision_scoring/advanced_score.py",
+    "orchestrate": "python3 tools/orchestrator/trigger_next.py",
+    "observe": "python3 tools/observability/aggregate.py",
+    "memory:index": "arx memory index --src=. --namespaces=coder,docs",
+    "memory:query": "arx memory query --persona=CODER_AI",
+    "test": "python3 -m pytest tests/ -v",
+    "lint": "python3 -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics",
+    "format": "python3 -m black . --check --diff",
+    "format:fix": "python3 -m black .",
+    "docs": "python3 -c \"import docs; docs.build()\"",
+    "docker:build": "docker build -f Dockerfile.worker -t advancedrules-worker .",
+    "docker:run": "docker run -it --rm advancedrules-worker",
+    "ci": "npm run lint && npm run test && npm run validate"
+  },
+  "keywords": [
+    "ai-orchestration",
+    "software-development",
+    "workflow-automation",
+    "code-generation",
+    "quality-assurance",
+    "devops",
+    "freelancer-tools",
+    "enterprise-development",
+    "rag-memory",
+    "decision-intelligence"
+  ],
+  "author": "AdvancedRules Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HaymayndzUltra/AdvancedRules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HaymayndzUltra/AdvancedRules/issues"
+  },
+  "homepage": "https://github.com/HaymayndzUltra/AdvancedRules#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "files": [
+    "tools/",
+    "memory-bank/",
+    "docs/",
+    "config/",
+    "scripts/",
+    "pyproject.toml",
+    "requirements.txt",
+    "README.md",
+    "FRAMEWORK_SUMMARY.md",
+    "FOLDER_STRUCTURE.md"
+  ],
+  "contributors": [
+    {
+      "name": "AdvancedRules Team",
+      "email": "team@advancedrules.dev",
+      "url": "https://github.com/HaymayndzUltra/AdvancedRules"
+    }
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/HaymayndzUltra"
+  },
+  "preferGlobal": false,
+  "private": false,
+  "sideEffects": false
+}

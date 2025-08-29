@@ -60,6 +60,32 @@ def main():
             print("Make sure memory tools are properly installed")
             sys.exit(1)
 
+    elif subcommand == "obs" or subcommand == "observability":
+        # Import and delegate to observability commands
+        try:
+            from observability.exporters.prometheus import serve
+            import argparse
+            
+            # Parse obs-specific args
+            parser = argparse.ArgumentParser(prog="arx obs")
+            subparsers = parser.add_subparsers(dest="obs_command")
+            
+            serve_parser = subparsers.add_parser("serve", help="Start metrics server")
+            serve_parser.add_argument("--port", type=int, default=int(os.getenv("AR_METRICS_PORT", "9108")))
+            serve_parser.add_argument("--addr", default=os.getenv("AR_METRICS_ADDR", "0.0.0.0"))
+            
+            args = parser.parse_args(sys.argv[2:])
+            
+            if args.obs_command == "serve":
+                serve(args.port, args.addr)
+            else:
+                parser.print_help()
+                
+        except ImportError as e:
+            print(f"❌ Failed to import observability module: {e}")
+            print("Make sure observability tools are properly installed")
+            sys.exit(1)
+
     elif subcommand in ["--help", "-h", "help"]:
         print_usage()
 
@@ -84,6 +110,7 @@ def print_usage():
     print("  flow     Flow management and execution")
     print("  tasks    Task planning and orchestration")
     print("  memory   Hybrid memory (RAG) operations")
+    print("  obs      Observability and metrics")
     print("  help     Show this help message")
     print("  version  Show version information")
     print()
@@ -103,6 +130,9 @@ def print_usage():
     print("  arx memory query --persona=<p> --q=<q>  Query memory for context")
     print("  arx memory stats                         Show memory statistics")
     print("  arx memory purge --persona=<p>           Purge persona memory")
+    print()
+    print("Observability Commands:")
+    print("  arx obs serve --port=<port>             Start Prometheus metrics server")
     print()
     print("Examples:")
     print("  arx flow lint --flow=feature_request_to_pr")

@@ -40,4 +40,112 @@ commands:
     ui:
       label: "Verify audit (Principal Engineer)"
       reason: "Audit gate passed; decide CONFIRM/CHALLENGE."
+
+  - id: flow.lint
+    role_from: FLOW_VALIDATOR
+    trigger: lint_flow
+    run:
+      shell: ["arx","flow","lint","--flow={{flow_id}}"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
+    emits:
+      sets_state: "FLOW_VALIDATION_COMPLETE"
+      add_completed_step: "flow_validation_complete"
+    ui:
+      label: "Lint Flow Definition"
+      reason: "Validate flow schema, references, and DAG structure."
+
+  - id: flow.run
+    role_from: FLOW_EXECUTOR
+    trigger: execute_flow
+    run:
+      shell: ["arx","flow","run","--flow={{flow_id}}","--task-id={{task_id}}","--dry-run"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
+    emits:
+      sets_state: "FLOW_EXECUTION_STARTED"
+      add_completed_step: "flow_execution_started"
+    ui:
+      label: "Execute Flow (Dry-run)"
+      reason: "Run declarative flow with safety guards and dry-run enforcement."
+
+  - id: flow.render
+    role_from: FLOW_RENDERER
+    trigger: render_flow
+    run:
+      shell: ["arx","flow","render","--flow={{flow_id}}","--out=.artifacts/{{flow_id}}.mmd"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["flow/flow_registry.yaml", "pyproject.toml"]
+    emits:
+      sets_state: "FLOW_RENDER_COMPLETE"
+      add_completed_step: "flow_render_complete"
+    ui:
+      label: "Render Flow Diagram"
+      reason: "Generate visual flow diagrams in Mermaid format."
+
+  - id: memory.index
+    role_from: MEMORY_INDEXER
+    trigger: index_memory
+    run:
+      shell: ["arx","memory","index","--src={{src}}","--namespaces={{namespaces}}","--persona={{persona}}"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["config/advanced_rules.yaml"]
+    emits:
+      sets_state: "MEMORY_INDEXING_STARTED"
+      add_completed_step: "memory_indexing_started"
+    ui:
+      label: "Index Content to Memory"
+      reason: "Index source code, docs, and content into vector memory for RAG."
+
+  - id: memory.query
+    role_from: MEMORY_RETRIEVER
+    trigger: query_memory
+    run:
+      shell: ["arx","memory","query","--persona={{persona}}","--query={{query}}","--k={{k}}"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["config/advanced_rules.yaml"]
+    emits:
+      sets_state: "MEMORY_QUERY_COMPLETE"
+      add_completed_step: "memory_query_complete"
+    ui:
+      label: "Query Memory for Context"
+      reason: "Retrieve relevant context from vector memory for persona-specific queries."
+
+  - id: memory.doctor
+    role_from: SYSTEM_ADMIN
+    trigger: diagnose_memory
+    run:
+      shell: ["arx","memory","doctor"]
+    requires:
+      states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: ["config/advanced_rules.yaml"]
+    emits:
+      sets_state: "MEMORY_DIAGNOSIS_COMPLETE"
+      add_completed_step: "memory_diagnosis_complete"
+    ui:
+      label: "Run Memory Diagnostics"
+      reason: "Check memory system health, dependencies, and configuration."
 YAML

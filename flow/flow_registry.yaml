@@ -1,0 +1,325 @@
+# AdvancedRules Flow Registry v2.0
+# Declarative DAG-based workflow definitions
+# Supports: nodes, edges, conditions, retries, guards
+
+version: "2.0"
+schema_version: "2.0"
+
+# Flow Definitions
+flows:
+  # Example 1: Feature Request to PR Flow
+  feature_request_to_pr:
+    id: "flow_feature_request_to_pr"
+    name: "Feature Request to Pull Request"
+    description: "Complete workflow from feature request to production PR"
+    version: "1.0.0"
+    author: "AdvancedRules Team"
+
+    # Global flow guards (must pass before any node execution)
+    guards:
+      - "branch_not_main"          # Never run on main branch
+      - "dry_run_unless_allowed"   # Enforce dry-run unless ALLOW_WRITES=1
+      - "artifacts_present"        # Required files exist
+      - "git_clean"                # Working directory clean
+
+    # Node definitions (steps in the workflow)
+    nodes:
+      analyze_requirements:
+        type: "command"
+        name: "Analyze Feature Requirements"
+        description: "Parse and validate feature request requirements"
+        command: "python3 tools/prestart/screen_client.py"
+        timeout: 300
+        retries: 2
+        retry_delay: 30
+        success_condition: "exit_code == 0"
+
+      design_solution:
+        type: "command"
+        name: "Design Technical Solution"
+        description: "Create technical design and architecture"
+        command: "python3 cli/ar_tasks.py plan 'Design {{feature_name}} feature'"
+        timeout: 600
+        retries: 1
+        retry_delay: 60
+        success_condition: "exit_code == 0"
+
+      implement_feature:
+        type: "command"
+        name: "Implement Feature"
+        description: "Code implementation with tests"
+        command: "python3 cli/ar_tasks.py plan 'Implement {{feature_name}} with tests'"
+        timeout: 1800
+        retries: 3
+        retry_delay: 120
+        success_condition: "exit_code == 0"
+
+      code_review:
+        type: "command"
+        name: "Code Review"
+        description: "Automated and manual code review"
+        command: "python3 tools/audit/run_auditor.py --target {{implementation_path}}"
+        timeout: 900
+        retries: 2
+        retry_delay: 60
+        success_condition: "exit_code == 0"
+
+      create_pr:
+        type: "command"
+        name: "Create Pull Request"
+        description: "Generate and submit pull request"
+        command: "gh pr create --title 'feat: {{feature_name}}' --body '{{pr_description}}'"
+        timeout: 300
+        retries: 1
+        retry_delay: 30
+        success_condition: "exit_code == 0"
+
+    # Edge definitions (workflow transitions)
+    edges:
+      - from: "analyze_requirements"
+        to: "design_solution"
+        when: "requirements_valid == true"
+        metadata:
+          description: "Proceed only if requirements analysis succeeds"
+
+      - from: "design_solution"
+        to: "implement_feature"
+        when: "design_approved == true"
+        metadata:
+          description: "Proceed only if design is approved"
+
+      - from: "implement_feature"
+        to: "code_review"
+        when: "implementation_complete == true"
+        metadata:
+          description: "Proceed to review when implementation done"
+
+      - from: "code_review"
+        to: "create_pr"
+        when: "review_passed == true"
+        metadata:
+          description: "Create PR only if review passes"
+
+    # Flow-level configuration
+    config:
+      max_execution_time: 7200  # 2 hours
+      fail_fast: true           # Stop on first failure
+      parallel_execution: false # Sequential by default
+      notification_channels: ["console", "log"]
+      rollback_enabled: true
+
+  # Example 2: Bugfix CI Loop Flow
+  bugfix_ci_loop:
+    id: "flow_bugfix_ci_loop"
+    name: "Bugfix CI/CD Loop"
+    description: "Iterative bugfix workflow with CI validation"
+    version: "1.0.0"
+    author: "AdvancedRules Team"
+
+    # Global flow guards
+    guards:
+      - "branch_not_main"
+      - "dry_run_unless_allowed"
+      - "ci_environment"
+      - "test_framework_available"
+
+    # Node definitions
+    nodes:
+      analyze_bug:
+        type: "command"
+        name: "Analyze Bug Report"
+        description: "Parse bug report and reproduce issue"
+        command: "python3 tools/audit/bug_analyzer.py --bug-id {{bug_id}}"
+        timeout: 600
+        retries: 2
+        retry_delay: 30
+        success_condition: "exit_code == 0"
+
+      reproduce_issue:
+        type: "command"
+        name: "Reproduce Issue"
+        description: "Create reproduction test case"
+        command: "python3 tests/create_repro_test.py --bug-id {{bug_id}}"
+        timeout: 900
+        retries: 3
+        retry_delay: 60
+        success_condition: "repro_test_exists == true"
+
+      fix_bug:
+        type: "command"
+        name: "Implement Bug Fix"
+        description: "Code the bug fix with unit tests"
+        command: "python3 cli/ar_tasks.py plan 'Fix {{bug_description}} with comprehensive tests'"
+        timeout: 1800
+        retries: 2
+        retry_delay: 120
+        success_condition: "exit_code == 0"
+
+      run_tests:
+        type: "command"
+        name: "Run Test Suite"
+        description: "Execute full test suite locally"
+        command: "python3 -m pytest tests/ --tb=short --maxfail=5"
+        timeout: 1200
+        retries: 1
+        retry_delay: 60
+        success_condition: "exit_code == 0"
+
+      validate_fix:
+        type: "command"
+        name: "Validate Fix"
+        description: "Ensure bug is fixed and no regressions"
+        command: "python3 tools/audit/validate_fix.py --bug-id {{bug_id}}"
+        timeout: 600
+        retries: 2
+        retry_delay: 30
+        success_condition: "bug_fixed == true"
+
+      create_fix_pr:
+        type: "command"
+        name: "Create Fix PR"
+        description: "Submit bugfix pull request"
+        command: "gh pr create --title 'fix: {{bug_description}}' --body 'Fixes #{{bug_id}}'"
+        timeout: 300
+        retries: 1
+        retry_delay: 30
+        success_condition: "exit_code == 0"
+
+    # Edge definitions with conditional logic
+    edges:
+      - from: "analyze_bug"
+        to: "reproduce_issue"
+        when: "bug_analyzed == true"
+        metadata:
+          description: "Proceed if bug analysis successful"
+
+      - from: "reproduce_issue"
+        to: "fix_bug"
+        when: "reproducible == true"
+        metadata:
+          description: "Fix only if bug can be reproduced"
+
+      - from: "reproduce_issue"
+        to: "analyze_bug"
+        when: "reproducible == false"
+        metadata:
+          description: "Re-analyze if reproduction fails"
+
+      - from: "fix_bug"
+        to: "run_tests"
+        when: "fix_implemented == true"
+        metadata:
+          description: "Test the implemented fix"
+
+      - from: "run_tests"
+        to: "validate_fix"
+        when: "tests_pass == true"
+        metadata:
+          description: "Validate if tests pass"
+
+      - from: "run_tests"
+        to: "fix_bug"
+        when: "tests_pass == false"
+        metadata:
+          description: "Return to fix if tests fail"
+
+      - from: "validate_fix"
+        to: "create_fix_pr"
+        when: "validation_passed == true"
+        metadata:
+          description: "Create PR if validation passes"
+
+      - from: "validate_fix"
+        to: "fix_bug"
+        when: "validation_passed == false"
+        metadata:
+          description: "Return to fix if validation fails"
+
+    # Flow configuration
+    config:
+      max_execution_time: 10800  # 3 hours
+      fail_fast: false           # Allow retries and loops
+      parallel_execution: false
+      notification_channels: ["console", "slack", "email"]
+      rollback_enabled: true
+      max_iterations: 5          # Prevent infinite loops
+
+# Schema Definition (for validation)
+schema:
+  flow:
+    required: ["id", "name", "nodes", "edges"]
+    properties:
+      id: { type: "string", pattern: "^flow_[a-z_][a-z0-9_]*$" }
+      name: { type: "string", minLength: 1, maxLength: 100 }
+      description: { type: "string", maxLength: 500 }
+      version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+$" }
+      guards: { type: "array", items: { type: "string" } }
+      nodes:
+        type: "object"
+        additionalProperties:
+          type: "object"
+          required: ["type", "name", "command"]
+          properties:
+            type: { type: "string", enum: ["command", "condition", "gateway"] }
+            name: { type: "string", minLength: 1, maxLength: 100 }
+            description: { type: "string", maxLength: 500 }
+            command: { type: "string" }
+            timeout: { type: "integer", minimum: 1, maximum: 3600 }
+            retries: { type: "integer", minimum: 0, maximum: 10, default: 0 }
+            retry_delay: { type: "integer", minimum: 1, maximum: 300, default: 30 }
+            success_condition: { type: "string" }
+      edges:
+        type: "array"
+        items:
+          type: "object"
+          required: ["from", "to"]
+          properties:
+            from: { type: "string" }
+            to: { type: "string" }
+            when: { type: "string" }
+            metadata: { type: "object" }
+      config:
+        type: "object"
+        properties:
+          max_execution_time: { type: "integer", minimum: 1 }
+          fail_fast: { type: "boolean", default: true }
+          parallel_execution: { type: "boolean", default: false }
+          notification_channels: { type: "array", items: { type: "string" } }
+          rollback_enabled: { type: "boolean", default: false }
+          max_iterations: { type: "integer", minimum: 1, default: 10 }
+
+# Built-in Guards (predefined validation functions)
+guards:
+  branch_not_main:
+    description: "Ensure not running on main branch"
+    function: "git_branch_check"
+    params: { forbidden_branches: ["main", "master"] }
+
+  dry_run_unless_allowed:
+    description: "Enforce dry-run unless ALLOW_WRITES=1"
+    function: "environment_check"
+    params: { variable: "ALLOW_WRITES", required_value: "1", default_mode: "dry_run" }
+
+  artifacts_present:
+    description: "Verify required artifacts exist"
+    function: "file_existence_check"
+    params:
+      required_files:
+        - "memory-bank/business/client_score.json"
+        - "memory-bank/business/capacity_report.md"
+        - "memory-bank/plan/proposal.md"
+
+  git_clean:
+    description: "Ensure working directory is clean"
+    function: "git_status_check"
+    params: { allow_untracked: false }
+
+  ci_environment:
+    description: "Verify CI environment variables"
+    function: "environment_check"
+    params: { variable: "CI", required_value: "true" }
+
+  test_framework_available:
+    description: "Check if test framework is available"
+    function: "command_check"
+    params: { command: "python3 -m pytest --version", timeout: 30 }

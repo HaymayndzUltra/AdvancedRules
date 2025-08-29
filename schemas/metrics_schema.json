@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AdvancedRules Metrics Schema",
+  "description": "Schema for metrics collection in AdvancedRules framework",
+  "type": "object",
+  "required": ["timestamp", "metric_type", "value"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Metric collection timestamp"
+    },
+    "metric_type": {
+      "type": "string",
+      "enum": ["decision_score", "execution_time", "success_rate", "error_count", "validation_score"],
+      "description": "Type of metric being recorded"
+    },
+    "value": {
+      "type": "number",
+      "description": "Metric value"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "flow_id": {"type": "string"},
+        "task_id": {"type": "string"},
+        "step_id": {"type": "string"},
+        "decision_id": {"type": "string"},
+        "execution_mode": {
+          "type": "string",
+          "enum": ["dry_run", "live", "simulation"]
+        }
+      },
+      "description": "Contextual information"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source": {"type": "string"},
+        "version": {"type": "string"},
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "description": "Additional metadata"
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "warning": {"type": "number"},
+        "critical": {"type": "number"},
+        "target": {"type": "number"}
+      },
+      "description": "Metric thresholds for alerting"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,42 @@
+name: rag-check
+on: [push, pull_request]
+
+jobs:
+  rag-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps + package (creates `arx` console script)
+        run: |
+          python -m pip install -U pip setuptools wheel
+          python -m pip install -r requirements.txt
+          python -m pip install -e .
+
+      - name: Sanity check CLI
+        run: |
+          which arx
+          arx --help
+          python -c "import importlib; m=importlib.import_module('cli.main'); print('cli.main ok:', hasattr(m,'main'))"
+
+      - name: RAG index (uses your CLI)
+        env:
+          AR_ENABLE_RAG: "1"
+          AR_EMBED_MODEL: "BAAI/bge-m3"
+        run: |
+          arx memory index --src=. --namespaces=coder --reindex
+          # Fallback if entrypoint fails:
+          # PYTHONPATH=. python -m cli.main memory index --src=. --namespaces=coder --reindex
+
+      - name: RAG query
+        env:
+          AR_ENABLE_RAG: "1"
+          AR_EMBED_MODEL: "BAAI/bge-m3"
+        run: |
+          arx memory query --persona=CODER_AI --query "flow_runner" --k=3
+          # Fallback if entrypoint fails:
+          # PYTHONPATH=. python -m cli.main memory query --persona=CODER_AI --query "flow_runner" --k=3

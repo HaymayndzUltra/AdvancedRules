@@ -1,0 +1,45 @@
+{
+  "version": "2.0",
+  "schema": "action_envelope_v2",
+  "timestamp": "2024-12-28T00:00:00Z",
+  "decision": "NEXT_STEP",
+  "chosen_id": "validate_system_readiness",
+  "flow_id": "system_validation_flow",
+  "task_id": "readiness_check_task",
+  "step_id": "step_001",
+  "candidate": {
+    "id": "validate_system_readiness",
+    "action_type": "COMMAND_TRIGGER",
+    "scores": {
+      "intent": 0.95,
+      "state": 0.9,
+      "evidence": 0.85,
+      "recency": 0.9,
+      "pref": 0.88,
+      "final": 0.873
+    },
+    "explanation": "Validate all pre-start artifacts are present and decision scoring system is operational",
+    "preconds": [
+      "exists:memory-bank/business/client_score.json",
+      "exists:memory-bank/business/capacity_report.md",
+      "exists:memory-bank/business/pricing.ratecard.yaml",
+      "exists:memory-bank/business/estimate_brief.md",
+      "exists:memory-bank/plan/proposal.md",
+      "repo_indexed:true"
+    ],
+    "command": "echo DRY_RUN: validate_system_readiness --check-artifacts --verify-tools"
+  },
+  "exec_mode": "DRY_RUN",
+  "metadata": {
+    "feature_flag": "advanced_envelope_v2",
+    "safety_gate": "pre_execution",
+    "branch_protection": true,
+    "rollback_enabled": false
+  },
+  "provenance": {
+    "source": "decision_scoring_engine",
+    "confidence_score": 0.873,
+    "validation_status": "pending",
+    "approval_required": true
+  }
+}

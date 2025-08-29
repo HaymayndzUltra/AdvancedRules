@@ -1,0 +1,93 @@
+# AdvancedRules Configuration v2.0
+# Safety-first configuration with strict gates and dry-run defaults
+
+version: "2.0"
+timestamp: "2024-12-28T00:00:00Z"
+
+# Core Safety Settings
+safety:
+  dry_run_default: true
+  human_approval_required: true
+  branch_only_workflow: true
+  protected_paths:
+    - "src/**"
+    - "tools/**"
+    - "config/**"
+    - ".cursor/**"
+    - "memory-bank/**"
+    - "logs/**"
+
+# Feature Flags (ALL OFF by default)
+features:
+  advanced_envelope_v2: false
+  flow_tracking: false
+  task_orchestration: false
+  metrics_collection: false
+  memory_validation: false
+  decision_scoring_v3: false
+  audit_enhancement: false
+  rag_memory: false  # NEW: Hybrid memory system (structured + vector)
+
+# Safety Gates
+gates:
+  pre_execution:
+    schema_validation: true
+    path_protection: true
+    branch_check: true
+  execution:
+    dry_run_enforced: true
+    approval_gate: true
+    rollback_enabled: false
+  post_execution:
+    artifact_validation: true
+    log_verification: true
+    state_consistency: true
+
+# RAG Memory Configuration (when features.rag_memory=true)
+rag:
+  backend: chroma
+  persist_dir: .cache/chroma
+  embedding_model: BAAI/bge-m3
+  chunk_size: 1200
+  chunk_overlap: 180
+  namespaces:
+    coder: ["**/*.py", "**/*.ts", "**/*.js", "**/*.java", "**/*.cpp", "**/*.c", "**/*.h"]
+    tests: ["**/tests/**", "**/*test*", "**/*spec*"]
+    docs: ["docs/**", "**/*.md", "**/*.rst", "**/*.txt"]
+
+# Engine Protection
+engine:
+  protected_commands:
+    - "git push origin main"
+    - "git merge"
+    - "git rebase"
+    - "rm -rf"
+    - "chmod +x"
+    - "sudo"
+  allowed_tools:
+    - "read_file"
+    - "list_dir"
+    - "grep"
+    - "run_terminal_cmd"
+    - "search_replace"
+    - "write"
+
+# Decision Scoring Weights (Conservative defaults)
+decision_scoring:
+  weights:
+    intent: 0.25
+    state: 0.25
+    evidence: 0.20
+    recency: 0.15
+    preference: 0.15
+  thresholds:
+    minimum_score: 0.70
+    high_confidence: 0.85
+    auto_approve: 0.95
+
+# Flow Runner Settings
+flow_runner:
+  max_concurrent: 1
+  timeout_seconds: 300
+  retry_attempts: 0
+  enable_rollback: false

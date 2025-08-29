@@ -1,0 +1,13 @@
+# Python build artifacts
+advanced_rules.egg-info/
+__pycache__/
+*.pyc
+tools/flow/__pycache__/
+*.egg-info/
+
+# RAG vector store cache
+.cache/chroma/
+
+# OS artifacts
+.DS_Store
+Thumbs.db

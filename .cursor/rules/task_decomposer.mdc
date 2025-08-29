@@ -1,0 +1,172 @@
+---
+name: task_decomposer
+description: Rules for task decomposition and planning pipeline activation
+tags: [planning, decomposition, task-management]
+version: 1.0.0
+author: AdvancedRules Team
+extends: .cursor/rules/advanced.mdc
+---
+
+# Task Decomposer Rules
+
+## Overview
+This rule set enables automatic task decomposition when users express planning or breakdown intents. It integrates with the planning pipeline to convert high-level goals into structured, executable task graphs.
+
+## Intent Triggers
+
+### Primary Triggers
+**Activation**: Any of the following patterns in user messages:
+
+- `plan` - General planning requests
+- `breakdown` - Task decomposition requests
+- `action plan` - Structured planning needs
+- `decompose` - Break down complex tasks
+- `task breakdown` - Specific task analysis
+- `project plan` - Project-level planning
+- `implementation plan` - Technical implementation planning
+
+### Context Patterns
+**Enhancement**: Additional context indicators:
+
+- Time-related: `schedule`, `timeline`, `deadline`, `milestone`
+- Complexity: `complex`, `large`, `multi-step`, `challenging`
+- Structure: `organized`, `systematic`, `step-by-step`, `structured`
+- Execution: `execute`, `implement`, `build`, `create`
+
+## Activation Rules
+
+### Rule 1: Direct Planning Request
+```
+IF: user_message contains ["plan", "planning"] AND
+    context suggests goal-oriented work
+THEN: activate_task_decomposer()
+```
+
+### Rule 2: Breakdown Request
+```
+IF: user_message contains ["breakdown", "decompose", "break down"] AND
+    identifies specific goal/task
+THEN: activate_task_decomposer_with_focus()
+```
+
+### Rule 3: Complex Task Detection
+```
+IF: user_message describes complex multi-step task AND
+    contains complexity indicators
+THEN: suggest_task_decomposition()
+```
+
+## Pipeline Integration
+
+### Pre-Processing
+1. **Intent Detection**: Identify planning vs execution context
+2. **Scope Analysis**: Determine task complexity and scope
+3. **Context Gathering**: Collect relevant background information
+
+### Decomposition Flow
+1. **Goal Extraction**: Parse high-level goal from user input
+2. **Type Classification**: Categorize goal (implementation/research/planning)
+3. **Rule Application**: Apply domain-specific decomposition rules
+4. **Dependency Analysis**: Create acyclic dependency graph
+5. **Priority Assignment**: Assign execution priorities
+6. **Validation**: Ensure graph validity and completeness
+
+### Post-Processing
+1. **Schedule Generation**: Apply priority scheduling algorithm
+2. **Workflow Integration**: Extend workflow_state.json
+3. **Presentation**: Format results for user consumption
+
+## Safety Guards
+
+### Validation Checks
+- **Cycle Detection**: Ensure acyclic dependency graphs
+- **Completeness**: All steps have valid descriptions
+- **Dependency Validity**: All dependencies reference existing steps
+- **Priority Bounds**: Priorities within acceptable ranges
+
+### Error Handling
+- **Graceful Degradation**: Fallback to simpler decomposition if LLM fails
+- **User Confirmation**: Require approval for complex decompositions
+- **Rollback Capability**: Easy reversion of planning decisions
+
+## Usage Examples
+
+### Example 1: Direct Planning
+```
+User: "I need to plan the implementation of a new feature"
+→ Activates: task_decomposer with implementation focus
+```
+
+### Example 2: Complex Breakdown
+```
+User: "Can you help break down this complex migration task?"
+→ Activates: task_decomposer with breakdown emphasis
+```
+
+### Example 3: Project Planning
+```
+User: "What's the action plan for launching our new product?"
+→ Activates: task_decomposer with project planning rules
+```
+
+## Integration Points
+
+### Workflow State Extension
+```json
+{
+  "tasks": [
+    {
+      "id": "task_001",
+      "title": "Feature Implementation",
+      "steps": [...],
+      "priority": 2,
+      "status": "pending"
+    }
+  ]
+}
+```
+
+### CLI Commands
+- `ar_tasks plan "goal"` - Create new task plan
+- `ar_tasks print [task_id]` - Display task details
+- `ar_tasks export [task_id]` - Export in various formats
+
+### Tool Integration
+- **task_decomposer.py**: Core decomposition engine
+- **priority_scheduler.py**: Scheduling algorithms
+- **ar_tasks.py**: CLI interface
+
+## Configuration
+
+### Default Settings
+- **Algorithm**: priority_first
+- **Max Steps**: 10 per task
+- **Timeout**: 300 seconds
+- **Validation**: enabled
+
+### Customization
+Rules can be extended via:
+- Custom decomposition patterns
+- Domain-specific heuristics
+- Alternative scheduling algorithms
+
+## Monitoring & Metrics
+
+### Success Metrics
+- **Decomposition Accuracy**: User acceptance rate
+- **Execution Efficiency**: Time to complete planned tasks
+- **Graph Quality**: Acyclic graphs, valid dependencies
+
+### Error Tracking
+- Failed decompositions
+- Invalid dependency graphs
+- User rejections/corrections
+
+## Future Enhancements
+
+### Planned Features
+- **LLM Integration**: Enhanced decomposition with AI assistance
+- **Template Library**: Pre-built decomposition templates
+- **Collaborative Planning**: Multi-user task planning
+- **Progress Tracking**: Real-time execution monitoring
+- **Adaptive Learning**: Improve decomposition based on success patterns

@@ -1,10 +1,32 @@
 import os
+import socket
 from celery import Celery
 
-BROKER = os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0")
-BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://redis:6379/1")
+
+def _default_redis_host():
+    # If running in CI/host, prefer localhost
+    if os.getenv("CI") == "true" or os.getenv("GITHUB_ACTIONS") == "true":
+        return "127.0.0.1"
+    # Allow explicit override
+    host = os.getenv("AR_REDIS_HOST", "redis")
+    # Best effort: if 'redis' not resolvable, fall back to localhost
+    try:
+        socket.gethostbyname(host)
+        return host
+    except Exception:
+        return "127.0.0.1"
+
+
+HOST = _default_redis_host()
+PORT = os.getenv("AR_REDIS_PORT", "6379")
+
+BROKER = os.getenv("CELERY_BROKER_URL", f"redis://{HOST}:{PORT}/0")
+BACKEND = os.getenv("CELERY_RESULT_BACKEND", f"redis://{HOST}:{PORT}/1")
 
 app = Celery("arx", broker=BROKER, backend=BACKEND)
+
+# Force import tasks
+from . import tasks
 
 # Hard backpressure + reliability
 app.conf.update(

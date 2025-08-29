@@ -6,12 +6,12 @@ import random
 import redis
 from celery import states
 from celery.exceptions import Ignore, Retry
-from .celery_app import app
+from .celery_app import app, HOST, PORT
 from tools.instrumentation import instr
 from observability.collector import metrics_enabled
 
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
+REDIS_URL = os.getenv("REDIS_URL", f"redis://{HOST}:{PORT}/0")
 r = redis.from_url(REDIS_URL)
 
 # simple per-persona rate limits (fixed window)

@@ -5,20 +5,16 @@ services:
     ports: ["6379:6379"]
 
   exporter:
-    image: python:3.11-slim
-    working_dir: /app
-    volumes: [".:/app"]
-    environment:
-      AR_ENABLE_METRICS: "1"
-      AR_METRICS_PORT: "9108"
-    command: ["python","-m","observability.exporters.prometheus","--port","9108"]
+    build:
+      context: ..
+      dockerfile: Dockerfile.exporter
     ports: ["9108:9108"]
     depends_on: [redis]
 
   worker-coder:
-    image: python:3.11-slim
-    working_dir: /app
-    volumes: [".:/app"]
+    build:
+      context: ..
+      dockerfile: Dockerfile.worker
     environment:
       CELERY_BROKER_URL: "redis://redis:6379/0"
       CELERY_RESULT_BACKEND: "redis://redis:6379/1"
@@ -26,13 +22,12 @@ services:
       AR_ENABLE_METRICS: "1"
       ARX_WORKER_QUEUE: "q.coder"
       ARX_WORKER_CONCURRENCY: "4"
-    command: bash -lc "pip install -U pip && pip install -e . && python workers/flow_worker.py"
     depends_on: [redis]
 
   worker-auditor:
-    image: python:3.11-slim
-    working_dir: /app
-    volumes: [".:/app"]
+    build:
+      context: ..
+      dockerfile: Dockerfile.worker
     environment:
       CELERY_BROKER_URL: "redis://redis:6379/0"
       CELERY_RESULT_BACKEND: "redis://redis:6379/1"
@@ -40,6 +35,5 @@ services:
       AR_ENABLE_METRICS: "1"
       ARX_WORKER_QUEUE: "q.auditor"
       ARX_WORKER_CONCURRENCY: "2"
-    command: bash -lc "pip install -U pip && pip install -e . && python workers/flow_worker.py"
     depends_on: [redis]
 

@@ -3,44 +3,234 @@ requires = ["setuptools>=67", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "advancedrules"
+name = "advancedrules-domain-lab"
 version = "2.0.0"
-description = "AdvancedRules v2 - Declarative Workflow Orchestration"
+description = "AdvancedRules Domain Lab - Enterprise-grade AI orchestration framework for comprehensive software development lifecycle management"
 readme = "README.md"
+license = {text = "MIT"}
 requires-python = ">=3.8"
+authors = [
+    {name = "AdvancedRules Team", email = "team@advancedrules.dev"},
+]
+maintainers = [
+    {name = "AdvancedRules Team", email = "team@advancedrules.dev"},
+]
+keywords = [
+    "ai-orchestration",
+    "software-development",
+    "workflow-automation",
+    "code-generation",
+    "quality-assurance",
+    "devops",
+    "freelancer-tools",
+    "enterprise-development",
+    "rag-memory",
+    "decision-intelligence",
+    "machine-learning",
+    "automation",
+    "ci-cd",
+    "testing",
+    "security",
+]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Distributed Computing",
+    "Topic :: System :: Logging",
+    "Topic :: System :: Monitoring",
+    "Framework :: AsyncIO",
+    "Framework :: Celery",
 ]
 dependencies = [
-    "chromadb",
-    "sentence-transformers",
-    "torch",
-    "transformers",
+    # Core AI/ML dependencies
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+    "transformers>=4.21.0",
+
+    # Configuration and data processing
     "pyyaml>=6.0",
     "networkx>=2.8",
+
+    # CLI and async processing
     "click>=8.0",
     "celery>=5.3",
     "redis>=5.0",
+
+    # Monitoring and observability
+    "prometheus_client>=0.16.0",
+
+    # Build and packaging
+    "setuptools>=67.0.0",
+    "wheel>=0.40.0",
+
+    # Optional but recommended
+    "numpy>=1.21.0",
+    "pandas>=1.5.0",
+    "scikit-learn>=1.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+    "sphinx>=5.0.0",
+    "sphinx-rtd-theme>=1.2.0",
+]
+gpu = [
+    "torch[cuda]>=2.0.0",
+    "torchaudio>=2.0.0",
+    "torchvision>=0.15.0",
+]
+docs = [
+    "sphinx>=5.0.0",
+    "sphinx-rtd-theme>=1.2.0",
+    "myst-parser>=0.18.0",
+    "sphinx-copybutton>=0.5.0",
+]
+all = [
+    "advancedrules-domain-lab[dev,gpu,docs]",
 ]
 
 [project.urls]
 Homepage = "https://github.com/HaymayndzUltra/AdvancedRules"
 Repository = "https://github.com/HaymayndzUltra/AdvancedRules.git"
 Issues = "https://github.com/HaymayndzUltra/AdvancedRules/issues"
+Documentation = "https://github.com/HaymayndzUltra/AdvancedRules/blob/main/docs/README.md"
+Changelog = "https://github.com/HaymayndzUltra/AdvancedRules/blob/main/CHANGELOG.md"
+"Bug Reports" = "https://github.com/HaymayndzUltra/AdvancedRules/issues"
+"Source" = "https://github.com/HaymayndzUltra/AdvancedRules"
 
 [project.scripts]
 arx = "cli.main:main"
+advancedrules = "cli.main:main"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["advancedrules*", "cli*", "exec_queue*", "workers*"]
+include = ["advancedrules*", "cli*", "exec_queue*", "workers*", "memory*", "observability*", "schema*"]
+exclude = ["tests*", "docs*", "scripts*", "tools*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.yaml", "*.json", "*.md"]
+"*" = ["*.yaml", "*.json", "*.md", "*.txt", "*.toml"]
+"advancedrules" = ["config/*.yaml", "templates/**/*"]
+
+# Black code formatting
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+# Flake8 linting
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+    ".venv",
+    ".tox",
+    "docs",
+]
+
+# MyPy type checking
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "chromadb.*",
+    "sentence_transformers.*",
+    "transformers.*",
+    "torch.*",
+]
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --disable-warnings"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "e2e: marks tests as end-to-end tests",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["advancedrules", "cli", "exec_queue", "workers"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/conftest.py",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\bProtocol\):",
+    "@(abc\.)?abstractmethod",
+]

@@ -50,15 +50,26 @@
 
 ### ✅ 6. CI/CD Integration
 - [x] **GitHub Actions workflow**: `.github/workflows/rag-check.yml`
-  - [x] Triggers on pull requests
-  - [x] Proper installation sequence: `pip install -U pip setuptools wheel`
+  - [x] Triggers on push and pull requests
+  - [x] Enhanced installation: `pip install -U pip setuptools wheel`
   - [x] Installs dependencies from `requirements.txt`
   - [x] Installs arx CLI via `pip install -e .`
-  - [x] Sanity check: `which arx && arx --help`
+  - [x] **Enhanced sanity check**: `which arx && arx --help`
+  - [x] **Python module validation**: `import cli.main` check
   - [x] Sets environment variables in `env:` sections
   - [x] Runs index and query smoke tests
   - [x] Uses Python 3.11
+  - [x] **Fallback commands provided** (commented out)
   - [x] **TESTED**: All commands work correctly in CI environment
+
+### ✅ 7. Package Configuration
+- [x] **pyproject.toml updated** with proper entry point
+  - [x] Package name: `advancedrules` (consistent naming)
+  - [x] Entry point: `arx = "cli.main:main"`
+  - [x] Build system: `setuptools>=67`
+  - [x] RAG dependencies included: chromadb, sentence-transformers, torch, transformers
+  - [x] Package discovery: `include = ["advancedrules*", "cli*"]`
+  - [x] **TESTED**: Installation creates `arx` console script
 
 ### ✅ 7. CLI Commands Complete
 - [x] **All memory commands working**

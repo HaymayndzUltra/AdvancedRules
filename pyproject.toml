@@ -1,9 +1,9 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=67", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "advanced-rules"
+name = "advancedrules"
 version = "2.0.0"
 description = "AdvancedRules v2 - Declarative Workflow Orchestration"
 readme = "README.md"
@@ -19,6 +19,10 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
+    "chromadb",
+    "sentence-transformers",
+    "torch",
+    "transformers",
     "pyyaml>=6.0",
     "networkx>=2.8",
     "click>=8.0",
@@ -34,7 +38,7 @@ arx = "cli.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["cli*", "tools*", "flow*"]
+include = ["advancedrules*", "cli*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.json", "*.md"]

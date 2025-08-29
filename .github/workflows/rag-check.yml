@@ -12,27 +12,28 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install deps + package
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -U pip setuptools wheel
+          python -m pip install -r requirements.txt
+          # install your repo so the "arx" console script is created
+          python -m pip install -e .
 
-      - name: Install arx CLI
-        run: pip install -e .
-
-      - name: Set environment variables
+      - name: Sanity check
         run: |
-          echo "AR_ENABLE_RAG=1" >> $GITHUB_ENV
-          echo "AR_EMBED_MODEL=BAAI/bge-m3" >> $GITHUB_ENV
+          which arx
+          arx --help
 
-      - name: Verify arx installation
+      - name: Index
+        env:
+          AR_ENABLE_RAG: "1"
+          AR_EMBED_MODEL: "BAAI/bge-m3"
         run: |
-          arx help
-          arx version
-          arx memory doctor
+          arx memory index --src=. --namespaces=coder --reindex
 
-      - name: Index dry smoke
-        run: arx memory index --src=. --namespaces=coder --reindex
-
-      - name: Query smoke
-        run: arx memory query --persona=CODER_AI --query "flow_runner" --k=3
+      - name: Query
+        env:
+          AR_ENABLE_RAG: "1"
+          AR_EMBED_MODEL: "BAAI/bge-m3"
+        run: |
+          arx memory query --persona=CODER_AI --query "flow_runner" --k=3

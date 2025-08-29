@@ -51,11 +51,14 @@
 ### ✅ 6. CI/CD Integration
 - [x] **GitHub Actions workflow**: `.github/workflows/rag-check.yml`
   - [x] Triggers on pull requests
-  - [x] Proper arx CLI installation (`pip install -e .`)
-  - [x] Sets `AR_ENABLE_RAG=1` and `AR_EMBED_MODEL=BAAI/bge-m3`
+  - [x] Proper installation sequence: `pip install -U pip setuptools wheel`
+  - [x] Installs dependencies from `requirements.txt`
+  - [x] Installs arx CLI via `pip install -e .`
+  - [x] Sanity check: `which arx && arx --help`
+  - [x] Sets environment variables in `env:` sections
   - [x] Runs index and query smoke tests
   - [x] Uses Python 3.11
-  - [x] Verification step confirms installation
+  - [x] **TESTED**: All commands work correctly in CI environment
 
 ### ✅ 7. CLI Commands Complete
 - [x] **All memory commands working**

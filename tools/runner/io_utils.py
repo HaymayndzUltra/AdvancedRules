@@ -14,24 +14,25 @@ def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
 def append_event(evt: Dict[str, Any]) -> None:
+    from tools.io.fs import append_line_atomic
     ensure_parent(EVENTS)
     if "correlation_id" not in evt:
         evt["correlation_id"] = str(uuid.uuid4())
-    content = (EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n"
-    EVENTS.write_text(content, encoding="utf-8")
+    append_line_atomic(EVENTS, json.dumps(evt))
 
 
 def append_decision_trace(trace: Dict[str, Any]) -> None:
+    from tools.io.fs import append_line_atomic
     ensure_parent(TRACES)
     if "correlation_id" not in trace:
         trace["correlation_id"] = str(uuid.uuid4())
-    content = (TRACES.read_text() if TRACES.exists() else "") + json.dumps(trace) + "\n"
-    TRACES.write_text(content, encoding="utf-8")
+    append_line_atomic(TRACES, json.dumps(trace))
 
 def write_text(path: Path, content: str, role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record  # local import to avoid cycles
+    from tools.io.fs import atomic_write_text
     ensure_parent(path)
-    path.write_text(content, encoding="utf-8")
+    atomic_write_text(path, content)
     append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
@@ -41,8 +42,9 @@ def write_text(path: Path, content: str, role: str | None = None) -> None:
 
 def touch_json(path: Path, payload: Dict[str, Any], role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record
+    from tools.io.fs import atomic_write_text
     ensure_parent(path)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    atomic_write_text(path, json.dumps(payload, indent=2))
     append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:

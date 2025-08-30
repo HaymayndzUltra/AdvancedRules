@@ -23,7 +23,8 @@ def load_state() -> Dict[str, Any]:
 
 
 def save_state(data: Dict[str, Any]) -> None:
-    STATE_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    from tools.io.fs import atomic_write_text
+    atomic_write_text(STATE_FILE, json.dumps(data, indent=2))
 
 
 def transition(new_state: str, correlation_id: str | None = None) -> Dict[str, Any]:

@@ -148,3 +148,57 @@ def test_worker_respects_allowlist(tmp_path, monkeypatch):
 		# Should still be marked as processed (but skipped)
 		processed = exec_queue.processed_ids()
 		assert cid in processed
+
+
+def test_worker_fifo_order(tmp_path, monkeypatch):
+	"""Test that worker processes queued items in FIFO order (tie-break policy)."""
+	# Mock the queue directory
+	queue_dir = tmp_path / "exec_queue"
+	queue_dir.mkdir(parents=True, exist_ok=True)
+
+	monkeypatch.setattr(exec_queue, 'QUEUE_DIR', queue_dir)
+	monkeypatch.setattr(exec_queue, 'QUEUE_FILE', queue_dir / 'exec_queue.jsonl')
+	monkeypatch.setattr(exec_queue, 'PROCESSED_FILE', queue_dir / 'processed.jsonl')
+
+	# Create mock registry
+	registry_dir = tmp_path / ".cursor" / "commands"
+	registry_dir.mkdir(parents=True, exist_ok=True)
+	(tmp_path / ".cursor" / "commands" / "registry.yaml").write_text("""
+commands:
+  - id: test-command
+    ui:
+      label: Test Command
+    run:
+      shell: ["echo", "test"]
+    contexts:
+      must_exist: []
+      states_any_of: []
+""")
+
+	# Mock ROOTs used by worker/trigger
+	monkeypatch.setattr(worker, 'ROOT', tmp_path)
+	from tools.orchestrator import trigger_next
+	monkeypatch.setattr(trigger_next, 'ROOT', tmp_path)
+	monkeypatch.setattr(trigger_next, 'REG', tmp_path / ".cursor/commands/registry.yaml")
+	monkeypatch.setattr(trigger_next, 'REG_SHA', tmp_path / ".cursor/commands/registry.sha256")
+
+	# Enqueue two items with different correlation IDs in order
+	cid1 = 'corr-fifo-001'
+	cid2 = 'corr-fifo-002'
+	exec_queue.enqueue_task('test-command', cid1, {"shell": ["echo", "A"]})
+	exec_queue.enqueue_task('test-command', cid2, {"shell": ["echo", "B"]})
+
+	# Dry-run path and allowlist OK
+	from unittest.mock import patch
+	with patch.object(worker, 'verify_registry_checksum', return_value=(True, "OK")), \
+	     patch.object(worker, 'evaluate_gates', return_value={"results": []}), \
+	     patch.object(worker, 'is_command_allowed', return_value=(True, "allowed")), \
+	     patch.object(worker, 'should_dry_run', return_value=True):
+		count = worker.process_once()
+		assert count == 2
+
+	# Verify processed order (FIFO) by reading processed.jsonl lines
+	lines = (queue_dir / 'processed.jsonl').read_text(encoding='utf-8').strip().splitlines()
+	assert len(lines) >= 2
+	order = [__import__('json').loads(l).get('correlation_id') for l in lines]
+	assert order[0] == cid1 and order[1] == cid2

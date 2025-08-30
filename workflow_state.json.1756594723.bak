@@ -1,6 +1,6 @@
 {
-  "prev_state": "VALIDATION_DONE",
-  "state": "SYNTHESIS_DONE",
+  "prev_state": "AUDIT_DONE",
+  "state": "VALIDATION_DONE",
   "history": [
     {
       "ts": 1756383067.7198448,
@@ -511,12 +511,6 @@
       "from": "AUDIT_DONE",
       "to": "VALIDATION_DONE",
       "correlation_id": "bc757ea8-1eab-4f99-8089-e8f71664fec0"
-    },
-    {
-      "ts": 1756594723.9810026,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "5c6e8972-a265-4455-9dc1-74cfdd0c27f7"
     }
   ],
   "tasks": [
@@ -571,7 +565,7 @@
       ]
     }
   ],
-  "last_updated": "2025-08-30T22:58:43.981336",
+  "last_updated": "2025-08-30T22:58:43.938905",
   "total_tasks": 1,
   "schema_version": "1.0.0"
 }

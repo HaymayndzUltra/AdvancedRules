@@ -16,6 +16,7 @@ REG_PATH = ROOT / ".cursor/commands/registry.yaml"
 STATE_PATH = ROOT / "workflow_state.json"
 ATTACH_LOG = ROOT / "rule_attach_log.json"
 OUT_PATH = ROOT / "memory-bank/gate_results.json"
+RULES_INDEX = ROOT / "memory-bank/rules_index.json"
 
 @dataclass
 class GateResult:
@@ -93,11 +94,22 @@ def _exists(path: str) -> bool:
 	return p.exists() and p.is_file()
 
 
+def _load_rules_index() -> Dict[str, Any]:
+	"""Load the rules index if available."""
+	if RULES_INDEX.exists():
+		try:
+			return json.loads(RULES_INDEX.read_text(encoding="utf-8"))
+		except Exception:
+			return {}
+	return {}
+
+
 def evaluate_gates() -> Dict[str, Any]:
 	commands = _load_registry()
 	state = _load_state()
 	attach = _load_attachments()
 	attached_domains = _domains_attached(attach)
+	rules_index = _load_rules_index()
 	results: List[Dict[str, Any]] = []
 
 	for cmd in commands:
@@ -114,8 +126,24 @@ def evaluate_gates() -> Dict[str, Any]:
 		missing_states = [] if (not states_any or state.get("state") in states_any) else states_any
 		# completed_steps not tracked in sample state; leave as not enforced for now
 		missing_steps: List[str] = []
-		missing_gates: List[str] = []  # named gate evaluation is placeholder
+		missing_gates: List[str] = []  # Will be populated from rules index
 		missing_domains = [d for d in domains_all if d not in attached_domains]
+		
+		# Enhanced validation using rules index
+		if rules_index and gates:
+			for gate_name in gates:
+				# Check if gate is defined in rules
+				if gate_name in rules_index.get("gates", {}):
+					# Get rules that define this gate
+					gate_rules = rules_index["gates"][gate_name]
+					for rule_id in gate_rules:
+						rule = rules_index.get("rules", {}).get(rule_id, {})
+						# Check rule-specific artifacts
+						for artifact in rule.get("required_artifacts", []):
+							if not _exists(artifact):
+								missing_files.append(artifact)
+								if gate_name not in missing_gates:
+									missing_gates.append(gate_name)
 
 		passed = not (missing_files or missing_states or missing_steps or missing_gates or missing_domains)
 		reasons: List[str] = []

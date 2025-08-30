@@ -1,3 +1,14 @@
+TASK =
+
+COMPARE AND VERIFY — Take Report_A.md and Report_B.md, then cross-check them directly against the actual codebase. Identify: (1) which findings are confirmed by code inspection, (2) which findings are exaggerated or incorrect, (3) which blind spots neither report mentioned, and (4) which recommendations are truly implementable given the code. Output a side-by-side comparison (Report_A.md vs Report_B.d vs Codebase)
+
+
+
+
+REPORT =
+
+
+
 COMPARE AND VERIFY — Report A vs Report B vs Codebase
 
 Side‑by‑side comparison

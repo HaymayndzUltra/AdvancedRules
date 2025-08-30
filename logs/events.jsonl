@@ -344,3 +344,11 @@
 {"type": "artifact_emitted", "role": "test", "path": "memory-bank/test/step_0.txt", "correlation_id": "edc8f440-2f40-4512-9c7e-da580ed8047b"}
 {"type": "artifact_emitted", "role": "test", "path": "memory-bank/test/step_1.txt", "correlation_id": "c2c696ed-156c-48f3-a81f-652497dd14cc"}
 {"type": "artifact_emitted", "role": "runner", "path": "/tmp/pytest-of-ubuntu/pytest-52/test_full_schema_validation0/memory-bank/business/client_score.json", "correlation_id": "a622ea91-b457-407d-adf0-88d7a584a660"}
+{"type": "artifact_emitted", "role": "test", "path": "memory-bank/test_artifact.txt", "correlation_id": "test-correlation-123"}
+{"type": "artifact_emitted", "role": "planner", "path": "memory-bank/step1.txt", "correlation_id": "workflow-789"}
+{"type": "artifact_emitted", "role": "planner", "path": "memory-bank/config.json", "correlation_id": "workflow-789"}
+{"type": "artifact_emitted", "role": "executor", "path": "memory-bank/step2.txt", "correlation_id": "workflow-789"}
+{"type": "artifact_emitted", "role": "test", "path": "memory-bank/test_artifact.txt", "correlation_id": "test-correlation-123"}
+{"type": "artifact_emitted", "role": "planner", "path": "memory-bank/step1.txt", "correlation_id": "workflow-789"}
+{"type": "artifact_emitted", "role": "planner", "path": "memory-bank/config.json", "correlation_id": "workflow-789"}
+{"type": "artifact_emitted", "role": "executor", "path": "memory-bank/step2.txt", "correlation_id": "workflow-789"}

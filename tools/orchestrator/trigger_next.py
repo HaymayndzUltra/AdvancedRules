@@ -155,6 +155,8 @@ def main() -> None:
         from tools.runner.io_utils import append_event, append_decision_trace
         import uuid as _uuid
         corr_id = str(_uuid.uuid4())
+        # Set in environment for child processes
+        os.environ['CORRELATION_ID'] = corr_id
         trace = {"type":"decision","top": top, "decision": decision, "correlation_id": corr_id}
         append_decision_trace(trace)
         append_event({"type":"decision_made","top": top, "correlation_id": corr_id})

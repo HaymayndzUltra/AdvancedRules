@@ -95,7 +95,27 @@ if __name__ == "__main__":
     traces = load_traces()
     summary = aggregate(items)
     corr = aggregate_by_correlation(items, traces)
-    out = {**summary, **corr}
+    
+    # Run artifact audit and include in report
+    try:
+        from tools.artifacts.auditor import audit_artifacts
+        audit_report = audit_artifacts()
+        tamper_summary = {
+            "tamper_detected": audit_report.get('tamper_detected', False),
+            "artifacts_valid": audit_report['summary'].get('valid', 0),
+            "artifacts_tampered": audit_report['summary'].get('tampered', 0),
+            "artifacts_missing": audit_report['summary'].get('missing', 0),
+            "registry_valid": audit_report['summary'].get('registry_valid', False)
+        }
+    except Exception as e:
+        tamper_summary = {"error": str(e)}
+    
+    out = {**summary, **corr, "artifact_audit": tamper_summary}
     write_reports(out)
-    print(json.dumps({"events": len(items), "traces": len(traces)}, indent=2))
+    
+    print(json.dumps({
+        "events": len(items), 
+        "traces": len(traces),
+        "tamper_detected": tamper_summary.get('tamper_detected', None)
+    }, indent=2))
 

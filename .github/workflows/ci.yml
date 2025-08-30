@@ -163,27 +163,10 @@ else:
     print(f'\nAll YAML files are valid')
 "
       
-      - name: Check registry structure
-        continue-on-error: true
+      - name: Validate registry against schema
         run: |
-          if [ -f ".cursor/commands/registry.yaml" ]; then
-            echo "Checking registry.yaml structure..."
-            python -c "
-import yaml
-with open('.cursor/commands/registry.yaml') as f:
-    content = f.read()
-    # Skip heredoc header if present
-    if content.startswith('cat'):
-        lines = content.split('\n')
-        start = next(i for i, line in enumerate(lines) if 'commands:' in line)
-        content = '\n'.join(lines[start:])
-    try:
-        data = yaml.safe_load(content)
-        print('Registry structure is valid')
-    except Exception as e:
-        print(f'Registry validation warning: {e}')
-"
-          fi
+          python scripts/validate_registry.py || true
+          echo "Registry report:" && cat reports/registry_report.json || true
 
   memory-rag-check:
     name: Memory/RAG System Check

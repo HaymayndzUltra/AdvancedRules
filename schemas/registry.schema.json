@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/registry.schema.json",
+  "title": "AdvancedRules Commands Registry",
+  "type": "object",
+  "required": ["version", "commands"],
+  "properties": {
+    "version": {
+      "type": ["integer", "string"],
+      "description": "Semantic version for the registry format"
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "one_step_policy": { "type": "boolean" },
+        "min_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/command" }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "command": {
+      "type": "object",
+      "required": ["id", "role_from", "trigger", "run"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])$",
+          "description": "ASCII kebab-case ID (e.g., flow-run, planning-to-audit)"
+        },
+        "role_from": { "type": "string" },
+        "trigger": { "type": "string" },
+        "run": {
+          "type": "object",
+          "required": ["shell"],
+          "properties": {
+            "shell": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+        "requires": {
+          "type": "object",
+          "properties": {
+            "states_any_of": { "$ref": "#/definitions/stringArray" },
+            "completed_steps_all_of": { "$ref": "#/definitions/stringArray" },
+            "gates_passed_all_of": { "$ref": "#/definitions/stringArray" }
+          },
+          "additionalProperties": false
+        },
+        "contexts": {
+          "type": "object",
+          "properties": {
+            "must_exist": { "$ref": "#/definitions/stringArray" }
+          },
+          "additionalProperties": false
+        },
+        "emits": {
+          "type": "object",
+          "properties": {
+            "sets_state": { "type": "string" },
+            "add_completed_step": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "ui": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string" },
+            "reason": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

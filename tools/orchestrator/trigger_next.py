@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import yaml
 import subprocess
 import sys
 from pathlib import Path
@@ -10,24 +11,40 @@ ROOT = Path(__file__).resolve().parents[2]
 REG = ROOT / ".cursor/commands/registry.yaml"
 
 
+def _normalize_id(raw_id: str) -> str:
+    ascii_id = (
+        raw_id.replace("→", "-")
+        .replace(" ", "-")
+        .replace("_", "-")
+        .lower()
+    )
+    ascii_id = re.sub(r"[^a-z0-9-]", "", ascii_id)
+    ascii_id = re.sub(r"-+", "-", ascii_id).strip("-")
+    return ascii_id
+
+
 def load_registry_commands() -> dict:
     mapping = {}
     if not REG.exists():
         return mapping
-    cur_id = None
-    for raw in REG.read_text(encoding="utf-8").splitlines():
-        m_id = re.match(r"^\s*-\s+id:\s*(.+)$", raw)
-        if m_id:
-            cur_id = m_id.group(1).strip()
-            continue
-        m_shell = re.match(r"^\s*shell:\s*(\[.*\])\s*$", raw)
-        if m_shell and cur_id:
-            try:
-                arr = json.loads(m_shell.group(1))
-                mapping[cur_id] = arr
-            except Exception:
-                pass
-            cur_id = None
+    content = REG.read_text(encoding="utf-8")
+    # Strip heredoc preface if present
+    if content.startswith("cat >"):
+        lines = content.splitlines()
+        start = 0
+        for i, line in enumerate(lines):
+            if line.strip().startswith("version:"):
+                start = i
+                break
+        content = "\n".join(lines[start:])
+    data = yaml.safe_load(content) or {}
+    commands = data.get("commands", [])
+    for cmd in commands:
+        raw_id = str(cmd.get("id", "")).strip()
+        norm_id = _normalize_id(raw_id)
+        shell = cmd.get("run", {}).get("shell", [])
+        if isinstance(shell, list) and norm_id:
+            mapping[norm_id] = shell
     return mapping
 
 
@@ -68,7 +85,7 @@ def main() -> None:
 
     dtype = res.get("decision", {}).get("type")
     if dtype in {"NEXT_STEP", "OPTION_SET"} and res.get("candidates"):
-        cmd_id = res["candidates"][0]["id"]
+        cmd_id = _normalize_id(res["candidates"][0]["id"])
         if cmd_id not in mapping:
             print(f"No registry mapping for id: {cmd_id}")
             return

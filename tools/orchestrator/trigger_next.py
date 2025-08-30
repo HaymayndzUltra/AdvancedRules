@@ -105,11 +105,26 @@ def is_command_allowed(cmd: list) -> (bool, str):
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"))
-    ap.add_argument("--dry-run", action="store_true")
+    ap = argparse.ArgumentParser(
+        description=(
+            "Trigger orchestrator: scores candidates, enforces gates, and maps to registry commands.\n"
+            "Default behavior: gates enforced; DRY-RUN unless ALLOW_RUN=1."
+        ),
+        epilog=(
+            "Execution policy:\n"
+            "- Dry-run by default. To execute, export ALLOW_RUN=1 or pass --dry-run to force dry-run.\n"
+            "- Allowlist: only 'arx' and 'python3 tools/run_role.py' are permitted by default.\n"
+            "- Gates: must_exist/states/domains evaluated before any execution."
+        )
+    )
+    ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"), help="Path to candidates JSON (list or {candidates:[...]})")
+    ap.add_argument("--dry-run", action="store_true", help="Force dry-run (also default unless ALLOW_RUN=1)")
     ap.add_argument("--sandbox", action="store_true", help="Enable sandbox mode (no-op placeholder)")
+    ap.add_argument("--print-allowlist", action="store_true", help="Print the current command allowlist and exit")
     args = ap.parse_args()
+    if args.print_allowlist:
+        print(json.dumps({"allowlist": list(ALLOWED_COMMANDS.keys())}, indent=2))
+        return
 
     mapping = load_registry_commands()
     if str(ROOT) not in sys.path:

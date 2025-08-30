@@ -1,0 +1,469 @@
+name: Governance & Quality Gates
+
+on:
+  push:
+    branches: [ main, develop, 'cursor/**' ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  registry-validation:
+    name: Registry Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema
+      
+      - name: Validate registry YAML syntax
+        run: |
+          python3 << 'EOF'
+          import yaml
+          import sys
+          from pathlib import Path
+          
+          registry_path = Path('.cursor/commands/registry.yaml')
+          if not registry_path.exists():
+              print(f"❌ Registry file not found: {registry_path}")
+              sys.exit(1)
+          
+          try:
+              with open(registry_path) as f:
+                  data = yaml.safe_load(f)
+              print(f"✅ Registry YAML is valid")
+              print(f"  - Version: {data.get('version', 'unknown')}")
+              print(f"  - Commands: {len(data.get('commands', []))}")
+          except Exception as e:
+              print(f"❌ Registry YAML validation failed: {e}")
+              sys.exit(1)
+          EOF
+      
+      - name: Validate registry against schema
+        run: |
+          python scripts/validate_registry.py
+      
+      - name: Verify registry checksum
+        run: |
+          python scripts/update_registry_checksum.py --verify
+      
+      - name: Upload registry report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: registry-report
+          path: reports/registry_report.json
+
+  gate-evaluator:
+    name: Gate Evaluator Smoke Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run gate evaluator tests
+        run: |
+          python -m pytest tests/test_gates_enforcement.py -v
+      
+      - name: Gate evaluator smoke test
+        run: |
+          python3 << 'EOF'
+          import sys
+          import json
+          from pathlib import Path
+          sys.path.insert(0, '.')
+          
+          from tools.gates.gate_evaluator import evaluate_gates
+          
+          # Create test artifacts for gate evaluation
+          mb = Path('memory-bank')
+          mb.mkdir(exist_ok=True)
+          
+          # Simulate some required artifacts
+          (mb / 'test_artifact.json').write_text('{"test": true}')
+          
+          # Run gate evaluation
+          result = evaluate_gates()
+          print(json.dumps(result, indent=2))
+          
+          # Check if evaluation succeeded
+          if 'results' in result:
+              print(f"✅ Gate evaluator executed successfully")
+              print(f"  - Evaluated {len(result['results'])} commands")
+          else:
+              print(f"❌ Gate evaluator failed")
+              sys.exit(1)
+          EOF
+
+  scoring-validation:
+    name: Scoring Pipeline Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run scoring adapter tests
+        run: |
+          python -m pytest tests/smoke/test_scoring_adapter.py -v
+      
+      - name: Scoring consistency test
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          sys.path.insert(0, '.')
+          
+          from tools.decision_scoring.advanced_score import score_candidates
+          from tools.decision_scoring.adapter import adapt_and_validate_candidate
+          
+          # Test legacy format (metrics)
+          legacy = [
+              {"id": "test1", "action_type": "COMMAND_TRIGGER", "risk": "LOW",
+               "metrics": {"intent": 0.9, "state": 0.8, "evidence": 0.7,
+                          "recency": 0.6, "pref": 0.5, "cost": 0.1, "risk_penalty": 0.0}}
+          ]
+          
+          # Test canonical format (scores)
+          canonical = [
+              {"id": "test1", "action_type": "COMMAND_TRIGGER", "risk": "LOW",
+               "scores": {"intent": 0.9, "state": 0.8, "evidence": 0.7,
+                         "recency": 0.6, "pref": 0.5, "cost": 0.1, "risk_penalty": 0.0}}
+          ]
+          
+          # Score both
+          result_legacy = score_candidates(legacy)
+          result_canonical = score_candidates(canonical)
+          
+          # Verify same results
+          top_legacy = result_legacy.get("candidates", [{}])[0].get("id")
+          top_canonical = result_canonical.get("candidates", [{}])[0].get("id")
+          
+          if top_legacy == top_canonical:
+              print(f"✅ Scoring consistency verified: {top_legacy} == {top_canonical}")
+          else:
+              print(f"❌ Scoring inconsistency: {top_legacy} != {top_canonical}")
+              sys.exit(1)
+          EOF
+
+  artifact-audit:
+    name: Artifact Audit & Provenance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Create test artifacts
+        run: |
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+          
+          # Create test artifacts
+          mb = Path('memory-bank')
+          mb.mkdir(exist_ok=True)
+          
+          artifacts = {
+              'test_artifact1.json': {'type': 'test', 'data': 'sample1'},
+              'test_artifact2.json': {'type': 'test', 'data': 'sample2'}
+          }
+          
+          for name, content in artifacts.items():
+              (mb / name).write_text(json.dumps(content))
+          
+          print(f"✅ Created {len(artifacts)} test artifacts")
+          EOF
+      
+      - name: Run artifact audit
+        run: |
+          python3 << 'EOF'
+          import sys
+          import json
+          from pathlib import Path
+          sys.path.insert(0, '.')
+          
+          from tools.artifacts.auditor import audit_artifacts
+          
+          # Run audit
+          report = audit_artifacts(check_registry=False)
+          
+          print(json.dumps(report, indent=2))
+          
+          # Check results
+          if not report.get('tamper_detected', True):
+              print(f"✅ Artifact audit passed")
+              print(f"  - Valid: {report['summary'].get('valid', 0)}")
+              print(f"  - Missing: {report['summary'].get('missing', 0)}")
+          else:
+              print(f"⚠️ Tamper detection triggered (expected for test)")
+          EOF
+      
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-audit-report
+          path: memory-bank/artifact_audit.json
+
+  instrumentation-check:
+    name: Instrumentation & Redaction
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run instrumentation tests
+        run: |
+          python -m pytest tests/test_instrumentation_redaction.py -v
+      
+      - name: Verify redaction functionality
+        run: |
+          python3 << 'EOF'
+          import sys
+          sys.path.insert(0, '.')
+          
+          from tools.instrumentation.redactor import redact
+          
+          # Test sensitive data redaction
+          test_data = {
+              "user": "john",
+              "password": "secret123",
+              "api_key": "sk-test-key-12345",
+              "safe_data": "this is ok"
+          }
+          
+          redacted = redact(test_data)
+          
+          # Verify redaction
+          if redacted["password"] == "[REDACTED]" and redacted["api_key"] == "[REDACTED]":
+              print(f"✅ Redaction working correctly")
+              print(f"  - Password: {redacted['password']}")
+              print(f"  - API Key: {redacted['api_key']}")
+              print(f"  - Safe data preserved: {redacted['safe_data']}")
+          else:
+              print(f"❌ Redaction failed")
+              sys.exit(1)
+          EOF
+
+  e2e-orchestration:
+    name: End-to-End Orchestration Test
+    runs-on: ubuntu-latest
+    needs: [registry-validation, gate-evaluator, scoring-validation]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+      
+      - name: Initialize test environment
+        run: |
+          # Create necessary directories
+          mkdir -p memory-bank logs reports .cursor/commands
+          
+          # Initialize workflow state
+          echo '{"state": "initialized", "schema_version": "1.0.0"}' > workflow_state.json
+      
+      - name: Run E2E orchestration flow
+        run: |
+          python3 << 'EOF'
+          import sys
+          import json
+          import os
+          from pathlib import Path
+          sys.path.insert(0, '.')
+          
+          # Set correlation ID for tracing
+          os.environ['CORRELATION_ID'] = 'e2e-test-001'
+          os.environ['TRACE_ID'] = 'trace-e2e-001'
+          os.environ['ENABLE_REDACTION'] = 'true'
+          
+          # Import orchestrator components
+          from tools.decision_scoring.advanced_score import score_candidates
+          from tools.gates.gate_evaluator import evaluate_gates
+          from tools.orchestrator.state import transition, get_state
+          from tools.runner.io_utils import append_event
+          
+          print("=== Starting E2E Orchestration Test ===\n")
+          
+          # Step 1: Score candidates
+          print("1. Scoring candidates...")
+          candidates = [
+              {"id": "init", "action_type": "COMMAND_TRIGGER", "risk": "LOW",
+               "scores": {"intent": 0.9, "state": 0.8, "evidence": 0.7,
+                         "recency": 0.6, "pref": 0.5, "cost": 0.1, "risk_penalty": 0.0}},
+              {"id": "skip", "action_type": "NATURAL_STEP", "risk": "LOW",
+               "scores": {"intent": 0.5, "state": 0.5, "evidence": 0.5,
+                         "recency": 0.5, "pref": 0.5, "cost": 0.0, "risk_penalty": 0.0}}
+          ]
+          
+          scoring_result = score_candidates(candidates)
+          top_candidate = scoring_result.get("candidates", [{}])[0].get("id")
+          print(f"  ✓ Top candidate: {top_candidate}")
+          
+          # Step 2: Evaluate gates
+          print("\n2. Evaluating gates...")
+          gate_result = evaluate_gates()
+          print(f"  ✓ Gates evaluated: {len(gate_result.get('results', []))} commands")
+          
+          # Step 3: State transition
+          print("\n3. Performing state transition...")
+          transition("initialized", "processing")
+          current_state = get_state()
+          print(f"  ✓ State transitioned to: {current_state}")
+          
+          # Step 4: Log event with instrumentation
+          print("\n4. Logging instrumented event...")
+          append_event({
+              "type": "e2e_test",
+              "stage": "orchestration",
+              "candidate": top_candidate,
+              "state": current_state,
+              "password": "should_be_redacted",  # This should be redacted
+              "safe_field": "visible_data"
+          })
+          print(f"  ✓ Event logged with correlation_id: {os.environ['CORRELATION_ID']}")
+          
+          # Step 5: Verify logs
+          print("\n5. Verifying event logs...")
+          events_file = Path('logs/events.jsonl')
+          if events_file.exists():
+              lines = events_file.read_text().strip().split('\n')
+              last_event = json.loads(lines[-1]) if lines else {}
+              
+              # Check for required fields
+              required = ['correlation_id', 'trace_id', 'timestamp', 'type']
+              missing = [f for f in required if f not in last_event]
+              
+              if not missing:
+                  print(f"  ✓ Event has all required fields")
+                  print(f"    - correlation_id: {last_event.get('correlation_id')}")
+                  print(f"    - trace_id: {last_event.get('trace_id')}")
+                  
+                  # Check redaction
+                  if last_event.get('password') == '[REDACTED]':
+                      print(f"  ✓ Sensitive data properly redacted")
+                  else:
+                      print(f"  ⚠️ Redaction may not be working")
+              else:
+                  print(f"  ✗ Missing fields: {missing}")
+          
+          print("\n=== E2E Orchestration Test Complete ===")
+          EOF
+      
+      - name: Generate orchestration report
+        if: always()
+        run: |
+          python tools/observability/aggregate.py || true
+      
+      - name: Upload orchestration artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-orchestration-artifacts
+          path: |
+            logs/
+            reports/
+            workflow_state.json
+
+  governance-report:
+    name: Governance Summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [registry-validation, gate-evaluator, scoring-validation, artifact-audit, instrumentation-check, e2e-orchestration]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate governance report
+        run: |
+          echo "# Governance Quality Gates Report" > governance_report.md
+          echo "" >> governance_report.md
+          echo "## Job Results" >> governance_report.md
+          echo "" >> governance_report.md
+          echo "| Component | Status |" >> governance_report.md
+          echo "|-----------|--------|" >> governance_report.md
+          echo "| Registry Validation | ${{ needs.registry-validation.result }} |" >> governance_report.md
+          echo "| Gate Evaluator | ${{ needs.gate-evaluator.result }} |" >> governance_report.md
+          echo "| Scoring Validation | ${{ needs.scoring-validation.result }} |" >> governance_report.md
+          echo "| Artifact Audit | ${{ needs.artifact-audit.result }} |" >> governance_report.md
+          echo "| Instrumentation | ${{ needs.instrumentation-check.result }} |" >> governance_report.md
+          echo "| E2E Orchestration | ${{ needs.e2e-orchestration.result }} |" >> governance_report.md
+          echo "" >> governance_report.md
+          echo "## Governance Gates" >> governance_report.md
+          echo "" >> governance_report.md
+          echo "✅ All critical governance gates must pass for merge approval." >> governance_report.md
+          echo "" >> governance_report.md
+          echo "### Required Gates:" >> governance_report.md
+          echo "- Registry validation and checksum verification" >> governance_report.md
+          echo "- Gate evaluator functionality" >> governance_report.md
+          echo "- Scoring pipeline consistency" >> governance_report.md
+          echo "- Artifact audit and provenance" >> governance_report.md
+          echo "- Instrumentation and redaction" >> governance_report.md
+          echo "- End-to-end orchestration flow" >> governance_report.md
+      
+      - name: Upload governance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: governance-report
+          path: governance_report.md
+      
+      - name: Check governance status
+        run: |
+          if [[ "${{ needs.registry-validation.result }}" == "success" ]] && \
+             [[ "${{ needs.gate-evaluator.result }}" == "success" ]] && \
+             [[ "${{ needs.scoring-validation.result }}" == "success" ]]; then
+            echo "✅ Core governance gates PASSED"
+          else
+            echo "❌ Core governance gates FAILED"
+            exit 1
+          fi

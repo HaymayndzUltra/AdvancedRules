@@ -1,0 +1,90 @@
+{
+  "branch_protection_rules": {
+    "main": {
+      "required_status_checks": {
+        "strict": true,
+        "contexts": [
+          "CI Pipeline / Lint Code",
+          "CI Pipeline / Run Tests (3.11)",
+          "CI Pipeline / Validate Schemas and Registry",
+          "Governance & Quality Gates / Registry Validation",
+          "Governance & Quality Gates / Gate Evaluator Smoke Test",
+          "Governance & Quality Gates / Scoring Pipeline Validation",
+          "Governance & Quality Gates / Artifact Audit & Provenance",
+          "Governance & Quality Gates / Instrumentation & Redaction",
+          "Governance & Quality Gates / End-to-End Orchestration Test",
+          "Governance & Quality Gates / Governance Summary"
+        ]
+      },
+      "enforce_admins": false,
+      "required_pull_request_reviews": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews": true,
+        "require_code_owner_reviews": false,
+        "require_last_push_approval": false
+      },
+      "restrictions": null,
+      "allow_force_pushes": false,
+      "allow_deletions": false,
+      "block_creations": false,
+      "required_conversation_resolution": true,
+      "lock_branch": false,
+      "allow_fork_syncing": false,
+      "required_signatures": false,
+      "required_linear_history": false
+    },
+    "develop": {
+      "required_status_checks": {
+        "strict": false,
+        "contexts": [
+          "CI Pipeline / Lint Code",
+          "CI Pipeline / Run Tests (3.11)",
+          "CI Pipeline / Validate Schemas and Registry"
+        ]
+      },
+      "enforce_admins": false,
+      "required_pull_request_reviews": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews": false,
+        "require_code_owner_reviews": false,
+        "require_last_push_approval": false
+      },
+      "restrictions": null,
+      "allow_force_pushes": false,
+      "allow_deletions": false,
+      "block_creations": false,
+      "required_conversation_resolution": false,
+      "lock_branch": false,
+      "allow_fork_syncing": false,
+      "required_signatures": false,
+      "required_linear_history": false
+    },
+    "cursor/**": {
+      "required_status_checks": {
+        "strict": false,
+        "contexts": [
+          "CI Pipeline / Lint Code",
+          "CI Pipeline / Run Tests (3.11)"
+        ]
+      },
+      "enforce_admins": false,
+      "required_pull_request_reviews": null,
+      "restrictions": null,
+      "allow_force_pushes": true,
+      "allow_deletions": true,
+      "block_creations": false,
+      "required_conversation_resolution": false,
+      "lock_branch": false,
+      "allow_fork_syncing": false,
+      "required_signatures": false,
+      "required_linear_history": false
+    }
+  },
+  "notes": {
+    "setup": "These rules should be configured in GitHub repository settings under Settings > Branches",
+    "automation": "Can be applied via GitHub API or Terraform GitHub provider",
+    "cursor_branches": "Cursor branches have relaxed rules for rapid development",
+    "main_branch": "Main branch has strictest protection for production stability",
+    "develop_branch": "Develop branch has moderate protection for integration testing"
+  }
+}

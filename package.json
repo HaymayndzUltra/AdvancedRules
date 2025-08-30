@@ -57,9 +57,7 @@
     "scripts/",
     "pyproject.toml",
     "requirements.txt",
-    "README.md",
-    "FRAMEWORK_SUMMARY.md",
-    "FOLDER_STRUCTURE.md"
+    "README.md"
   ],
   "contributors": [
     {

@@ -460,3 +460,6 @@
 {"type": "artifact_emitted", "role": "tests", "path": "memory-bank/plan/_corr_probe.txt", "correlation_id": "test-corr-123"}
 {"type": "decision_trace", "correlation_id": "test-corr-123", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "candidates": ["memory-doctor", "flow-lint"]}
 {"type": "decision_trace", "correlation_id": "test-corr-123", "decision": {"type": "NEXT_STEP"}, "candidates": ["memory-doctor"]}
+{"type": "artifact_emitted", "role": "tests", "path": "memory-bank/plan/_corr_probe.txt", "correlation_id": "test-corr-123"}
+{"type": "decision_trace", "correlation_id": "test-corr-123", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "candidates": ["memory-doctor", "flow-lint"]}
+{"type": "decision_trace", "correlation_id": "test-corr-123", "decision": {"type": "NEXT_STEP"}, "candidates": ["memory-doctor"]}

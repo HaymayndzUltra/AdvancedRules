@@ -1844,5 +1844,12 @@
     "created_at": 1756589540.8300965,
     "source_role": "tests",
     "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756589571.062325,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
   }
 ]

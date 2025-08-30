@@ -1,8 +1,8 @@
 {
   "counts": {
-    "artifact_emitted": 303,
+    "artifact_emitted": 304,
     "role_duration": 150,
-    "decision_trace": 9
+    "decision_trace": 11
   },
   "durations": {
     "tools.runner.plugins.product_owner": {
@@ -34,8 +34,8 @@
       "candidates": []
     },
     "test-corr-123": {
-      "events": 10,
-      "artifacts": 4,
+      "events": 13,
+      "artifacts": 5,
       "last_decision": {
         "type": "NEXT_STEP"
       },

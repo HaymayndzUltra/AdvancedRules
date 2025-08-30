@@ -7,3 +7,4 @@
 {"correlation_id": "2d112c832382", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "top": "memory-doctor", "candidates": ["memory-doctor", "memory-doctor"]}
 {"correlation_id": "2d112c832382", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "top": "memory-doctor", "candidates": ["memory-doctor", "memory-doctor"]}
 {"correlation_id": "test-corr-123", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "top": "memory-doctor", "candidates": ["memory-doctor", "flow-lint"]}
+{"correlation_id": "test-corr-123", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "top": "memory-doctor", "candidates": ["memory-doctor", "flow-lint"]}

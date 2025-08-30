@@ -42,10 +42,16 @@ def build_rules_index() -> Dict:
             gates = extract_gates(content)
             
             # Build rule entry
+            globs_value = frontmatter.get('globs', [])
+            if globs_value is None:
+                globs_value = []
+            elif isinstance(globs_value, str):
+                globs_value = [globs_value]
+            
             rule_entry = {
                 "file": rel_path,
                 "description": frontmatter.get('description', ''),
-                "globs": frontmatter.get('globs', []),
+                "globs": globs_value,
                 "always_apply": frontmatter.get('alwaysApply', False),
                 "rules": rule_blocks,
                 "gates": gates,

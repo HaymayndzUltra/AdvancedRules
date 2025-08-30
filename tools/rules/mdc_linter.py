@@ -176,6 +176,9 @@ def lint_mdc_file(file_path: Path) -> Tuple[List[LintIssue], Optional[RuleMetada
     # Check frontmatter
     frontmatter, content_start = parse_frontmatter(content)
     
+    # Initialize globs regardless of frontmatter presence
+    globs = []
+    
     if not frontmatter:
         issues.append(LintIssue(
             file=rel_path,
@@ -197,7 +200,9 @@ def lint_mdc_file(file_path: Path) -> Tuple[List[LintIssue], Optional[RuleMetada
         
         # Validate globs
         globs = frontmatter.get('globs', [])
-        if isinstance(globs, str):
+        if globs is None:
+            globs = []
+        elif isinstance(globs, str):
             globs = [globs]
         
         for glob_pattern in globs:
@@ -275,7 +280,7 @@ def lint_mdc_file(file_path: Path) -> Tuple[List[LintIssue], Optional[RuleMetada
     # Build metadata
     metadata = RuleMetadata(
         description=frontmatter.get('description') if frontmatter else None,
-        globs=globs if frontmatter else [],
+        globs=globs,  # Already initialized to [] if no frontmatter
         always_apply=frontmatter.get('alwaysApply', False) if frontmatter else False,
         attachments=attachments,
         gates=gates,

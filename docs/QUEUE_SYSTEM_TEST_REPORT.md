@@ -256,7 +256,7 @@ enq(10,"AUDITOR_AI","flow_demo")
 
 ### **Configuration Files**
 - **Docker Compose:** `docker/docker-compose.queue.yaml`
-- **Worker Images:** `Dockerfile.worker`, `Dockerfile.exporter`
+- **Worker Images:** `docker/Dockerfile.worker`, `docker/Dockerfile.exporter`
 - **Requirements:** `requirements.queue.txt`
 
 ---

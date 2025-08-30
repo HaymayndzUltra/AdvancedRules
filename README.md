@@ -42,7 +42,7 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 - **Trigger**: `tools/orchestrator/trigger_next.py` (scorer → registry)
 - **State Engine**: `tools/orchestrator/state.py` (idempotent transitions; `workflow_state.json`)
 - **Provenance**: `tools/artifacts/hash_index.py` → `memory-bank/artifacts_index.json`
-- **Attach Log**: `tools/rule_attach/detect.py` → `rule_attach_log.json`
+- **Attach Log**: `tools/rule_attach/detect.py` → `logs/rule_attach_log.json`
 - **Observability**: `tools/observability/aggregate.py` → `logs/observability/summary.{json,md}`
 
 ### 5. Documentation (`docs/`)
@@ -121,7 +121,7 @@ cat memory-bank/artifacts_index.json
 
 # Deterministic attach log
 python3 tools/rule_attach/detect.py --dry-run
-python3 tools/rule_attach/detect.py && head -n 1 rule_attach_log.json
+python3 tools/rule_attach/detect.py && head -n 1 logs/rule_attach_log.json
 ```
 
 ## 🎯 What’s Included vs Deferred

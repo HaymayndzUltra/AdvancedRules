@@ -17,7 +17,7 @@
     "format": "python3 -m black . --check --diff",
     "format:fix": "python3 -m black .",
     "docs": "python3 -c \"import docs; docs.build()\"",
-    "docker:build": "docker build -f Dockerfile.worker -t advancedrules-worker .",
+    "docker:build": "docker build -f docker/Dockerfile.worker -t advancedrules-worker .",
     "docker:run": "docker run -it --rm advancedrules-worker",
     "ci": "npm run lint && npm run test && npm run validate"
   },
@@ -58,8 +58,8 @@
     "pyproject.toml",
     "requirements.txt",
     "README.md",
-    "FRAMEWORK_SUMMARY.md",
-    "FOLDER_STRUCTURE.md"
+    "docs/FRAMEWORK_SUMMARY.md",
+    "docs/FOLDER_STRUCTURE.md"
   ],
   "contributors": [
     {

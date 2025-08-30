@@ -61,7 +61,7 @@ python3 performance_monitor.py
 tail -f logs/decisions/latest.json | jq '.decision'
 
 # Review current tasks
-cat action_envelope.json | jq '.candidate'
+cat tools/envelopes/action_envelope.json | jq '.candidate'
 
 # Open AI guidance if needed
 cat next_prompt_for_cursor.md
@@ -78,7 +78,7 @@ Your AI team handles:
 #### Evening: Quality Review (20 minutes)
 ```bash
 # Check quality gates
-tools/decision_scoring/execute_envelope.sh action_envelope.json
+tools/decision_scoring/execute_envelope.sh tools/envelopes/action_envelope.json
 
 # Review performance metrics
 python3 performance_monitor.py
@@ -238,7 +238,9 @@ python3 orchestrate_team.py project.json
 python3 performance_monitor.py
 
 # 4. Check quality gates
-tools/decision_scoring/execute_envelope.sh action_envelope.json
+tools/decision_scoring/execute_envelope.sh tools/envelopes/action_envelope.json
+# 4. Check quality gates
+tools/decision_scoring/execute_envelope.sh tools/envelopes/action_envelope.json
 
 # 5. Generate delivery package
 python3 create_delivery_package.py

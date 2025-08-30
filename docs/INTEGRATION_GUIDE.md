@@ -11,7 +11,7 @@ This guide documents the hand-off implementation of the Decision Scoring + Safe 
 - **Envelope Builder**: Creates execution envelopes based on scoring decisions
 - **Logging System**: Maintains decision logs in `logs/decisions/`; metrics in `logs/decision_metrics.json`
 - **Provenance** (`tools/artifacts/hash_index.py`): content hashes in `memory-bank/artifacts_index.json`
-- **Rule Attach Log** (`tools/rule_attach/detect.py`): append-only `rule_attach_log.json`
+- **Rule Attach Log** (`tools/rule_attach/detect.py`): append-only `logs/rule_attach_log.json`
 - **State Engine** (`tools/orchestrator/state.py`): `workflow_state.json` with idempotent transitions
 
 ### Decision Flow
@@ -74,7 +74,7 @@ Based on decision type:
 
 ### 4. Execute via Safety Runner
 ```bash
-tools/decision_scoring/execute_envelope.sh action_envelope.json
+tools/decision_scoring/execute_envelope.sh tools/envelopes/action_envelope.json
 ```
 
 ## Scoring System
@@ -125,7 +125,7 @@ tools/decision_scoring/execute_envelope.sh action_envelope.json
 
 ### Generated Artifacts
 - Decision Log: `logs/decisions/20250828_142955.json`
-- Execution Envelope: `action_envelope.json`
+- Execution Envelope: `tools/envelopes/action_envelope.json`
 - Safety Runner Output: Command preview without execution
 
 ## Best Practices
@@ -162,7 +162,7 @@ tools/decision_scoring/execute_envelope.sh action_envelope.json
 python3 tools/decision_scoring/score.py tools/decision_scoring/weights.json < tools/decision_scoring/examples/test_input.json | jq '.decision'
 
 # Validate envelope
-tools/decision_scoring/execute_envelope.sh action_envelope.json
+tools/decision_scoring/execute_envelope.sh tools/envelopes/action_envelope.json
 
 # Check artifacts
 ls -la memory-bank/business/
@@ -188,6 +188,6 @@ ls -la memory-bank/business/
 **Decision Log**: `logs/decisions/20250828_142955.json`
 **Metrics**: `logs/decision_metrics.json`
 **Provenance**: `memory-bank/artifacts_index.json`
-**Rule Attach**: `rule_attach_log.json`
+**Rule Attach**: `logs/rule_attach_log.json`
 **Safety**: ✅ DRY_RUN execution confirmed
 **Documentation**: Complete integration guide created

@@ -26,7 +26,7 @@ Modular dirs exist: .cursor/rules/*, tools/*, memory-bank/*, logs/* (verified vi
 Scoring v3: tools/decision_scoring/advanced_score.py, weights.json, thresholds.json, calibration.json, features (exploration/shadow/decision_trace) present
 State engine: tools/orchestrator/state.py reads/writes workflow_state.json with history
 Provenance index: tools/artifacts/hash_index.py writes memory-bank/artifacts_index.json
-Attach log: tools/rule_attach/detect.py writes rule_attach_log.json
+Attach log: tools/rule_attach/detect.py writes logs/rule_attach_log.json
 Observability: tools/observability/aggregate.py reads logs/events.jsonl and writes summaries
 Runner/plugins: tools/run_role.py dispatches to tools/runner/plugins/*
 Uncertain Claims: None material

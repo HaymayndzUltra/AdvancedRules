@@ -1,0 +1,5 @@
+{
+  "kind": "json",
+  "required": ["fit_score", "project_risk", "complexity"]
+}
+

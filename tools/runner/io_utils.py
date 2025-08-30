@@ -31,11 +31,22 @@ def append_decision_trace(trace: Dict[str, Any]) -> None:
 def write_text(path: Path, content: str, role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record  # local import to avoid cycles
     from tools.io.fs import atomic_write_text
+    from tools.schema.validate_memory import validate_memory_artifact
     ensure_parent(path)
+    # Validate memory artifacts before writing (detect by path segment, not just project root)
+    if "memory-bank" in path.parts:
+        ok, err = validate_memory_artifact(path, content)
+        if not ok:
+            raise ValueError(f"Memory validation failed for {path}: {err}")
     atomic_write_text(path, content)
-    append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
+    # Safe relative path for events
     try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
+        rel = str(path.relative_to(ROOT))
+    except Exception:
+        rel = str(path)
+    append_event({"type":"artifact_emitted","role":role or "runner","path":rel})
+    try:
+        if "memory-bank" in path.parts and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
     except Exception:
         pass
@@ -43,11 +54,21 @@ def write_text(path: Path, content: str, role: str | None = None) -> None:
 def touch_json(path: Path, payload: Dict[str, Any], role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record
     from tools.io.fs import atomic_write_text
+    from tools.schema.validate_memory import validate_memory_artifact
     ensure_parent(path)
-    atomic_write_text(path, json.dumps(payload, indent=2))
-    append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
+    content = json.dumps(payload, indent=2)
+    if "memory-bank" in path.parts:
+        ok, err = validate_memory_artifact(path, content)
+        if not ok:
+            raise ValueError(f"Memory validation failed for {path}: {err}")
+    atomic_write_text(path, content)
     try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
+        rel = str(path.relative_to(ROOT))
+    except Exception:
+        rel = str(path)
+    append_event({"type":"artifact_emitted","role":role or "runner","path":rel})
+    try:
+        if "memory-bank" in path.parts and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
     except Exception:
         pass

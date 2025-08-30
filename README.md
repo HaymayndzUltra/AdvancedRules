@@ -53,16 +53,27 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 ## 📁 File Structure
 
 AdvancedRules/
-├── .cursor/rules/ # AI framework rules and personas
-│ ├── orchestrator/ # Core control systems
-│ ├── roles/ # AI persona definitions
-│ ├── domains/ # Domain-specific knowledge
-│ ├── kits/ # Pre-start and Upwork automation
-│ └── utilities/ # Framework utilities and tools
-├── memory-bank/ # AI-generated artifacts and memory
-├── src/ # Application source code
-├── docs/ # Documentation and ADRs
-└── package.json # Node.js project configuration
+├── .cursor/rules/       # AI framework rules and personas
+│   ├── orchestrator/    # Core control systems
+│   ├── roles/          # AI persona definitions
+│   ├── domains/        # Domain-specific knowledge
+│   ├── kits/           # Pre-start and Upwork automation
+│   └── utilities/      # Framework utilities and tools
+├── config/             # Configuration files and state management
+│   ├── workflow_state.json
+│   ├── action_envelope.json
+│   └── decision_candidates.json
+├── docs/               # All documentation and reports
+│   ├── ADRs/           # Architecture Decision Records
+│   └── [framework docs, reports, guides]
+├── scripts/            # Executable scripts and utilities
+│   ├── phase*.sh       # Validation phase scripts
+│   └── end_to_end_simulation.py
+├── memory-bank/        # AI-generated artifacts and memory
+├── tools/              # Core framework tools
+├── tests/              # Test suites
+├── workers/            # Background workers
+└── package.json        # Node.js project configuration
 
 
 ## ⚡ Operational Quickstart (Solo Freelancer Pipeline)

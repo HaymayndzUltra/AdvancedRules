@@ -1,12 +1,27 @@
-# AdvancedRules AI Framework
+# Documentation Directory
 
-A sophisticated AI orchestration framework that coordinates multiple AI personas to deliver high-quality software development outcomes.
+This directory contains all project documentation, technical guides, and architectural documents for the AdvancedRules AI Framework.
 
-## 🎯 Overview
+## 📚 Documentation Contents
 
-AdvancedRules is an intelligent framework that orchestrates specialized AI personas to handle different aspects of software development, from product planning to code generation and quality assurance.
+### Core Documentation
+- `FRAMEWORK_SUMMARY.md` - Complete framework architecture and capabilities overview
+- `FOLDER_STRUCTURE.md` - Detailed project structure and directory organization
+- `VALIDATION_SUITE_STRUCTURE.md` - Validation and testing framework documentation
+- `UPWORK_IMPLEMENTATION_GUIDE.md` - Guide for Upwork freelancer integration
 
-## 🏗️ Architecture
+### Technical Reports
+- `QUEUE_SYSTEM_TEST_REPORT.md` - Queue system implementation and test results
+- `RAG_MERGE_CHECKLIST.md` - RAG (Retrieval-Augmented Generation) integration checklist
+- `TEST_SUMMARY.md` - Comprehensive test suite summary
+- `report1.md` & `report2.md` - Additional technical analysis reports
+- `next_prompt_for_cursor.md` - Cursor AI integration prompts
+
+### ADRs (Architecture Decision Records)
+- Located in `ADRs/` subdirectory
+- Documenting key architectural decisions and their rationale
+
+## 🏗️ Framework Architecture
 
 ### Core Components
 

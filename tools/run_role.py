@@ -14,42 +14,15 @@ EVENTS = ROOT / "logs/events.jsonl"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from tools.artifacts.hash_index import record as index_record  # type: ignore
-from tools.runner.io_utils import append_event
+from tools.runner.io_utils import append_event, write_text, touch_json, write_md_with_frontmatter
 from importlib import import_module
 import time
 from tools.orchestrator.state import transition
 
+
 def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
-def write_text(path: Path, content: str, role: str | None = None) -> None:
-    ensure_parent(path)
-    path.write_text(content, encoding="utf-8")
-    append_event({"type":"artifact_emitted","path":str(path.relative_to(ROOT))})
-    # provenance index for memory-bank artifacts
-    try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
-            index_record(path, role=role or "runner")
-    except Exception:
-        pass
-
-def touch_json(path: Path, payload: Dict, role: str | None = None) -> None:
-    ensure_parent(path)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    append_event({"type":"artifact_emitted","path":str(path.relative_to(ROOT))})
-    try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
-            index_record(path, role=role or "runner")
-    except Exception:
-        pass
-
-def write_md_with_frontmatter(path: Path, frontmatter: Dict, body: str, role: str | None = None) -> None:
-    fm = "---\n" + json.dumps(frontmatter, ensure_ascii=False) + "\n---\n"
-    write_text(path, fm + body, role=role)
-
-def append_event(evt: Dict) -> None:
-    ensure_parent(EVENTS)
-    EVENTS.write_text((EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n", encoding="utf-8")
 
 def run_plugin(module: str, func: str = "run", **kwargs):
     start = time.time()
@@ -59,6 +32,7 @@ def run_plugin(module: str, func: str = "run", **kwargs):
     finally:
         duration = time.time() - start
         append_event({"type":"role_duration","module":module,"seconds":duration})
+
 
 def role_readiness_check() -> None:
     # Placeholder: a no-op that prints which files exist
@@ -71,6 +45,7 @@ def role_readiness_check() -> None:
     ]
     status = {str(p.relative_to(ROOT)): p.exists() and p.stat().st_size > 0 for p in required}
     print(json.dumps({"preflight": status}, indent=2))
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -98,6 +73,7 @@ def main() -> None:
         role_readiness_check()
     else:
         raise SystemExit(f"Unsupported role: {args.role}")
+
 
 if __name__ == "__main__":
     main()

@@ -7,6 +7,8 @@ from typing import Dict, Any
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STATE_FILE = REPO_ROOT / "workflow_state.json"
 
+from tools.io.fs import atomic_write_json
+
 
 def _now() -> float:
     return time.time()
@@ -22,7 +24,7 @@ def load_state() -> Dict[str, Any]:
 
 
 def save_state(data: Dict[str, Any]) -> None:
-    STATE_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    atomic_write_json(STATE_FILE, data)
 
 
 def transition(new_state: str) -> Dict[str, Any]:

@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 EVENTS = ROOT / "logs/events.jsonl"
 OUT_DIR = ROOT / "logs/observability"
 
+
 def load_events():
     items = []
     if not EVENTS.exists():
@@ -21,6 +22,7 @@ def load_events():
         except Exception:
             pass
     return items
+
 
 def aggregate(items):
     counts = defaultdict(int)
@@ -48,6 +50,7 @@ def aggregate(items):
     }
     return {"counts": dict(counts), "durations": duration_stats, "by_correlation": by_corr}
 
+
 def write_reports(summary):
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -60,6 +63,7 @@ def write_reports(summary):
     for mod, stats in summary["durations"].items():
         lines.append(f"- {mod}: count={stats['count']}, total={stats['total_sec']}s, avg={stats['avg_sec']}s")
     (OUT_DIR / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
 
 if __name__ == "__main__":
     items = load_events()

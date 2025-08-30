@@ -146,6 +146,16 @@ def main() -> None:
                 "top": cmd_id,
                 "candidates": [c.get("id") for c in res.get("candidates", [])]
             }) + "\n")
+        try:
+            from tools.runner.io_utils import append_event
+            append_event({
+                "type": "decision_trace",
+                "correlation_id": corr,
+                "decision": res.get("decision"),
+                "candidates": [c.get("id") for c in res.get("candidates", [])]
+            })
+        except Exception:
+            pass
         run_shell(cmd, effective_dry_run)
     else:
         print("No trigger —", dtype)

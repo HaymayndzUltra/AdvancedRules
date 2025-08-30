@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import yaml
 import subprocess
 import sys
 from pathlib import Path
@@ -14,20 +15,16 @@ def load_registry_commands() -> dict:
     mapping = {}
     if not REG.exists():
         return mapping
-    cur_id = None
-    for raw in REG.read_text(encoding="utf-8").splitlines():
-        m_id = re.match(r"^\s*-\s+id:\s*(.+)$", raw)
-        if m_id:
-            cur_id = m_id.group(1).strip()
-            continue
-        m_shell = re.match(r"^\s*shell:\s*(\[.*\])\s*$", raw)
-        if m_shell and cur_id:
-            try:
-                arr = json.loads(m_shell.group(1))
-                mapping[cur_id] = arr
-            except Exception:
-                pass
-            cur_id = None
+    # Load YAML directly (already normalized/validated in preprocessing)
+    data = yaml.safe_load(REG.read_text(encoding="utf-8")) or {}
+    for cmd in data.get("commands", []):
+        cmd_id = cmd.get("id")
+        shell = ((cmd.get("run") or {}).get("shell") or [])
+        if cmd_id and isinstance(shell, list) and all(isinstance(s, str) for s in shell):
+            mapping[cmd_id] = shell
+            # Also map aliases for backward compatibility
+            for al in cmd.get("aliases", []) or []:
+                mapping.setdefault(al, shell)
     return mapping
 
 

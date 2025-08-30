@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "problems": [],
+  "errors": [],
+  "ids": [
+    {
+      "id": "planning-audit",
+      "aliases": [
+        "planning \u2192 audit"
+      ],
+      "label": "Validate plan (Auditor)"
+    },
+    {
+      "id": "audit-verify",
+      "aliases": [
+        "audit\u2192verify",
+        "auditverify"
+      ],
+      "label": "Verify audit (Principal Engineer)"
+    },
+    {
+      "id": "flow-lint",
+      "aliases": [
+        "flow.lint"
+      ],
+      "label": "Lint Flow Definition"
+    },
+    {
+      "id": "flow-run",
+      "aliases": [
+        "flow.run"
+      ],
+      "label": "Execute Flow (Dry-run)"
+    },
+    {
+      "id": "flow-render",
+      "aliases": [
+        "flow.render"
+      ],
+      "label": "Render Flow Diagram"
+    },
+    {
+      "id": "memory-index",
+      "aliases": [
+        "memory.index"
+      ],
+      "label": "Index Content to Memory"
+    },
+    {
+      "id": "memory-query",
+      "aliases": [
+        "memory.query"
+      ],
+      "label": "Query Memory for Context"
+    },
+    {
+      "id": "memory-doctor",
+      "aliases": [
+        "memory.doctor"
+      ],
+      "label": "Run Memory Diagnostics"
+    }
+  ]
+}

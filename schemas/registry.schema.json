@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/registry.schema.json",
+  "title": "Command Registry",
+  "type": "object",
+  "required": ["version", "commands"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "one_step_policy": { "type": "boolean" },
+        "min_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "run"],
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "aliases": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "role_from": { "type": "string" },
+          "trigger": { "type": "string" },
+          "run": {
+            "type": "object",
+            "required": ["shell"],
+            "properties": {
+              "shell": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              }
+            },
+            "additionalProperties": true
+          },
+          "requires": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "states_any_of": { "type": "array", "items": { "type": "string" } },
+              "completed_steps_all_of": { "type": "array", "items": { "type": "string" } },
+              "gates_passed_all_of": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "contexts": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "must_exist": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "emits": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sets_state": { "type": ["string", "null"] },
+              "add_completed_step": { "type": ["string", "null"] }
+            }
+          },
+          "ui": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "label": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

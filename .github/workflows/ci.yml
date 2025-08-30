@@ -89,9 +89,10 @@ jobs:
       
       - name: Verify arx CLI installation
         run: |
-          # Check if arx command is available
-          which arx || echo "arx command not found, using python module"
-          python -m cli.main --version || echo "CLI module check"
+          # Verify arx command is installed and working
+          which arx
+          arx --version || echo "Version command may not be implemented"
+          arx --help
       
       - name: Run unit tests
         run: |

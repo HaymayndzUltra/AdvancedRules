@@ -39,6 +39,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"))
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--enforce-gates", action="store_true", help="Validate gates/contexts before execution")
+    ap.add_argument("--print-gates", action="store_true", help="Print gate evaluation results")
     args = ap.parse_args()
 
     mapping = load_registry_commands()
@@ -69,6 +71,22 @@ def main() -> None:
         if cmd_id not in mapping:
             print(f"No registry mapping for id: {cmd_id}")
             return
+        # Gate enforcement
+        if args.enforce_gates:
+            sys.path.insert(0, str(ROOT))
+            try:
+                from tools.gates.gate_evaluator import evaluate_for_command
+                gr = evaluate_for_command(cmd_id)
+            except Exception as e:
+                print(f"Gate evaluator error: {e}")
+                return
+            if args.print_gates:
+                print(json.dumps({"gate_check": {"id": gr.id, "passed": gr.passed, "reasons": gr.reasons}}, indent=2))
+            if not gr.passed:
+                print("Refusing execution due to failing gates/contexts:")
+                for r in gr.reasons:
+                    print(" -", r)
+                return
         run_shell(mapping[cmd_id], args.dry_run)
     else:
         print("No trigger —", dtype)

@@ -16,6 +16,15 @@ def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
 
+def _validate_if_memory_json(path: Path) -> None:
+    try:
+        if str(path).startswith(str(MB)) and path.suffix.lower() == ".json" and path.exists():
+            from tools.memory.validator import validate_memory_file
+            validate_memory_file(path)
+    except Exception as e:
+        raise
+
+
 def append_event(evt: Dict[str, Any]) -> None:
     ensure_parent(EVENTS)
     # Ensure correlation_id present
@@ -34,6 +43,7 @@ def write_text(path: Path, content: str, role: str | None = None) -> None:
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
+            _validate_if_memory_json(path)
     except Exception:
         pass
 
@@ -46,6 +56,7 @@ def touch_json(path: Path, payload: Dict[str, Any], role: str | None = None) -> 
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
+            _validate_if_memory_json(path)
     except Exception:
         pass
 

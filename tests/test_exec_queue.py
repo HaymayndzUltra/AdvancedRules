@@ -83,6 +83,12 @@ commands:
 	# Mock the ROOT path for the worker
 	monkeypatch.setattr(worker, 'ROOT', tmp_path)
 	
+	# Also need to mock the trigger_next module's paths since worker imports from it
+	from tools.orchestrator import trigger_next
+	monkeypatch.setattr(trigger_next, 'ROOT', tmp_path)
+	monkeypatch.setattr(trigger_next, 'REG', tmp_path / ".cursor/commands/registry.yaml")
+	monkeypatch.setattr(trigger_next, 'REG_SHA', tmp_path / ".cursor/commands/registry.sha256")
+	
 	# Mock various functions to avoid actual execution
 	with patch.object(worker, 'verify_registry_checksum', return_value=(True, "OK")), \
 	     patch.object(worker, 'evaluate_gates', return_value={"results": []}), \

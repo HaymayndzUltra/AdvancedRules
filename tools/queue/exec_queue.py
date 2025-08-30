@@ -5,7 +5,8 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
-from tools.io.fs import ensure_parent, append_line_atomic, file_lock
+from tools.io.fs import ensure_parent, file_lock
+import os
 
 ROOT = Path(__file__).resolve().parents[2]
 QUEUE_DIR = ROOT / 'exec_queue'
@@ -47,7 +48,15 @@ def enqueue_task(cmd_id: str, correlation_id: str, payload: Dict[str, Any] | Non
 		"payload": payload,
 	}
 	with file_lock(QUEUE_FILE):
-		append_line_atomic(QUEUE_FILE, json.dumps(rec))
+		# Don't use append_line_atomic here as it tries to acquire the lock again
+		with QUEUE_FILE.open("a", encoding="utf-8") as f:
+			line = json.dumps(rec)
+			f.write(line if line.endswith("\n") else line + "\n")
+			f.flush()
+			try:
+				os.fsync(f.fileno())
+			except Exception:
+				pass
 	return {"status": "queued", "correlation_id": correlation_id, "cmd_id": cmd_id}
 
 
@@ -55,4 +64,12 @@ def mark_processed(correlation_id: str, result: Dict[str, Any] | None = None) ->
 	ensure_parent(PROCESSED_FILE)
 	res = {"ts": time.time(), "correlation_id": correlation_id, **(result or {})}
 	with file_lock(PROCESSED_FILE):
-		append_line_atomic(PROCESSED_FILE, json.dumps(res))
+		# Don't use append_line_atomic here as it tries to acquire the lock again
+		with PROCESSED_FILE.open("a", encoding="utf-8") as f:
+			line = json.dumps(res)
+			f.write(line if line.endswith("\n") else line + "\n")
+			f.flush()
+			try:
+				os.fsync(f.fileno())
+			except Exception:
+				pass

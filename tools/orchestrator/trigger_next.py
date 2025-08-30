@@ -67,10 +67,18 @@ def run_shell(cmd: list, dry_run: bool) -> None:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(
+        description=(
+            "Trigger orchestrator — maps scoring output to registry commands.\n"
+            "Safety: Dry-run by default (set ALLOW_RUN=1 to execute).\n"
+            "Gates: Enforced by default; use --no-gates to skip.\n"
+            "Allowlist: arx; python3 tools/run_role.py only."
+        )
+    )
     ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"))
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--enforce-gates", action="store_true", help="Validate gates/contexts before execution")
+    ap.add_argument("--dry-run", action="store_true", help="Dry-run mode (default unless ALLOW_RUN=1)")
+    ap.add_argument("--enforce-gates", action="store_true", help="Validate gates/contexts before execution (default via --no-gates off)")
+    ap.add_argument("--no-gates", action="store_true", help="Do not enforce gates/contexts (not recommended)")
     ap.add_argument("--print-gates", action="store_true", help="Print gate evaluation results")
     ap.add_argument("--sandbox", action="store_true", help="Run commands in sandbox (placeholder)")
     args = ap.parse_args()
@@ -109,7 +117,8 @@ def main() -> None:
             print(f"Refusing execution: {msg}")
             return
         # Gate enforcement
-        if args.enforce_gates:
+        enforce = (not args.no_gates) or args.enforce_gates
+        if enforce:
             sys.path.insert(0, str(ROOT))
             try:
                 from tools.gates.gate_evaluator import evaluate_for_command

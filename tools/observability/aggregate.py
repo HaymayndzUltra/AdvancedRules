@@ -5,15 +5,15 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-EVENTS = ROOT / "logs/events.jsonl"
+DEFAULT_EVENTS = ROOT / "logs/events.jsonl"
 OUT_DIR = ROOT / "logs/observability"
 
 
-def load_events():
+def load_events(events_path: Path):
     items = []
-    if not EVENTS.exists():
+    if not events_path.exists():
         return items
-    for line in EVENTS.read_text().splitlines():
+    for line in events_path.read_text().splitlines():
         line = line.strip()
         if not line:
             continue
@@ -66,7 +66,17 @@ def write_reports(summary):
 
 
 if __name__ == "__main__":
-    items = load_events()
+    import argparse
+    ap = argparse.ArgumentParser(
+        description=(
+            "Aggregate events.jsonl into summary reports.\n"
+            "Includes correlation_id metrics and decision trace summaries."
+        )
+    )
+    ap.add_argument("--events", default=str(DEFAULT_EVENTS), help="Path to events.jsonl (correlation-aware)")
+    args = ap.parse_args()
+    events_path = Path(args.events)
+    items = load_events(events_path)
     summary = aggregate(items)
     write_reports(summary)
     print(json.dumps({"events": len(items)}, indent=2))

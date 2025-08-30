@@ -1,41 +1,41 @@
 {
   "counts": {
-    "artifact_emitted": 304,
-    "role_duration": 150,
-    "decision_trace": 11
+    "artifact_emitted": 326,
+    "role_duration": 160,
+    "decision_trace": 17
   },
   "durations": {
     "tools.runner.plugins.product_owner": {
-      "count": 35,
-      "total_sec": 0.463583,
-      "avg_sec": 0.013245
+      "count": 37,
+      "total_sec": 0.510945,
+      "avg_sec": 0.013809
     },
     "tools.runner.plugins.planning": {
-      "count": 34,
-      "total_sec": 0.157106,
-      "avg_sec": 0.004621
+      "count": 36,
+      "total_sec": 0.184113,
+      "avg_sec": 0.005114
     },
     "tools.runner.plugins.auditor": {
-      "count": 28,
-      "total_sec": 0.063204,
-      "avg_sec": 0.002257
+      "count": 30,
+      "total_sec": 0.072916,
+      "avg_sec": 0.002431
     },
     "tools.runner.plugins.principal_engineer": {
-      "count": 53,
-      "total_sec": 0.094946,
-      "avg_sec": 0.001791
+      "count": 57,
+      "total_sec": 0.116184,
+      "avg_sec": 0.002038
     }
   },
   "by_correlation": {
     "unknown": {
-      "events": 449,
-      "artifacts": 299,
+      "events": 479,
+      "artifacts": 319,
       "last_decision": null,
       "candidates": []
     },
     "test-corr-123": {
-      "events": 13,
-      "artifacts": 5,
+      "events": 19,
+      "artifacts": 7,
       "last_decision": {
         "type": "NEXT_STEP"
       },
@@ -44,7 +44,7 @@
       ]
     },
     "2d112c832382": {
-      "events": 3,
+      "events": 5,
       "artifacts": 0,
       "last_decision": {
         "type": "OPTION_SET",

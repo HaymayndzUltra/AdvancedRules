@@ -135,6 +135,8 @@ Roots: cli, tools, tools/io, tools/orchestrator, tools/runner, tools/observabili
 - 📄 INTEGRATION_GUIDE.md
 - 📄 METRICS_RUNBOOK.md
 - 📄 README.md
+- 📄 README_POLICY.md
+- 📄 SYSTEM_INVENTORY.md
 - 📄 VALIDATION_SUITE_STRUCTURE.md
 - 📄 governance_policy.md
 - 📄 instrumentation_policy.md
@@ -147,6 +149,7 @@ Roots: cli, tools, tools/io, tools/orchestrator, tools/runner, tools/observabili
 - 📄 ci.yml
 - 📄 governance.yml
 - 📄 rag-check.yml
+- 📄 readme-sync-check.yml
 
 ## scripts
 - 📄 README.md

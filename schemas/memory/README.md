@@ -4,6 +4,7 @@
 This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 ## Contents
+- 📄 **README.md**
 - 📄 **capacity_report.schema.json**
 - 📄 **client_score.schema.json**
 - 📄 **generic_json.schema.json**
@@ -12,3 +13,6 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 <!-- MANUAL-NOTES -->
 <!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+

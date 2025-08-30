@@ -4,6 +4,7 @@
 This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 ## Contents
+- 📄 **README.md**
 - 📄 **candidates.schema.json**
 - 📄 **events_envelope.schema.json**
 - 📄 **flow_schema.json**
@@ -16,3 +17,6 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 <!-- MANUAL-NOTES -->
 <!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+

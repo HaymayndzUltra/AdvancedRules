@@ -9,6 +9,8 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 - 📄 **INTEGRATION_GUIDE.md**
 - 📄 **METRICS_RUNBOOK.md**
 - 📄 **README.md**
+- 📄 **README_POLICY.md**
+- 📄 **SYSTEM_INVENTORY.md**
 - 📄 **VALIDATION_SUITE_STRUCTURE.md**
 - 📄 **governance_policy.md**
 - 📄 **instrumentation_policy.md**
@@ -18,3 +20,6 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 <!-- MANUAL-NOTES -->
 <!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+

@@ -1,20 +1,24 @@
-# memory-bank/
+<!-- AUTO-GENERATED: docs_readme_sync v1 -->
+# memory-bank
 
-- Purpose: Persistent artifacts produced by roles and pipeline steps.
+This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
-## Key paths
-- plan/: planning artifacts (client_brief.md, product_backlog.yaml, acceptance_criteria.json, Action_Plan.md, technical_plan.md, task_breakdown.yaml, Summary_Report.md, Validation_Report.md, Final_Implementation_Plan.md)
-- upwork/: Upwork readiness (offer_status.json)
-- business/: business inputs (client_score.json, capacity_report.md, pricing.ratecard.yaml, estimate_brief.md)
-- artifacts_index.json: provenance index (auto-updated)
+## Contents
+- 📄 **README.md**
+- 📄 **artifacts_index.json**
+- 📄 **gate_results.json**
+- 📄 **mdc_lint_report.json**
+- 📄 **mdc_lint_report.json.lock**
+- 📄 **postrun_consistency.json**
+- 📄 **postrun_consistency.json.lock**
+- 📄 **rules_index.json**
+- 📄 **rules_index.json.1756588935.bak**
+- 📄 **rules_index.json.1756588942.bak**
+- 📄 **rules_index.json.lock**
+- 📁 **business**
+- 📁 **checklists**
+- 📁 **plan**
+- 📁 **upwork**
 
-## Related docs
-- Validation suite overview: `docs/VALIDATION_SUITE_STRUCTURE.md`
-- Test reports: `docs/reports/TEST_SUMMARY.md`, `docs/reports/QUEUE_SYSTEM_TEST_REPORT.md`
-
-## Notes
-- Files are auto-indexed with SHA-256 when written by the runner.
-- Validate artifact schemas:
-```bash
-python3 tools/schema/validate_artifacts.py
-```
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->

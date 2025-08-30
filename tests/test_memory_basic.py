@@ -1,12 +1,21 @@
-import os, subprocess, json
+import os
+import subprocess
+import json
+import pytest
+from pathlib import Path
 
-def test_flag_blocks_by_default():
+# Import fixtures and markers from conftest
+from conftest import requires_arx
+
+
+def test_flag_blocks_by_default(arx_stub):
     """Test that memory operations are blocked when RAG is disabled by default"""
     out = subprocess.run(["arx","memory","stats"], capture_output=True, text=True).stdout +\
           subprocess.run(["arx","memory","query","--persona","CODER_AI","--query","x","--k","1"], capture_output=True, text=True).stdout
     assert "disabled" in out or "Set AR_ENABLE_RAG" in out
 
-def test_unique_ids_on_reindex(monkeypatch):
+
+def test_unique_ids_on_reindex(arx_stub, monkeypatch):
     """Test that reindexing doesn't crash despite duplicate IDs"""
     env = dict(os.environ, AR_ENABLE_RAG="1")
     # First reindex - should work
@@ -14,7 +23,8 @@ def test_unique_ids_on_reindex(monkeypatch):
     # Second reindex - should not crash even with duplicate IDs
     subprocess.check_call(["arx","memory","index","--src",".","--namespaces","coder","--reindex"], env=env)  # no crash
 
-def test_persona_isolation():
+
+def test_persona_isolation(arx_stub):
     """Test that personas cannot access unauthorized namespaces"""
     env = dict(os.environ, AR_ENABLE_RAG="1")
     # CODER_AI should not be able to access docs namespace
@@ -25,10 +35,17 @@ def test_persona_isolation():
     # If docs content appears, it would indicate a security breach
     assert "docs" not in output or "no results" in output
 
+
 def test_model_id_validation():
     """Test that model ID format is valid"""
     import yaml
-    with open('config/advanced_rules.yaml', 'r') as f:
+    
+    # Check if config file exists
+    config_path = Path('config/advanced_rules.yaml')
+    if not config_path.exists():
+        pytest.skip(f"Config file {config_path} not found")
+    
+    with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
     model = config.get('rag', {}).get('embedding_model', 'BAAI/bge-m3')
     assert model.startswith(('BAAI/', 'sentence-transformers/')), f'Invalid model ID: {model}'

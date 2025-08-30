@@ -6,10 +6,13 @@ import yaml
 import json
 import subprocess
 import sys
+import os
+import hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 REG = ROOT / ".cursor/commands/registry.yaml"
+REG_SHA = ROOT / ".cursor/commands/registry.sha256"
 
 
 def _normalize_id(raw_id: str) -> str:
@@ -56,10 +59,56 @@ def run_shell(cmd: list, dry_run: bool) -> None:
     subprocess.check_call(cmd, cwd=str(ROOT))
 
 
+def should_dry_run(cli_dry_run: bool) -> bool:
+    return os.getenv("ALLOW_RUN", "0") != "1" or bool(cli_dry_run)
+
+
+def compute_file_sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def verify_registry_checksum() -> (bool, str):
+    if not REG.exists():
+        return False, "registry.yaml missing"
+    if not REG_SHA.exists():
+        return False, "registry.sha256 missing (run scripts/update_registry_checksum.py)"
+    try:
+        expected = REG_SHA.read_text(encoding="utf-8").strip().split()[0]
+    except Exception:
+        return False, "invalid registry.sha256 format"
+    actual = compute_file_sha256(REG)
+    return (actual == expected, f"checksum {'ok' if actual == expected else 'mismatch'}")
+
+
+ALLOWED_COMMANDS = {
+    "arx": "any",
+    "python3:tools/run_role.py": "only",
+}
+
+
+def is_command_allowed(cmd: list) -> (bool, str):
+    if not cmd:
+        return False, "empty command"
+    program = cmd[0]
+    if program == "arx":
+        return True, "ok"
+    if program == "python3" and len(cmd) >= 2 and str(cmd[1]).startswith("tools/"):
+        # Restrict to run_role.py by default
+        if str(cmd[1]).endswith("run_role.py"):
+            return True, "ok"
+        return False, f"python3 allowed only for tools/run_role.py (got {cmd[1]})"
+    return False, f"program '{program}' not in allowlist"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"))
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--sandbox", action="store_true", help="Enable sandbox mode (no-op placeholder)")
     args = ap.parse_args()
 
     mapping = load_registry_commands()
@@ -98,7 +147,24 @@ def main() -> None:
             print("Refusing execution: gate checks failed for", cmd_id)
             print(json.dumps(gate_entry, indent=2))
             return
-        run_shell(mapping[cmd_id], args.dry_run)
+        # Verify registry checksum
+        ok, msg = verify_registry_checksum()
+        if not ok:
+            print("Refusing execution: registry checksum verification failed -", msg)
+            return
+        # Allowlist enforcement
+        allowed, reason = is_command_allowed(mapping[cmd_id])
+        if not allowed:
+            print("Refusing execution: command not allowed -", reason)
+            return
+        # Dry-run default policy
+        eff_dry = should_dry_run(args.dry_run)
+        if eff_dry and os.getenv("ALLOW_RUN", "0") != "1":
+            print("Dry-run enforced by default. Set ALLOW_RUN=1 to execute.")
+        if args.sandbox and not eff_dry:
+            # Placeholder sandbox note
+            print("SANDBOX MODE enabled: executing within sandbox profile (placeholder)")
+        run_shell(mapping[cmd_id], eff_dry)
     else:
         print("No trigger —", dtype)
 

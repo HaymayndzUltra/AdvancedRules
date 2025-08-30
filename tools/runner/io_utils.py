@@ -3,38 +3,117 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Dict, Any
+import uuid
 
 ROOT = Path(__file__).resolve().parents[2]
 MB = ROOT / "memory-bank"
 EVENTS = ROOT / "logs/events.jsonl"
+TRACES = ROOT / "logs/decision_traces.jsonl"
 
 def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
-def append_event(evt: Dict[str, Any]) -> None:
+def append_event(evt: Dict[str, Any], redact: bool = True) -> None:
+    from tools.io.fs import append_line_atomic
+    from tools.instrumentation.redactor import redact_event
+    import os
+    import time
+    
     ensure_parent(EVENTS)
-    content = (EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n"
-    EVENTS.write_text(content, encoding="utf-8")
+    
+    # Add trace_id and correlation_id
+    if "correlation_id" not in evt:
+        evt["correlation_id"] = os.environ.get('CORRELATION_ID', str(uuid.uuid4()))
+    if "trace_id" not in evt:
+        evt["trace_id"] = os.environ.get('TRACE_ID', evt["correlation_id"])
+    if "timestamp" not in evt:
+        evt["timestamp"] = time.time()
+    
+    # Apply redaction if enabled
+    if redact and os.environ.get('ENABLE_REDACTION', 'true').lower() == 'true':
+        evt = redact_event(evt)
+    
+    append_line_atomic(EVENTS, json.dumps(evt))
+
+
+def append_decision_trace(trace: Dict[str, Any], redact: bool = True) -> None:
+    from tools.io.fs import append_line_atomic
+    from tools.instrumentation.redactor import redact_event
+    import os
+    import time
+    
+    ensure_parent(TRACES)
+    
+    # Add trace_id and correlation_id
+    if "correlation_id" not in trace:
+        trace["correlation_id"] = os.environ.get('CORRELATION_ID', str(uuid.uuid4()))
+    if "trace_id" not in trace:
+        trace["trace_id"] = os.environ.get('TRACE_ID', trace["correlation_id"])
+    if "timestamp" not in trace:
+        trace["timestamp"] = time.time()
+    
+    # Apply redaction if enabled
+    if redact and os.environ.get('ENABLE_REDACTION', 'true').lower() == 'true':
+        trace = redact_event(trace)
+    
+    append_line_atomic(TRACES, json.dumps(trace))
 
 def write_text(path: Path, content: str, role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record  # local import to avoid cycles
+    from tools.io.fs import atomic_write_text
+    from tools.schema.validate_memory import validate_memory_artifact
+    import os
+    
     ensure_parent(path)
-    path.write_text(content, encoding="utf-8")
-    append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
+    # Validate memory artifacts before writing (detect by path segment, not just project root)
+    if "memory-bank" in path.parts:
+        ok, err = validate_memory_artifact(path, content)
+        if not ok:
+            raise ValueError(f"Memory validation failed for {path}: {err}")
+    atomic_write_text(path, content)
+    
+    # Safe relative path for events
     try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
-            index_record(path, role=role or "runner")
+        rel = str(path.relative_to(ROOT))
+    except Exception:
+        rel = str(path)
+    
+    # Get correlation ID from environment
+    correlation_id = os.environ.get('CORRELATION_ID')
+    append_event({"type":"artifact_emitted","role":role or "runner","path":rel, "correlation_id": correlation_id})
+    
+    try:
+        if "memory-bank" in path.parts and path.exists() and path.stat().st_size:
+            index_record(path, role=role or "runner", correlation_id=correlation_id)
     except Exception:
         pass
 
 def touch_json(path: Path, payload: Dict[str, Any], role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record
+    from tools.io.fs import atomic_write_text
+    from tools.schema.validate_memory import validate_memory_artifact
+    import os
+    
     ensure_parent(path)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
+    content = json.dumps(payload, indent=2)
+    if "memory-bank" in path.parts:
+        ok, err = validate_memory_artifact(path, content)
+        if not ok:
+            raise ValueError(f"Memory validation failed for {path}: {err}")
+    atomic_write_text(path, content)
+    
     try:
-        if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
-            index_record(path, role=role or "runner")
+        rel = str(path.relative_to(ROOT))
+    except Exception:
+        rel = str(path)
+    
+    # Get correlation ID from environment
+    correlation_id = os.environ.get('CORRELATION_ID')
+    append_event({"type":"artifact_emitted","role":role or "runner","path":rel, "correlation_id": correlation_id})
+    
+    try:
+        if "memory-bank" in path.parts and path.exists() and path.stat().st_size:
+            index_record(path, role=role or "runner", correlation_id=correlation_id)
     except Exception:
         pass
 

@@ -3,6 +3,7 @@ import json
 import sys
 import time
 import argparse
+from pathlib import Path
 
 
 def clamp01(x):
@@ -74,10 +75,18 @@ def decide(scored, W):
 
 
 def run_json_mode(weights_path):
-    W = read_weights(weights_path)
+    # Route legacy input through adapter to canonical then back to legacy decision flow
     data = json.load(sys.stdin)
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+        from tools.decision_scoring.adapter import adapt_candidates
+        canon = adapt_candidates(data)
+        # Map back to legacy shape for downstream functions
+        cands = [{"id": c["id"], "action_type": c["action_type"], "metrics": c["scores"]} for c in canon]
+    except Exception:
+        cands = data.get("candidates", [])
+    W = read_weights(weights_path)
     ctx = data.get("context", {})
-    cands = data.get("candidates", [])
     out = {
         "context_summary": ctx.get("summary", ""),
         "candidates": [],
@@ -86,7 +95,20 @@ def run_json_mode(weights_path):
     }
     scored = []
     for c in cands:
-        subs = score_candidate(c, W)
+        # Legacy metrics → canonical scores mapping
+        metrics = c.get("metrics", {})
+        if not metrics and "scores" in c:
+            # Already canonical
+            subs = {
+                "intent": clamp01(c["scores"].get("intent", 0)),
+                "state": clamp01(c["scores"].get("state", 0)),
+                "evidence": clamp01(c["scores"].get("evidence", 0)),
+                "recency": clamp01(c["scores"].get("recency", 0)),
+                "pref": clamp01(c["scores"].get("pref", 0)),
+                "final": clamp01(c["scores"].get("final", 0)),
+            }
+        else:
+            subs = score_candidate(c, W)
         out["candidates"].append(
             {
                 "id": c.get("id", ""),

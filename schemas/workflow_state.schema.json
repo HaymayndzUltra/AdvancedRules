@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/workflow_state.schema.json",
+  "title": "AdvancedRules Workflow State",
+  "type": "object",
+  "required": ["schema_version", "state", "history", "last_updated"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "prev_state": { "type": ["string", "null"] },
+    "state": { "type": ["string", "null"] },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ts", "from", "to"],
+        "properties": {
+          "ts": { "type": "number" },
+          "from": { "type": ["string", "null"] },
+          "to": { "type": ["string", "null"] },
+          "correlation_id": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "tasks": { "type": "array" },
+    "last_updated": { "type": "string" },
+    "total_tasks": { "type": ["number", "integer"] }
+  },
+  "additionalProperties": true
+}

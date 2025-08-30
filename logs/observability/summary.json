@@ -1,28 +1,37 @@
 {
   "counts": {
-    "artifact_emitted": 143,
-    "role_duration": 70
+    "artifact_emitted": 170,
+    "role_duration": 85
   },
   "durations": {
     "tools.runner.plugins.product_owner": {
-      "count": 19,
-      "total_sec": 0.18587,
-      "avg_sec": 0.009783
+      "count": 22,
+      "total_sec": 0.252512,
+      "avg_sec": 0.011478
     },
     "tools.runner.plugins.planning": {
-      "count": 18,
-      "total_sec": 0.073153,
-      "avg_sec": 0.004064
+      "count": 21,
+      "total_sec": 0.082843,
+      "avg_sec": 0.003945
     },
     "tools.runner.plugins.auditor": {
-      "count": 12,
-      "total_sec": 0.019078,
-      "avg_sec": 0.00159
+      "count": 15,
+      "total_sec": 0.02384,
+      "avg_sec": 0.001589
     },
     "tools.runner.plugins.principal_engineer": {
-      "count": 21,
-      "total_sec": 0.031682,
-      "avg_sec": 0.001509
+      "count": 27,
+      "total_sec": 0.040461,
+      "avg_sec": 0.001499
+    }
+  },
+  "by_correlation": {
+    "corr-test-123": {
+      "event_count": 1,
+      "trace_count": 1,
+      "types": [
+        "artifact_emitted"
+      ]
     }
   }
 }

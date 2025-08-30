@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, math, time
+import json, math, time, sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 ROOT = Path(__file__).resolve().parents[2]
 CONF = ROOT / "tools/decision_scoring"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 DEFAULT_WEIGHTS = {"intent":0.30, "state":0.25, "evidence":0.20, "recency":0.15, "pref":0.10, "cost":-0.10, "risk_penalty":-0.20}
 DEFAULT_THRESH  = {"conf_high":0.75, "conf_mid":0.55, "eps_gap":0.05}
@@ -43,6 +45,16 @@ def score_candidates(candidates: List[Dict[str, Any]],
                      explore: bool = False,
                      eps: float = 0.05,
                      shadow: bool = False) -> Dict[str, Any]:
+    # Adapt/validate inputs to canonical schema
+    try:
+        from tools.decision_scoring.adapter import adapt_candidates, validate_canonical
+        candidates = adapt_candidates(candidates)
+        ok, errors = validate_canonical(candidates)
+        if not ok:
+            return {"context_summary":"","candidates":[],"decision":{"type":"ASK_CLARIFY","reason":"invalid candidates schema","errors":errors}}
+    except Exception:
+        # Continue without validation if adapter not available
+        candidates = candidates
     W, T, C = load_config()
     alpha, beta = float(C["alpha"]), float(C["beta"])
     conf_high, conf_mid, eps_gap = float(T["conf_high"]), float(T["conf_mid"]), float(T["eps_gap"])

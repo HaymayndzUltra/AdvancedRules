@@ -52,13 +52,34 @@ def append_event(evt: Dict) -> None:
     EVENTS.write_text((EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n", encoding="utf-8")
 
 def run_plugin(module: str, func: str = "run", **kwargs):
+    """Run plugin with safety wrapper for timeouts and idempotency."""
     start = time.time()
     mod = import_module(module)
-    try:
-        getattr(mod, func)(**kwargs)
-    finally:
-        duration = time.time() - start
-        append_event({"type":"role_duration","module":module,"seconds":duration})
+    
+    # Check if safety mode is enabled
+    use_wrapper = os.environ.get('PLUGIN_SAFE_MODE', '1') == '1'
+    timeout_seconds = int(os.environ.get('PLUGIN_TIMEOUT', '300'))
+    
+    if use_wrapper:
+        from tools.plugins.wrapper import run_plugin_safe
+        try:
+            result = run_plugin_safe(
+                plugin_id=module.split('.')[-1],
+                func=getattr(mod, func),
+                timeout_seconds=timeout_seconds,
+                **kwargs
+            )
+            append_event({"type":"plugin_wrapped","module":module,"result":str(result)})
+        except Exception as e:
+            append_event({"type":"plugin_error","module":module,"error":str(e)})
+            raise
+    else:
+        # Legacy direct execution
+        try:
+            getattr(mod, func)(**kwargs)
+        finally:
+            duration = time.time() - start
+            append_event({"type":"role_duration","module":module,"seconds":duration})
 
 def role_readiness_check() -> None:
     # Placeholder: a no-op that prints which files exist

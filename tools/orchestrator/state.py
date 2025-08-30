@@ -3,6 +3,8 @@ import json
 import time
 from pathlib import Path
 from typing import Dict, Any
+import uuid
+from datetime import datetime
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STATE_FILE = REPO_ROOT / "workflow_state.json"
@@ -22,24 +24,30 @@ def load_state() -> Dict[str, Any]:
 
 
 def save_state(data: Dict[str, Any]) -> None:
-    STATE_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    from tools.io.fs import atomic_write_text
+    data.setdefault("schema_version", "1.0.0")
+    data["last_updated"] = datetime.utcnow().isoformat()
+    atomic_write_text(STATE_FILE, json.dumps(data, indent=2))
 
 
-def transition(new_state: str) -> Dict[str, Any]:
+def transition(new_state: str, correlation_id: str | None = None) -> Dict[str, Any]:
     """Idempotent transition. Writes only when the state changes."""
     data = load_state()
     cur = data.get("state")
     ts = _now()
+    if not correlation_id:
+        correlation_id = str(uuid.uuid4())
     if cur != new_state:
         data["prev_state"] = cur
         data["state"] = new_state
         data.setdefault("history", []).append({
             "ts": ts,
             "from": cur,
-            "to": new_state
+            "to": new_state,
+            "correlation_id": correlation_id
         })
         save_state(data)
-    return {"prev": cur, "new": data.get("state"), "ts": ts}
+    return {"prev": cur, "new": data.get("state"), "ts": ts, "correlation_id": correlation_id}
 
 
 if __name__ == "__main__":

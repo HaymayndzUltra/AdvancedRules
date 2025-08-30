@@ -1,0 +1,1290 @@
+{
+  "total_files": 77,
+  "files_with_issues": 28,
+  "total_issues": 28,
+  "errors": 27,
+  "warnings": 1,
+  "issues": [
+    {
+      "file": ".cursor/rules/testing-quality-assurance.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/prestart-upwork-integration.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/CURSOR USAGE STANDARDS \u2013 READ THIS BEFORE TOUCHING CODE.mdc",
+      "line": 1,
+      "severity": "warning",
+      "category": "frontmatter",
+      "message": "Missing 'description' field in frontmatter"
+    },
+    {
+      "file": ".cursor/rules/ai-personas-reference.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/code-quality-standards.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/development-workflow.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/decision-scoring-orchestration.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/project-overview.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/security-best-practices.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/project-management-workflow.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domain-development.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/cpp.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/python.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/fastapi.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/convex.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/node-express.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/csharp-dotnet.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/svelte.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/react.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/vue.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/tailwind.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/nextjs.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/unified-code-formatting.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/rules-effectiveness.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/medusa.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/typescript.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/beefreeSDK.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/mobile/nativescript.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    }
+  ],
+  "metadata": {
+    ".cursor/rules/decision_scoring.mdc": {
+      "description": "Decision scoring rubric: intent/state/evidence/recency/pref with thresholds & gates",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/testing-quality-assurance.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/registry_policy_guard.mdc": {
+      "description": "Guard: dapat naka one_step_policy: true ang registry.",
+      "globs": [
+        ".cursor/commands/registry.yaml"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": [
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/prestart-upwork-integration.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/",
+        "memory-bank/upwork/",
+        "memory-bank/plan/",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/capacity_report.md",
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/plan/proposal.md",
+        "memory-bank/upwork/offer_status.json"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/task_decomposer.mdc": {
+      "description": "Rules for task decomposition and planning pipeline activation",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/next_step_suggester.mdc": {
+      "description": "Post-run suggester na strict: goal-first, one-step-only, at evidence-gated.\n",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": true,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": [
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/CURSOR USAGE STANDARDS \u2013 READ THIS BEFORE TOUCHING CODE.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": true,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/ai-personas-reference.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/code-quality-standards.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/development-workflow.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/",
+        "memory-bank/plan/proposal.md",
+        "memory-bank/plan/"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/orchestrator_postrun.mdc": {
+      "description": "Orchestrator post-run suggester: prepare candidates, call scorer tool, apply gates",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [
+        "results"
+      ],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/decision_scoring_tool.mdc": {
+      "description": "Invoke local scorer tool to rank candidates deterministically",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/decision-scoring-orchestration.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/artifacts_index.json"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/project-overview.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/security-best-practices.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/planning_output_presence.mdc": {
+      "description": "Ping kapag present ang Action_Plan.md (planning output).",
+      "globs": [
+        "memory-bank/plan/Action_Plan.md"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/Action_Plan.md",
+        "Action_Plan.md"
+      ],
+      "actions": [
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/decision_gate.mdc": {
+      "description": "Decision gate with neutral treatment of COMMAND_TRIGGER vs NATURAL_STEP",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/project-management-workflow.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/",
+        "memory-bank/plan/proposal.md",
+        "memory-bank/plan/",
+        "memory-bank/reports/",
+        "memory-bank/upwork/"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/audit_output_presence.mdc": {
+      "description": "Ping kapag present ang Summary_Report.md (audit output).",
+      "globs": [
+        "memory-bank/plan/Summary_Report.md"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/Summary_Report.md",
+        "Summary_Report.md"
+      ],
+      "actions": [
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/readiness_check.mdc": {
+      "description": "PRE-START Acceptance Gate for solo freelancer workflow",
+      "globs": [
+        "memory-bank/business/**",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/proposal.md"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/proposal.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/capacity_report.md",
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/upwork/offer_status.json.contract_type",
+        "memory-bank/upwork/offer_status.json.escrow_funded",
+        "memory-bank/upwork/offer_status.json.work_diary_ready",
+        "memory-bank/upwork/offer_status.json.weekly_cap_hours"
+      ],
+      "actions": [
+        {
+          "type": "attach_rules"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "set_state"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "set_state"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/domain-development.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/orchestrator/scenario_router.mdc": {
+      "description": "Suggest valid triggers when domain+contexts are satisfied",
+      "globs": [
+        "memory-bank/plan/**"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/",
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/plan/product_backlog.yaml",
+        "memory-bank/plan/acceptance_criteria.json",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/Action_Plan.md",
+        "memory-bank/plan/Summary_Report.md",
+        "memory-bank/plan/Validation_Report.md"
+      ],
+      "actions": [
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "reject"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/domains/python.mdc": {
+      "description": "Python project detector (globs-only)",
+      "globs": [
+        "requirements.txt",
+        "pyproject.toml"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/node.mdc": {
+      "description": "Node/TypeScript project detector (auto-attach)",
+      "globs": [
+        "package.json",
+        "tsconfig.json"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/advanced/typescript-base.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": true,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/demo_playbook.mdc": {
+      "description": "Demo Playbook \u2014 5\u201310 min demo flow (goal-level)",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/demo/demo_playbook.md",
+        "memory-bank/demo/demo_checklist.md",
+        "memory-bank/demo/demo_metrics.md"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/prestart/pricing_policy.mdc": {
+      "description": "Pricing Policy \u2014 ratecard & terms",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/business/terms.md"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/ai_team_simulation.mdc": {
+      "description": "Standards compliance confirmed",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [
+        "workload_balance",
+        "name",
+        "quality",
+        "optimization_safety",
+        "deployment_readiness",
+        "function",
+        "with_progression",
+        "triggers"
+      ],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/client_screener.mdc": {
+      "description": "Client Screener \u2014 fit scoring + red flags",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/red_flags.md"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/proposal_builder.mdc": {
+      "description": "Proposal Builder \u2014 outcomes, scope, exclusions",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/plan/proposal.md"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/capacity_planner.mdc": {
+      "description": "Capacity Planner \u2014 avoid overcommitment",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/profile/availability.yaml",
+        "memory-bank/backlog/active_commitments.yaml",
+        "memory-bank/business/capacity_report.md"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/kits/prestart/scope_guard.mdc": {
+      "description": "Scope Guard \u2014 baseline + change request workflow",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [
+        "scope"
+      ],
+      "required_artifacts": [
+        "memory-bank/plan/proposal.md",
+        "memory-bank/scope/baseline.yaml",
+        "memory-bank/scope/scope_event_log.md",
+        "memory-bank/scope/change_request.md"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/prestart/risk_catalog.mdc": {
+      "description": "Risk Catalog \u2014 reusable list of common risks/mitigations",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/risk_catalog.md",
+        "memory-bank/risk_tags.yaml"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/prestart/repo_bootstrapper.mdc": {
+      "description": "Repo Bootstrapper \u2014 minimal, demo-ready scaffolds",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/bootstrap/manifest.yaml",
+        "memory-bank/bootstrap/README.md",
+        "memory-bank/bootstrap/tree.md"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "rag"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/prestart/estimate_sizer.mdc": {
+      "description": "Estimate Sizer \u2014 goal-level, risk-adjusted",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/business/estimate.matrix.yaml"
+      ],
+      "actions": []
+    },
+    ".cursor/rules/kits/upwork/contract_guard.mdc": {
+      "description": "Upwork Contract Guard \u2014 escrow/work diary checks",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/upwork/offer_status.json"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/upwork/connects_policy.mdc": {
+      "description": "Upwork Connects Policy \u2014 boost or not",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/client_score.json",
+        "memory-bank/upwork/connects_decision.md"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/kits/upwork/upwork_adapter.mdc": {
+      "description": "Upwork Adapter \u2014 cover letter + milestones/hourly scope",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/proposal.md",
+        "memory-bank/business/estimate.matrix.yaml",
+        "memory-bank/upwork/cover_letter.md",
+        "memory-bank/upwork/milestones.yaml",
+        "memory-bank/upwork/hourly_scope.md"
+      ],
+      "actions": [
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "generate_file"
+        },
+        {
+          "type": "suggest"
+        }
+      ]
+    },
+    ".cursor/rules/domains/specialized/devops.mdc": {
+      "description": "DevOps and CI/CD development best practices",
+      "globs": [
+        "**/*.yml",
+        "**/*.yaml",
+        "**/*.sh",
+        "Dockerfile*",
+        "docker-compose*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/specialized/ai-ml.mdc": {
+      "description": "AI and Machine Learning development best practices",
+      "globs": [
+        "**/*.py",
+        "**/*.ipynb",
+        "src/**/*.py",
+        "notebooks/**/*.ipynb"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/specialized/blockchain.mdc": {
+      "description": "Blockchain and smart contract development best practices",
+      "globs": [
+        "**/*.sol",
+        "**/*.ts",
+        "contracts/**/*.sol",
+        "scripts/**/*.ts"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/cpp.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/java.mdc": {
+      "description": "Java development with best practices and patterns",
+      "globs": [
+        "**/*.java",
+        "src/**/*.java",
+        "main/**/*.java"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/python.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/wordpress.mdc": {
+      "description": "WordPress development with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "wp-content/**/*.php",
+        "themes/**/*.php",
+        "plugins/**/*.php"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/fastapi.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/rust.mdc": {
+      "description": "Rust best practices for Solana smart contract development using Anchor framework and Solana SDK",
+      "globs": [
+        "programs/**/*.rs, src/**/*.rs, tests/**/*.ts"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/convex.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/node-express.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/csharp-dotnet.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/go.mdc": {
+      "description": "Go development with best practices and patterns",
+      "globs": [
+        "**/*.go",
+        "cmd/**/*.go",
+        "internal/**/*.go",
+        "pkg/**/*.go"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/backend/laravel.mdc": {
+      "description": "Laravel PHP development with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "app/**/*.php",
+        "routes/**/*.php",
+        "database/**/*.php"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/coding-standards.mdc": {
+      "description": "Universal coding standards and best practices for all frontend development frameworks",
+      "globs": [
+        "**/*.{ts,tsx,js,jsx,vue,svelte,html,css}",
+        "src/**/*",
+        "components/**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/svelte.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/qwik.mdc": {
+      "description": "Qwik.js development with TypeScript and Vite best practices",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/react.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/vue.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/htmx.mdc": {
+      "description": "HTMX development with modern web patterns and best practices",
+      "globs": [
+        "**/*.html",
+        "**/*.htmx",
+        "**/*.js",
+        "**/*.py",
+        "**/*.go",
+        "**/*.php"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/tailwind.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/nextjs.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/frontend/solidjs.mdc": {
+      "description": "SolidJS development with TypeScript best practices and patterns",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/unified-code-formatting.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/rules-effectiveness.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [
+        "pass_rate"
+      ],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/medusa.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/database.mdc": {
+      "description": "Database best practices focusing on Prisma and Supabase integration",
+      "globs": [
+        "prisma/**/*, src/db/**/*, **/*.prisma, supabase/**/*"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/clean-code.mdc": {
+      "description": "Guidelines for writing clean, maintainable, and human-readable code. Apply these rules when writing or reviewing code to ensure consistency and quality.",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/gitflow.mdc": {
+      "description": "Gitflow Workflow Rules. These rules should be applied when performing git operations.",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/typescript.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/codequality.mdc": {
+      "description": "Code Quality Guidelines",
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/utilities/beefreeSDK.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/mobile/nativescript.mdc": {
+      "description": null,
+      "globs": [],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/mobile/react-native.mdc": {
+      "description": "React Native development with Expo best practices and patterns",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "**/*.jsx",
+        "**/*.js",
+        "app/**/*.tsx"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/mobile/flutter.mdc": {
+      "description": "Flutter development with Dart best practices and patterns",
+      "globs": [
+        "**/*.dart",
+        "lib/**/*.dart",
+        "test/**/*.dart"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/mobile/android.mdc": {
+      "description": "Android development with Jetpack Compose best practices",
+      "globs": [
+        "**/*.kt",
+        "**/*.java",
+        "app/**/*.kt",
+        "app/**/*.java",
+        "**/*.xml"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/testing/phpunit.mdc": {
+      "description": "PHPUnit testing with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "tests/**/*.php",
+        "**/*Test.php"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/testing/playwright.mdc": {
+      "description": "Playwright end-to-end testing with best practices",
+      "globs": [
+        "**/*.spec.ts",
+        "**/*.spec.js",
+        "tests/**/*.ts",
+        "tests/**/*.js"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    },
+    ".cursor/rules/domains/testing/jest.mdc": {
+      "description": "Jest unit testing with best practices and patterns",
+      "globs": [
+        "**/*.test.ts",
+        "**/*.test.js",
+        "**/*.spec.ts",
+        "**/*.spec.js"
+      ],
+      "always_apply": false,
+      "attachments": [],
+      "gates": [],
+      "required_artifacts": [],
+      "actions": []
+    }
+  }
+}

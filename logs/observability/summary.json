@@ -1,28 +1,59 @@
 {
   "counts": {
-    "artifact_emitted": 143,
-    "role_duration": 70
+    "artifact_emitted": 347,
+    "role_duration": 170,
+    "decision_trace": 21
   },
   "durations": {
     "tools.runner.plugins.product_owner": {
-      "count": 19,
-      "total_sec": 0.18587,
-      "avg_sec": 0.009783
+      "count": 39,
+      "total_sec": 0.562064,
+      "avg_sec": 0.014412
     },
     "tools.runner.plugins.planning": {
-      "count": 18,
-      "total_sec": 0.073153,
-      "avg_sec": 0.004064
+      "count": 38,
+      "total_sec": 0.212505,
+      "avg_sec": 0.005592
     },
     "tools.runner.plugins.auditor": {
-      "count": 12,
-      "total_sec": 0.019078,
-      "avg_sec": 0.00159
+      "count": 32,
+      "total_sec": 0.082948,
+      "avg_sec": 0.002592
     },
     "tools.runner.plugins.principal_engineer": {
-      "count": 21,
-      "total_sec": 0.031682,
-      "avg_sec": 0.001509
+      "count": 61,
+      "total_sec": 0.137183,
+      "avg_sec": 0.002249
+    }
+  },
+  "by_correlation": {
+    "unknown": {
+      "events": 509,
+      "artifacts": 339,
+      "last_decision": null,
+      "candidates": []
+    },
+    "test-corr-123": {
+      "events": 22,
+      "artifacts": 8,
+      "last_decision": {
+        "type": "NEXT_STEP"
+      },
+      "candidates": [
+        "memory-doctor"
+      ]
+    },
+    "2d112c832382": {
+      "events": 7,
+      "artifacts": 0,
+      "last_decision": {
+        "type": "OPTION_SET",
+        "reason": "0.55\u2264top<0.75 & gap\u22640.05"
+      },
+      "candidates": [
+        "memory-doctor",
+        "memory-doctor"
+      ]
     }
   }
 }

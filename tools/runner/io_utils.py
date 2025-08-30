@@ -2,41 +2,64 @@
 from __future__ import annotations
 import json
 from pathlib import Path
+import os
 from typing import Dict, Any
 
 ROOT = Path(__file__).resolve().parents[2]
 MB = ROOT / "memory-bank"
 EVENTS = ROOT / "logs/events.jsonl"
 
+from tools.io.fs import atomic_write_text, append_jsonl
+
+
 def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
+
+def _validate_if_memory_json(path: Path) -> None:
+    try:
+        if str(path).startswith(str(MB)) and path.suffix.lower() == ".json" and path.exists():
+            from tools.memory.validator import validate_memory_file
+            validate_memory_file(path)
+    except Exception as e:
+        raise
+
+
 def append_event(evt: Dict[str, Any]) -> None:
     ensure_parent(EVENTS)
-    content = (EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n"
-    EVENTS.write_text(content, encoding="utf-8")
+    # Ensure correlation_id present
+    if "correlation_id" not in evt:
+        cid = os.getenv("AR_CORRELATION_ID")
+        if cid:
+            evt["correlation_id"] = cid
+    append_jsonl(EVENTS, evt)
+
 
 def write_text(path: Path, content: str, role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record  # local import to avoid cycles
     ensure_parent(path)
-    path.write_text(content, encoding="utf-8")
+    atomic_write_text(path, content)
     append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
+            _validate_if_memory_json(path)
     except Exception:
         pass
+
 
 def touch_json(path: Path, payload: Dict[str, Any], role: str | None = None) -> None:
     from tools.artifacts.hash_index import record as index_record
     ensure_parent(path)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    atomic_write_text(path, json.dumps(payload, indent=2))
     append_event({"type":"artifact_emitted","role":role or "runner","path":str(path.relative_to(ROOT))})
     try:
         if str(path).startswith(str(MB)) and path.exists() and path.stat().st_size:
             index_record(path, role=role or "runner")
+            _validate_if_memory_json(path)
     except Exception:
         pass
+
 
 def write_md_with_frontmatter(path: Path, frontmatter: Dict[str, Any], body: str, role: str | None = None) -> None:
     fm = "---\n" + json.dumps(frontmatter, ensure_ascii=False) + "\n---\n"

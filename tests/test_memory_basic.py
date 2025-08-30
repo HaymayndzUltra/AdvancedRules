@@ -1,11 +1,17 @@
-import os, subprocess, json
+import os, subprocess, json, shutil, pytest
 
+
+def _has_arx_cli() -> bool:
+    return shutil.which("arx") is not None
+
+@pytest.mark.skipif(not _has_arx_cli(), reason="arx CLI not installed; skipping RAG-dependent test")
 def test_flag_blocks_by_default():
     """Test that memory operations are blocked when RAG is disabled by default"""
     out = subprocess.run(["arx","memory","stats"], capture_output=True, text=True).stdout +\
           subprocess.run(["arx","memory","query","--persona","CODER_AI","--query","x","--k","1"], capture_output=True, text=True).stdout
     assert "disabled" in out or "Set AR_ENABLE_RAG" in out
 
+@pytest.mark.skipif(not _has_arx_cli(), reason="arx CLI not installed; skipping RAG-dependent test")
 def test_unique_ids_on_reindex(monkeypatch):
     """Test that reindexing doesn't crash despite duplicate IDs"""
     env = dict(os.environ, AR_ENABLE_RAG="1")
@@ -14,6 +20,7 @@ def test_unique_ids_on_reindex(monkeypatch):
     # Second reindex - should not crash even with duplicate IDs
     subprocess.check_call(["arx","memory","index","--src",".","--namespaces","coder","--reindex"], env=env)  # no crash
 
+@pytest.mark.skipif(not _has_arx_cli(), reason="arx CLI not installed; skipping RAG-dependent test")
 def test_persona_isolation():
     """Test that personas cannot access unauthorized namespaces"""
     env = dict(os.environ, AR_ENABLE_RAG="1")

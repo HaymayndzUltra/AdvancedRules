@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
 
 from planning.task_decomposer import TaskDecomposer, Task
 from planning.priority_scheduler import PriorityScheduler, SchedulingAlgorithm
+from tools.io.fs import atomic_write_json
 
 
 class TaskManager:
@@ -44,8 +45,7 @@ class TaskManager:
 
     def _save_workflow_state(self, state: Dict[str, Any]) -> None:
         """Save updated workflow state"""
-        with open(self.workflow_file, 'w') as f:
-            json.dump(state, f, indent=2)
+        atomic_write_json(self.workflow_file, state)
 
     def _extend_workflow_with_tasks(self, task: Task) -> Dict[str, Any]:
         """Extend workflow state with new task and steps"""
@@ -198,21 +198,11 @@ class TaskManager:
                         lines.append(f"  {i}. {step['description']}")
                         lines.append(f"     Priority: {step.get('priority')}")
                         lines.append(f"     Time: {step.get('estimated_time')}min")
-                        if step.get("dependencies"):
-                            lines.append(f"     Dependencies: {', '.join(step['dependencies'])}")
-                        lines.append("")
-
-                lines.append("-" * 40)
 
             output = "\n".join(lines)
-        else:
-            print(f"❌ Unsupported format: {format}")
-            return
 
         if output_file:
-            with open(output_file, 'w') as f:
-                f.write(output)
-            print(f"✅ Exported to file: {output_file}")
+            Path(output_file).write_text(output, encoding='utf-8')
         else:
             print(output)
 

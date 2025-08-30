@@ -281,6 +281,656 @@
       "ts": 1756521218.5036695,
       "from": "VALIDATION_DONE",
       "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756579643.0761373,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756579643.1101885,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756579643.1413276,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756579643.1719632,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756579643.2015321,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756579994.299721,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756579994.333305,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756579994.3632176,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756579994.3959992,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756579994.4255612,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756581683.6548195,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756581683.688956,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756581683.718844,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756581683.7480204,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756581683.784247,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756582219.054199,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756582219.089198,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756582219.1189945,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756582219.1502366,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756582219.1801631,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756582532.9695208,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756582533.0036936,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756582533.0360029,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756582533.0658534,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756582533.095378,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756582838.732528,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756582838.7674007,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756582838.797265,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756582838.826906,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756582838.8562303,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756584272.2087817,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756584272.2552245,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756584272.3030632,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756584272.3545866,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756584272.3849862,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756584501.4641938,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756584501.5029547,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756584501.5425055,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756584501.5734391,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756584501.6047769,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756584643.9851484,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756584644.018803,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756584644.054415,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756584644.085236,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756584644.1159954,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756585012.9760497,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756585013.0124986,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756585013.0449011,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756585013.075943,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756585013.1062737,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756586127.1543267,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756586127.1968484,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756586127.2323418,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756586127.2685683,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756586127.2994237,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756586468.1285186,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756586468.1629786,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756586468.1947625,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756586468.2250092,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756586468.256124,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756587138.2820833,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756587138.3307564,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756587138.370291,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756587138.4090817,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756587138.4481542,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756589190.3834155,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756589190.4993334,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756589190.6013467,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756589190.713208,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756589190.8146071,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756589214.485494,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756589214.5952735,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756589214.6986141,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756589214.7986152,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756589214.8980837,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756589857.3022354,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756589857.4152715,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756589857.5150151,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756589857.615794,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756589857.718967,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756589900.3294172,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756589900.4436047,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756589900.5480366,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756589900.6532934,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756589900.7553234,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756590288.5928116,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756590288.712445,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756590288.8184624,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756590288.9230216,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756590289.034684,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756590417.6539907,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756590417.7693,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756590417.872382,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756590417.9783804,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756590418.0856023,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756591692.9172058,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756591693.027718,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756591693.1292748,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756591693.2367585,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756591693.3454084,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756591789.9069858,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756591790.0253184,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756591790.127447,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756591790.2297075,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756591790.340133,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756591812.8435452,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756591812.958541,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756591813.069291,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756591813.1721294,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756591813.2872164,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756592292.1145349,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756592292.2318015,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756592292.3431468,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756592292.4535758,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756592292.5624247,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756592667.8854005,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756592667.998801,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756592668.103482,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756592668.20748,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756592668.3271945,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756593203.2854376,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756593203.399527,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756593203.5071018,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756593203.6107104,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756593203.7180068,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
+    },
+    {
+      "ts": 1756593690.801844,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY"
+    },
+    {
+      "ts": 1756593690.9179366,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE"
+    },
+    {
+      "ts": 1756593691.0232952,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE"
+    },
+    {
+      "ts": 1756593691.1271749,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE"
+    },
+    {
+      "ts": 1756593691.231949,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE"
     }
   ],
   "tasks": [
@@ -336,5 +986,6 @@
     }
   ],
   "last_updated": "2025-08-29T06:43:28.253110",
-  "total_tasks": 1
+  "total_tasks": 1,
+  "schema_version": "1.0"
 }

@@ -916,5 +916,1621 @@
     "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
     "created_at": 1756521218.5030782,
     "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756579643.0734859,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756579643.0743036,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756579643.074976,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756579643.0755875,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756579643.1083899,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756579643.1089973,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756579643.1096537,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756579643.140723,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756579643.171356,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756579643.2009563,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756579994.2970567,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756579994.2978926,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756579994.2985513,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756579994.2991474,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756579994.3315759,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756579994.3322363,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756579994.3327847,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756579994.362574,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756579994.3953156,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756579994.4249246,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756581683.6521065,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756581683.652949,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756581683.653639,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756581683.6542523,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756581683.6871831,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756581683.6878283,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756581683.6884117,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756581683.7181528,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756581683.747381,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756581683.7835712,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756582219.0501666,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756582219.0515308,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756582219.0527234,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756582219.0535593,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756582219.085655,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756582219.0870016,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756582219.0883524,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756582219.1183393,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756582219.1495268,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756582219.179487,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756582532.9669018,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756582532.967713,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756582532.9683645,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756582532.968951,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756582533.0016794,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756582533.0024323,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756582533.0030746,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756582533.035296,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756582533.065142,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756582533.0946743,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756582838.72824,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756582838.729246,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756582838.7300832,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756582838.7314134,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756582838.764569,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756582838.7655034,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756582838.7662628,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756582838.7965543,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756582838.82621,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756582838.8555105,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756584272.2026923,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756584272.2048364,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756584272.2063031,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756584272.207542,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756584272.2502224,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756584272.2524066,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756584272.2536023,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756584272.2911267,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756584272.3533642,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756584272.3842292,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756584501.458674,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756584501.460204,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756584501.4616919,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756584501.4629517,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756584501.4992185,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756584501.5006104,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756584501.501781,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756584501.5414238,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756584501.572449,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756584501.6035457,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756584643.9816465,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756584643.9828286,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756584643.9836254,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756584643.9844384,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756584644.0163438,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756584644.0172558,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756584644.0180182,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756584644.053504,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756584644.0844033,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756584644.1152177,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756585012.9709861,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756585012.9726744,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756585012.9739225,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756585012.9751253,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756585013.0095835,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756585013.0106583,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756585013.0115721,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756585013.0439928,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756585013.0751324,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756585013.1053433,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756586127.1471605,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756586127.1491966,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756586127.1513758,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756586127.153044,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756586127.1918013,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756586127.193393,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756586127.195062,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756586127.2309182,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756586127.2672262,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756586127.2980525,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756586448.7050633,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756586468.1229174,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756586468.1246169,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756586468.1257572,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756586468.1272259,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756586468.1595564,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756586468.160556,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756586468.1616216,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756586468.193804,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756586468.2241223,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756586468.2551603,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756586778.3641288,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756587138.267797,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756587138.272767,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756587138.276344,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756587138.2797725,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756587138.3219311,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756587138.3253353,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756587138.3290775,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756587138.368341,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756587138.40706,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756587138.4453583,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756587479.6738787,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756589190.3683639,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756589190.3729014,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756589190.3765352,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756589190.37988,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756589190.4863033,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756589190.4908512,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756589190.495076,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756589190.596602,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756589190.7081034,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756589190.8098767,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756589214.4700334,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756589214.4741373,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756589214.4776042,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756589214.4814365,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756589214.5838258,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756589214.5881126,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756589214.5915356,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756589214.6936035,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756589214.794535,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756589214.894029,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756589540.8300965,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756589571.062325,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756589857.2873569,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756589857.2915769,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756589857.2948062,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756589857.297822,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756589857.4033039,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756589857.406567,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756589857.4113991,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756589857.5107658,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756589857.6116366,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756589857.7136333,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756589900.3128757,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756589900.317678,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756589900.3213522,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756589900.3251984,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756589900.4313312,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756589900.43613,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756589900.4395554,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756589900.5435152,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756589900.6485214,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756589900.7498956,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756590215.8312802,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756590265.0605617,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756590288.5749826,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756590288.5791798,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756590288.5835118,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756590288.5882697,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756590288.6986527,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756590288.7034502,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756590288.707687,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756590288.8131394,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756590288.9176517,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756590289.029125,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756590417.6374779,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756590417.6416824,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756590417.6459043,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756590417.6495435,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756590417.7546895,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756590417.7591953,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756590417.7642696,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756590417.8676486,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756590417.9736338,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756590418.0806913,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/_corr_probe.txt",
+    "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+    "created_at": 1756590782.388224,
+    "source_role": "tests",
+    "correlation_id": "test-corr-123"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756591692.9003882,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756591692.9051104,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756591692.9089675,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756591692.9126248,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756591693.0162747,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756591693.0202925,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756591693.023646,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756591693.1241238,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756591693.2327433,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756591693.3405926,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756591789.8866186,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756591789.8921468,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756591789.8969324,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756591789.901345,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756591790.0093157,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756591790.0151174,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756591790.0203302,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756591790.122623,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756591790.224569,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756591790.335075,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756591812.825672,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756591812.830546,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756591812.833481,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756591812.838566,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756591812.9455822,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756591812.9494944,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756591812.9536157,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756591813.0640185,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756591813.1668603,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756591813.2822225,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756592292.0980082,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756592292.1020672,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756592292.106633,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756592292.1101317,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756592292.2191582,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756592292.2240202,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756592292.227474,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756592292.33729,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756592292.4483368,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756592292.5567784,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756592667.8689702,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756592667.873785,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756592667.8779848,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756592667.880923,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756592667.9843788,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756592667.9895167,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756592667.9933422,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756592668.097977,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756592668.201737,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756592668.3214653,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756593203.2629938,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756593203.2687974,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756593203.2750356,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756593203.2802503,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756593203.3860736,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756593203.39067,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756593203.3940916,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756593203.501681,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756593203.604966,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756593203.7120967,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_backlog.yaml",
+    "sha256": "f0310569d110449a158f99604f75ae41be4bfe0239c161590284a16fb5eedbfe",
+    "created_at": 1756593690.7822778,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/acceptance_criteria.json",
+    "sha256": "1bcd950ee487d104b2ca8192d2fdd7907edab7d46fbe1f6f5f9ceaa60885a250",
+    "created_at": 1756593690.7852957,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/user_stories.md",
+    "sha256": "28e3f20345c842430a472373c683face65afa8f2474e9914c1ba9386ce0547fc",
+    "created_at": 1756593690.7913537,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/product_vision.md",
+    "sha256": "01745bdc0e38ecf047c5aef82b9e7e83d3052a1d7514e4dadd7ad2eeb294a1d0",
+    "created_at": 1756593690.7964232,
+    "source_role": "product_owner_ai"
+  },
+  {
+    "path": "memory-bank/plan/Action_Plan.md",
+    "sha256": "d56af0c2e19ed3936d2f3669d85cad8c72e79910c0f872eb5995d16007a512d7",
+    "created_at": 1756593690.9041488,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/technical_plan.md",
+    "sha256": "c5cacd83dca67e015fb8d36078e3bb243233d0a7da27fd6764a27b0fb4c8d3cf",
+    "created_at": 1756593690.9077168,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/task_breakdown.yaml",
+    "sha256": "b23b81c926c482a5d1655f798b8bed7d6fe3f47e501aaf3d68ac62fea7f4f0d2",
+    "created_at": 1756593690.91254,
+    "source_role": "planning_ai"
+  },
+  {
+    "path": "memory-bank/plan/Summary_Report.md",
+    "sha256": "7588066d95087524a4fd544516359d3dd9f24c88ff8c0b9a1f8143226af0df6d",
+    "created_at": 1756593691.0175977,
+    "source_role": "auditor_ai"
+  },
+  {
+    "path": "memory-bank/plan/Validation_Report.md",
+    "sha256": "287afa833e11d6cc505f050e3a27e522689db2e32fb8d78cc38ddc138c888855",
+    "created_at": 1756593691.1213944,
+    "source_role": "principal_engineer_ai"
+  },
+  {
+    "path": "memory-bank/plan/Final_Implementation_Plan.md",
+    "sha256": "b0656fd9e8a29c9a07ffcdad797f0b4a1772ce8e1c95ad34f1165cc9fb8c45ab",
+    "created_at": 1756593691.2256184,
+    "source_role": "principal_engineer_ai"
   }
 ]

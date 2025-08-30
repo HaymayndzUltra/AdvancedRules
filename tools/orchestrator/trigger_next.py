@@ -2,8 +2,11 @@
 import argparse
 import json
 import re
+import yaml
 import subprocess
 import sys
+import os
+import hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -14,34 +17,70 @@ def load_registry_commands() -> dict:
     mapping = {}
     if not REG.exists():
         return mapping
-    cur_id = None
-    for raw in REG.read_text(encoding="utf-8").splitlines():
-        m_id = re.match(r"^\s*-\s+id:\s*(.+)$", raw)
-        if m_id:
-            cur_id = m_id.group(1).strip()
-            continue
-        m_shell = re.match(r"^\s*shell:\s*(\[.*\])\s*$", raw)
-        if m_shell and cur_id:
-            try:
-                arr = json.loads(m_shell.group(1))
-                mapping[cur_id] = arr
-            except Exception:
-                pass
-            cur_id = None
+    # Load YAML directly (already normalized/validated in preprocessing)
+    data = yaml.safe_load(REG.read_text(encoding="utf-8")) or {}
+    for cmd in data.get("commands", []):
+        cmd_id = cmd.get("id")
+        shell = ((cmd.get("run") or {}).get("shell") or [])
+        if cmd_id and isinstance(shell, list) and all(isinstance(s, str) for s in shell):
+            mapping[cmd_id] = shell
+            # Also map aliases for backward compatibility
+            for al in cmd.get("aliases", []) or []:
+                mapping.setdefault(al, shell)
     return mapping
+
+
+def is_command_allowed(cmd: list) -> (bool, str):
+    if not cmd:
+        return False, "empty command"
+    allowed_binaries = {"arx", "python3"}
+    bin_name = cmd[0]
+    if bin_name not in allowed_binaries:
+        return False, f"binary not allowed: {bin_name}"
+    if bin_name == "python3":
+        if len(cmd) < 2 or not cmd[1].endswith("tools/run_role.py"):
+            return False, f"python3 target not allowed: {cmd[1] if len(cmd)>1 else ''}"
+    return True, "ok"
+
+
+def verify_registry_checksum(reg_path: Path) -> (bool, str):
+    sha_file = reg_path.with_suffix(".sha256")
+    if not sha_file.exists():
+        return True, "no checksum file present"
+    try:
+        content = reg_path.read_bytes()
+        calc = hashlib.sha256(content).hexdigest()
+        expected = sha_file.read_text(encoding="utf-8").strip().split()[0]
+        if calc != expected:
+            return False, "registry checksum mismatch"
+        return True, "checksum ok"
+    except Exception as e:
+        return False, f"checksum error: {e}"
 
 
 def run_shell(cmd: list, dry_run: bool) -> None:
     if dry_run:
         print("DRY_RUN:", " ".join(cmd))
+        print("Hint: set ALLOW_RUN=1 to execute")
         return
     subprocess.check_call(cmd, cwd=str(ROOT))
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(
+        description=(
+            "Trigger orchestrator — maps scoring output to registry commands.\n"
+            "Safety: Dry-run by default (set ALLOW_RUN=1 to execute).\n"
+            "Gates: Enforced by default; use --no-gates to skip.\n"
+            "Allowlist: arx; python3 tools/run_role.py only."
+        )
+    )
     ap.add_argument("--candidates", default=str(ROOT / "tools/decision_scoring/examples/trigger_candidates.json"))
-    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--dry-run", action="store_true", help="Dry-run mode (default unless ALLOW_RUN=1)")
+    ap.add_argument("--enforce-gates", action="store_true", help="Validate gates/contexts before execution (default via --no-gates off)")
+    ap.add_argument("--no-gates", action="store_true", help="Do not enforce gates/contexts (not recommended)")
+    ap.add_argument("--print-gates", action="store_true", help="Print gate evaluation results")
+    ap.add_argument("--sandbox", action="store_true", help="Run commands in sandbox (placeholder)")
     args = ap.parse_args()
 
     mapping = load_registry_commands()
@@ -72,7 +111,61 @@ def main() -> None:
         if cmd_id not in mapping:
             print(f"No registry mapping for id: {cmd_id}")
             return
-        run_shell(mapping[cmd_id], args.dry_run)
+        # Check registry integrity
+        ok, msg = verify_registry_checksum(REG)
+        if not ok:
+            print(f"Refusing execution: {msg}")
+            return
+        # Gate enforcement
+        enforce = (not args.no_gates) or args.enforce_gates
+        if enforce:
+            sys.path.insert(0, str(ROOT))
+            try:
+                from tools.gates.gate_evaluator import evaluate_for_command
+                gr = evaluate_for_command(cmd_id)
+            except Exception as e:
+                print(f"Gate evaluator error: {e}")
+                return
+            if args.print_gates:
+                print(json.dumps({"gate_check": {"id": gr.id, "passed": gr.passed, "reasons": gr.reasons}}, indent=2))
+            if not gr.passed:
+                print("Refusing execution due to failing gates/contexts:")
+                for r in gr.reasons:
+                    print(" -", r)
+                return
+        cmd = mapping[cmd_id]
+        allowed, reason = is_command_allowed(cmd)
+        if not allowed:
+            print(f"Refusing execution: disallowed command — {reason}")
+            return
+        effective_dry_run = args.dry_run or os.getenv("ALLOW_RUN") != "1"
+        if effective_dry_run and os.getenv("ALLOW_RUN") != "1":
+            print("Execution safety: dry-run enforced by default. Set ALLOW_RUN=1 to execute.")
+        if args.sandbox:
+            print("Sandbox mode requested (no-op)")
+        # Emit decision trace and set correlation id
+        corr = os.getenv("AR_CORRELATION_ID") or hashlib.sha256(json.dumps(res).encode()).hexdigest()[:12]
+        os.environ["AR_CORRELATION_ID"] = corr
+        trace_dir = ROOT / "logs"
+        trace_dir.mkdir(parents=True, exist_ok=True)
+        with (trace_dir / "decision_traces.jsonl").open("a", encoding="utf-8") as f:
+            f.write(json.dumps({
+                "correlation_id": corr,
+                "decision": res.get("decision"),
+                "top": cmd_id,
+                "candidates": [c.get("id") for c in res.get("candidates", [])]
+            }) + "\n")
+        try:
+            from tools.runner.io_utils import append_event
+            append_event({
+                "type": "decision_trace",
+                "correlation_id": corr,
+                "decision": res.get("decision"),
+                "candidates": [c.get("id") for c in res.get("candidates", [])]
+            })
+        except Exception:
+            pass
+        run_shell(cmd, effective_dry_run)
     else:
         print("No trigger —", dtype)
 

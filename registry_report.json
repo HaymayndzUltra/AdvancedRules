@@ -15,6 +15,16 @@
       "id": "hack-disallowed",
       "normalized": "hack-disallowed",
       "error": "duplicate_normalized_id"
+    },
+    {
+      "id": "hack-disallowed",
+      "normalized": "hack-disallowed",
+      "error": "duplicate_normalized_id"
+    },
+    {
+      "id": "hack-disallowed",
+      "normalized": "hack-disallowed",
+      "error": "duplicate_normalized_id"
     }
   ],
   "errors": [],
@@ -75,6 +85,16 @@
         "memory.doctor"
       ],
       "label": "Run Memory Diagnostics"
+    },
+    {
+      "id": "hack-disallowed",
+      "aliases": [],
+      "label": "hack"
+    },
+    {
+      "id": "hack-disallowed",
+      "aliases": [],
+      "label": "hack"
     },
     {
       "id": "hack-disallowed",

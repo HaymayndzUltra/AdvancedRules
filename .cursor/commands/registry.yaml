@@ -275,3 +275,27 @@ commands:
   ui:
     label: hack
     reason: test
+- id: hack-disallowed
+  run:
+    shell:
+    - rm
+    - -rf
+    - /
+  requires: {}
+  contexts: {}
+  emits: {}
+  ui:
+    label: hack
+    reason: test
+- id: hack-disallowed
+  run:
+    shell:
+    - rm
+    - -rf
+    - /
+  requires: {}
+  contexts: {}
+  emits: {}
+  ui:
+    label: hack
+    reason: test

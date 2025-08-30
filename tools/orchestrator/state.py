@@ -8,22 +8,41 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 STATE_FILE = REPO_ROOT / "workflow_state.json"
 
 from tools.io.fs import atomic_write_json
+from jsonschema import Draft202012Validator
+
+SCHEMA = json.loads((REPO_ROOT / "schemas/workflow_state.schema.json").read_text())
+VALIDATOR = Draft202012Validator(SCHEMA)
+CURRENT_SCHEMA_VERSION = "1.0"
 
 
 def _now() -> float:
     return time.time()
 
 
+def _validate(data: Dict[str, Any]) -> None:
+    errors = list(VALIDATOR.iter_errors(data))
+    if errors:
+        msgs = [f"/{'/'.join(map(str,e.path))}: {e.message}" for e in errors]
+        raise ValueError("workflow_state.json failed validation:\n" + "\n".join(msgs))
+
+
 def load_state() -> Dict[str, Any]:
     if STATE_FILE.exists():
         try:
-            return json.loads(STATE_FILE.read_text() or "{}")
+            data = json.loads(STATE_FILE.read_text() or "{}")
+            # If missing schema_version, set for compatibility and validate
+            if "schema_version" not in data:
+                data["schema_version"] = CURRENT_SCHEMA_VERSION
+            _validate(data)
+            return data
         except Exception:
             return {}
     return {}
 
 
 def save_state(data: Dict[str, Any]) -> None:
+    data.setdefault("schema_version", CURRENT_SCHEMA_VERSION)
+    _validate(data)
     atomic_write_json(STATE_FILE, data)
 
 

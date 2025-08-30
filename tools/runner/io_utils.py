@@ -13,19 +13,49 @@ TRACES = ROOT / "logs/decision_traces.jsonl"
 def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
-def append_event(evt: Dict[str, Any]) -> None:
+def append_event(evt: Dict[str, Any], redact: bool = True) -> None:
     from tools.io.fs import append_line_atomic
+    from tools.instrumentation.redactor import redact_event
+    import os
+    import time
+    
     ensure_parent(EVENTS)
+    
+    # Add trace_id and correlation_id
     if "correlation_id" not in evt:
-        evt["correlation_id"] = str(uuid.uuid4())
+        evt["correlation_id"] = os.environ.get('CORRELATION_ID', str(uuid.uuid4()))
+    if "trace_id" not in evt:
+        evt["trace_id"] = os.environ.get('TRACE_ID', evt["correlation_id"])
+    if "timestamp" not in evt:
+        evt["timestamp"] = time.time()
+    
+    # Apply redaction if enabled
+    if redact and os.environ.get('ENABLE_REDACTION', 'true').lower() == 'true':
+        evt = redact_event(evt)
+    
     append_line_atomic(EVENTS, json.dumps(evt))
 
 
-def append_decision_trace(trace: Dict[str, Any]) -> None:
+def append_decision_trace(trace: Dict[str, Any], redact: bool = True) -> None:
     from tools.io.fs import append_line_atomic
+    from tools.instrumentation.redactor import redact_event
+    import os
+    import time
+    
     ensure_parent(TRACES)
+    
+    # Add trace_id and correlation_id
     if "correlation_id" not in trace:
-        trace["correlation_id"] = str(uuid.uuid4())
+        trace["correlation_id"] = os.environ.get('CORRELATION_ID', str(uuid.uuid4()))
+    if "trace_id" not in trace:
+        trace["trace_id"] = os.environ.get('TRACE_ID', trace["correlation_id"])
+    if "timestamp" not in trace:
+        trace["timestamp"] = time.time()
+    
+    # Apply redaction if enabled
+    if redact and os.environ.get('ENABLE_REDACTION', 'true').lower() == 'true':
+        trace = redact_event(trace)
+    
     append_line_atomic(TRACES, json.dumps(trace))
 
 def write_text(path: Path, content: str, role: str | None = None) -> None:

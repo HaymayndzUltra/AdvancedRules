@@ -77,17 +77,41 @@ def aggregate_by_correlation(events, traces):
         }
     return {"by_correlation": summary}
 
-def write_reports(summary):
+def write_reports(summary, redact=True):
+    import os
+    from tools.instrumentation.redactor import redact_dict, get_redaction_stats
+    
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    
+    # Apply redaction if enabled
+    if redact and os.environ.get('ENABLE_REDACTION', 'true').lower() == 'true':
+        redacted_summary = redact_dict(summary, deep=True)
+        stats = get_redaction_stats()
+        redacted_summary['redaction_stats'] = stats
+    else:
+        redacted_summary = summary
+    
+    (OUT_DIR / "summary.json").write_text(json.dumps(redacted_summary, indent=2), encoding="utf-8")
+    
     # minimal markdown
     lines = ["# Observability Summary\n"]
     lines.append("## Event Counts\n")
-    for k, v in summary["counts"].items():
+    for k, v in redacted_summary["counts"].items():
         lines.append(f"- {k}: {v}")
     lines.append("\n## Role Durations\n")
-    for mod, stats in summary["durations"].items():
+    for mod, stats in redacted_summary["durations"].items():
         lines.append(f"- {mod}: count={stats['count']}, total={stats['total_sec']}s, avg={stats['avg_sec']}s")
+    
+    # Add redaction stats if present
+    if 'redaction_stats' in redacted_summary:
+        lines.append("\n## Redaction Statistics\n")
+        stats = redacted_summary['redaction_stats']
+        lines.append(f"- Total redactions: {stats.get('total', 0)}")
+        if stats.get('by_type'):
+            lines.append("- By type:")
+            for rtype, count in stats['by_type'].items():
+                lines.append(f"  - {rtype}: {count}")
+    
     (OUT_DIR / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 if __name__ == "__main__":

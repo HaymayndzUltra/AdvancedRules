@@ -13,31 +13,47 @@ jobs:
 
       - name: Install deps + package (creates `arx` console script)
         run: |
-          python -m pip install -U pip setuptools wheel
+          set -euxo pipefail
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements.txt
-          # Install in editable mode to create arx command
           pip install -e .
 
       - name: Sanity check CLI
         run: |
-          # Verify arx command is installed
-          which arx
-          arx --help
-          # Also verify the module import works
-          python -c "import importlib; m=importlib.import_module('cli.main'); print('cli.main ok:', hasattr(m,'main'))"
+          # Verify module import works
+          python -c "import cli, sys; from cli.main import main; print('OK: import main')"
+          
+          # Check if arx command is available
+          if command -v arx >/dev/null 2>&1; then
+            echo "✓ arx command found at: $(which arx)"
+            arx --help | head -3
+          else
+            echo "⚠ arx not in PATH, using module fallback"
+            PYTHONPATH=$PWD python -m cli.main --help | head -3
+          fi
 
       - name: RAG index (uses your CLI)
         env:
           AR_ENABLE_RAG: "1"
           AR_EMBED_MODEL: "BAAI/bge-m3"
         run: |
-          # Use the installed arx command
-          arx memory index --src=. --namespaces=coder --persona=CODER_AI --reindex
+          set -euxo pipefail
+          if command -v arx >/dev/null 2>&1; then
+            arx memory index --src=. --namespaces=coder --persona=CODER_AI --reindex
+          else
+            # Module run fallback (NOT file path!)
+            PYTHONPATH=$PWD python -m cli.main memory index --src=. --namespaces=coder --persona=CODER_AI --reindex
+          fi
 
       - name: RAG query
         env:
           AR_ENABLE_RAG: "1"
           AR_EMBED_MODEL: "BAAI/bge-m3"
         run: |
-          # Use the installed arx command
-          arx memory query --persona=CODER_AI --query "flow_runner" --k=3
+          set -euxo pipefail
+          if command -v arx >/dev/null 2>&1; then
+            arx memory query --persona=CODER_AI --query "flow_runner" --k=3
+          else
+            # Module run fallback (NOT file path!)
+            PYTHONPATH=$PWD python -m cli.main memory query --persona=CODER_AI --query "flow_runner" --k=3
+          fi

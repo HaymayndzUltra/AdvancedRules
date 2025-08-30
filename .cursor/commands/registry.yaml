@@ -1,4 +1,3 @@
-cat > .cursor/commands/registry.yaml <<'YAML'
 version: 1
 defaults:
   one_step_policy: true
@@ -84,6 +83,7 @@ commands:
       shell: ["arx","flow","render","--flow={{flow_id}}","--out=.artifacts/{{flow_id}}.mmd"]
     requires:
       states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
+    
       completed_steps_all_of: []
       gates_passed_all_of: []
     contexts:
@@ -148,4 +148,21 @@ commands:
     ui:
       label: "Run Memory Diagnostics"
       reason: "Check memory system health, dependencies, and configuration."
-YAML
+
+  - id: metrics.curl
+    role_from: OBSERVER
+    trigger: metrics_curl
+    run:
+      shell: ["bash","-lc","curl -s localhost:9108/metrics | head -n 50"]
+    requires:
+      states_any_of: []
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: []
+    emits:
+      sets_state: "OBS_METRICS_AVAILABLE"
+      add_completed_step: "metrics_curl_ran"
+    ui:
+      label: "Curl metrics"
+      reason: "Quickly inspect /metrics output."

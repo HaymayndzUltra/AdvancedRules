@@ -146,7 +146,7 @@ class SafetyRailsValidator:
         print("\n📬 Validating Envelope Compatibility")
         print("-" * 35)
 
-        v1_path = self.root_dir / "action_envelope.json"
+        v1_path = self.root_dir / "tools" / "envelopes" / "action_envelope.json"
         v2_path = self.root_dir / "tools" / "envelopes" / "action_envelope_v2.json"
 
         if not v1_path.exists():

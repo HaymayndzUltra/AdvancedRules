@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FILE="${1:-action_envelope.json}"
+FILE="${1:-tools/envelopes/action_envelope.json}"
+# Backward compatibility: if caller passed legacy path and it's missing, use new location
+if [[ ! -f "$FILE" && "${1:-}" == "action_envelope.json" && -f "tools/envelopes/action_envelope.json" ]]; then
+  FILE="tools/envelopes/action_envelope.json"
+fi
 if [[ ! -f "$FILE" ]]; then
   echo "ERR: envelope not found: $FILE"
   exit 1

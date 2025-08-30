@@ -69,14 +69,14 @@
         "recency": 0.88,
         "pref": 0.82
       },
-      "command": "echo DRY_RUN: build_execution_envelope --from-latest-decision --output action_envelope.json"
+      "command": "echo DRY_RUN: build_execution_envelope --from-latest-decision --output tools/envelopes/action_envelope.json"
     },
     {
       "id": "execute_safety_runner",
       "action_type": "COMMAND_TRIGGER",
       "explanation": "Execute the chosen action via safety runner for controlled execution",
       "preconds": [
-        "exists:action_envelope.json",
+        "exists:tools/envelopes/action_envelope.json",
         "exists:tools/decision_scoring/execute_envelope.sh",
         "envelope_valid:true"
       ],
@@ -87,7 +87,7 @@
         "recency": 0.85,
         "pref": 0.80
       },
-      "command": "echo DRY_RUN: execute_safety_runner --envelope action_envelope.json --safe-mode"
+      "command": "echo DRY_RUN: execute_safety_runner --envelope tools/envelopes/action_envelope.json --safe-mode"
     },
     {
       "id": "analyze_decision_quality",

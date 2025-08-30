@@ -48,6 +48,9 @@ AdvancedRules is an intelligent framework that orchestrates specialized AI perso
 ### 5. Documentation (`docs/`)
 - **README**: Comprehensive framework documentation
 - **ADRs**: Architecture Decision Records system
+- **Reports**: `docs/reports/TEST_SUMMARY.md`, `docs/reports/QUEUE_SYSTEM_TEST_REPORT.md`, `docs/reports/report1.md`, `docs/reports/report2.md`
+- **Validation Suite**: `docs/VALIDATION_SUITE_STRUCTURE.md`
+- **Checklists**: `docs/checklists/RAG_MERGE_CHECKLIST.md`
 - **Contributing**: Development guidelines and standards
 
 ## 📁 File Structure

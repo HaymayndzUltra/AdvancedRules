@@ -4,6 +4,7 @@ import json
 import time
 from pathlib import Path
 from typing import Dict
+import os
 
 ROOT = Path(__file__).resolve().parents[2]
 INDEX = ROOT / "memory-bank/artifacts_index.json"
@@ -22,6 +23,9 @@ def record(path: Path, role: str) -> Dict:
         "created_at": time.time(),
         "source_role": role,
     }
+    cid = os.getenv("AR_CORRELATION_ID")
+    if cid:
+        entry["correlation_id"] = cid
     idx = []
     if INDEX.exists():
         try:

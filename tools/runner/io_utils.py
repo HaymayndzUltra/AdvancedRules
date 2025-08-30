@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json
 from pathlib import Path
+import os
 from typing import Dict, Any
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -13,6 +14,11 @@ def ensure_parent(p: Path) -> None:
 
 def append_event(evt: Dict[str, Any]) -> None:
     ensure_parent(EVENTS)
+    # Ensure correlation_id present
+    if "correlation_id" not in evt:
+        cid = os.getenv("AR_CORRELATION_ID")
+        if cid:
+            evt["correlation_id"] = cid
     content = (EVENTS.read_text() if EVENTS.exists() else "") + json.dumps(evt) + "\n"
     EVENTS.write_text(content, encoding="utf-8")
 

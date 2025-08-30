@@ -134,6 +134,18 @@ def main() -> None:
             print("Execution safety: dry-run enforced by default. Set ALLOW_RUN=1 to execute.")
         if args.sandbox:
             print("Sandbox mode requested (no-op)")
+        # Emit decision trace and set correlation id
+        corr = os.getenv("AR_CORRELATION_ID") or hashlib.sha256(json.dumps(res).encode()).hexdigest()[:12]
+        os.environ["AR_CORRELATION_ID"] = corr
+        trace_dir = ROOT / "logs"
+        trace_dir.mkdir(parents=True, exist_ok=True)
+        with (trace_dir / "decision_traces.jsonl").open("a", encoding="utf-8") as f:
+            f.write(json.dumps({
+                "correlation_id": corr,
+                "decision": res.get("decision"),
+                "top": cmd_id,
+                "candidates": [c.get("id") for c in res.get("candidates", [])]
+            }) + "\n")
         run_shell(cmd, effective_dry_run)
     else:
         print("No trigger —", dtype)

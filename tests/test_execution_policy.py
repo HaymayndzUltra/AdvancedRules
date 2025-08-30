@@ -53,6 +53,10 @@ def test_disallowed_command_is_blocked(monkeypatch):
     })
     reg.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
     try:
+        # Neutralize checksum to allow test mutation
+        sha = reg.with_suffix(".sha256")
+        if sha.exists():
+            sha.unlink()
         s = run_trigger_with("hack-disallowed")
         assert "disallowed command" in s
     finally:

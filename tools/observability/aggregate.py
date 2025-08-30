@@ -25,12 +25,20 @@ def load_events():
 def aggregate(items):
     counts = defaultdict(int)
     durations = defaultdict(list)
+    by_corr = defaultdict(lambda: {"events": 0, "artifacts": 0, "last_decision": None, "candidates": []})
     for e in items:
         t = e.get("type", "unknown")
         counts[t] += 1
+        cid = e.get("correlation_id", "unknown")
+        by_corr[cid]["events"] += 1
         if t == "role_duration":
             mod = e.get("module", "unknown")
             durations[mod].append(float(e.get("seconds", 0)))
+        if t == "artifact_emitted":
+            by_corr[cid]["artifacts"] += 1
+        if t == "decision_trace":
+            by_corr[cid]["last_decision"] = e.get("decision")
+            by_corr[cid]["candidates"] = e.get("candidates", [])
     duration_stats = {
         mod: {
             "count": len(vals),
@@ -38,7 +46,7 @@ def aggregate(items):
             "avg_sec": round(statistics.mean(vals), 6)
         } for mod, vals in durations.items()
     }
-    return {"counts": dict(counts), "durations": duration_stats}
+    return {"counts": dict(counts), "durations": duration_stats, "by_correlation": by_corr}
 
 def write_reports(summary):
     OUT_DIR.mkdir(parents=True, exist_ok=True)

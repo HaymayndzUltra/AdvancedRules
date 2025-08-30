@@ -3,6 +3,7 @@ import argparse
 import json
 import re
 import yaml
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -66,6 +67,7 @@ def main() -> None:
         sys.path.insert(0, str(ROOT))
     try:
         from tools.decision_scoring.advanced_score import score_candidates
+        from tools.gates.gate_evaluator import evaluate_gates
     except Exception as e:
         raise SystemExit(f"Cannot import scorer: {e}")
 
@@ -88,6 +90,13 @@ def main() -> None:
         cmd_id = _normalize_id(res["candidates"][0]["id"])
         if cmd_id not in mapping:
             print(f"No registry mapping for id: {cmd_id}")
+            return
+        # Gate enforcement
+        gates = evaluate_gates()
+        gate_entry = next((r for r in gates.get("results", []) if _normalize_id(r.get("command_id","")) == cmd_id), None)
+        if gate_entry and not gate_entry.get("passed", False):
+            print("Refusing execution: gate checks failed for", cmd_id)
+            print(json.dumps(gate_entry, indent=2))
             return
         run_shell(mapping[cmd_id], args.dry_run)
     else:

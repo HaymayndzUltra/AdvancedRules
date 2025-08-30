@@ -60,7 +60,8 @@
         "contexts": {
           "type": "object",
           "properties": {
-            "must_exist": { "$ref": "#/definitions/stringArray" }
+            "must_exist": { "$ref": "#/definitions/stringArray" },
+            "domains_attached_all_of": { "$ref": "#/definitions/stringArray" }
           },
           "additionalProperties": false
         },

@@ -1,0 +1,99 @@
+{
+  "attached_domains": [
+    "frontend",
+    "node.mdc",
+    "python.mdc",
+    "specialized",
+    "utilities"
+  ],
+  "results": [
+    {
+      "command_id": "planning-to-audit",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "PLANNING_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
+      ]
+    },
+    {
+      "command_id": "audit-to-verify",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "AUDIT_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: AUDIT_DONE (current=SYNTHESIS_DONE)"
+      ]
+    },
+    {
+      "command_id": "flow-lint",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "flow-run",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "flow-render",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "memory-index",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "memory-query",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "memory-doctor",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    }
+  ]
+}

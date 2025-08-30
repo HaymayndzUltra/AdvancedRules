@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 EVENTS = ROOT / "logs/events.jsonl"
+TRACES = ROOT / "logs/decision_traces.jsonl"
 OUT_DIR = ROOT / "logs/observability"
 
 def load_events():
@@ -13,6 +14,21 @@ def load_events():
     if not EVENTS.exists():
         return items
     for line in EVENTS.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            items.append(json.loads(line))
+        except Exception:
+            pass
+    return items
+
+
+def load_traces():
+    items = []
+    if not TRACES.exists():
+        return items
+    for line in TRACES.read_text().splitlines():
         line = line.strip()
         if not line:
             continue
@@ -40,6 +56,27 @@ def aggregate(items):
     }
     return {"counts": dict(counts), "durations": duration_stats}
 
+
+def aggregate_by_correlation(events, traces):
+    by_corr = defaultdict(lambda: {"events": [], "traces": []})
+    for e in events:
+        cid = e.get("correlation_id")
+        if cid:
+            by_corr[cid]["events"].append(e)
+    for t in traces:
+        cid = t.get("correlation_id")
+        if cid:
+            by_corr[cid]["traces"].append(t)
+    # summarize
+    summary = {}
+    for cid, bucket in by_corr.items():
+        summary[cid] = {
+            "event_count": len(bucket["events"]),
+            "trace_count": len(bucket["traces"]),
+            "types": sorted({e.get("type","unknown") for e in bucket["events"]}),
+        }
+    return {"by_correlation": summary}
+
 def write_reports(summary):
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -55,7 +92,10 @@ def write_reports(summary):
 
 if __name__ == "__main__":
     items = load_events()
+    traces = load_traces()
     summary = aggregate(items)
-    write_reports(summary)
-    print(json.dumps({"events": len(items)}, indent=2))
+    corr = aggregate_by_correlation(items, traces)
+    out = {**summary, **corr}
+    write_reports(out)
+    print(json.dumps({"events": len(items), "traces": len(traces)}, indent=2))
 

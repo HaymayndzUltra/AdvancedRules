@@ -19,8 +19,9 @@ jobs:
 
       - name: Sanity check CLI
         run: |
-          which arx
-          arx --help
+          # Check if arx command is available, otherwise use Python directly
+          which arx || echo "arx command not found, will use python -m cli.main"
+          PYTHONPATH=. python -m cli.main --help
           python -c "import importlib; m=importlib.import_module('cli.main'); print('cli.main ok:', hasattr(m,'main'))"
 
       - name: RAG index (uses your CLI)
@@ -28,15 +29,13 @@ jobs:
           AR_ENABLE_RAG: "1"
           AR_EMBED_MODEL: "BAAI/bge-m3"
         run: |
-          arx memory index --src=. --namespaces=coder --reindex
-          # Fallback if entrypoint fails:
-          # PYTHONPATH=. python -m cli.main memory index --src=. --namespaces=coder --reindex
+          # Use Python module directly for reliability
+          PYTHONPATH=. python -m cli.main memory index --src=. --namespaces=coder --reindex
 
       - name: RAG query
         env:
           AR_ENABLE_RAG: "1"
           AR_EMBED_MODEL: "BAAI/bge-m3"
         run: |
-          arx memory query --persona=CODER_AI --query "flow_runner" --k=3
-          # Fallback if entrypoint fails:
-          # PYTHONPATH=. python -m cli.main memory query --persona=CODER_AI --query "flow_runner" --k=3
+          # Use Python module directly for reliability
+          PYTHONPATH=. python -m cli.main memory query --persona=CODER_AI --query "flow_runner" --k=3

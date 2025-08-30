@@ -253,24 +253,41 @@ class TaskDecomposer:
         """Validate that task graph is well-formed"""
         issues = []
 
-        # Check for cycles
+        # Build lookup maps for flexible dependency references
+        step_ids = {step.id for step in task.steps}
+        desc_to_id = {step.description: step.id for step in task.steps}
+
+        # Build graph using canonical step IDs; collect invalid deps
         try:
             G = nx.DiGraph()
+
             for step in task.steps:
                 for dep in step.dependencies:
-                    G.add_edge(dep, step.description)
+                    # Resolve dependency: accept either step.id or step.description
+                    if dep in step_ids:
+                        dep_id = dep
+                    elif dep in desc_to_id:
+                        dep_id = desc_to_id[dep]
+                    else:
+                        issues.append(f"Invalid dependency '{dep}' in step '{step.description}'")
+                        continue
 
+                    G.add_edge(dep_id, step.id)
+
+            # Check for cycles with canonical IDs
             if not nx.is_directed_acyclic_graph(G):
-                issues.append("Task graph contains cycles")
+                try:
+                    cycles = list(nx.simple_cycles(G))
+                    if cycles:
+                        # Report first cycle for clarity
+                        cycle_str = " -> ".join(cycles[0])
+                        issues.append(f"Cycle detected: {cycle_str}")
+                    else:
+                        issues.append("Cycle detected in task graph")
+                except Exception:
+                    issues.append("Cycle detected in task graph")
         except Exception as e:
             issues.append(f"Graph validation error: {e}")
-
-        # Check dependency validity
-        step_descriptions = {step.description for step in task.steps}
-        for step in task.steps:
-            for dep in step.dependencies:
-                if dep not in step_descriptions:
-                    issues.append(f"Invalid dependency '{dep}' in step '{step.description}'")
 
         return len(issues) == 0, issues
 

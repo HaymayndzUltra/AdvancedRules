@@ -55,32 +55,9 @@ classifiers = [
     "Framework :: Celery",
 ]
 dependencies = [
-    # Core AI/ML dependencies
-    "chromadb>=0.4.0",
-    "sentence-transformers>=2.2.0",
-    "torch>=2.0.0",
-    "transformers>=4.21.0",
-
-    # Configuration and data processing
+    # Minimal runtime deps for core features and tests
     "pyyaml>=6.0",
     "networkx>=2.8",
-
-    # CLI and async processing
-    "click>=8.0",
-    "celery>=5.3",
-    "redis>=5.0",
-
-    # Monitoring and observability
-    "prometheus_client>=0.16.0",
-
-    # Build and packaging
-    "setuptools>=67.0.0",
-    "wheel>=0.40.0",
-
-    # Optional but recommended
-    "numpy>=1.21.0",
-    "pandas>=1.5.0",
-    "scikit-learn>=1.2.0",
 ]
 
 [project.optional-dependencies]
@@ -94,6 +71,19 @@ dev = [
     "pre-commit>=3.0.0",
     "sphinx>=5.0.0",
     "sphinx-rtd-theme>=1.2.0",
+]
+rag = [
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+    "transformers>=4.21.0",
+]
+obs = [
+    "prometheus_client>=0.16.0",
+]
+queue = [
+    "celery>=5.3",
+    "redis>=5.0",
 ]
 gpu = [
     "torch[cuda]>=2.0.0",

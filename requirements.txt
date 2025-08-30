@@ -1,4 +1,5 @@
 pytest
+pyyaml
 chromadb
 sentence-transformers
 torch

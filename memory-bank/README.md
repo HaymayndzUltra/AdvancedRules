@@ -8,6 +8,10 @@
 - business/: business inputs (client_score.json, capacity_report.md, pricing.ratecard.yaml, estimate_brief.md)
 - artifacts_index.json: provenance index (auto-updated)
 
+## Related docs
+- Validation suite overview: `docs/VALIDATION_SUITE_STRUCTURE.md`
+- Test reports: `docs/reports/TEST_SUMMARY.md`, `docs/reports/QUEUE_SYSTEM_TEST_REPORT.md`
+
 ## Notes
 - Files are auto-indexed with SHA-256 when written by the runner.
 - Validate artifact schemas:

@@ -40,6 +40,10 @@ Each ADR follows this template:
 | [ADR-002](./002-ai-persona-coordination.md) | AI Persona Coordination | Proposed | [Date] |
 | [ADR-003](./003-memory-management.md) | Memory Management Strategy | Proposed | [Date] |
 
+## Related Reports
+
+See `../reports/` for system test reports and validation notes.
+
 ## Creating New ADRs
 
 1. **Identify the Decision**: Determine if a decision warrants an ADR

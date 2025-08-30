@@ -92,14 +92,9 @@ jobs:
           # Verify module import works
           python -c "import cli, sys; from cli.main import main; print('OK: import main')"
           
-          # Check if arx command is available
-          if command -v arx >/dev/null 2>&1; then
-            echo "✓ arx command found at: $(which arx)"
-            arx --help | head -3
-          else
-            echo "⚠ arx not in PATH, using module fallback"
-            PYTHONPATH=$PWD python -m cli.main --help | head -3
-          fi
+          # Always use module invocation for reliability
+          echo "Testing CLI module invocation..."
+          python -m cli.main --help | head -3
       
       - name: Run unit tests
         run: |

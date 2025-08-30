@@ -1,0 +1,12 @@
+{
+  "b2857abe6ac7264d": {
+    "plugin_id": "auditor",
+    "idempotency_key": "b2857abe6ac7264d",
+    "start_time": 1756587124.411273,
+    "end_time": 1756587124.4623475,
+    "status": "completed",
+    "side_effects": [],
+    "error": null,
+    "rollback_performed": false
+  }
+}

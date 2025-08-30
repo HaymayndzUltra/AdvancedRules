@@ -5,6 +5,8 @@ import re
 import yaml
 import subprocess
 import sys
+import os
+import hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -28,9 +30,38 @@ def load_registry_commands() -> dict:
     return mapping
 
 
+def is_command_allowed(cmd: list) -> (bool, str):
+    if not cmd:
+        return False, "empty command"
+    allowed_binaries = {"arx", "python3"}
+    bin_name = cmd[0]
+    if bin_name not in allowed_binaries:
+        return False, f"binary not allowed: {bin_name}"
+    if bin_name == "python3":
+        if len(cmd) < 2 or not cmd[1].endswith("tools/run_role.py"):
+            return False, f"python3 target not allowed: {cmd[1] if len(cmd)>1 else ''}"
+    return True, "ok"
+
+
+def verify_registry_checksum(reg_path: Path) -> (bool, str):
+    sha_file = reg_path.with_suffix(".sha256")
+    if not sha_file.exists():
+        return True, "no checksum file present"
+    try:
+        content = reg_path.read_bytes()
+        calc = hashlib.sha256(content).hexdigest()
+        expected = sha_file.read_text(encoding="utf-8").strip().split()[0]
+        if calc != expected:
+            return False, "registry checksum mismatch"
+        return True, "checksum ok"
+    except Exception as e:
+        return False, f"checksum error: {e}"
+
+
 def run_shell(cmd: list, dry_run: bool) -> None:
     if dry_run:
         print("DRY_RUN:", " ".join(cmd))
+        print("Hint: set ALLOW_RUN=1 to execute")
         return
     subprocess.check_call(cmd, cwd=str(ROOT))
 
@@ -41,6 +72,7 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--enforce-gates", action="store_true", help="Validate gates/contexts before execution")
     ap.add_argument("--print-gates", action="store_true", help="Print gate evaluation results")
+    ap.add_argument("--sandbox", action="store_true", help="Run commands in sandbox (placeholder)")
     args = ap.parse_args()
 
     mapping = load_registry_commands()
@@ -71,6 +103,11 @@ def main() -> None:
         if cmd_id not in mapping:
             print(f"No registry mapping for id: {cmd_id}")
             return
+        # Check registry integrity
+        ok, msg = verify_registry_checksum(REG)
+        if not ok:
+            print(f"Refusing execution: {msg}")
+            return
         # Gate enforcement
         if args.enforce_gates:
             sys.path.insert(0, str(ROOT))
@@ -87,7 +124,17 @@ def main() -> None:
                 for r in gr.reasons:
                     print(" -", r)
                 return
-        run_shell(mapping[cmd_id], args.dry_run)
+        cmd = mapping[cmd_id]
+        allowed, reason = is_command_allowed(cmd)
+        if not allowed:
+            print(f"Refusing execution: disallowed command — {reason}")
+            return
+        effective_dry_run = args.dry_run or os.getenv("ALLOW_RUN") != "1"
+        if effective_dry_run and os.getenv("ALLOW_RUN") != "1":
+            print("Execution safety: dry-run enforced by default. Set ALLOW_RUN=1 to execute.")
+        if args.sandbox:
+            print("Sandbox mode requested (no-op)")
+        run_shell(cmd, effective_dry_run)
     else:
         print("No trigger —", dtype)
 

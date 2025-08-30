@@ -1,5 +1,9 @@
 {
-  "id": "memory-doctor",
-  "passed": true,
-  "reasons": []
+  "id": "planning-audit",
+  "passed": false,
+  "reasons": [
+    "state 'SYNTHESIS_DONE' not in states_any_of=['PLANNING_DONE']",
+    "missing completed_steps_all_of=['planning_gate_passed']",
+    "gate not satisfied: PLANNING_GATE"
+  ]
 }

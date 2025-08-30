@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 from typing import Dict, Any
 import uuid
+from datetime import datetime
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STATE_FILE = REPO_ROOT / "workflow_state.json"
@@ -24,6 +25,8 @@ def load_state() -> Dict[str, Any]:
 
 def save_state(data: Dict[str, Any]) -> None:
     from tools.io.fs import atomic_write_text
+    data.setdefault("schema_version", "1.0.0")
+    data["last_updated"] = datetime.utcnow().isoformat()
     atomic_write_text(STATE_FILE, json.dumps(data, indent=2))
 
 

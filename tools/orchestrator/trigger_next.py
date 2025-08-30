@@ -121,6 +121,7 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true", help="Force dry-run (also default unless ALLOW_RUN=1)")
     ap.add_argument("--sandbox", action="store_true", help="Enable sandbox mode (no-op placeholder)")
     ap.add_argument("--print-allowlist", action="store_true", help="Print the current command allowlist and exit")
+    ap.add_argument("--enqueue", action="store_true", help="Enqueue the chosen command instead of executing immediately")
     args = ap.parse_args()
     if args.print_allowlist:
         print(json.dumps({"allowlist": list(ALLOWED_COMMANDS.keys())}, indent=2))
@@ -184,6 +185,19 @@ def main() -> None:
         if not allowed:
             print("Refusing execution: command not allowed -", reason)
             return
+        # Enqueue path
+        if args.enqueue:
+            try:
+                from tools.queue.exec_queue import enqueue_task
+                # Reuse a correlation id; if none from earlier, generate
+                import uuid as _uuid
+                corr_id = str(_uuid.uuid4())
+                qres = enqueue_task(cmd_id, corr_id, {"shell": mapping[cmd_id]})
+                print(json.dumps({"enqueued": qres}, indent=2))
+            except Exception as e:
+                print("Failed to enqueue:", e)
+            return
+
         # Dry-run default policy
         eff_dry = should_dry_run(args.dry_run)
         if eff_dry and os.getenv("ALLOW_RUN", "0") != "1":

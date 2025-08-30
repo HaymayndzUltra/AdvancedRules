@@ -97,6 +97,12 @@ AdvancedRules/
 └── tests/                  # E2E + smoke tests
 ```
 
+## Reports and Guides
+
+- Reports: `docs/reports/TEST_SUMMARY.md`, `docs/reports/QUEUE_SYSTEM_TEST_REPORT.md`, `docs/reports/report1.md`, `docs/reports/report2.md`
+- Validation Suite: `docs/VALIDATION_SUITE_STRUCTURE.md`
+- Checklists: `docs/checklists/RAG_MERGE_CHECKLIST.md`
+
 ## 🎭 AI Personas
 
 ### Product Owner AI

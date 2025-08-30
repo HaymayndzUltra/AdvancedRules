@@ -13,6 +13,8 @@
 - artifacts/: provenance hashing (SHA-256 index)
 - audit/: evidence/citation helpers
 
+- demo/: demo scripts and end-to-end simulation (e.g., `end_to_end_simulation.py`)
+
 ## Quick commands
 ```bash
 # One-command happy path

@@ -1,190 +1,233 @@
-# User Stories - Quick Task Manager
+# User Stories - Customer Support Ticket Dashboard
 
-## Epic: Task Management System
-**As a** user managing daily tasks  
-**I want** a simple web application  
-**So that** I can organize and track my tasks efficiently  
+## Epic 1: Core Dashboard Functionality
 
----
+### US1: Dashboard Overview
+**As a** support team member  
+**I want to** see all incoming tickets at a glance  
+**So that** I can quickly assess workload and prioritize my work
 
-## User Story 1: Create New Task
-**As a** user  
-**I want** to add new tasks to my list  
-**So that** I can keep track of what needs to be done  
+**Acceptance Criteria:**
+- [ ] Display total ticket count prominently at the top of the dashboard
+- [ ] Show tickets grouped by status with clear visual indicators
+- [ ] Display priority levels with color coding (Red=Critical, Orange=High, Yellow=Medium, Green=Low)
+- [ ] Real-time updates occur within 5 seconds of data changes
+- [ ] Dashboard loads within 3 seconds on standard internet connection
 
-### Acceptance Criteria:
-- [ ] User can access a form to create new tasks
-- [ ] Form includes fields for task title and description
-- [ ] Title field is required and has appropriate validation
-- [ ] Description field is optional but recommended
-- [ ] Form has a clear "Add Task" button
-- [ ] Success message appears after task creation
-- [ ] Form clears after successful submission
-- [ ] New task appears in the task list immediately
-
-### Technical Requirements:
-- Frontend form with proper input validation
-- POST request to `/tasks` endpoint
-- Backend validation and sanitization
-- Database insertion with proper error handling
-- Real-time UI update after successful creation
+**Story Points:** 5  
+**Priority:** HIGH  
+**Dependencies:** None
 
 ---
 
-## User Story 2: View Task List
-**As a** user  
-**I want** to see all my tasks in an organized list  
-**So that** I can understand what needs to be accomplished  
+### US2: Ticket Filtering
+**As a** support team member  
+**I want to** filter tickets by various criteria  
+**So that** I can focus on specific types of tickets
 
-### Acceptance Criteria:
-- [ ] All tasks are displayed in a clear, organized list
-- [ ] Each task shows title, description, and status
-- [ ] Tasks are displayed in chronological order (newest first)
-- [ ] Empty state message when no tasks exist
-- [ ] List is responsive and works on mobile devices
-- [ ] Tasks are clearly separated and easy to read
-- [ ] Status indicators are visually distinct
+**Acceptance Criteria:**
+- [ ] Filter by priority level (Low, Medium, High, Critical)
+- [ ] Filter by status (New, In Progress, Resolved, Closed)
+- [ ] Filter by assignee (All, Unassigned, Specific Agent)
+- [ ] Filter by date range (Today, This Week, This Month, Custom Range)
+- [ ] Search by ticket title or description text
+- [ ] Save custom filter combinations with descriptive names
+- [ ] Clear visual feedback shows which filters are currently active
 
-### Technical Requirements:
-- GET request to `/tasks` endpoint
-- Frontend rendering with proper data binding
-- Responsive CSS design
-- Empty state handling
-- Loading states during data fetch
+**Story Points:** 8  
+**Priority:** HIGH  
+**Dependencies:** US1 (Dashboard Overview)
 
 ---
 
-## User Story 3: Mark Task as Complete
-**As a** user  
-**I want** to mark tasks as complete when finished  
-**So that** I can track my progress and celebrate accomplishments  
+### US3: Ticket Assignment
+**As a** support team lead  
+**I want to** assign tickets to specific agents  
+**So that** workload is distributed evenly and efficiently
 
-### Acceptance Criteria:
-- [ ] Each task has a clear "Complete" button or checkbox
-- [ ] Completed tasks are visually distinct from incomplete ones
-- [ ] Task status updates immediately when marked complete
-- [ ] Completed tasks can be marked as incomplete if needed
-- [ ] Status change is persistent across sessions
-- [ ] Visual feedback confirms the status change
+**Acceptance Criteria:**
+- [ ] Drag-and-drop ticket assignment from unassigned to agent columns
+- [ ] Bulk assignment for multiple tickets (up to 50 at once)
+- [ ] Assignment history tracking (who assigned what and when)
+- [ ] Agent workload indicators showing current ticket count
+- [ ] Auto-assignment based on agent skills and current workload
+- [ ] Assignment confirmation with option to add notes
 
-### Technical Requirements:
-- PUT request to `/tasks/:id/complete` endpoint
-- Frontend state management for immediate updates
-- Database update with proper error handling
-- Toggle functionality for complete/incomplete status
-- Visual styling for different task states
+**Story Points:** 8  
+**Priority:** HIGH  
+**Dependencies:** US1 (Dashboard Overview)
 
 ---
 
-## User Story 4: Task Persistence
-**As a** user  
-**I want** my tasks to be saved permanently  
-**So that** I don't lose my task list when I close the browser  
+## Epic 2: Authentication & User Management
 
-### Acceptance Criteria:
-- [ ] All tasks are saved to a database
-- [ ] Tasks persist between browser sessions
-- [ ] Data is not lost when the application restarts
-- [ ] Database operations are reliable and fast
-- [ ] Error handling for database failures
-- [ ] Data integrity is maintained
+### US4: User Authentication
+**As a** support team member  
+**I want to** securely log into the dashboard  
+**So that** I can access my assigned tickets
 
-### Technical Requirements:
-- SQLite database with proper schema design
-- Database connection management
-- CRUD operations with transaction support
-- Error handling and logging
-- Data validation and sanitization
+**Acceptance Criteria:**
+- [ ] JWT-based authentication with secure token storage
+- [ ] Secure login/logout functionality with proper session management
+- [ ] Password reset capability with email verification
+- [ ] Session timeout handling with user warnings
+- [ ] Multi-factor authentication option for enhanced security
+- [ ] Failed login attempt logging and rate limiting
 
----
-
-## User Story 5: Responsive Design
-**As a** user  
-**I want** to access the application from any device  
-**So that** I can manage tasks on desktop, tablet, or mobile  
-
-### Acceptance Criteria:
-- [ ] Application works seamlessly on desktop computers
-- [ ] Interface adapts to tablet screen sizes
-- [ ] Mobile experience is optimized for touch interaction
-- [ ] All functionality is accessible on small screens
-- [ ] Text and buttons are appropriately sized for each device
-- [ ] Navigation is intuitive across all screen sizes
-
-### Technical Requirements:
-- CSS media queries for responsive design
-- Mobile-first design approach
-- Touch-friendly interface elements
-- Flexible layout using CSS Grid/Flexbox
-- Cross-browser compatibility testing
+**Story Points:** 5  
+**Priority:** HIGH  
+**Dependencies:** None
 
 ---
 
-## User Story 6: Error Handling
-**As a** user  
-**I want** clear feedback when something goes wrong  
-**So that** I understand what happened and can take appropriate action  
+### US5: User Role Management
+**As a** system administrator  
+**I want to** manage user roles and permissions  
+**So that** different team members have appropriate access levels
 
-### Acceptance Criteria:
-- [ ] Validation errors are displayed clearly and helpfully
-- [ ] Network errors show appropriate messages
-- [ ] Database errors are handled gracefully
-- [ ] User is guided on how to resolve issues
-- [ ] Error messages are user-friendly, not technical
-- [ ] Application remains functional even when errors occur
+**Acceptance Criteria:**
+- [ ] Role-based access control with predefined roles (Admin, Lead, Agent)
+- [ ] Permission management per role (read, write, assign, delete)
+- [ ] User account creation with role assignment
+- [ ] User account deactivation with data preservation
+- [ ] Role hierarchy prevents privilege escalation
+- [ ] Permission changes are logged for audit purposes
 
-### Technical Requirements:
-- Frontend form validation with real-time feedback
-- Backend error handling with appropriate HTTP status codes
-- User-friendly error message display
-- Graceful degradation for non-critical failures
-- Comprehensive error logging for debugging
+**Story Points:** 8  
+**Priority:** HIGH  
+**Dependencies:** US4 (User Authentication)
 
 ---
 
-## User Story 7: Performance
-**As a** user  
-**I want** the application to respond quickly  
-**So that** I can manage tasks efficiently without waiting  
+## Epic 3: Notification System
 
-### Acceptance Criteria:
-- [ ] Page loads in under 2 seconds
-- [ ] API responses return in under 500ms
-- [ ] Task operations feel instant to the user
-- [ ] No noticeable lag when switching between views
-- [ ] Application remains responsive during data operations
+### US6: Email Notifications
+**As a** support team member  
+**I want to** receive email notifications for ticket updates  
+**So that** I stay informed about changes without constantly checking the dashboard
 
-### Technical Requirements:
-- Optimized database queries with proper indexing
-- Efficient frontend rendering and state management
-- Minimal API payload sizes
-- Caching strategies where appropriate
-- Performance monitoring and optimization
+**Acceptance Criteria:**
+- [ ] New ticket notifications sent to appropriate team members
+- [ ] Status change notifications for assigned tickets
+- [ ] Assignment notifications when tickets are assigned
+- [ ] Comment notifications for ticket discussions
+- [ ] Configurable notification preferences per user
+- [ ] Professional email templates with clear call-to-action
+
+**Story Points:** 8  
+**Priority:** MEDIUM  
+**Dependencies:** US3 (Ticket Assignment)
 
 ---
 
-## Non-Functional Requirements
+### US7: Slack Integration
+**As a** support team member  
+**I want to** receive Slack notifications for critical updates  
+**So that** I can respond quickly to urgent matters
 
-### Security:
-- Input validation and sanitization
-- SQL injection prevention
-- XSS protection
-- CSRF protection (if implementing authentication later)
+**Acceptance Criteria:**
+- [ ] Slack webhook integration for real-time notifications
+- [ ] Critical ticket alerts for high-priority issues
+- [ ] Escalation notifications for overdue tickets
+- [ ] Customizable notification rules and channels
+- [ ] Integration can be disabled per user preference
 
-### Accessibility:
-- Keyboard navigation support
-- Screen reader compatibility
-- High contrast mode support
-- Semantic HTML structure
+**Story Points:** 5  
+**Priority:** MEDIUM  
+**Dependencies:** US6 (Email Notifications)
 
-### Testing:
-- Unit tests for all business logic
-- Integration tests for API endpoints
-- End-to-end tests for user workflows
-- Cross-browser compatibility testing
+---
 
-### Documentation:
-- API documentation with examples
-- User manual for end users
-- Technical documentation for developers
-- Setup and deployment instructions
+## Epic 4: Responsive Design
+
+### US8: Mobile & Tablet Support
+**As a** support team member  
+**I want to** access the dashboard from any device  
+**So that** I can work efficiently regardless of location
+
+**Acceptance Criteria:**
+- [ ] Responsive design works on desktop, tablet, and mobile devices
+- [ ] Touch-friendly interface for mobile devices with appropriate touch targets
+- [ ] Optimized layouts for different screen sizes (320px+ width)
+- [ ] Consistent user experience across all device types
+- [ ] Performance maintained across all device types
+
+**Story Points:** 8  
+**Priority:** MEDIUM  
+**Dependencies:** US1 (Dashboard Overview)
+
+---
+
+## Epic 5: Testing & Quality Assurance
+
+### US9: Comprehensive Testing
+**As a** development team  
+**I want to** ensure the dashboard is thoroughly tested  
+**So that** we deliver a high-quality, bug-free product
+
+**Acceptance Criteria:**
+- [ ] Unit tests with Jest achieving minimum 80% code coverage
+- [ ] Integration tests covering all API endpoints and database operations
+- [ ] End-to-end tests validating critical user flows
+- [ ] Performance testing ensuring dashboard loads within defined time limits
+- [ ] Security testing validating authentication and authorization flows
+
+**Story Points:** 5  
+**Priority:** MEDIUM  
+**Dependencies:** All development stories
+
+---
+
+## Epic 6: Deployment & Documentation
+
+### US10: Staging Deployment
+**As a** development team  
+**I want to** deploy to a staging environment  
+**So that** we can test the dashboard before production release
+
+**Acceptance Criteria:**
+- [ ] Docker containerization with optimized image sizes
+- [ ] Vercel deployment configuration for frontend
+- [ ] Environment-specific configurations for staging vs production
+- [ ] Automated deployment pipeline with testing gates
+- [ ] Rollback capability if deployment fails
+
+**Story Points:** 3  
+**Priority:** LOW  
+**Dependencies:** US9 (Comprehensive Testing)
+
+---
+
+### US11: Documentation
+**As a** support team  
+**I want to** have comprehensive documentation  
+**So that** I can effectively use and maintain the dashboard
+
+**Acceptance Criteria:**
+- [ ] User manual covering all dashboard features and workflows
+- [ ] API documentation with examples, error codes, and authentication details
+- [ ] Setup and installation guide for development and deployment
+- [ ] Troubleshooting guide for common issues
+- [ ] Documentation is searchable, well-organized, and regularly updated
+
+**Story Points:** 2  
+**Priority:** LOW  
+**Dependencies:** US10 (Staging Deployment)
+
+---
+
+## Story Point Summary
+- **Total Story Points:** 65
+- **High Priority Stories:** 34 points
+- **Medium Priority Stories:** 26 points  
+- **Low Priority Stories:** 5 points
+
+## Sprint Planning Recommendations
+- **Sprint 1 (Weeks 1-2):** Epic 1 (Core Dashboard) + Epic 2 (Authentication) = 47 points
+- **Sprint 2 (Weeks 3-4):** Epic 3 (Notifications) + Epic 4 (Responsive Design) = 34 points
+- **Sprint 3 (Weeks 5-6):** Epic 5 (Testing) + Epic 6 (Deployment) = 7 points
+
+## Risk Mitigation
+- **Technical Risk:** Start with authentication and core dashboard to establish foundation
+- **Timeline Risk:** Prioritize high-value features for early delivery
+- **Quality Risk:** Include testing story in each sprint for continuous validation

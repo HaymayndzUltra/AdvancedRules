@@ -139,7 +139,8 @@ def recover_file(path: Path) -> bool:
 		if backups:
 			with file_lock(req):
 				try:
-					backups[0].replace(req)
+					import shutil
+					shutil.copy2(backups[0], req)
 					return True
 				except Exception:
 					pass
@@ -150,7 +151,8 @@ def recover_file(path: Path) -> bool:
 		if backups:
 			with file_lock(req):
 				try:
-					backups[0].replace(req)
+					import shutil
+					shutil.copy2(backups[0], req)
 					return True
 				except Exception:
 					pass

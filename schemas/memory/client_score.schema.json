@@ -1,5 +1,44 @@
 {
-  "kind": "json",
-  "required": ["fit_score", "project_risk", "complexity"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Client Score",
+  "description": "Client screening and scoring results",
+  "type": "object",
+  "required": ["fit_score", "project_risk", "complexity"],
+  "properties": {
+    "fit_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Client fit score (0-100)"
+    },
+    "project_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+      "description": "Overall project risk assessment"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["S", "M", "L", "XL"],
+      "description": "Project complexity size"
+    },
+    "must_ask": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Critical questions to ask client"
+    },
+    "decline_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Reasons to decline the project"
+    },
+    "schema_version": {
+      "type": "string",
+      "default": "1.0.0"
+    }
+  },
+  "additionalProperties": false
 }
-

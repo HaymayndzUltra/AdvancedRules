@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0",
+  "policy": "enabled",
+  "redacted_total": 0,
+  "status": "pass",
+  "mode": "SAST"
+}

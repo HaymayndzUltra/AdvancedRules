@@ -1,182 +1,179 @@
-# Product Backlog - Customer Support Ticket Dashboard
+# Product Backlog - Freelance Developer Personal Booking Website
 
-## Epic: Core Dashboard Functionality
-**Priority: HIGH** | **Story Points: 21**
+## Epic: Marketing Site
+**Priority: HIGH** | **Story Points: 20**
 
-### User Story 1: Dashboard Overview
-**As a** support team member  
-**I want to** see all incoming tickets at a glance  
-**So that** I can quickly assess workload and prioritize my work
+### User Story 1: Home Page with Clear CTA
+**As a** prospective client  
+**I want to** see a compelling landing page with a “Book Now / Hire Me” CTA  
+**So that** I can quickly start the booking process
 
 **Acceptance Criteria:**
-- [ ] Display total ticket count
-- [ ] Show tickets by status (New, In Progress, Resolved, Closed)
-- [ ] Show tickets by priority (Low, Medium, High, Critical)
-- [ ] Real-time updates without page refresh
+- [ ] Responsive hero section (desktop/tablet/mobile)
+- [ ] Prominent CTA (“Book Now” / “Hire Me”)
+- [ ] Services summary and trust signals (logos/testimonials)
+- [ ] Fast LCP (≤ 2.5s on 4G)
 
 **Story Points: 5**
 
-### User Story 2: Ticket Filtering
-**As a** support team member  
-**I want to** filter tickets by various criteria  
-**So that** I can focus on specific types of tickets
+### User Story 2: About Me
+**As a** visitor  
+**I want to** read skills, background, and experience  
+**So that** I can evaluate credibility
 
 **Acceptance Criteria:**
-- [ ] Filter by priority level
-- [ ] Filter by status
-- [ ] Filter by assignee
-- [ ] Filter by date range
-- [ ] Search by ticket title/description
-- [ ] Save custom filter combinations
-
-**Story Points: 8**
-
-### User Story 3: Ticket Assignment
-**As a** support team lead  
-**I want to** assign tickets to specific agents  
-**So that** workload is distributed evenly and efficiently
-
-**Acceptance Criteria:**
-- [ ] Drag-and-drop ticket assignment
-- [ ] Bulk assignment for multiple tickets
-- [ ] Assignment history tracking
-- [ ] Agent workload indicators
-- [ ] Auto-assignment based on agent skills
-
-**Story Points: 8**
-
-## Epic: Authentication & User Management
-**Priority: HIGH** | **Story Points: 13**
-
-### User Story 4: User Authentication
-**As a** support team member  
-**I want to** securely log into the dashboard  
-**So that** I can access my assigned tickets
-
-**Acceptance Criteria:**
-- [ ] JWT-based authentication
-- [ ] Secure login/logout functionality
-- [ ] Password reset capability
-- [ ] Session timeout handling
-- [ ] Multi-factor authentication (optional)
-
-**Story Points: 5**
-
-### User Story 5: User Role Management
-**As a** system administrator  
-**I want to** manage user roles and permissions  
-**So that** different team members have appropriate access levels
-
-**Acceptance Criteria:**
-- [ ] Role-based access control
-- [ ] Admin, Lead, and Agent roles
-- [ ] Permission management per role
-- [ ] User account creation/deactivation
-
-**Story Points: 8**
-
-## Epic: Notification System
-**Priority: MEDIUM** | **Story Points: 13**
-
-### User Story 6: Email Notifications
-**As a** support team member  
-**I want to** receive email notifications for ticket updates  
-**So that** I stay informed about changes without constantly checking the dashboard
-
-**Acceptance Criteria:**
-- [ ] New ticket notifications
-- [ ] Status change notifications
-- [ ] Assignment notifications
-- [ ] Comment notifications
-- [ ] Configurable notification preferences
-
-**Story Points: 8**
-
-### User Story 7: Slack Integration
-**As a** support team member  
-**I want to** receive Slack notifications for critical updates  
-**So that** I can respond quickly to urgent matters
-
-**Acceptance Criteria:**
-- [ ] Slack webhook integration
-- [ ] Critical ticket alerts
-- [ ] Escalation notifications
-- [ ] Customizable notification rules
-
-**Story Points: 5**
-
-## Epic: Responsive Design
-**Priority: MEDIUM** | **Story Points: 8**
-
-### User Story 8: Mobile & Tablet Support
-**As a** support team member  
-**I want to** access the dashboard from any device  
-**So that** I can work efficiently regardless of location
-
-**Acceptance Criteria:**
-- [ ] Responsive design for desktop, tablet, and mobile
-- [ ] Touch-friendly interface for mobile devices
-- [ ] Optimized layouts for different screen sizes
-- [ ] Consistent user experience across devices
-
-**Story Points: 8**
-
-## Epic: Testing & Quality Assurance
-**Priority: MEDIUM** | **Story Points: 5**
-
-### User Story 9: Comprehensive Testing
-**As a** development team  
-**I want to** ensure the dashboard is thoroughly tested  
-**So that** we deliver a high-quality, bug-free product
-
-**Acceptance Criteria:**
-- [ ] Unit tests with Jest (minimum 80% coverage)
-- [ ] Integration tests for API endpoints
-- [ ] End-to-end tests for critical user flows
-- [ ] Performance testing for dashboard load times
-- [ ] Security testing for authentication flows
-
-**Story Points: 5**
-
-## Epic: Deployment & Documentation
-**Priority: LOW** | **Story Points: 5**
-
-### User Story 10: Staging Deployment
-**As a** development team  
-**I want to** deploy to a staging environment  
-**So that** we can test the dashboard before production release
-
-**Acceptance Criteria:**
-- [ ] Docker containerization
-- [ ] Vercel deployment configuration
-- [ ] Environment-specific configurations
-- [ ] Automated deployment pipeline
+- [ ] Markdown/JSON-driven content
+- [ ] Downloadable CV link (optional)
+- [ ] Accessibility (WCAG 2.1 AA for text/contrast)
 
 **Story Points: 3**
 
-### User Story 11: Documentation
-**As a** support team  
-**I want to** have comprehensive documentation  
-**So that** I can effectively use and maintain the dashboard
+### User Story 3: Portfolio
+**As a** visitor  
+**I want to** browse projects/case studies/testimonials  
+**So that** I can assess fit and quality
 
 **Acceptance Criteria:**
-- [ ] User manual for support team
-- [ ] API documentation for developers
-- [ ] Setup and installation guide
-- [ ] Troubleshooting guide
+- [ ] Project cards with tags and detail pages
+- [ ] Case study layout (problem/solution/outcomes)
+- [ ] Testimonial carousel or quotes section
+
+**Story Points: 6**
+
+### User Story 4: Services & Pricing
+**As a** client  
+**I want to** view services and packages/rates  
+**So that** I can pick the right engagement
+
+**Acceptance Criteria:**
+- [ ] Pricing table (hourly/packages)
+- [ ] “Book Now” CTA per plan
+- [ ] FAQ block (revisions, scope, timeline)
+
+**Story Points: 6**
+
+## Epic: Booking Flow Integration
+**Priority: HIGH** | **Story Points: 18**
+
+### User Story 5: Booking Widget
+**As a** client  
+**I want to** schedule via embedded Calendly/TidyCal (or custom)  
+**So that** I can self‑service booking
+
+**Acceptance Criteria:**
+- [ ] Embedded/launch widget with configurable link
+- [ ] Timezone handling & confirmations
+- [ ] Availability sync visible
+
+**Story Points: 6**
+
+### User Story 6: Policies & Notifications
+**As a** client  
+**I want to** understand reschedule/cancel/refund policies  
+**So that** expectations are clear
+
+**Acceptance Criteria:**
+- [ ] Policy page linked from booking
+- [ ] Email templates for confirm/reschedule/cancel
+- [ ] Optional ICS calendar attachment
+
+**Story Points: 4**
+
+### User Story 7: Calendar Sync (Optional)
+**As a** developer  
+**I want to** sync blocks with personal calendar  
+**So that** double booking is prevented
+
+**Acceptance Criteria:**
+- [ ] Basic sync or documented manual mode
+- [ ] Logging for sync attempts/errors
+
+**Story Points: 8**
+
+## Epic: Payments
+**Priority: HIGH** | **Story Points: 15**
+
+### User Story 8: Checkout
+**As a** client  
+**I want to** pay securely (Stripe/PayPal/GCash)  
+**So that** I can confirm booking
+
+**Acceptance Criteria:**
+- [ ] Test + live mode switch via env
+- [ ] Line items for packages/deposits
+- [ ] Success/failure redirects
+
+**Story Points: 8**
+
+### User Story 9: Webhooks & Receipts
+**As a** developer  
+**I want to** verify payments via webhooks  
+**So that** I can record transaction status
+
+**Acceptance Criteria:**
+- [ ] Signature verification
+- [ ] Persist TX status and receipt link
+- [ ] Email receipt to client
+
+**Story Points: 7**
+
+## Epic: Contact & Social
+**Priority: MEDIUM** | **Story Points: 6**
+
+### User Story 10: Contact Form
+**As a** visitor  
+**I want to** send inquiries  
+**So that** I can ask pre‑sale questions
+
+**Acceptance Criteria:**
+- [ ] Spam controls (honeypot/recaptcha)
+- [ ] Email delivery & success toast
+- [ ] Rate‑limit or basic throttle
+
+**Story Points: 4**
+
+### User Story 11: Social Links
+**Acceptance Criteria:**
+- [ ] LinkedIn/GitHub links
+- [ ] Open in new tab with rel=noopener
 
 **Story Points: 2**
 
-## Total Story Points: 65
-## Estimated Duration: 10-14 working days
-## Risk Level: MEDIUM
+## Epic: Admin Dashboard
+**Priority: MEDIUM** | **Story Points: 10**
 
-## Definition of Done
-- [ ] Code reviewed and approved
-- [ ] Unit tests passing with >80% coverage
-- [ ] Integration tests passing
-- [ ] User acceptance testing completed
-- [ ] Performance requirements met
-- [ ] Security requirements validated
-- [ ] Documentation updated
-- [ ] Staging deployment successful
+### User Story 12: Manage Bookings & Inquiries
+**Acceptance Criteria:**
+- [ ] Filter/search/status updates
+- [ ] CSV export for payments/inquiries
+
+**Story Points: 6**
+
+### User Story 13: Settings
+**Acceptance Criteria:**
+- [ ] Booking link, payment keys, SEO meta
+- [ ] Feature flags (test/live)
+
+**Story Points: 4**
+
+## Epic: SEO & Security
+**Priority: MEDIUM** | **Story Points: 8**
+
+### User Story 14: SEO/SSL/Security Headers
+**Acceptance Criteria:**
+- [ ] Meta tags, sitemap, robots, OpenGraph
+- [ ] SSL cert + security headers
+- [ ] Lighthouse SEO ≥ 90
+
+**Story Points: 8**
+
+## Epic: Deployment & Documentation
+**Priority: LOW** | **Story Points: 6**
+
+### User Story 15: Staging/Production & Docs
+**Acceptance Criteria:**
+- [ ] Staging deploy (Docker/Vercel)
+- [ ] Environment variables documented
+- [ ] README + runbook + troubleshooting
+
+**Story Points: 6**

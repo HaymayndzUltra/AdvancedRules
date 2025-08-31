@@ -2,8 +2,8 @@
   "summary": {
     "valid": true,
     "error_count": 0,
-    "unique_ids": 8,
-    "total_commands": 8
+    "unique_ids": 12,
+    "total_commands": 12
   },
   "validation_errors": [],
   "commands": [
@@ -109,6 +109,58 @@
         "arx",
         "memory",
         "doctor"
+      ]
+    },
+    {
+      "raw_id": "codegen-scaffold",
+      "normalized_id": "codegen-scaffold",
+      "duplicate": false,
+      "trigger": "run_codegen",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "codegen_ai",
+        "--mode",
+        "SCAFFOLD"
+      ]
+    },
+    {
+      "raw_id": "qa-validate",
+      "normalized_id": "qa-validate",
+      "duplicate": false,
+      "trigger": "run_qa",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "qa_ai",
+        "--mode",
+        "VALIDATE"
+      ]
+    },
+    {
+      "raw_id": "security-scan",
+      "normalized_id": "security-scan",
+      "duplicate": false,
+      "trigger": "run_security",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "security_ai",
+        "--mode",
+        "SAST"
+      ]
+    },
+    {
+      "raw_id": "deploy-package",
+      "normalized_id": "deploy-package",
+      "duplicate": false,
+      "trigger": "run_deploy",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "deploy_ai",
+        "--mode",
+        "PACKAGE"
       ]
     }
   ]

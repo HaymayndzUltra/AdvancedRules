@@ -1,6 +1,6 @@
 {
-  "prev_state": "QA_DONE",
-  "state": "SECURITY_DONE",
+  "prev_state": "CODEGEN_DONE",
+  "state": "QA_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -145,14 +145,8 @@
       "from": "CODEGEN_DONE",
       "to": "QA_DONE",
       "correlation_id": "edf13f51-2112-4b53-97f5-9a6fe28ea325"
-    },
-    {
-      "ts": 1756628505.448018,
-      "from": "QA_DONE",
-      "to": "SECURITY_DONE",
-      "correlation_id": "36d18a14-18d0-437d-a14b-d65cd3dd82c2"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T08:21:45.448041"
+  "last_updated": "2025-08-31T08:21:07.738888"
 }

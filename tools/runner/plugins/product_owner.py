@@ -27,17 +27,41 @@ def run() -> None:
     product_vision = generate_product_vision(brief_content)
     write_text(MB / "plan/product_vision.md", product_vision, role="product_owner_ai")
 
+
+def _extract_project_title(brief_content: str) -> str:
+    """Try to extract a project title from the brief.
+
+    Looks for a line like 'Project Brief: <Title>' or first non-empty heading line.
+    """
+    import re
+    lines = [l.strip() for l in (brief_content or '').splitlines()]
+    for l in lines:
+        if l.lower().startswith('project brief:'):
+            title = l.split(':', 1)[-1].strip() or ''
+            if title:
+                return title
+    # fallback: first non-empty line without markdown bullets
+    for l in lines:
+        if l and not l.startswith(('#','-','*')):
+            return l
+    return 'Project'
+
+
 def generate_product_backlog(brief_content: str) -> str:
-    """Generate a prioritized product backlog based on the client brief."""
-    
+    """Generate a prioritized product backlog based on the client brief.
+
+    Minimal adaptation: replace the template title with the extracted project title.
+    """
+    project_title = _extract_project_title(brief_content)
+
     backlog = """# Product Backlog - Customer Support Ticket Dashboard
 
 ## Epic: Core Dashboard Functionality
 **Priority: HIGH** | **Story Points: 21**
 
 ### User Story 1: Dashboard Overview
-**As a** support team member  
-**I want to** see all incoming tickets at a glance  
+**As a** support team member
+**I want to** see all incoming tickets at a glance
 **So that** I can quickly assess workload and prioritize my work
 
 **Acceptance Criteria:**
@@ -49,8 +73,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Story Points: 5**
 
 ### User Story 2: Ticket Filtering
-**As a** support team member  
-**I want to** filter tickets by various criteria  
+**As a** support team member
+**I want to** filter tickets by various criteria
 **So that** I can focus on specific types of tickets
 
 **Acceptance Criteria:**
@@ -64,8 +88,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Story Points: 8**
 
 ### User Story 3: Ticket Assignment
-**As a** support team lead  
-**I want to** assign tickets to specific agents  
+**As a** support team lead
+**I want to** assign tickets to specific agents
 **So that** workload is distributed evenly and efficiently
 
 **Acceptance Criteria:**
@@ -81,8 +105,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Priority: HIGH** | **Story Points: 13**
 
 ### User Story 4: User Authentication
-**As a** support team member  
-**I want to** securely log into the dashboard  
+**As a** support team member
+**I want to** securely log into the dashboard
 **So that** I can access my assigned tickets
 
 **Acceptance Criteria:**
@@ -95,8 +119,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Story Points: 5**
 
 ### User Story 5: User Role Management
-**As a** system administrator  
-**I want to** manage user roles and permissions  
+**As a** system administrator
+**I want to** manage user roles and permissions
 **So that** different team members have appropriate access levels
 
 **Acceptance Criteria:**
@@ -111,8 +135,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Priority: MEDIUM** | **Story Points: 13**
 
 ### User Story 6: Email Notifications
-**As a** support team member  
-**I want to** receive email notifications for ticket updates  
+**As a** support team member
+**I want to** receive email notifications for ticket updates
 **So that** I stay informed about changes without constantly checking the dashboard
 
 **Acceptance Criteria:**
@@ -125,8 +149,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Story Points: 8**
 
 ### User Story 7: Slack Integration
-**As a** support team member  
-**I want to** receive Slack notifications for critical updates  
+**As a** support team member
+**I want to** receive Slack notifications for critical updates
 **So that** I can respond quickly to urgent matters
 
 **Acceptance Criteria:**
@@ -141,8 +165,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Priority: MEDIUM** | **Story Points: 8**
 
 ### User Story 8: Mobile & Tablet Support
-**As a** support team member  
-**I want to** access the dashboard from any device  
+**As a** support team member
+**I want to** access the dashboard from any device
 **So that** I can work efficiently regardless of location
 
 **Acceptance Criteria:**
@@ -157,8 +181,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Priority: MEDIUM** | **Story Points: 5**
 
 ### User Story 9: Comprehensive Testing
-**As a** development team  
-**I want to** ensure the dashboard is thoroughly tested  
+**As a** development team
+**I want to** ensure the dashboard is thoroughly tested
 **So that** we deliver a high-quality, bug-free product
 
 **Acceptance Criteria:**
@@ -174,8 +198,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Priority: LOW** | **Story Points: 5**
 
 ### User Story 10: Staging Deployment
-**As a** development team  
-**I want to** deploy to a staging environment  
+**As a** development team
+**I want to** deploy to a staging environment
 **So that** we can test the dashboard before production release
 
 **Acceptance Criteria:**
@@ -187,8 +211,8 @@ def generate_product_backlog(brief_content: str) -> str:
 **Story Points: 3**
 
 ### User Story 11: Documentation
-**As a** support team  
-**I want to** have comprehensive documentation  
+**As a** support team
+**I want to** have comprehensive documentation
 **So that** I can effectively use and maintain the dashboard
 
 **Acceptance Criteria:**
@@ -213,8 +237,8 @@ def generate_product_backlog(brief_content: str) -> str:
 - [ ] Documentation updated
 - [ ] Staging deployment successful
 """
-    
-    return backlog
+    safe_title = project_title if project_title else 'Project'
+    return backlog.replace('Customer Support Ticket Dashboard', safe_title)
 
 def generate_acceptance_criteria(brief_content: str) -> dict:
     """Generate detailed acceptance criteria for each user story."""

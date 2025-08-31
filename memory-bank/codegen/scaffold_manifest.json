@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "SCAFFOLD",
+  "items": [
+    "marketing-site/home-page-with-clear-cta",
+    "marketing-site/about-me",
+    "marketing-site/portfolio",
+    "marketing-site/services-pricing",
+    "booking-flow-integration/booking-widget",
+    "booking-flow-integration/policies-notifications",
+    "booking-flow-integration/calendar-sync-optional",
+    "payments/checkout",
+    "payments/webhooks-receipts",
+    "contact-social/contact-form",
+    "contact-social/social-links",
+    "admin-dashboard/manage-bookings-inquiries",
+    "admin-dashboard/settings",
+    "seo-security/seo-ssl-security-headers",
+    "deployment-documentation/staging-production-docs"
+  ]
+}

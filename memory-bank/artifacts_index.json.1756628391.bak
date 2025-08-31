@@ -1180,54 +1180,5 @@
     "created_at": 1756628391.142885,
     "source_role": "codegen",
     "correlation_id": null
-  },
-  {
-    "path": "memory-bank/codegen/scaffold_notes.md",
-    "sha256": "6cb500bcb10514c61963811677b8deef29e6e08ea73dcf07ff628eafec41bfd2",
-    "created_at": 1756628391.1666386,
-    "source_role": "codegen",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/qa/lint_report.json",
-    "sha256": "be535f4f4f9dbeb02c441338bdb2ba79c73dd2e5783e6860823b0a35064a7c61",
-    "created_at": 1756628467.6810138,
-    "source_role": "qa",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/qa/test_report.json",
-    "sha256": "26275cd4f44d8cb330e47ea7c4604246e2195bb3d55bbf0c0c68da6181d34de6",
-    "created_at": 1756628467.704155,
-    "source_role": "qa",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/qa/coverage_summary.json",
-    "sha256": "3eb46cc266c03c80a4b3ed35ff664b9f482ba390dfb5cc0f869bc0427bb1ce7b",
-    "created_at": 1756628467.7265437,
-    "source_role": "qa",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/security/sast_summary.json",
-    "sha256": "70f14efa776dab9d7e27351bf86772c88a72113d5d01a54050a32712779e897b",
-    "created_at": 1756628505.3942144,
-    "source_role": "security",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/security/license_audit.json",
-    "sha256": "965367981b3b5107048b7dcfb04e1f2d4966f0987b834a795570b21ec86b1340",
-    "created_at": 1756628505.4176114,
-    "source_role": "security",
-    "correlation_id": null
-  },
-  {
-    "path": "memory-bank/security/redaction_policy_check.json",
-    "sha256": "bc247ae8e74b39421d987c1b78a3bacfc79989f585efb733b75c4366abaa2f1f",
-    "created_at": 1756628505.4370651,
-    "source_role": "security",
-    "correlation_id": null
   }
 ]

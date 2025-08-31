@@ -1222,12 +1222,5 @@
     "created_at": 1756628505.4176114,
     "source_role": "security",
     "correlation_id": null
-  },
-  {
-    "path": "memory-bank/security/redaction_policy_check.json",
-    "sha256": "bc247ae8e74b39421d987c1b78a3bacfc79989f585efb733b75c4366abaa2f1f",
-    "created_at": 1756628505.4370651,
-    "source_role": "security",
-    "correlation_id": null
   }
 ]

@@ -1,0 +1,105 @@
+schema_version: "1.0.0"
+project: "Freelance Developer Personal Booking Website"
+
+epics:
+  - id: core-dashboard-functionality
+    title: Core Dashboard Functionality
+    tasks:
+      - id: dashboard-overview
+        desc: Dashboard Overview
+        acceptance:
+          - Display total ticket count
+          - Show tickets by status (New, In Progress, Resolved, Closed)
+          - Show tickets by priority (Low, Medium, High, Critical)
+          - Real-time updates without page refresh
+      - id: ticket-filtering
+        desc: Ticket Filtering
+        acceptance:
+          - Filter by priority level
+          - Filter by status
+          - Filter by assignee
+          - Filter by date range
+          - Search by ticket title/description
+          - Save custom filter combinations
+      - id: ticket-assignment
+        desc: Ticket Assignment
+        acceptance:
+          - Drag-and-drop ticket assignment
+          - Bulk assignment for multiple tickets
+          - Assignment history tracking
+          - Agent workload indicators
+          - Auto-assignment based on agent skills
+  - id: authentication-user-management
+    title: Authentication & User Management
+    tasks:
+      - id: user-authentication
+        desc: User Authentication
+        acceptance:
+          - JWT-based authentication
+          - Secure login/logout functionality
+          - Password reset capability
+          - Session timeout handling
+          - Multi-factor authentication (optional)
+      - id: user-role-management
+        desc: User Role Management
+        acceptance:
+          - Role-based access control
+          - Admin, Lead, and Agent roles
+          - Permission management per role
+          - User account creation/deactivation
+  - id: notification-system
+    title: Notification System
+    tasks:
+      - id: email-notifications
+        desc: Email Notifications
+        acceptance:
+          - New ticket notifications
+          - Status change notifications
+          - Assignment notifications
+          - Comment notifications
+          - Configurable notification preferences
+      - id: slack-integration
+        desc: Slack Integration
+        acceptance:
+          - Slack webhook integration
+          - Critical ticket alerts
+          - Escalation notifications
+          - Customizable notification rules
+  - id: responsive-design
+    title: Responsive Design
+    tasks:
+      - id: mobile-tablet-support
+        desc: Mobile & Tablet Support
+        acceptance:
+          - Responsive design for desktop, tablet, and mobile
+          - Touch-friendly interface for mobile devices
+          - Optimized layouts for different screen sizes
+          - Consistent user experience across devices
+  - id: testing-quality-assurance
+    title: Testing & Quality Assurance
+    tasks:
+      - id: comprehensive-testing
+        desc: Comprehensive Testing
+        acceptance:
+          - Unit tests with Jest (minimum 80% coverage)
+          - Integration tests for API endpoints
+          - End-to-end tests for critical user flows
+          - Performance testing for dashboard load times
+          - Security testing for authentication flows
+  - id: deployment-documentation
+    title: Deployment & Documentation
+    tasks:
+      - id: staging-deployment
+        desc: Staging Deployment
+        acceptance:
+          - Docker containerization
+          - Vercel deployment configuration
+          - Environment-specific configurations
+          - Automated deployment pipeline
+      - id: documentation
+        desc: Documentation
+        acceptance:
+          - User manual for support team
+          - API documentation for developers
+          - Setup and installation guide
+          - Troubleshooting guide

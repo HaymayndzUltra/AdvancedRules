@@ -1,6 +1,6 @@
 {
-  "prev_state": "QA_DONE",
-  "state": "SECURITY_DONE",
+  "prev_state": "VALIDATION_DONE",
+  "state": "PLANNING_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -133,26 +133,8 @@
       "from": "VALIDATION_DONE",
       "to": "PLANNING_DONE",
       "correlation_id": "a38c65f7-6ef5-4cb3-90be-bf646227b224"
-    },
-    {
-      "ts": 1756628391.1781383,
-      "from": "PLANNING_DONE",
-      "to": "CODEGEN_DONE",
-      "correlation_id": "2c2e7bd3-56a0-4d7d-a4be-7dabe2f85a52"
-    },
-    {
-      "ts": 1756628467.738855,
-      "from": "CODEGEN_DONE",
-      "to": "QA_DONE",
-      "correlation_id": "edf13f51-2112-4b53-97f5-9a6fe28ea325"
-    },
-    {
-      "ts": 1756628505.448018,
-      "from": "QA_DONE",
-      "to": "SECURITY_DONE",
-      "correlation_id": "36d18a14-18d0-437d-a14b-d65cd3dd82c2"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T08:21:45.448041"
+  "last_updated": "2025-08-31T08:14:16.126847"
 }

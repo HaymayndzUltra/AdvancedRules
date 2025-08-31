@@ -4,6 +4,23 @@ defaults:
   min_confidence: 0.9
 
 commands:
+  - id: validate-system-readiness
+    role_from: SYSTEM_VALIDATOR
+    trigger: validate_system_readiness
+    run:
+      shell: ["python3","tools/run_role.py","readiness"]
+    requires:
+      states_any_of: []
+      completed_steps_all_of: []
+      gates_passed_all_of: []
+    contexts:
+      must_exist: []
+    emits:
+      sets_state: "PRESTART_VALIDATED"
+      add_completed_step: "prestart_validated"
+    ui:
+      label: "Validate System Readiness"
+      reason: "Pre-start artifacts and tool readiness check"
   - id: planning-to-audit
     role_from: PLANNING_AI
     trigger: run_auditor

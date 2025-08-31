@@ -1,3 +1,7 @@
+---
+description: "Unified code formatting standards across languages and frameworks"
+alwaysApply: false
+---
 # 🎨 Unified Code Formatting & Quality Standards
 
 ## 📋 Overview
@@ -556,7 +560,3 @@ rustup update
 **Coverage**: All major languages and frameworks  
 **Tools**: Prettier, ESLint, Black, Ruff, cargo fmt  
 **Status**: ✅ Comprehensive and Ready to Use
-description:
-globs:
-alwaysApply: true
----

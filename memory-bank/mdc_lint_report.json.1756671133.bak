@@ -1,10 +1,18 @@
 {
   "total_files": 78,
-  "files_with_issues": 0,
-  "total_issues": 0,
-  "errors": 0,
+  "files_with_issues": 1,
+  "total_issues": 1,
+  "errors": 1,
   "warnings": 0,
-  "issues": [],
+  "issues": [
+    {
+      "file": ".cursor/rules/domains/utilities/beefreeSDK.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    }
+  ],
   "metadata": {
     ".cursor/rules/decision_scoring.mdc": {
       "description": "Decision scoring rubric: intent/state/evidence/recency/pref with thresholds & gates",
@@ -480,14 +488,14 @@
       "always_apply": false,
       "attachments": [],
       "gates": [
-        "quality",
-        "with_progression",
-        "triggers",
-        "function",
-        "name",
-        "optimization_safety",
         "workload_balance",
-        "deployment_readiness"
+        "optimization_safety",
+        "with_progression",
+        "function",
+        "deployment_readiness",
+        "quality",
+        "name",
+        "triggers"
       ],
       "required_artifacts": [],
       "actions": []
@@ -1108,15 +1116,8 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/beefreeSDK.mdc": {
-      "description": "Guidelines and best practices for Beefree SDK: install, auth, config, customization, templates",
-      "globs": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.html",
-        "**/*.css"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],

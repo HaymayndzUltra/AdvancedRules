@@ -1,10 +1,25 @@
 {
   "total_files": 78,
-  "files_with_issues": 0,
-  "total_issues": 0,
-  "errors": 0,
+  "files_with_issues": 2,
+  "total_issues": 2,
+  "errors": 2,
   "warnings": 0,
-  "issues": [],
+  "issues": [
+    {
+      "file": ".cursor/rules/domains/utilities/beefreeSDK.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/mobile/nativescript.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    }
+  ],
   "metadata": {
     ".cursor/rules/decision_scoring.mdc": {
       "description": "Decision scoring rubric: intent/state/evidence/recency/pref with thresholds & gates",
@@ -480,13 +495,13 @@
       "always_apply": false,
       "attachments": [],
       "gates": [
-        "quality",
-        "with_progression",
         "triggers",
-        "function",
-        "name",
         "optimization_safety",
         "workload_balance",
+        "quality",
+        "name",
+        "function",
+        "with_progression",
         "deployment_readiness"
       ],
       "required_artifacts": [],
@@ -1108,15 +1123,8 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/beefreeSDK.mdc": {
-      "description": "Guidelines and best practices for Beefree SDK: install, auth, config, customization, templates",
-      "globs": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.html",
-        "**/*.css"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -1124,20 +1132,8 @@
       "actions": []
     },
     ".cursor/rules/domains/mobile/nativescript.mdc": {
-      "description": "NativeScript best practices and patterns for mobile applications",
-      "globs": [
-        "**/*.tsx",
-        "**/*.ts",
-        "**/*.vue",
-        "**/*.svelte",
-        "src/**/*.ts",
-        "app/**/*.ts",
-        "src/**/*.tsx",
-        "app/**/*.tsx",
-        "src/**/*.vue",
-        "app/**/*.vue",
-        "src/**/*.svelte"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],

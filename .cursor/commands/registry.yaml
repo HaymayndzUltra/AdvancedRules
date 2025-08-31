@@ -61,7 +61,7 @@ commands:
     role_from: FLOW_VALIDATOR
     trigger: lint_flow
     run:
-      shell: ["arx","flow","lint","--flow={{flow_id}}"]
+      shell: ["arx","flow","lint","--flow=feature_request_to_pr"]
     requires:
       states_any_of: ["PLANNING_DONE", "SYNTHESIS_DONE"]
       completed_steps_all_of: []

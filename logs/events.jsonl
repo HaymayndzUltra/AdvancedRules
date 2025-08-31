@@ -679,3 +679,4 @@
 {"type": "artifact_emitted", "role": "product_owner_ai", "path": "memory-bank/plan/product_vision.md", "correlation_id": null, "trace_id": null, "timestamp": 1756653231.315138}
 {"type": "role_duration", "module": "tools.runner.plugins.product_owner", "seconds": 0.041158199310302734}
 {"type": "decision_made", "top": "validate_system_readiness", "correlation_id": "a4032cf5-d6cc-437c-b312-ba8ffc828758", "trace_id": "5866d231-31a7-4904-bfe3-97a6e0339419", "timestamp": 1756653736.787041}
+{"type": "decision_made", "top": "flow-lint", "correlation_id": "3fd2f48c-1dd2-4774-9063-da05a327d606", "trace_id": "a41c14de-8955-4a8e-8ec4-914dc74b5b6e", "timestamp": 1756654205.4675014}

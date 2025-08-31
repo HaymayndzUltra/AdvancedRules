@@ -1,10 +1,151 @@
 {
   "total_files": 78,
-  "files_with_issues": 0,
-  "total_issues": 0,
-  "errors": 0,
+  "files_with_issues": 20,
+  "total_issues": 20,
+  "errors": 20,
   "warnings": 0,
-  "issues": [],
+  "issues": [
+    {
+      "file": ".cursor/rules/prestart-upwork-integration.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/ai-personas-reference.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/decision-scoring-orchestration.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/cpp.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/python.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/fastapi.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/convex.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/node-express.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/backend/csharp-dotnet.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/svelte.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/react.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/vue.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/tailwind.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/frontend/nextjs.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/unified-code-formatting.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/rules-effectiveness.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/medusa.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/typescript.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/utilities/beefreeSDK.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    },
+    {
+      "file": ".cursor/rules/domains/mobile/nativescript.mdc",
+      "line": 1,
+      "severity": "error",
+      "category": "frontmatter",
+      "message": "Missing or invalid YAML frontmatter"
+    }
+  ],
   "metadata": {
     ".cursor/rules/decision_scoring.mdc": {
       "description": "Decision scoring rubric: intent/state/evidence/recency/pref with thresholds & gates",
@@ -45,7 +186,7 @@
       ]
     },
     ".cursor/rules/prestart-upwork-integration.mdc": {
-      "description": "Pre-start readiness and Upwork integration checklist",
+      "description": null,
       "globs": [],
       "always_apply": false,
       "attachments": [],
@@ -99,7 +240,7 @@
       "actions": []
     },
     ".cursor/rules/ai-personas-reference.mdc": {
-      "description": "AI personas reference and when to use each role",
+      "description": null,
       "globs": [],
       "always_apply": false,
       "attachments": [],
@@ -154,7 +295,7 @@
       "actions": []
     },
     ".cursor/rules/decision-scoring-orchestration.mdc": {
-      "description": "Decision scoring overview and orchestration workflow",
+      "description": null,
       "globs": [],
       "always_apply": false,
       "attachments": [],
@@ -480,14 +621,14 @@
       "always_apply": false,
       "attachments": [],
       "gates": [
-        "quality",
-        "with_progression",
         "triggers",
-        "function",
+        "deployment_readiness",
         "name",
+        "with_progression",
         "optimization_safety",
         "workload_balance",
-        "deployment_readiness"
+        "quality",
+        "function"
       ],
       "required_artifacts": [],
       "actions": []
@@ -744,19 +885,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/cpp.mdc": {
-      "description": "C/C++ development guidelines and conventions",
-      "globs": [
-        "**/*.c",
-        "**/*.cpp",
-        "**/*.h",
-        "**/*.hpp",
-        "**/*.cxx",
-        "CMakeLists.txt",
-        "*.cmake",
-        "conanfile.txt",
-        "Makefile",
-        "**/*.cc"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -777,12 +907,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/python.mdc": {
-      "description": "Python best practices and patterns for modern software development with Flask and SQLite",
-      "globs": [
-        "**/*.py",
-        "src/**/*.py",
-        "tests/**/*.py"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -804,12 +930,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/fastapi.mdc": {
-      "description": "FastAPI best practices and patterns for building modern Python web APIs",
-      "globs": [
-        "**/*.py",
-        "app/**/*.py",
-        "api/**/*.py"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -828,13 +950,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/convex.mdc": {
-      "description": "Convex development best practices and patterns",
-      "globs": [
-        "**/*.ts",
-        "**/*.tsx",
-        "convex/**/*.ts",
-        "convex/**/*.tsx"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -842,12 +959,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/node-express.mdc": {
-      "description": "Node.js and Express.js best practices for backend development",
-      "globs": [
-        "**/*.js",
-        "**/*.ts",
-        "src/**/*.ts"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -855,12 +968,8 @@
       "actions": []
     },
     ".cursor/rules/domains/backend/csharp-dotnet.mdc": {
-      "description": "C# .NET development rules and best practices",
-      "globs": [
-        "**/*.cs",
-        "**/*.csproj",
-        "**/*.sln"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -909,12 +1018,8 @@
       "actions": []
     },
     ".cursor/rules/domains/frontend/svelte.mdc": {
-      "description": "Svelte best practices and patterns for modern web applications",
-      "globs": [
-        "**/*.svelte",
-        "src/**/*.ts",
-        "src/**/*.js"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -936,12 +1041,8 @@
       "actions": []
     },
     ".cursor/rules/domains/frontend/react.mdc": {
-      "description": "React best practices and patterns for modern web applications",
-      "globs": [
-        "**/*.tsx",
-        "**/*.jsx",
-        "components/**/*"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -949,12 +1050,8 @@
       "actions": []
     },
     ".cursor/rules/domains/frontend/vue.mdc": {
-      "description": "Vue.js best practices and patterns for modern web applications",
-      "globs": [
-        "**/*.vue",
-        "**/*.ts",
-        "components/**/*"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -978,14 +1075,8 @@
       "actions": []
     },
     ".cursor/rules/domains/frontend/tailwind.mdc": {
-      "description": "Tailwind CSS and UI component best practices for modern web applications",
-      "globs": [
-        "**/*.css",
-        "**/*.tsx",
-        "**/*.jsx",
-        "tailwind.config.js",
-        "tailwind.config.ts"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -993,13 +1084,8 @@
       "actions": []
     },
     ".cursor/rules/domains/frontend/nextjs.mdc": {
-      "description": "Next.js with TypeScript and Tailwind UI best practices",
-      "globs": [
-        "**/*.tsx",
-        "**/*.ts",
-        "src/**/*.ts",
-        "src/**/*.tsx"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -1021,7 +1107,7 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/unified-code-formatting.mdc": {
-      "description": "Unified code formatting standards across languages and frameworks",
+      "description": null,
       "globs": [],
       "always_apply": false,
       "attachments": [],
@@ -1030,7 +1116,7 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/rules-effectiveness.mdc": {
-      "description": "Rules effectiveness metrics and validation framework",
+      "description": null,
       "globs": [],
       "always_apply": false,
       "attachments": [],
@@ -1041,15 +1127,8 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/medusa.mdc": {
-      "description": "Medusa rules and best practices. These rules should be used when building applications with Medusa.",
-      "globs": [
-        "**/*.tsx",
-        "**/*.ts",
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.js",
-        "src/**/*.jsx"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -1086,12 +1165,8 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/typescript.mdc": {
-      "description": "TypeScript coding standards and best practices for modern web development",
-      "globs": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.d.ts"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -1108,15 +1183,8 @@
       "actions": []
     },
     ".cursor/rules/domains/utilities/beefreeSDK.mdc": {
-      "description": "Guidelines and best practices for Beefree SDK: install, auth, config, customization, templates",
-      "globs": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.html",
-        "**/*.css"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],
@@ -1124,20 +1192,8 @@
       "actions": []
     },
     ".cursor/rules/domains/mobile/nativescript.mdc": {
-      "description": "NativeScript best practices and patterns for mobile applications",
-      "globs": [
-        "**/*.tsx",
-        "**/*.ts",
-        "**/*.vue",
-        "**/*.svelte",
-        "src/**/*.ts",
-        "app/**/*.ts",
-        "src/**/*.tsx",
-        "app/**/*.tsx",
-        "src/**/*.vue",
-        "app/**/*.vue",
-        "src/**/*.svelte"
-      ],
+      "description": null,
+      "globs": [],
       "always_apply": false,
       "attachments": [],
       "gates": [],

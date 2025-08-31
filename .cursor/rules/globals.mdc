@@ -1,0 +1,13 @@
+---
+description: "Global rules and configurations for AdvancedRules"
+alwaysApply: true
+globs: ["**/*"]
+---
+
+# Global Rules and Configurations
+
+- Apply repository-wide defaults and invariants.
+- Do not override domain or role rules unless explicitly specified.
+
+@ai-personas-reference.mdc
+

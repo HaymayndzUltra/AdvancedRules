@@ -1,6 +1,6 @@
 {
-  "prev_state": "PLANNING_DONE",
-  "state": "BACKLOG_READY",
+  "prev_state": "BACKLOG_READY",
+  "state": "PLANNING_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -169,8 +169,17 @@
       "from": "PLANNING_DONE",
       "to": "BACKLOG_READY",
       "correlation_id": "da0dbfd1-35f0-489d-bfaf-c5a0afa17fee"
+    },
+    {
+      "ts": 1756671157.5245278,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "ad31e8f9-8d46-4c5d-af42-8486c401d644"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T15:13:51.320335"
+  "last_updated": "2025-08-31T20:15:11.953167",
+  "completed_steps": [
+    "prestart_validated"
+  ]
 }

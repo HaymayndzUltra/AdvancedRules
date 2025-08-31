@@ -175,7 +175,8 @@ def main() -> None:
                     "id": cid,
                     "action_type": "COMMAND_TRIGGER",
                     "risk": "LOW",
-                    "scores": {"intent":0.8,"state":0.8,"evidence":0.7,"recency":0.7,"pref":0.6,"cost":0.0,"risk_penalty":0.0}
+                    # Use high scores to clear conf_mid and form OPTION_SET when multiple
+                    "scores": {"intent":0.99,"state":0.99,"evidence":0.99,"recency":0.99,"pref":0.99,"cost":0.0,"risk_penalty":0.0}
                 })
             return out
         except Exception:

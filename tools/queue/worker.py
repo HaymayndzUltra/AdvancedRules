@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 
 from tools.queue.exec_queue import load_queue, processed_ids, mark_processed
-from tools.orchestrator.trigger_next import is_command_allowed, should_dry_run, verify_registry_checksum, load_registry_commands, _normalize_id
+from tools.orchestrator.trigger_next import is_command_allowed, should_dry_run, verify_registry_checksum, load_registry_commands, _normalize_id, load_registry_full
 from tools.gates.gate_evaluator import evaluate_gates
 from tools.orchestrator.trigger_next import run_shell
 
@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def process_once() -> int:
 	mapping = load_registry_commands()
+	registry_full = load_registry_full()
 	ok, msg = verify_registry_checksum()
 	if not ok:
 		print("Registry checksum invalid:", msg)
@@ -45,6 +46,20 @@ def process_once() -> int:
 			continue
 		try:
 			run_shell(mapping[cmd_id], False)
+			# Persist completed step after successful execution
+			try:
+				from tools.orchestrator.state import load_state, save_state
+				cmd_def = registry_full.get(cmd_id, {})
+				step = (cmd_def.get("emits", {}) or {}).get("add_completed_step")
+				if step:
+					st = load_state() or {}
+					arr = list(st.get("completed_steps", []))
+					if step not in arr:
+						arr.append(step)
+						st["completed_steps"] = arr
+						save_state(st)
+			except Exception:
+				pass
 			mark_processed(cid, {"status":"executed"})
 			count += 1
 		except Exception as e:

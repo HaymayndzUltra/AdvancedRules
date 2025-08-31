@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/memory/codegen.schema.json",
+  "title": "Codegen Scaffold Manifest",
+  "type": "object",
+  "required": ["schema_version", "mode"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "mode": { "type": "string" },
+    "items": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
+

@@ -96,7 +96,7 @@ def role_readiness_check() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("role", help="role id or helper name")
-    parser.add_argument("--mode", default="", help="role mode (for principal_engineer_ai)")
+    parser.add_argument("--mode", default="", help="role mode (for principal_engineer_ai and plugins)")
     args = parser.parse_args()
 
     if args.role == "product_owner_ai":
@@ -117,6 +117,19 @@ def main() -> None:
             transition("SYNTHESIS_DONE")
     elif args.role == "readiness":
         role_readiness_check()
+    elif args.role == "codegen_ai":
+        # Route via safe wrapper to tools.plugins.codegen
+        run_plugin("tools.plugins.codegen", func="run", payload={"mode": (args.mode or "SCAFFOLD").upper()})
+        transition("CODEGEN_DONE")
+    elif args.role == "qa_ai":
+        run_plugin("tools.plugins.qa", func="run", payload={"mode": (args.mode or "VALIDATE").upper()})
+        transition("QA_DONE")
+    elif args.role == "security_ai":
+        run_plugin("tools.plugins.security", func="run", payload={"mode": (args.mode or "SAST").upper()})
+        transition("SECURITY_DONE")
+    elif args.role == "deploy_ai":
+        run_plugin("tools.plugins.deploy", func="run", payload={"mode": (args.mode or "PACKAGE").upper()})
+        transition("DEPLOY_PREPARED")
     else:
         raise SystemExit(f"Unsupported role: {args.role}")
 

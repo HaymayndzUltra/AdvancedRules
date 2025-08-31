@@ -94,6 +94,55 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": []
+    },
+    {
+      "command_id": "codegen-scaffold",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "PLANNING_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
+      ]
+    },
+    {
+      "command_id": "qa-validate",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "security-scan",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "deploy-package",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "SECURITY_DONE",
+        "QA_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: SECURITY_DONE, QA_DONE (current=SYNTHESIS_DONE)"
+      ]
     }
   ]
 }

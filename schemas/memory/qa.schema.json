@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/memory/qa.schema.json",
+  "title": "QA Reports",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "issues": { "type": "array", "items": { "type": "string" } },
+    "passed": { "type": "boolean" },
+    "failures": { "type": "number" },
+    "lines": { "type": "object" },
+    "branches": { "type": "object" },
+    "mode": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/memory/security.schema.json",
+  "title": "Security Audit Reports",
+  "type": "object",
+  "required": ["schema_version", "status"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "findings": { "type": "array", "items": { "type": "object" } },
+    "packages": { "type": "array", "items": { "type": "string" } },
+    "violations": { "type": "array", "items": { "type": "string" } },
+    "policy": { "type": "string" },
+    "redacted_total": { "type": "number" },
+    "mode": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

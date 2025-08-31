@@ -1,6 +1,6 @@
 {
-  "prev_state": "VALIDATION_DONE",
-  "state": "SYNTHESIS_DONE",
+  "prev_state": "AUDIT_DONE",
+  "state": "VALIDATION_DONE",
   "history": [
     {
       "ts": 1756383067.7198448,
@@ -691,42 +691,6 @@
       "from": "AUDIT_DONE",
       "to": "VALIDATION_DONE",
       "correlation_id": "39f7d6b8-0fb6-4d7b-b96f-db7513ed9d93"
-    },
-    {
-      "ts": 1756599670.6984963,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "c4f6559f-79b1-459c-aa77-dd0a1a19c832"
-    },
-    {
-      "ts": 1756599690.0776763,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "e14d6687-d47a-418d-9951-901c979f7dbe"
-    },
-    {
-      "ts": 1756599690.1296911,
-      "from": "BACKLOG_READY",
-      "to": "PLANNING_DONE",
-      "correlation_id": "49acc306-ecbe-4672-89c1-0aff34d95e7a"
-    },
-    {
-      "ts": 1756599690.1817544,
-      "from": "PLANNING_DONE",
-      "to": "AUDIT_DONE",
-      "correlation_id": "ae77c0ae-464f-4d6d-80a1-0125e43f06d8"
-    },
-    {
-      "ts": 1756599690.2300432,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "9a44d2b0-485b-4e5f-9a1a-89a8266de876"
-    },
-    {
-      "ts": 1756599690.276844,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "7aade015-61b2-4df3-af80-15826d7876e3"
     }
   ],
   "tasks": [
@@ -781,7 +745,7 @@
       ]
     }
   ],
-  "last_updated": "2025-08-31T00:21:30.277259",
+  "last_updated": "2025-08-31T00:21:10.650417",
   "total_tasks": 1,
   "schema_version": "1.0.0"
 }

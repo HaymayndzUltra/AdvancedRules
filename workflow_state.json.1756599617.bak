@@ -1,6 +1,6 @@
 {
-  "prev_state": "VALIDATION_DONE",
-  "state": "SYNTHESIS_DONE",
+  "prev_state": "AUDIT_DONE",
+  "state": "VALIDATION_DONE",
   "history": [
     {
       "ts": 1756383067.7198448,
@@ -601,132 +601,6 @@
       "from": "AUDIT_DONE",
       "to": "VALIDATION_DONE",
       "correlation_id": "886cd7c1-dd5b-4eda-b1b9-411a366625ee"
-    },
-    {
-      "ts": 1756599617.4156234,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "428dc01e-f92b-47fc-b159-16aadd501193"
-    },
-    {
-      "ts": 1756599624.1602485,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "c8abd697-943c-4f08-b2f1-879b6a811cbf"
-    },
-    {
-      "ts": 1756599624.2111504,
-      "from": "BACKLOG_READY",
-      "to": "PLANNING_DONE",
-      "correlation_id": "b127f9f5-04f4-43c7-a54a-89bd65df5257"
-    },
-    {
-      "ts": 1756599624.2601469,
-      "from": "PLANNING_DONE",
-      "to": "AUDIT_DONE",
-      "correlation_id": "c08afdd7-44d2-4211-9c86-55daaba13b04"
-    },
-    {
-      "ts": 1756599624.3066487,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "96ed7dc7-7609-45e4-83ae-fffa31af6cba"
-    },
-    {
-      "ts": 1756599624.3501456,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "1cfe0a02-9173-49a4-8807-1b86044f81b3"
-    },
-    {
-      "ts": 1756599642.5276895,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "2f09df25-2f2f-4342-8869-e0131a1aa9d8"
-    },
-    {
-      "ts": 1756599642.5833557,
-      "from": "BACKLOG_READY",
-      "to": "PLANNING_DONE",
-      "correlation_id": "bb8c5161-235f-43f0-879c-6c5f2f501fb0"
-    },
-    {
-      "ts": 1756599642.644202,
-      "from": "PLANNING_DONE",
-      "to": "AUDIT_DONE",
-      "correlation_id": "2ce116d7-c404-444d-b3f2-c861563073f8"
-    },
-    {
-      "ts": 1756599642.6907513,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "bc0aa8c5-ab6e-4a93-9642-3003345c3857"
-    },
-    {
-      "ts": 1756599642.7388268,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "8c0a6a67-9614-42ac-9e46-5d98e9d5334c"
-    },
-    {
-      "ts": 1756599670.5091856,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "1599d06c-afdc-4b46-849b-020f4b91255b"
-    },
-    {
-      "ts": 1756599670.5560768,
-      "from": "BACKLOG_READY",
-      "to": "PLANNING_DONE",
-      "correlation_id": "596d1d06-9732-48be-a655-7ac0261f6120"
-    },
-    {
-      "ts": 1756599670.6009998,
-      "from": "PLANNING_DONE",
-      "to": "AUDIT_DONE",
-      "correlation_id": "b79de4a7-fcac-4afe-9e7b-93b074b7ffff"
-    },
-    {
-      "ts": 1756599670.6499782,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "39f7d6b8-0fb6-4d7b-b96f-db7513ed9d93"
-    },
-    {
-      "ts": 1756599670.6984963,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "c4f6559f-79b1-459c-aa77-dd0a1a19c832"
-    },
-    {
-      "ts": 1756599690.0776763,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "e14d6687-d47a-418d-9951-901c979f7dbe"
-    },
-    {
-      "ts": 1756599690.1296911,
-      "from": "BACKLOG_READY",
-      "to": "PLANNING_DONE",
-      "correlation_id": "49acc306-ecbe-4672-89c1-0aff34d95e7a"
-    },
-    {
-      "ts": 1756599690.1817544,
-      "from": "PLANNING_DONE",
-      "to": "AUDIT_DONE",
-      "correlation_id": "ae77c0ae-464f-4d6d-80a1-0125e43f06d8"
-    },
-    {
-      "ts": 1756599690.2300432,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "9a44d2b0-485b-4e5f-9a1a-89a8266de876"
-    },
-    {
-      "ts": 1756599690.276844,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "7aade015-61b2-4df3-af80-15826d7876e3"
     }
   ],
   "tasks": [
@@ -781,7 +655,7 @@
       ]
     }
   ],
-  "last_updated": "2025-08-31T00:21:30.277259",
+  "last_updated": "2025-08-31T00:20:17.358346",
   "total_tasks": 1,
   "schema_version": "1.0.0"
 }

@@ -402,13 +402,17 @@ def scan_postrun_consistency() -> PostrunReport:
     return report
 
 
-def save_report(report: PostrunReport) -> None:
-    """Save postrun consistency report."""
+def save_report(report: PostrunReport, output_path: Path | None = None) -> None:
+    """Save postrun consistency report.
+
+    If output_path is None, writes to POSTRUN_REPORT (resolves against current ROOT).
+    """
     from tools.io.fs import atomic_write_text
-    
-    POSTRUN_REPORT.parent.mkdir(parents=True, exist_ok=True)
+
+    target = output_path if output_path is not None else (ROOT / "memory-bank" / "postrun_consistency.json")
+    target.parent.mkdir(parents=True, exist_ok=True)
     report_dict = asdict(report)
-    atomic_write_text(POSTRUN_REPORT, json.dumps(report_dict, indent=2))
+    atomic_write_text(target, json.dumps(report_dict, indent=2))
 
 
 def main():
@@ -433,7 +437,7 @@ def main():
         ]
     
     # Save report
-    save_report(report)
+    save_report(report, POSTRUN_REPORT)
     
     # Output
     if args.json:

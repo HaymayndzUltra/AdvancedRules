@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://advancedrules.dev/schemas/memory/deploy.schema.json",
+  "title": "Deploy/Handover Bundle Manifest",
+  "type": "object",
+  "required": ["schema_version", "mode", "status"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "mode": { "type": "string" },
+    "status": { "type": "string" },
+    "postrun_report": { "type": "string" },
+    "artifacts": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
+

@@ -147,3 +147,75 @@ commands:
     ui:
       label: "Run Memory Diagnostics"
       reason: "Check memory system health, dependencies, and configuration."
+
+  - id: codegen-scaffold
+    role_from: CODEGEN_AI
+    trigger: run_codegen
+    run:
+      shell: ["python3","tools/run_role.py","codegen_ai","--mode","SCAFFOLD"]
+    requires:
+      states_any_of: ["PLANNING_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: ["DEV_GATE"]
+    contexts:
+      must_exist: ["memory-bank/plan/Action_Plan.md"]
+    emits:
+      sets_state: "CODEGEN_DONE"
+      add_completed_step: "codegen_scaffolded"
+    ui:
+      label: "Generate scaffold and boilerplate"
+      reason: "Plan ready; scaffold repository structure and boilerplate."
+
+  - id: qa-validate
+    role_from: QA_AI
+    trigger: run_qa
+    run:
+      shell: ["python3","tools/run_role.py","qa_ai","--mode","VALIDATE"]
+    requires:
+      states_any_of: ["CODEGEN_DONE","SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: ["DEV_GATE"]
+    contexts:
+      must_exist: ["pyproject.toml"]
+    emits:
+      sets_state: "QA_DONE"
+      add_completed_step: "qa_validated"
+    ui:
+      label: "Run lint/tests/coverage"
+      reason: "QA gate validation with reports."
+
+  - id: security-scan
+    role_from: SECURITY_AI
+    trigger: run_security
+    run:
+      shell: ["python3","tools/run_role.py","security_ai","--mode","SAST"]
+    requires:
+      states_any_of: ["QA_DONE","SYNTHESIS_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: ["SECURITY_GATE"]
+    contexts:
+      must_exist: ["pyproject.toml"]
+    emits:
+      sets_state: "SECURITY_DONE"
+      add_completed_step: "security_scanned"
+    ui:
+      label: "Security scan and licensing audit"
+      reason: "SAST and dependency license checks with redaction policy validation."
+
+  - id: deploy-package
+    role_from: DEPLOY_AI
+    trigger: run_deploy
+    run:
+      shell: ["python3","tools/run_role.py","deploy_ai","--mode","PACKAGE"]
+    requires:
+      states_any_of: ["SECURITY_DONE","QA_DONE"]
+      completed_steps_all_of: []
+      gates_passed_all_of: ["DEPLOY_GATE"]
+    contexts:
+      must_exist: ["pyproject.toml"]
+    emits:
+      sets_state: "DEPLOY_PREPARED"
+      add_completed_step: "handover_packaged"
+    ui:
+      label: "Package deployable handover bundle"
+      reason: "Create provenance bundle and postrun consistency report."

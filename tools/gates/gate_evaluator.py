@@ -144,6 +144,30 @@ def evaluate_gates() -> Dict[str, Any]:
 								missing_files.append(artifact)
 								if gate_name not in missing_gates:
 									missing_gates.append(gate_name)
+			# Fallback named-gate heuristics if no rules_index entries
+			if not rules_index:
+				for gate_name in gates:
+					if gate_name == "DEV_GATE":
+						for path in [
+							"memory-bank/plan/Action_Plan.md",
+							"logs/decision_traces.jsonl",
+						]:
+							if not _exists(path):
+								missing_files.append(path)
+					elif gate_name == "SECURITY_GATE":
+						for path in [
+							"memory-bank/security/sast_summary.json",
+							"memory-bank/security/license_audit.json",
+						]:
+							if not _exists(path):
+								missing_files.append(path)
+					elif gate_name == "DEPLOY_GATE":
+						for path in [
+							"memory-bank/postrun_consistency.json",
+							"memory-bank/artifacts_index.json",
+						]:
+							if not _exists(path):
+								missing_files.append(path)
 
 		passed = not (missing_files or missing_states or missing_steps or missing_gates or missing_domains)
 		reasons: List[str] = []

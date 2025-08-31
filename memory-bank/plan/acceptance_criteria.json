@@ -1,124 +1,93 @@
 {
   "criteria": [
     {
-      "story_id": "US1",
-      "title": "Dashboard Overview",
+      "story_id": "BW1",
+      "title": "Home Page with Clear CTA",
       "criteria": [
-        "Dashboard displays total ticket count prominently",
-        "Tickets are grouped by status with clear visual indicators",
-        "Priority levels are color-coded (Red=Critical, Orange=High, Yellow=Medium, Green=Low)",
-        "Real-time updates occur within 5 seconds of data changes",
-        "Dashboard loads within 3 seconds on standard internet connection"
+        "Responsive hero section (desktop/tablet/mobile)",
+        "Prominent CTA (\u2018Book Now\u2019 / \u2018Hire Me\u2019)",
+        "Trust signals visible (testimonials/logos)"
       ]
     },
     {
-      "story_id": "US2",
-      "title": "Ticket Filtering",
+      "story_id": "BW2",
+      "title": "Portfolio Showcase",
       "criteria": [
-        "All filter options are clearly visible and accessible",
-        "Filters can be combined (e.g., High Priority + In Progress)",
-        "Search function returns results within 1 second",
-        "Filter combinations can be saved and named",
-        "Clear visual feedback shows active filters"
+        "Project cards with tags and detail pages",
+        "Case study layout (problem/solution/outcomes)",
+        "Images lazy\u2011loaded; LCP \u2264 2.5s on 4G"
       ]
     },
     {
-      "story_id": "US3",
-      "title": "Ticket Assignment",
+      "story_id": "BW3",
+      "title": "Services & Pricing",
       "criteria": [
-        "Drag-and-drop assignment works smoothly on desktop",
-        "Bulk assignment handles up to 50 tickets simultaneously",
-        "Assignment history shows who assigned what and when",
-        "Agent workload indicators update in real-time",
-        "Auto-assignment considers agent skills and current workload"
+        "Pricing table (hourly/packages) is readable on mobile",
+        "CTA per plan routes to booking",
+        "FAQ block includes revisions/scope/timeline"
       ]
     },
     {
-      "story_id": "US4",
-      "title": "User Authentication",
+      "story_id": "BW4",
+      "title": "Booking System Integration",
       "criteria": [
-        "Login process completes within 2 seconds",
-        "JWT tokens expire after 8 hours of inactivity",
-        "Password reset emails are sent within 1 minute",
-        "Failed login attempts are logged for security monitoring",
-        "Session timeout warnings appear 5 minutes before expiration"
+        "Embed or launch Calendly/TidyCal link configurable",
+        "Timezone handling and confirmation emails",
+        "Availability sync is visible to users"
       ]
     },
     {
-      "story_id": "US5",
-      "title": "User Role Management",
+      "story_id": "BW5",
+      "title": "Payment Gateway",
       "criteria": [
-        "Role changes take effect immediately upon save",
-        "Permission changes are logged for audit purposes",
-        "Admin can create new users with appropriate roles",
-        "Role hierarchy prevents privilege escalation",
-        "User deactivation preserves ticket history"
+        "Test/live mode switch via env",
+        "Line items support (packages/deposits)",
+        "Success/failure redirects implemented"
       ]
     },
     {
-      "story_id": "US6",
-      "title": "Email Notifications",
+      "story_id": "BW6",
+      "title": "Contact Form",
       "criteria": [
-        "Emails are delivered within 5 minutes of triggering event",
-        "Notification preferences are saved per user",
-        "Email templates are professional and clear",
-        "Unsubscribe options are available for non-critical notifications",
-        "Email delivery failures are logged and retried"
+        "Spam controls (honeypot/recaptcha)",
+        "Email delivery with success toast",
+        "Basic rate\u2011limit or throttle"
       ]
     },
     {
-      "story_id": "US7",
-      "title": "Slack Integration",
+      "story_id": "BW7",
+      "title": "Admin Dashboard (Light)",
       "criteria": [
-        "Slack messages are delivered within 1 minute",
-        "Webhook failures are logged and retried automatically",
-        "Critical alerts include actionable information",
-        "Escalation notifications follow defined rules",
-        "Slack integration can be disabled per user preference"
+        "Filter/search/status updates for inquiries",
+        "CSV export for bookings/payments",
+        "Audit logs for admin actions"
       ]
     },
     {
-      "story_id": "US8",
-      "title": "Mobile & Tablet Support",
+      "story_id": "BW8",
+      "title": "SEO & Security",
       "criteria": [
-        "Dashboard is fully functional on devices with 320px+ width",
-        "Touch targets are at least 44px in size",
-        "Navigation is intuitive on mobile devices",
-        "Performance is maintained across all device types",
-        "User experience is consistent regardless of device"
+        "Meta tags and sitemap present",
+        "HTTPS/SSL enforced; basic headers set",
+        "Accessibility AA for text/contrast"
       ]
     },
     {
-      "story_id": "US9",
-      "title": "Comprehensive Testing",
+      "story_id": "BW9",
+      "title": "Responsive & Performance",
       "criteria": [
-        "Unit test coverage exceeds 80% for all modules",
-        "Integration tests cover all API endpoints",
-        "E2E tests validate critical user journeys",
-        "Performance tests meet defined response time requirements",
-        "Security tests validate authentication and authorization"
+        "CLS < 0.1, TBT < 300ms (sample page)",
+        "Images optimized; code\u2011split where applicable",
+        "Works on 320px width devices"
       ]
     },
     {
-      "story_id": "US10",
-      "title": "Staging Deployment",
+      "story_id": "BW10",
+      "title": "Docs & Deployment",
       "criteria": [
-        "Docker containers start within 30 seconds",
-        "Vercel deployment completes within 5 minutes",
-        "Environment variables are properly configured",
-        "Deployment pipeline includes automated testing",
-        "Rollback capability is available if deployment fails"
-      ]
-    },
-    {
-      "story_id": "US11",
-      "title": "Documentation",
-      "criteria": [
-        "User manual covers all dashboard features",
-        "API documentation includes examples and error codes",
-        "Setup guide includes troubleshooting steps",
-        "Documentation is searchable and well-organized",
-        "Documentation is updated with each release"
+        "README includes setup/env keys/booking links",
+        "Staging deployment with rollback",
+        "Changelog for releases"
       ]
     }
   ]

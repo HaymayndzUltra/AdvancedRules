@@ -241,8 +241,113 @@ def generate_product_backlog(brief_content: str) -> str:
     return backlog.replace('Customer Support Ticket Dashboard', safe_title)
 
 def generate_acceptance_criteria(brief_content: str) -> dict:
-    """Generate detailed acceptance criteria for each user story."""
-    
+    """Generate detailed acceptance criteria for each user story.
+
+    If the brief indicates a booking/portfolio website, tailor criteria accordingly.
+    Falls back to the default dashboard criteria otherwise.
+    """
+
+    brief = (brief_content or "").lower()
+    booking_signals = [
+        "booking", "calendly", "tidycal", "payment", "stripe", "paypal", "gcash",
+        "portfolio", "services", "pricing", "contact form", "seo", "ssl"
+    ]
+    if any(k in brief for k in booking_signals):
+        return {
+            "criteria": [
+                {
+                    "story_id": "BW1",
+                    "title": "Home Page with Clear CTA",
+                    "criteria": [
+                        "Responsive hero section (desktop/tablet/mobile)",
+                        "Prominent CTA (‘Book Now’ / ‘Hire Me’)",
+                        "Trust signals visible (testimonials/logos)"
+                    ]
+                },
+                {
+                    "story_id": "BW2",
+                    "title": "Portfolio Showcase",
+                    "criteria": [
+                        "Project cards with tags and detail pages",
+                        "Case study layout (problem/solution/outcomes)",
+                        "Images lazy‑loaded; LCP ≤ 2.5s on 4G"
+                    ]
+                },
+                {
+                    "story_id": "BW3",
+                    "title": "Services & Pricing",
+                    "criteria": [
+                        "Pricing table (hourly/packages) is readable on mobile",
+                        "CTA per plan routes to booking",
+                        "FAQ block includes revisions/scope/timeline"
+                    ]
+                },
+                {
+                    "story_id": "BW4",
+                    "title": "Booking System Integration",
+                    "criteria": [
+                        "Embed or launch Calendly/TidyCal link configurable",
+                        "Timezone handling and confirmation emails",
+                        "Availability sync is visible to users"
+                    ]
+                },
+                {
+                    "story_id": "BW5",
+                    "title": "Payment Gateway",
+                    "criteria": [
+                        "Test/live mode switch via env",
+                        "Line items support (packages/deposits)",
+                        "Success/failure redirects implemented"
+                    ]
+                },
+                {
+                    "story_id": "BW6",
+                    "title": "Contact Form",
+                    "criteria": [
+                        "Spam controls (honeypot/recaptcha)",
+                        "Email delivery with success toast",
+                        "Basic rate‑limit or throttle"
+                    ]
+                },
+                {
+                    "story_id": "BW7",
+                    "title": "Admin Dashboard (Light)",
+                    "criteria": [
+                        "Filter/search/status updates for inquiries",
+                        "CSV export for bookings/payments",
+                        "Audit logs for admin actions"
+                    ]
+                },
+                {
+                    "story_id": "BW8",
+                    "title": "SEO & Security",
+                    "criteria": [
+                        "Meta tags and sitemap present",
+                        "HTTPS/SSL enforced; basic headers set",
+                        "Accessibility AA for text/contrast"
+                    ]
+                },
+                {
+                    "story_id": "BW9",
+                    "title": "Responsive & Performance",
+                    "criteria": [
+                        "CLS < 0.1, TBT < 300ms (sample page)",
+                        "Images optimized; code‑split where applicable",
+                        "Works on 320px width devices"
+                    ]
+                },
+                {
+                    "story_id": "BW10",
+                    "title": "Docs & Deployment",
+                    "criteria": [
+                        "README includes setup/env keys/booking links",
+                        "Staging deployment with rollback",
+                        "Changelog for releases"
+                    ]
+                }
+            ]
+        }
+
     criteria = {
         "criteria": [
             {

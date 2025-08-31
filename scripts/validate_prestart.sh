@@ -137,11 +137,11 @@ echo ""
 echo "📋 Phase 4: Envelope v2 Compatibility Test"
 echo "-------------------------------------------"
 
-if [[ -f "action_envelope.json" && -f "tools/envelopes/action_envelope_v2.json" ]]; then
+if [[ -f "tools/envelopes/action_envelope.json" && -f "tools/envelopes/action_envelope_v2.json" ]]; then
   compatibility_result=$(python3 -c "
 import json
 try:
-    v1 = json.load(open('action_envelope.json'))
+    v1 = json.load(open('tools/envelopes/action_envelope.json'))
     v2 = json.load(open('tools/envelopes/action_envelope_v2.json'))
     shared_keys = set(v1.keys()) & set(v2.keys())
     compatibility_ratio = len(shared_keys) / len(v1) if len(v1) > 0 else 0

@@ -11,7 +11,7 @@ from typing import List, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 RULES_ROOT = REPO_ROOT / ".cursor/rules"
-LOG_PATH = REPO_ROOT / "rule_attach_log.json"
+LOG_PATH = REPO_ROOT / "logs" / "rule_attach_log.json"
 
 
 def get_repo_sha() -> str:

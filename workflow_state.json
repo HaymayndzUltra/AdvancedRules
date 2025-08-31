@@ -1,6 +1,6 @@
 {
-  "prev_state": "QA_DONE",
-  "state": "SECURITY_DONE",
+  "prev_state": "BACKLOG_READY",
+  "state": "PLANNING_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -151,8 +151,20 @@
       "from": "QA_DONE",
       "to": "SECURITY_DONE",
       "correlation_id": "36d18a14-18d0-437d-a14b-d65cd3dd82c2"
+    },
+    {
+      "ts": 1756653083.6940558,
+      "from": "SECURITY_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "7c60bc69-881e-4e50-bc15-23fb06f72fa8"
+    },
+    {
+      "ts": 1756653098.6658592,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "537943c1-c81f-47c7-8d17-201a6a8db778"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T08:21:45.448041"
+  "last_updated": "2025-08-31T15:11:38.666215"
 }

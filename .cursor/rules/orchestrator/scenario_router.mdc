@@ -4,7 +4,7 @@ id: scenario_router
 description: "Suggest valid triggers when domain+contexts are satisfied"
 globs:
   - "memory-bank/plan/**"
-alwaysApply: false
+alwaysApply: true
 version: 1
 ---
 

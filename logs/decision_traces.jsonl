@@ -13,3 +13,4 @@
 {"type": "decision", "top": "x", "decision": {"type": "NEXT_STEP"}, "correlation_id": "corr-test-123", "trace_id": "corr-test-123", "timestamp": 1756612985.5967839}
 {"type": "decision", "top": "x", "decision": {"type": "NEXT_STEP"}, "correlation_id": "corr-test-123", "trace_id": "corr-test-123", "timestamp": 1756613017.5323277}
 {"type": "decision", "top": "validate_system_readiness", "decision": {"type": "OPTION_SET", "reason": "0.55\u2264top<0.75 & gap\u22640.05"}, "correlation_id": "a4032cf5-d6cc-437c-b312-ba8ffc828758", "trace_id": "5866d231-31a7-4904-bfe3-97a6e0339419", "timestamp": 1756653736.7853727}
+{"type": "decision", "top": "validate-system-readiness", "decision": {"type": "ASK_CLARIFY", "reason": "low confidence"}, "correlation_id": "cc94d34c-f92e-4b04-8366-54a95de52081", "trace_id": "b3d82748-93e1-4f83-a659-1f9f3f28c649", "timestamp": 1756670826.841608}

@@ -124,8 +124,16 @@ def evaluate_gates() -> Dict[str, Any]:
 
 		missing_files = [p for p in must_exist if not _exists(p)]
 		missing_states = [] if (not states_any or state.get("state") in states_any) else states_any
-		# completed_steps not tracked in sample state; leave as not enforced for now
+		# Enforce completed_steps when present; consider gates satisfied as implicit steps
 		missing_steps: List[str] = []
+		if steps_all:
+			state_steps = set(state.get("completed_steps", []) or [])
+			# If a gate is satisfied, treat "<gate_name_lower>_passed" as satisfied
+			satisfied_gate_steps = {f"{g.lower()}_passed" for g in gates if g not in (missing_gates or [])}
+			for s in steps_all:
+				if s in state_steps or s in satisfied_gate_steps:
+					continue
+				missing_steps.append(s)
 		missing_gates: List[str] = []  # Will be populated from rules index
 		missing_domains = [d for d in domains_all if d not in attached_domains]
 		

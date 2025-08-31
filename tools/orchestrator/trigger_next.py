@@ -52,6 +52,28 @@ def load_registry_commands() -> dict:
     return mapping
 
 
+def load_registry_full() -> dict:
+    mapping: dict[str, dict] = {}
+    if not REG.exists():
+        return mapping
+    content = REG.read_text(encoding="utf-8")
+    if content.startswith("cat >"):
+        lines = content.splitlines()
+        start = 0
+        for i, line in enumerate(lines):
+            if line.strip().startswith("version:"):
+                start = i
+                break
+        content = "\n".join(lines[start:])
+    data = yaml.safe_load(content) or {}
+    for cmd in data.get("commands", []):
+        raw_id = str(cmd.get("id", "")).strip()
+        norm_id = _normalize_id(raw_id)
+        if norm_id:
+            mapping[norm_id] = cmd
+    return mapping
+
+
 def run_shell(cmd: list, dry_run: bool) -> None:
     if dry_run:
         print("DRY_RUN:", " ".join(cmd))
@@ -122,12 +144,14 @@ def main() -> None:
     ap.add_argument("--sandbox", action="store_true", help="Enable sandbox mode (no-op placeholder)")
     ap.add_argument("--print-allowlist", action="store_true", help="Print the current command allowlist and exit")
     ap.add_argument("--enqueue", action="store_true", help="Enqueue the chosen command instead of executing immediately")
+    ap.add_argument("--auto-candidates", action="store_true", help="Derive candidates from passing gates dynamically")
     args = ap.parse_args()
     if args.print_allowlist:
         print(json.dumps({"allowlist": list(ALLOWED_COMMANDS.keys())}, indent=2))
         return
 
     mapping = load_registry_commands()
+    registry_full = load_registry_full()
     if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
     try:
@@ -136,16 +160,40 @@ def main() -> None:
     except Exception as e:
         raise SystemExit(f"Cannot import scorer: {e}")
 
-    cfile = Path(args.candidates)
-    if cfile.exists():
-        data = json.loads(cfile.read_text())
-        candidates = data.get("candidates", data)
+    def _build_auto_candidates() -> list[dict]:
+        try:
+            from tools.gates.gate_evaluator import evaluate_gates as _eval
+            gres = _eval()
+            passed = [r for r in gres.get("results", []) if r.get("passed")]
+            out = []
+            for r in passed:
+                cid = r.get("command_id", "")
+                if not cid:
+                    continue
+                out.append({
+                    "id": cid,
+                    "action_type": "COMMAND_TRIGGER",
+                    "risk": "LOW",
+                    "scores": {"intent":0.8,"state":0.8,"evidence":0.7,"recency":0.7,"pref":0.6,"cost":0.0,"risk_penalty":0.0}
+                })
+            return out
+        except Exception:
+            return []
+
+    candidates: list[dict]
+    if args.auto_candidates:
+        candidates = _build_auto_candidates()
     else:
-        # fallback sample
-        candidates = [
-            {"id":"planning_from_backlog","action_type":"COMMAND_TRIGGER","risk":"LOW","scores":{"intent":0.9,"state":0.8,"evidence":0.7,"recency":0.6,"pref":0.5,"cost":0.1,"risk_penalty":0.0}},
-            {"id":"ask_for_details","action_type":"NATURAL_STEP","risk":"LOW","scores":{"intent":0.6,"state":0.6,"evidence":0.6,"recency":0.6,"pref":0.6,"cost":0.0,"risk_penalty":0.0}}
-        ]
+        cfile = Path(args.candidates)
+        if cfile.exists():
+            data = json.loads(cfile.read_text())
+            candidates = data.get("candidates", data)
+        else:
+            # fallback → try auto; else minimal sample
+            candidates = _build_auto_candidates() or [
+                {"id":"planning-to-audit","action_type":"COMMAND_TRIGGER","risk":"LOW","scores":{"intent":0.9,"state":0.8,"evidence":0.7,"recency":0.6,"pref":0.5,"cost":0.1,"risk_penalty":0.0}},
+                {"id":"ask_for_details","action_type":"NATURAL_STEP","risk":"LOW","scores":{"intent":0.6,"state":0.6,"evidence":0.6,"recency":0.6,"pref":0.6,"cost":0.0,"risk_penalty":0.0}}
+            ]
 
     res = score_candidates(candidates, explore=True, shadow=False)
     decision = res.get("decision", {})
@@ -170,8 +218,16 @@ def main() -> None:
     if dtype in {"NEXT_STEP", "OPTION_SET"} and res.get("candidates"):
         cmd_id = _normalize_id(res["candidates"][0]["id"])
         if cmd_id not in mapping:
-            print(f"No registry mapping for id: {cmd_id}")
-            return
+            # Retry once with auto-candidates
+            auto = _build_auto_candidates()
+            if auto:
+                res = score_candidates(auto, explore=True, shadow=False)
+                dtype = res.get("decision", {}).get("type")
+                if dtype in {"NEXT_STEP", "OPTION_SET"} and res.get("candidates"):
+                    cmd_id = _normalize_id(res["candidates"][0]["id"])
+            if cmd_id not in mapping:
+                print(f"No registry mapping for id: {cmd_id}")
+                return
         # Gate enforcement
         gates = evaluate_gates()
         gate_entry = next((r for r in gates.get("results", []) if _normalize_id(r.get("command_id","")) == cmd_id), None)
@@ -209,7 +265,23 @@ def main() -> None:
         if args.sandbox and not eff_dry:
             # Placeholder sandbox note
             print("SANDBOX MODE enabled: executing within sandbox profile (placeholder)")
+        # Execute or dry-run
         run_shell(mapping[cmd_id], eff_dry)
+        # Persist completed step only on actual execution
+        if not eff_dry:
+            try:
+                from tools.orchestrator.state import load_state, save_state
+                cmd_def = registry_full.get(cmd_id, {})
+                step = (cmd_def.get("emits", {}) or {}).get("add_completed_step")
+                if step:
+                    st = load_state() or {}
+                    arr = list(st.get("completed_steps", []))
+                    if step not in arr:
+                        arr.append(step)
+                        st["completed_steps"] = arr
+                        save_state(st)
+            except Exception:
+                pass
     else:
         print("No trigger —", dtype)
 

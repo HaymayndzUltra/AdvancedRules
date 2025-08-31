@@ -133,6 +133,14 @@ def main() -> None:
     else:
         raise SystemExit(f"Unsupported role: {args.role}")
 
+    # After any successful transition above, attempt to trigger next step (non-blocking suggestion or enqueue)
+    try:
+        import subprocess as _sp
+        # Prefer enqueue to avoid blocking; respects dry-run by default
+        _sp.call(["python3", "tools/orchestrator/trigger_next.py", "--auto-candidates", "--enqueue"], cwd=str(ROOT))
+    except Exception:
+        pass
+
 if __name__ == "__main__":
     main()
 

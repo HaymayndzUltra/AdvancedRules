@@ -1,0 +1,12 @@
+{
+  "7c740c36534d8d79": {
+    "plugin_id": "planning",
+    "idempotency_key": "7c740c36534d8d79",
+    "start_time": 1756587124.2969308,
+    "end_time": 1756587124.3575819,
+    "status": "completed",
+    "side_effects": [],
+    "error": null,
+    "rollback_performed": false
+  }
+}

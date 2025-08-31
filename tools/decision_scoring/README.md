@@ -1,14 +1,24 @@
-# tools/decision_scoring/
+<!-- AUTO-GENERATED: docs_readme_sync v1 -->
+# tools/decision_scoring
 
-- Purpose: Rank candidate actions and produce a safe, explainable decision.
+This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
-## v3 Features
-- Calibration (calibration.json), thresholds (thresholds.json), weights (weights.json)
-- Exploration on OPTION_SET, shadow mode, decision_trace
-- Metrics in logs/decision_metrics.json; calibrate.py to adjust values
+## Contents
+- 📄 **README.md**
+- 📄 **adapter.py**
+- 📄 **advanced_score.py**
+- 📄 **calibrate.py**
+- 📄 **calibration.json**
+- 📄 **compute_metrics.py**
+- 📄 **execute_envelope.sh**
+- 📄 **metrics.py**
+- 📄 **score.py**
+- 📄 **thresholds.json**
+- 📄 **weights.json**
+- 📁 **examples**
 
-## Commands
-```bash
-python3 tools/decision_scoring/advanced_score.py
-python3 tools/decision_scoring/calibrate.py
-```
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+

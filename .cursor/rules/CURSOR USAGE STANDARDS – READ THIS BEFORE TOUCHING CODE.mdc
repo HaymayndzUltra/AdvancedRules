@@ -1,9 +1,6 @@
 ---
-description: 
-globs: false
-alwaysApply: false
+alwaysApply: true
 ---
-
 1. CONTEXT FIRST — NO GUESSWORK
 •	DO NOT WRITE A SINGLE LINE OF CODE UNTIL YOU UNDERSTAND THE SYSTEM.
 •	IMMEDIATELY LIST FILES IN THE TARGET DIRECTORY.

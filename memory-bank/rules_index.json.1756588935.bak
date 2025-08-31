@@ -1,0 +1,1385 @@
+{
+  "version": "1.0",
+  "rules": {
+    "decision_scoring": {
+      "file": ".cursor/rules/decision_scoring.mdc",
+      "description": "Decision scoring rubric: intent/state/evidence/recency/pref with thresholds & gates",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "registry_policy_guard": {
+      "file": ".cursor/rules/registry_policy_guard.mdc",
+      "description": "Guard: dapat naka one_step_policy: true ang registry.",
+      "globs": [
+        ".cursor/commands/registry.yaml"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "registry_one_step_policy_guard",
+          "description": "Warn if one_step_policy is off.",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "task_decomposer": {
+      "file": ".cursor/rules/task_decomposer.mdc",
+      "description": "Rules for task decomposition and planning pipeline activation",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "next_step_suggester": {
+      "file": ".cursor/rules/next_step_suggester.mdc",
+      "description": "Post-run suggester na strict: goal-first, one-step-only, at evidence-gated.\n",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": true,
+      "rules": [
+        {
+          "name": "suggest_next_step_strict",
+          "description": "Deterministic, single next step, locked to active goal.",
+          "actions": [
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "CURSOR USAGE STANDARDS \u2013 READ THIS BEFORE TOUCHING CODE": {
+      "file": ".cursor/rules/CURSOR USAGE STANDARDS \u2013 READ THIS BEFORE TOUCHING CODE.mdc",
+      "description": "",
+      "globs": [],
+      "always_apply": true,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "orchestrator_postrun": {
+      "file": ".cursor/rules/orchestrator_postrun.mdc",
+      "description": "Orchestrator post-run suggester: prepare candidates, call scorer tool, apply gates",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [
+        "results"
+      ],
+      "required_artifacts": []
+    },
+    "decision_scoring_tool": {
+      "file": ".cursor/rules/decision_scoring_tool.mdc",
+      "description": "Invoke local scorer tool to rank candidates deterministically",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "planning_output_presence": {
+      "file": ".cursor/rules/planning_output_presence.mdc",
+      "description": "Ping kapag present ang Action_Plan.md (planning output).",
+      "globs": [
+        "memory-bank/plan/Action_Plan.md"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "planning_output_presence",
+          "description": "Detect Action_Plan.md exists.",
+          "actions": [
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/Action_Plan.md",
+        "Action_Plan.md"
+      ]
+    },
+    "decision_gate": {
+      "file": ".cursor/rules/decision_gate.mdc",
+      "description": "Decision gate with neutral treatment of COMMAND_TRIGGER vs NATURAL_STEP",
+      "globs": [
+        "**/*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "audit_output_presence": {
+      "file": ".cursor/rules/audit_output_presence.mdc",
+      "description": "Ping kapag present ang Summary_Report.md (audit output).",
+      "globs": [
+        "memory-bank/plan/Summary_Report.md"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "audit_output_presence",
+          "description": "Detect Summary_Report.md exists.",
+          "actions": [
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/Summary_Report.md",
+        "Summary_Report.md"
+      ]
+    },
+    "readiness_check": {
+      "file": ".cursor/rules/readiness_check.mdc",
+      "description": "PRE-START Acceptance Gate for solo freelancer workflow",
+      "globs": [
+        "memory-bank/business/**",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/proposal.md"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "prestart_gate",
+          "description": "|",
+          "actions": [
+            "attach_rules",
+            "suggest",
+            "set_state"
+          ]
+        },
+        {
+          "name": "block_planning_if_incomplete",
+          "description": "\"Block PLAN kapag kulang PRE-START artifacts at Upwork offer readiness\"",
+          "actions": [
+            "reject",
+            "reject",
+            "set_state",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/proposal.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/capacity_report.md",
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/upwork/offer_status.json.contract_type",
+        "memory-bank/upwork/offer_status.json.escrow_funded",
+        "memory-bank/upwork/offer_status.json.work_diary_ready",
+        "memory-bank/upwork/offer_status.json.weekly_cap_hours"
+      ]
+    },
+    "scenario_router": {
+      "file": ".cursor/rules/orchestrator/scenario_router.mdc",
+      "description": "Suggest valid triggers when domain+contexts are satisfied",
+      "globs": [
+        "memory-bank/plan/**"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "allow_product_owner_when_ready",
+          "description": "\"Expose run_product_owner when client_brief.md exists\"",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        },
+        {
+          "name": "allow_planning_when_ready",
+          "description": "\"Expose run_planning only if domain+inputs ready\"",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        },
+        {
+          "name": "allow_audit_when_ready",
+          "description": "\"Expose run_auditor when Action_Plan.md exists\"",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        },
+        {
+          "name": "allow_peer_review_when_ready",
+          "description": "\"Expose run_principal_engineer_peer_review when Summary_Report.md exists\"",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        },
+        {
+          "name": "allow_synthesis_when_ready",
+          "description": "\"Expose run_principal_engineer_synthesis when Summary+Validation exist\"",
+          "actions": [
+            "reject",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/",
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/plan/product_backlog.yaml",
+        "memory-bank/plan/acceptance_criteria.json",
+        "memory-bank/upwork/offer_status.json",
+        "memory-bank/plan/Action_Plan.md",
+        "memory-bank/plan/Summary_Report.md",
+        "memory-bank/plan/Validation_Report.md"
+      ]
+    },
+    "python": {
+      "file": ".cursor/rules/domains/python.mdc",
+      "description": "Python project detector (globs-only)",
+      "globs": [
+        "requirements.txt",
+        "pyproject.toml"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "node": {
+      "file": ".cursor/rules/domains/node.mdc",
+      "description": "Node/TypeScript project detector (auto-attach)",
+      "globs": [
+        "package.json",
+        "tsconfig.json"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "typescript-base": {
+      "file": ".cursor/rules/advanced/typescript-base.mdc",
+      "description": null,
+      "globs": null,
+      "always_apply": true,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "demo_playbook": {
+      "file": ".cursor/rules/kits/prestart/demo_playbook.mdc",
+      "description": "Demo Playbook \u2014 5\u201310 min demo flow (goal-level)",
+      "globs": [],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "demo_playbook_init",
+          "description": "\"Gumawa ng standardized demo script + checklist (no solutioning).\"",
+          "actions": [
+            "generate_file",
+            "generate_file",
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/demo/demo_playbook.md",
+        "memory-bank/demo/demo_checklist.md",
+        "memory-bank/demo/demo_metrics.md"
+      ]
+    },
+    "pricing_policy": {
+      "file": ".cursor/rules/kits/prestart/pricing_policy.mdc",
+      "description": "Pricing Policy \u2014 ratecard & terms",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/business/terms.md"
+      ]
+    },
+    "ai_team_simulation": {
+      "file": ".cursor/rules/kits/prestart/ai_team_simulation.mdc",
+      "description": "Standards compliance confirmed",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [
+        "function",
+        "quality",
+        "triggers",
+        "name",
+        "workload_balance",
+        "optimization_safety",
+        "deployment_readiness",
+        "with_progression"
+      ],
+      "required_artifacts": []
+    },
+    "client_screener": {
+      "file": ".cursor/rules/kits/prestart/client_screener.mdc",
+      "description": "Client Screener \u2014 fit scoring + red flags",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/red_flags.md"
+      ]
+    },
+    "proposal_builder": {
+      "file": ".cursor/rules/kits/prestart/proposal_builder.mdc",
+      "description": "Proposal Builder \u2014 outcomes, scope, exclusions",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/business/pricing.ratecard.yaml",
+        "memory-bank/plan/proposal.md"
+      ]
+    },
+    "capacity_planner": {
+      "file": ".cursor/rules/kits/prestart/capacity_planner.mdc",
+      "description": "Capacity Planner \u2014 avoid overcommitment",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/profile/availability.yaml",
+        "memory-bank/backlog/active_commitments.yaml",
+        "memory-bank/business/capacity_report.md"
+      ]
+    },
+    "scope_guard": {
+      "file": ".cursor/rules/kits/prestart/scope_guard.mdc",
+      "description": "Scope Guard \u2014 baseline + change request workflow",
+      "globs": [],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "scope_guard_check",
+          "description": "\"I-flag kung may bagong item na wala sa baseline.\"",
+          "actions": [
+            "generate_file",
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [
+        "scope"
+      ],
+      "required_artifacts": [
+        "memory-bank/plan/proposal.md",
+        "memory-bank/scope/baseline.yaml",
+        "memory-bank/scope/scope_event_log.md",
+        "memory-bank/scope/change_request.md"
+      ]
+    },
+    "risk_catalog": {
+      "file": ".cursor/rules/kits/prestart/risk_catalog.mdc",
+      "description": "Risk Catalog \u2014 reusable list of common risks/mitigations",
+      "globs": [],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "risk_catalog_init",
+          "description": "\"Gumawa ng standard risks + tags na pwedeng i-import sa proposal.\"",
+          "actions": [
+            "generate_file",
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/risk_catalog.md",
+        "memory-bank/risk_tags.yaml"
+      ]
+    },
+    "repo_bootstrapper": {
+      "file": ".cursor/rules/kits/prestart/repo_bootstrapper.mdc",
+      "description": "Repo Bootstrapper \u2014 minimal, demo-ready scaffolds",
+      "globs": [],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "\"sample-<demo_type>\"",
+          "description": "\"Maghanda ng skeleton manifests para sa piniling demo (RAG | REST API | Web UI).\"",
+          "actions": [
+            "generate_file",
+            "generate_file",
+            "rag",
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/bootstrap/manifest.yaml",
+        "memory-bank/bootstrap/README.md",
+        "memory-bank/bootstrap/tree.md"
+      ]
+    },
+    "estimate_sizer": {
+      "file": ".cursor/rules/kits/prestart/estimate_sizer.mdc",
+      "description": "Estimate Sizer \u2014 goal-level, risk-adjusted",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/client_brief.md",
+        "memory-bank/business/client_score.json",
+        "memory-bank/business/estimate_brief.md",
+        "memory-bank/business/estimate.matrix.yaml"
+      ]
+    },
+    "contract_guard": {
+      "file": ".cursor/rules/kits/upwork/contract_guard.mdc",
+      "description": "Upwork Contract Guard \u2014 escrow/work diary checks",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "upwork_offer_template",
+          "actions": [
+            "generate_file",
+            "suggest"
+          ]
+        },
+        {
+          "name": "upwork_guard_signal",
+          "actions": [
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/upwork/offer_status.json"
+      ]
+    },
+    "connects_policy": {
+      "file": ".cursor/rules/kits/upwork/connects_policy.mdc",
+      "description": "Upwork Connects Policy \u2014 boost or not",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "connects_decision",
+          "actions": [
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/business/client_score.json",
+        "memory-bank/upwork/connects_decision.md"
+      ]
+    },
+    "upwork_adapter": {
+      "file": ".cursor/rules/kits/upwork/upwork_adapter.mdc",
+      "description": "Upwork Adapter \u2014 cover letter + milestones/hourly scope",
+      "globs": [
+        "memory-bank/**",
+        "templates/**"
+      ],
+      "always_apply": false,
+      "rules": [
+        {
+          "name": "upwork_cover_and_scope",
+          "actions": [
+            "generate_file",
+            "generate_file",
+            "generate_file",
+            "suggest"
+          ]
+        }
+      ],
+      "gates": [],
+      "required_artifacts": [
+        "memory-bank/plan/proposal.md",
+        "memory-bank/business/estimate.matrix.yaml",
+        "memory-bank/upwork/cover_letter.md",
+        "memory-bank/upwork/milestones.yaml",
+        "memory-bank/upwork/hourly_scope.md"
+      ]
+    },
+    "devops": {
+      "file": ".cursor/rules/domains/specialized/devops.mdc",
+      "description": "DevOps and CI/CD development best practices",
+      "globs": [
+        "**/*.yml",
+        "**/*.yaml",
+        "**/*.sh",
+        "Dockerfile*",
+        "docker-compose*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "ai-ml": {
+      "file": ".cursor/rules/domains/specialized/ai-ml.mdc",
+      "description": "AI and Machine Learning development best practices",
+      "globs": [
+        "**/*.py",
+        "**/*.ipynb",
+        "src/**/*.py",
+        "notebooks/**/*.ipynb"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "blockchain": {
+      "file": ".cursor/rules/domains/specialized/blockchain.mdc",
+      "description": "Blockchain and smart contract development best practices",
+      "globs": [
+        "**/*.sol",
+        "**/*.ts",
+        "contracts/**/*.sol",
+        "scripts/**/*.ts"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "java": {
+      "file": ".cursor/rules/domains/backend/java.mdc",
+      "description": "Java development with best practices and patterns",
+      "globs": [
+        "**/*.java",
+        "src/**/*.java",
+        "main/**/*.java"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "wordpress": {
+      "file": ".cursor/rules/domains/backend/wordpress.mdc",
+      "description": "WordPress development with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "wp-content/**/*.php",
+        "themes/**/*.php",
+        "plugins/**/*.php"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "rust": {
+      "file": ".cursor/rules/domains/backend/rust.mdc",
+      "description": "Rust best practices for Solana smart contract development using Anchor framework and Solana SDK",
+      "globs": "programs/**/*.rs, src/**/*.rs, tests/**/*.ts",
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "go": {
+      "file": ".cursor/rules/domains/backend/go.mdc",
+      "description": "Go development with best practices and patterns",
+      "globs": [
+        "**/*.go",
+        "cmd/**/*.go",
+        "internal/**/*.go",
+        "pkg/**/*.go"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "laravel": {
+      "file": ".cursor/rules/domains/backend/laravel.mdc",
+      "description": "Laravel PHP development with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "app/**/*.php",
+        "routes/**/*.php",
+        "database/**/*.php"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "coding-standards": {
+      "file": ".cursor/rules/domains/frontend/coding-standards.mdc",
+      "description": "Universal coding standards and best practices for all frontend development frameworks",
+      "globs": [
+        "**/*.{ts,tsx,js,jsx,vue,svelte,html,css}",
+        "src/**/*",
+        "components/**/*"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "qwik": {
+      "file": ".cursor/rules/domains/frontend/qwik.mdc",
+      "description": "Qwik.js development with TypeScript and Vite best practices",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "htmx": {
+      "file": ".cursor/rules/domains/frontend/htmx.mdc",
+      "description": "HTMX development with modern web patterns and best practices",
+      "globs": [
+        "**/*.html",
+        "**/*.htmx",
+        "**/*.js",
+        "**/*.py",
+        "**/*.go",
+        "**/*.php"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "solidjs": {
+      "file": ".cursor/rules/domains/frontend/solidjs.mdc",
+      "description": "SolidJS development with TypeScript best practices and patterns",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "database": {
+      "file": ".cursor/rules/domains/utilities/database.mdc",
+      "description": "Database best practices focusing on Prisma and Supabase integration",
+      "globs": "prisma/**/*, src/db/**/*, **/*.prisma, supabase/**/*",
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "clean-code": {
+      "file": ".cursor/rules/domains/utilities/clean-code.mdc",
+      "description": "Guidelines for writing clean, maintainable, and human-readable code. Apply these rules when writing or reviewing code to ensure consistency and quality.",
+      "globs": null,
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "gitflow": {
+      "file": ".cursor/rules/domains/utilities/gitflow.mdc",
+      "description": "Gitflow Workflow Rules. These rules should be applied when performing git operations.",
+      "globs": [],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "codequality": {
+      "file": ".cursor/rules/domains/utilities/codequality.mdc",
+      "description": "Code Quality Guidelines",
+      "globs": null,
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "react-native": {
+      "file": ".cursor/rules/domains/mobile/react-native.mdc",
+      "description": "React Native development with Expo best practices and patterns",
+      "globs": [
+        "**/*.tsx",
+        "**/*.ts",
+        "**/*.jsx",
+        "**/*.js",
+        "app/**/*.tsx"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "flutter": {
+      "file": ".cursor/rules/domains/mobile/flutter.mdc",
+      "description": "Flutter development with Dart best practices and patterns",
+      "globs": [
+        "**/*.dart",
+        "lib/**/*.dart",
+        "test/**/*.dart"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "android": {
+      "file": ".cursor/rules/domains/mobile/android.mdc",
+      "description": "Android development with Jetpack Compose best practices",
+      "globs": [
+        "**/*.kt",
+        "**/*.java",
+        "app/**/*.kt",
+        "app/**/*.java",
+        "**/*.xml"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "phpunit": {
+      "file": ".cursor/rules/domains/testing/phpunit.mdc",
+      "description": "PHPUnit testing with best practices and patterns",
+      "globs": [
+        "**/*.php",
+        "tests/**/*.php",
+        "**/*Test.php"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "playwright": {
+      "file": ".cursor/rules/domains/testing/playwright.mdc",
+      "description": "Playwright end-to-end testing with best practices",
+      "globs": [
+        "**/*.spec.ts",
+        "**/*.spec.js",
+        "tests/**/*.ts",
+        "tests/**/*.js"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    },
+    "jest": {
+      "file": ".cursor/rules/domains/testing/jest.mdc",
+      "description": "Jest unit testing with best practices and patterns",
+      "globs": [
+        "**/*.test.ts",
+        "**/*.test.js",
+        "**/*.spec.ts",
+        "**/*.spec.js"
+      ],
+      "always_apply": false,
+      "rules": [],
+      "gates": [],
+      "required_artifacts": []
+    }
+  },
+  "gates": {
+    "results": [
+      "orchestrator_postrun"
+    ],
+    "function": [
+      "ai_team_simulation"
+    ],
+    "quality": [
+      "ai_team_simulation"
+    ],
+    "triggers": [
+      "ai_team_simulation"
+    ],
+    "name": [
+      "ai_team_simulation"
+    ],
+    "workload_balance": [
+      "ai_team_simulation"
+    ],
+    "optimization_safety": [
+      "ai_team_simulation"
+    ],
+    "deployment_readiness": [
+      "ai_team_simulation"
+    ],
+    "with_progression": [
+      "ai_team_simulation"
+    ],
+    "scope": [
+      "scope_guard"
+    ]
+  },
+  "artifacts": {
+    "memory-bank/plan/Action_Plan.md": [
+      "planning_output_presence",
+      "scenario_router"
+    ],
+    "Action_Plan.md": [
+      "planning_output_presence"
+    ],
+    "memory-bank/plan/Summary_Report.md": [
+      "audit_output_presence",
+      "scenario_router"
+    ],
+    "Summary_Report.md": [
+      "audit_output_presence"
+    ],
+    "memory-bank/business/": [
+      "readiness_check"
+    ],
+    "memory-bank/upwork/offer_status.json": [
+      "readiness_check",
+      "scenario_router",
+      "contract_guard"
+    ],
+    "memory-bank/plan/proposal.md": [
+      "readiness_check",
+      "proposal_builder",
+      "scope_guard",
+      "upwork_adapter"
+    ],
+    "memory-bank/business/client_score.json": [
+      "readiness_check",
+      "client_screener",
+      "estimate_sizer",
+      "connects_policy"
+    ],
+    "memory-bank/business/capacity_report.md": [
+      "readiness_check",
+      "capacity_planner"
+    ],
+    "memory-bank/business/pricing.ratecard.yaml": [
+      "readiness_check",
+      "pricing_policy",
+      "proposal_builder"
+    ],
+    "memory-bank/business/estimate_brief.md": [
+      "readiness_check",
+      "proposal_builder",
+      "estimate_sizer"
+    ],
+    "memory-bank/upwork/offer_status.json.contract_type": [
+      "readiness_check"
+    ],
+    "memory-bank/upwork/offer_status.json.escrow_funded": [
+      "readiness_check"
+    ],
+    "memory-bank/upwork/offer_status.json.work_diary_ready": [
+      "readiness_check"
+    ],
+    "memory-bank/upwork/offer_status.json.weekly_cap_hours": [
+      "readiness_check"
+    ],
+    "memory-bank/plan/": [
+      "scenario_router"
+    ],
+    "memory-bank/plan/client_brief.md": [
+      "scenario_router",
+      "client_screener",
+      "proposal_builder",
+      "estimate_sizer"
+    ],
+    "memory-bank/plan/product_backlog.yaml": [
+      "scenario_router"
+    ],
+    "memory-bank/plan/acceptance_criteria.json": [
+      "scenario_router"
+    ],
+    "memory-bank/plan/Validation_Report.md": [
+      "scenario_router"
+    ],
+    "memory-bank/demo/demo_playbook.md": [
+      "demo_playbook"
+    ],
+    "memory-bank/demo/demo_checklist.md": [
+      "demo_playbook"
+    ],
+    "memory-bank/demo/demo_metrics.md": [
+      "demo_playbook"
+    ],
+    "memory-bank/business/terms.md": [
+      "pricing_policy"
+    ],
+    "memory-bank/business/red_flags.md": [
+      "client_screener"
+    ],
+    "memory-bank/profile/availability.yaml": [
+      "capacity_planner"
+    ],
+    "memory-bank/backlog/active_commitments.yaml": [
+      "capacity_planner"
+    ],
+    "memory-bank/scope/baseline.yaml": [
+      "scope_guard"
+    ],
+    "memory-bank/scope/scope_event_log.md": [
+      "scope_guard"
+    ],
+    "memory-bank/scope/change_request.md": [
+      "scope_guard"
+    ],
+    "memory-bank/risk_catalog.md": [
+      "risk_catalog"
+    ],
+    "memory-bank/risk_tags.yaml": [
+      "risk_catalog"
+    ],
+    "memory-bank/bootstrap/manifest.yaml": [
+      "repo_bootstrapper"
+    ],
+    "memory-bank/bootstrap/README.md": [
+      "repo_bootstrapper"
+    ],
+    "memory-bank/bootstrap/tree.md": [
+      "repo_bootstrapper"
+    ],
+    "memory-bank/business/estimate.matrix.yaml": [
+      "estimate_sizer",
+      "upwork_adapter"
+    ],
+    "memory-bank/upwork/connects_decision.md": [
+      "connects_policy"
+    ],
+    "memory-bank/upwork/cover_letter.md": [
+      "upwork_adapter"
+    ],
+    "memory-bank/upwork/milestones.yaml": [
+      "upwork_adapter"
+    ],
+    "memory-bank/upwork/hourly_scope.md": [
+      "upwork_adapter"
+    ]
+  },
+  "attachments": {
+    "readiness_check": [
+      "kits/prestart/proposal_builder.mdc"
+    ]
+  },
+  "glob_mappings": {
+    "**/*": [
+      "decision_scoring",
+      "next_step_suggester",
+      "orchestrator_postrun",
+      "decision_scoring_tool",
+      "decision_gate"
+    ],
+    ".cursor/commands/registry.yaml": [
+      "registry_policy_guard"
+    ],
+    "memory-bank/plan/Action_Plan.md": [
+      "planning_output_presence"
+    ],
+    "memory-bank/plan/Summary_Report.md": [
+      "audit_output_presence"
+    ],
+    "memory-bank/business/**": [
+      "readiness_check"
+    ],
+    "memory-bank/upwork/offer_status.json": [
+      "readiness_check"
+    ],
+    "memory-bank/plan/proposal.md": [
+      "readiness_check"
+    ],
+    "memory-bank/plan/**": [
+      "scenario_router"
+    ],
+    "requirements.txt": [
+      "python"
+    ],
+    "pyproject.toml": [
+      "python"
+    ],
+    "package.json": [
+      "node"
+    ],
+    "tsconfig.json": [
+      "node"
+    ],
+    "memory-bank/**": [
+      "contract_guard",
+      "connects_policy",
+      "upwork_adapter"
+    ],
+    "templates/**": [
+      "contract_guard",
+      "connects_policy",
+      "upwork_adapter"
+    ],
+    "**/*.yml": [
+      "devops"
+    ],
+    "**/*.yaml": [
+      "devops"
+    ],
+    "**/*.sh": [
+      "devops"
+    ],
+    "Dockerfile*": [
+      "devops"
+    ],
+    "docker-compose*": [
+      "devops"
+    ],
+    "**/*.py": [
+      "ai-ml",
+      "htmx"
+    ],
+    "**/*.ipynb": [
+      "ai-ml"
+    ],
+    "src/**/*.py": [
+      "ai-ml"
+    ],
+    "notebooks/**/*.ipynb": [
+      "ai-ml"
+    ],
+    "**/*.sol": [
+      "blockchain"
+    ],
+    "**/*.ts": [
+      "blockchain",
+      "qwik",
+      "solidjs",
+      "react-native"
+    ],
+    "contracts/**/*.sol": [
+      "blockchain"
+    ],
+    "scripts/**/*.ts": [
+      "blockchain"
+    ],
+    "**/*.java": [
+      "java",
+      "android"
+    ],
+    "src/**/*.java": [
+      "java"
+    ],
+    "main/**/*.java": [
+      "java"
+    ],
+    "**/*.php": [
+      "wordpress",
+      "laravel",
+      "htmx",
+      "phpunit"
+    ],
+    "wp-content/**/*.php": [
+      "wordpress"
+    ],
+    "themes/**/*.php": [
+      "wordpress"
+    ],
+    "plugins/**/*.php": [
+      "wordpress"
+    ],
+    "p": [
+      "rust",
+      "database",
+      "database",
+      "database"
+    ],
+    "r": [
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database"
+    ],
+    "o": [
+      "rust"
+    ],
+    "g": [
+      "rust"
+    ],
+    "a": [
+      "rust",
+      "database",
+      "database",
+      "database",
+      "database"
+    ],
+    "m": [
+      "rust",
+      "database",
+      "database"
+    ],
+    "s": [
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database"
+    ],
+    "/": [
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database"
+    ],
+    "*": [
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database",
+      "database"
+    ],
+    ".": [
+      "rust",
+      "rust",
+      "rust",
+      "database"
+    ],
+    ",": [
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database"
+    ],
+    " ": [
+      "rust",
+      "rust",
+      "database",
+      "database",
+      "database"
+    ],
+    "c": [
+      "rust",
+      "database"
+    ],
+    "t": [
+      "rust",
+      "rust",
+      "rust"
+    ],
+    "e": [
+      "rust",
+      "database"
+    ],
+    "**/*.go": [
+      "go",
+      "htmx"
+    ],
+    "cmd/**/*.go": [
+      "go"
+    ],
+    "internal/**/*.go": [
+      "go"
+    ],
+    "pkg/**/*.go": [
+      "go"
+    ],
+    "app/**/*.php": [
+      "laravel"
+    ],
+    "routes/**/*.php": [
+      "laravel"
+    ],
+    "database/**/*.php": [
+      "laravel"
+    ],
+    "**/*.{ts,tsx,js,jsx,vue,svelte,html,css}": [
+      "coding-standards"
+    ],
+    "src/**/*": [
+      "coding-standards"
+    ],
+    "components/**/*": [
+      "coding-standards"
+    ],
+    "**/*.tsx": [
+      "qwik",
+      "solidjs",
+      "react-native"
+    ],
+    "src/**/*.tsx": [
+      "qwik",
+      "solidjs"
+    ],
+    "src/**/*.ts": [
+      "qwik",
+      "solidjs"
+    ],
+    "**/*.html": [
+      "htmx"
+    ],
+    "**/*.htmx": [
+      "htmx"
+    ],
+    "**/*.js": [
+      "htmx",
+      "react-native"
+    ],
+    "i": [
+      "database",
+      "database"
+    ],
+    "d": [
+      "database"
+    ],
+    "b": [
+      "database",
+      "database"
+    ],
+    "u": [
+      "database"
+    ],
+    "**/*.jsx": [
+      "react-native"
+    ],
+    "app/**/*.tsx": [
+      "react-native"
+    ],
+    "**/*.dart": [
+      "flutter"
+    ],
+    "lib/**/*.dart": [
+      "flutter"
+    ],
+    "test/**/*.dart": [
+      "flutter"
+    ],
+    "**/*.kt": [
+      "android"
+    ],
+    "app/**/*.kt": [
+      "android"
+    ],
+    "app/**/*.java": [
+      "android"
+    ],
+    "**/*.xml": [
+      "android"
+    ],
+    "tests/**/*.php": [
+      "phpunit"
+    ],
+    "**/*Test.php": [
+      "phpunit"
+    ],
+    "**/*.spec.ts": [
+      "playwright",
+      "jest"
+    ],
+    "**/*.spec.js": [
+      "playwright",
+      "jest"
+    ],
+    "tests/**/*.ts": [
+      "playwright"
+    ],
+    "tests/**/*.js": [
+      "playwright"
+    ],
+    "**/*.test.ts": [
+      "jest"
+    ],
+    "**/*.test.js": [
+      "jest"
+    ]
+  },
+  "always_apply": [
+    "next_step_suggester",
+    "CURSOR USAGE STANDARDS \u2013 READ THIS BEFORE TOUCHING CODE",
+    "typescript-base"
+  ],
+  "statistics": {
+    "total_rules": 50,
+    "total_gates": 10,
+    "total_artifacts": 40,
+    "always_apply_count": 3
+  }
+}

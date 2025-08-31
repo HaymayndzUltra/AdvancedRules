@@ -1,11 +1,10 @@
-cat > .cursor/commands/registry.yaml <<'YAML'
 version: 1
 defaults:
   one_step_policy: true
   min_confidence: 0.9
 
 commands:
-  - id: planning → audit
+  - id: planning-to-audit
     role_from: PLANNING_AI
     trigger: run_auditor
     run:
@@ -23,7 +22,7 @@ commands:
       label: "Validate plan (Auditor)"
       reason: "Planning complete + gate passed; validate with citations."
 
-  - id: audit→verify
+  - id: audit-to-verify
     role_from: AUDITOR_AI
     trigger: run_principal_engineer
     run:
@@ -41,7 +40,7 @@ commands:
       label: "Verify audit (Principal Engineer)"
       reason: "Audit gate passed; decide CONFIRM/CHALLENGE."
 
-  - id: flow.lint
+  - id: flow-lint
     role_from: FLOW_VALIDATOR
     trigger: lint_flow
     run:
@@ -59,7 +58,7 @@ commands:
       label: "Lint Flow Definition"
       reason: "Validate flow schema, references, and DAG structure."
 
-  - id: flow.run
+  - id: flow-run
     role_from: FLOW_EXECUTOR
     trigger: execute_flow
     run:
@@ -77,7 +76,7 @@ commands:
       label: "Execute Flow (Dry-run)"
       reason: "Run declarative flow with safety guards and dry-run enforcement."
 
-  - id: flow.render
+  - id: flow-render
     role_from: FLOW_RENDERER
     trigger: render_flow
     run:
@@ -95,7 +94,7 @@ commands:
       label: "Render Flow Diagram"
       reason: "Generate visual flow diagrams in Mermaid format."
 
-  - id: memory.index
+  - id: memory-index
     role_from: MEMORY_INDEXER
     trigger: index_memory
     run:
@@ -113,7 +112,7 @@ commands:
       label: "Index Content to Memory"
       reason: "Index source code, docs, and content into vector memory for RAG."
 
-  - id: memory.query
+  - id: memory-query
     role_from: MEMORY_RETRIEVER
     trigger: query_memory
     run:
@@ -131,7 +130,7 @@ commands:
       label: "Query Memory for Context"
       reason: "Retrieve relevant context from vector memory for persona-specific queries."
 
-  - id: memory.doctor
+  - id: memory-doctor
     role_from: SYSTEM_ADMIN
     trigger: diagnose_memory
     run:
@@ -148,4 +147,3 @@ commands:
     ui:
       label: "Run Memory Diagnostics"
       reason: "Check memory system health, dependencies, and configuration."
-YAML

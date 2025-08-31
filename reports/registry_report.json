@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "valid": true,
+    "error_count": 0,
+    "unique_ids": 8,
+    "total_commands": 8
+  },
+  "validation_errors": [],
+  "commands": [
+    {
+      "raw_id": "planning-to-audit",
+      "normalized_id": "planning-to-audit",
+      "duplicate": false,
+      "trigger": "run_auditor",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "auditor_ai",
+        "--inputs",
+        "memory-bank/plan/Action_Plan.md"
+      ]
+    },
+    {
+      "raw_id": "audit-to-verify",
+      "normalized_id": "audit-to-verify",
+      "duplicate": false,
+      "trigger": "run_principal_engineer",
+      "shell": [
+        "python3",
+        "tools/run_role.py",
+        "principal_engineer_ai",
+        "--inputs",
+        "memory-bank/plan/Summary_Report.md"
+      ]
+    },
+    {
+      "raw_id": "flow-lint",
+      "normalized_id": "flow-lint",
+      "duplicate": false,
+      "trigger": "lint_flow",
+      "shell": [
+        "arx",
+        "flow",
+        "lint",
+        "--flow={{flow_id}}"
+      ]
+    },
+    {
+      "raw_id": "flow-run",
+      "normalized_id": "flow-run",
+      "duplicate": false,
+      "trigger": "execute_flow",
+      "shell": [
+        "arx",
+        "flow",
+        "run",
+        "--flow={{flow_id}}",
+        "--task-id={{task_id}}",
+        "--dry-run"
+      ]
+    },
+    {
+      "raw_id": "flow-render",
+      "normalized_id": "flow-render",
+      "duplicate": false,
+      "trigger": "render_flow",
+      "shell": [
+        "arx",
+        "flow",
+        "render",
+        "--flow={{flow_id}}",
+        "--out=.artifacts/{{flow_id}}.mmd"
+      ]
+    },
+    {
+      "raw_id": "memory-index",
+      "normalized_id": "memory-index",
+      "duplicate": false,
+      "trigger": "index_memory",
+      "shell": [
+        "arx",
+        "memory",
+        "index",
+        "--src={{src}}",
+        "--namespaces={{namespaces}}",
+        "--persona={{persona}}"
+      ]
+    },
+    {
+      "raw_id": "memory-query",
+      "normalized_id": "memory-query",
+      "duplicate": false,
+      "trigger": "query_memory",
+      "shell": [
+        "arx",
+        "memory",
+        "query",
+        "--persona={{persona}}",
+        "--query={{query}}",
+        "--k={{k}}"
+      ]
+    },
+    {
+      "raw_id": "memory-doctor",
+      "normalized_id": "memory-doctor",
+      "duplicate": false,
+      "trigger": "diagnose_memory",
+      "shell": [
+        "arx",
+        "memory",
+        "doctor"
+      ]
+    }
+  ]
+}

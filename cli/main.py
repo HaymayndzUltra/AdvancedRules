@@ -49,16 +49,21 @@ def main():
             print(f"❌ Failed to import tasks module: {e}")
             print("Make sure planning tools are properly installed")
             sys.exit(1)
-
+    
     elif subcommand == "memory":
         # Import and delegate to memory commands
         try:
-            from cli.ar_memory import main as memory_main
-            memory_main(sys.argv[2:])
+            from cli.memory import main as memory_main
+            sys.exit(memory_main(sys.argv))
         except ImportError as e:
-            print(f"❌ Failed to import memory module: {e}")
-            print("Make sure memory tools are properly installed")
-            sys.exit(1)
+            # Fallback to ar_memory if our new module isn't available
+            try:
+                from cli.ar_memory import main as memory_main
+                memory_main(sys.argv[2:])
+            except ImportError:
+                print(f"❌ Failed to import memory module: {e}")
+                print("Make sure memory tools are properly installed")
+                sys.exit(1)
 
     elif subcommand == "obs" or subcommand == "observability":
         # Import and delegate to observability commands

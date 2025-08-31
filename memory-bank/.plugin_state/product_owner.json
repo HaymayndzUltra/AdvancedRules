@@ -1,0 +1,12 @@
+{
+  "8bafc0222b4703ab": {
+    "plugin_id": "product_owner",
+    "idempotency_key": "8bafc0222b4703ab",
+    "start_time": 1756587124.1790624,
+    "end_time": 1756587124.2459717,
+    "status": "completed",
+    "side_effects": [],
+    "error": null,
+    "rollback_performed": false
+  }
+}

@@ -1,15 +1,15 @@
-# tools/orchestrator/
+<!-- AUTO-GENERATED: docs_readme_sync v1 -->
+# tools/orchestrator
 
-- Purpose: Orchestration helpers (state engine and scoring→registry trigger).
+This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
-## Files
-- state.py: idempotent transitions, workflow_state.json
-- trigger_next.py: map Decision Scoring v3 output to registry commands
+## Contents
+- 📄 **README.md**
+- 📄 **state.py**
+- 📄 **trigger_next.py**
 
-## Usage
-```bash
-python3 tools/orchestrator/state.py --set PLANNING
-python3 tools/orchestrator/state.py --resume
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
 
-python3 tools/orchestrator/trigger_next.py --dry-run --candidates tools/decision_scoring/examples/trigger_candidates.json
-```

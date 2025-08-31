@@ -1,17 +1,33 @@
-# tests/
+<!-- AUTO-GENERATED: docs_readme_sync v1 -->
+# tests
 
-- Purpose: Automated validation for the end-to-end pipeline and critical invariants.
+This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
-## Suites
-- e2e/: golden-path pipeline test (plan → audit → peer_review → synthesis)
-- smoke/: scorer v3 and governance validator smoke tests
+## Contents
+- 📄 **README.md**
+- 📄 **conftest.py**
+- 📄 **test_artifact_audit.py**
+- 📄 **test_cli_entrypoints.py**
+- 📄 **test_exec_queue.py**
+- 📄 **test_execution_policy.py**
+- 📄 **test_gates_enforcement.py**
+- 📄 **test_instrumentation_redaction.py**
+- 📄 **test_io_atomicity.py**
+- 📄 **test_io_locking.py**
+- 📄 **test_mdc_parity.py**
+- 📄 **test_memory_basic.py**
+- 📄 **test_memory_cli.py**
+- 📄 **test_memory_crash_safety.py**
+- 📄 **test_observability_correlation.py**
+- 📄 **test_planning_pipeline.py**
+- 📄 **test_plugins_timeouts_idempotency.py**
+- 📄 **test_postrun_consistency.py**
+- 📄 **test_state_schema_alignment.py**
+- 📁 **e2e**
+- 📁 **smoke**
 
-## How to run
-```bash
-# If pytest is on PATH
-pytest -q
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
 
-# Or install to user-local bin and run
-python3 -m pip install --break-system-packages pytest -q
-/home/ubuntu/.local/bin/pytest -q
-```

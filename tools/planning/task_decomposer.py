@@ -256,21 +256,24 @@ class TaskDecomposer:
         # Check for cycles
         try:
             G = nx.DiGraph()
+            # Build a mapping of step IDs for consistency
+            step_ids = {step.id for step in task.steps}
+            
             for step in task.steps:
                 for dep in step.dependencies:
-                    G.add_edge(dep, step.description)
+                    # Use step IDs consistently for cycle detection
+                    G.add_edge(dep, step.id)
 
             if not nx.is_directed_acyclic_graph(G):
                 issues.append("Task graph contains cycles")
         except Exception as e:
             issues.append(f"Graph validation error: {e}")
 
-        # Check dependency validity
-        step_descriptions = {step.description for step in task.steps}
+        # Check dependency validity - dependencies should reference valid step IDs
         for step in task.steps:
             for dep in step.dependencies:
-                if dep not in step_descriptions:
-                    issues.append(f"Invalid dependency '{dep}' in step '{step.description}'")
+                if dep not in step_ids:
+                    issues.append(f"Invalid dependency '{dep}' in step '{step.id}'")
 
         return len(issues) == 0, issues
 

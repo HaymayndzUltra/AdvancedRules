@@ -1,16 +1,15 @@
-# tools/runner/
+<!-- AUTO-GENERATED: docs_readme_sync v1 -->
+# tools/runner
 
-- Purpose: Execute role logic via `tools/run_role.py` dispatch; write artifacts, provenance, and structured events.
+This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
-## Files
-- io_utils.py: write_text/touch_json/frontmatter + event/provenance hooks
-- plugins/: per-role implementations
+## Contents
+- 📄 **README.md**
+- 📄 **io_utils.py**
+- 📁 **plugins**
 
-## Usage
-```bash
-python3 tools/run_role.py product_owner_ai
-python3 tools/run_role.py planning_ai
-python3 tools/run_role.py auditor_ai
-python3 tools/run_role.py principal_engineer_ai --mode PEER_REVIEW
-python3 tools/run_role.py principal_engineer_ai --mode SYNTHESIS
-```
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+<!-- MANUAL-NOTES -->
+<!-- Add additional notes below. They will be preserved on sync. -->
+

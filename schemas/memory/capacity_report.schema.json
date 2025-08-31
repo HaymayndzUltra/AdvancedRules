@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Capacity Report",
+  "description": "Capacity planning and availability report",
+  "type": "object",
+  "required": ["available_hours", "commitment_level", "start_date"],
+  "properties": {
+    "available_hours": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 168,
+      "description": "Available hours per week"
+    },
+    "commitment_level": {
+      "type": "string",
+      "enum": ["FULL_TIME", "PART_TIME", "HOURLY", "PROJECT_BASED"],
+      "description": "Type of commitment"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Earliest available start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected end date if known"
+    },
+    "current_projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "hours_per_week": {"type": "integer"},
+          "end_date": {"type": "string", "format": "date"}
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional capacity notes"
+    },
+    "schema_version": {
+      "type": "string",
+      "default": "1.0.0"
+    }
+  },
+  "additionalProperties": false
+}

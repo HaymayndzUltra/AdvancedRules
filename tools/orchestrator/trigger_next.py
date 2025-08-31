@@ -9,6 +9,7 @@ import sys
 import os
 import hashlib
 from pathlib import Path
+from typing import Any, Dict, List
 
 ROOT = Path(__file__).resolve().parents[2]
 REG = ROOT / ".cursor/commands/registry.yaml"
@@ -52,8 +53,8 @@ def load_registry_commands() -> dict:
     return mapping
 
 
-def load_registry_full() -> dict:
-    mapping: dict[str, dict] = {}
+def load_registry_full() -> Dict[str, Any]:
+    mapping: Dict[str, Any] = {}
     if not REG.exists():
         return mapping
     content = REG.read_text(encoding="utf-8")
@@ -160,7 +161,7 @@ def main() -> None:
     except Exception as e:
         raise SystemExit(f"Cannot import scorer: {e}")
 
-    def _build_auto_candidates() -> list[dict]:
+    def _build_auto_candidates() -> List[Dict[str, Any]]:
         try:
             from tools.gates.gate_evaluator import evaluate_gates as _eval
             gres = _eval()
@@ -180,7 +181,8 @@ def main() -> None:
         except Exception:
             return []
 
-    candidates: list[dict]
+    # Build candidates
+    candidates: List[Dict[str, Any]]
     if args.auto_candidates:
         candidates = _build_auto_candidates()
     else:

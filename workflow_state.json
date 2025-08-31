@@ -729,6 +729,7 @@
       "correlation_id": "7aade015-61b2-4df3-af80-15826d7876e3"
     },
     {
+<<<<<<< Updated upstream
       "ts": 1756611895.5812888,
       "from": "SYNTHESIS_DONE",
       "to": "BACKLOG_READY",
@@ -847,6 +848,7 @@
       "from": "VALIDATION_DONE",
       "to": "SYNTHESIS_DONE",
       "correlation_id": "320c6789-db30-4a6a-aeb5-4d9804ec20f3"
+
     }
   ],
   "tasks": [

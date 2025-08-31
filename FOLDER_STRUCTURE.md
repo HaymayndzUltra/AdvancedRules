@@ -130,7 +130,42 @@ AdvancedRules/
 │
 ├── templates/                         # Project templates
 │   └── upwork/                        # Upwork-specific templates
-│
+│       ├── cover_letter_template.md   # Upwork proposal cover letter template
+│       ├── proposal_template.md       # Upwork proposal template
+│       └── milestone_template.md      # Upwork milestone template
+├── tools/                             # Operational tools and utilities
+│   ├── artifacts/                      # Artifact management
+│   ├── audit/                          # Audit and compliance tools
+│   ├── decision_scoring/               # Decision scoring system
+│   ├── demo/                           # Demo and presentation tools
+│   ├── flow/                           # Workflow management
+│   ├── gates/                          # Quality gates
+│   ├── instrumentation/                # Monitoring and instrumentation
+│   ├── io/                             # Input/output utilities
+│   ├── observability/                  # Observability tools
+│   ├── orchestrator/                   # Core orchestration logic
+│   ├── planning/                       # Planning and estimation tools
+│   ├── plugins/                        # Plugin system
+│   ├── postrun/                        # Post-run analysis tools
+│   ├── prestart/                       # Pre-start validation tools
+│   ├── queue/                          # Queue management system
+│   ├── rule_attach/                    # Rule attachment utilities
+│   ├── rules/                          # Rules management
+│   ├── runner/                         # Execution runner
+│   ├── schema/                         # Schema validation
+│   └── upwork/                         # Upwork-specific tools
+├── cli/                                # Command-line interface
+├── config/                             # Configuration files
+├── docker/                             # Docker configurations
+├── exec_queue/                         # Execution queue
+├── logs/                               # System logs
+├── memory/                             # Memory management
+├── observability/                      # Observability data
+├── reports/                            # Generated reports
+├── schema/                             # Schema definitions
+├── schemas/                            # Schema files
+├── tests/                              # Test suites
+├── workers/                            # Worker processes
 └── FRAMEWORK_SUMMARY.md               # Framework implementation summary
 ```
 
@@ -189,11 +224,29 @@ AdvancedRules/
 
 ### 🛠️ **`scripts/`** - Automation Tools
 - **`validate_prestart.sh`** - Quick PRE-START validation
+- **`phase0_safety.sh`** - Safety validation script
+- **`phase1_planning.sh`** - Planning phase automation
+- **`phase2_flows.sh`** - Workflow execution script
+- **`phase3_rag.sh`** - RAG system setup
+- **`phase4_metrics.sh`** - Metrics collection
+- **`phase5_queue.sh`** - Queue management
+
+### ⚙️ **`tools/`** - Operational Framework
+- **`prestart/`** - PRE-START validation and readiness
+- **`orchestrator/`** - Core orchestration and workflow management
+- **`decision_scoring/`** - Advanced decision scoring system
+- **`planning/`** - Project planning and estimation tools
+- **`observability/`** - Monitoring and analytics
+- **`rules/`** - Rules management and validation
+- **`runner/`** - Execution runner with plugins
+- **`artifacts/`** - Artifact management and provenance
 
 ## Current Status
-✅ **PRE-START Phase Complete** - All required artifacts present  
-✅ **Technology Coverage Complete** - 40 domain technologies loaded  
-🚀 **Ready for `/preflight`** - Gate validation ready  
+✅ **PRE-START Phase Complete** - All required artifacts present
+✅ **Technology Coverage Complete** - 40 domain technologies loaded
+✅ **Operational Framework Active** - Tools and automation systems operational
+✅ **Templates System** - Upwork templates created and available
+🚀 **Ready for `/preflight`** - Gate validation ready
 📋 **Next Phase** - Planning phase unlocked after validation
 
 ## Total Technology Coverage: 40 Technologies

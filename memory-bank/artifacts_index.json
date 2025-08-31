@@ -1257,5 +1257,19 @@
     "created_at": 1756653231.3165972,
     "source_role": "product_owner_ai",
     "correlation_id": null
+  },
+  {
+    "path": "memory-bank/deploy/handover_bundle.json",
+    "sha256": "10235aab3a6ec2a218d8e92e365dd7e78d246dc2472523210c83d1755fed6ac4",
+    "created_at": 1756662904.4678113,
+    "source_role": "deploy",
+    "correlation_id": null
+  },
+  {
+    "path": "memory-bank/deploy/README.md",
+    "sha256": "940c70ac0c53d7a54ac62e4ec7a71e2d533c50f2d4f14526fc37230207cef485",
+    "created_at": 1756662904.494056,
+    "source_role": "deploy",
+    "correlation_id": null
   }
 ]

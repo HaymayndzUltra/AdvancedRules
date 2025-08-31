@@ -11,3 +11,4 @@ tools/flow/__pycache__/
 # OS artifacts
 .DS_Store
 Thumbs.db
+.venv

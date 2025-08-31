@@ -1,0 +1,15 @@
+{
+  "73330a37205bb179": {
+    "plugin_id": "deploy",
+    "idempotency_key": "73330a37205bb179",
+    "start_time": 1756662904.3148935,
+    "end_time": 1756662904.5045533,
+    "status": "completed",
+    "side_effects": [
+      "/home/haymayndz/AdvancedRules-domain-lab/memory-bank/deploy/handover_bundle.json",
+      "/home/haymayndz/AdvancedRules-domain-lab/memory-bank/deploy/README.md"
+    ],
+    "error": null,
+    "rollback_performed": false
+  }
+}

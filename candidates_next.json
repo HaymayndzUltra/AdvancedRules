@@ -1,0 +1,6 @@
+{ "candidates": [
+  { "id":"flow-lint","action_type":"COMMAND_TRIGGER","risk":"LOW",
+    "scores":{"intent":0.9,"state":0.8,"evidence":0.6,"recency":0.5,"pref":0.5} ,
+    "explanation":"Validate flow definition"
+  }
+]}

@@ -1,6 +1,6 @@
 {
-  "prev_state": "CODEGEN_DONE",
-  "state": "QA_DONE",
+  "prev_state": "BACKLOG_READY",
+  "state": "PLANNING_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -145,8 +145,38 @@
       "from": "CODEGEN_DONE",
       "to": "QA_DONE",
       "correlation_id": "edf13f51-2112-4b53-97f5-9a6fe28ea325"
+    },
+    {
+      "ts": 1756628505.448018,
+      "from": "QA_DONE",
+      "to": "SECURITY_DONE",
+      "correlation_id": "36d18a14-18d0-437d-a14b-d65cd3dd82c2"
+    },
+    {
+      "ts": 1756653083.6940558,
+      "from": "SECURITY_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "7c60bc69-881e-4e50-bc15-23fb06f72fa8"
+    },
+    {
+      "ts": 1756653098.6658592,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "537943c1-c81f-47c7-8d17-201a6a8db778"
+    },
+    {
+      "ts": 1756653231.3203115,
+      "from": "PLANNING_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "da0dbfd1-35f0-489d-bfaf-c5a0afa17fee"
+    },
+    {
+      "ts": 1756654090.227508,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "357d6b3f-f3bf-4362-9137-2dc1191baeff"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T08:21:07.738888"
+  "last_updated": "2025-08-31T15:28:10.228922"
 }

@@ -1,0 +1,12 @@
+{ "candidates": [
+  { "id":"flow-lint","action_type":"COMMAND_TRIGGER","risk":"LOW",
+    "scores":{"intent":0.95,"state":0.9,"evidence":0.9,"recency":0.8,"pref":0.7},
+    "explanation":"Validate flow definition",
+    "preconds":["exists:flow/flow_registry.yaml","exists:pyproject.toml"],
+    "evidence_paths":["file://flow/flow_registry.yaml","file://pyproject.toml"]
+  },
+  { "id":"ask","action_type":"NATURAL_STEP","risk":"LOW",
+    "scores":{"intent":0.6,"state":0.6,"evidence":0.5,"recency":0.5,"pref":0.5},
+    "explanation":"Fallback clarification step"
+  }
+]}

@@ -1,0 +1,113 @@
+---
+description: "Context-first + Quality + Design policy (soft guidance, modular)"
+globs: ["**/*"]
+alwaysApply: true
+priority: medium
+---
+
+<rule>
+name: context_first
+description: "Mag-scan muna bago mag-edit; iwas assumption."
+actions:
+  - type: suggest
+    message: |
+      - Enumerate files sa target directory bago magsulat ng code
+      - Tukuyin env vars, config files, at external deps na apektado
+      - Idokumento inputs, outputs, at constraints ng task
+</rule>
+
+<rule>
+name: io_spec_gate
+description: "Block kapag walang clear I/O spec bago mag-implement"
+filters:
+  - type: equals
+    key: "phase"
+    value: "IMPLEMENTATION"
+actions:
+  - type: reject
+    when: missing_all([
+      "memory-bank/plan/Action_Plan.md",
+      "memory-bank/plan/acceptance_criteria.json"
+    ])
+    message: |
+      ⛔ Missing I/O spec. Kailangan ang Action_Plan.md at acceptance_criteria.json bago mag-implement.
+  - type: suggest
+    message: |
+      ✅ Tip: Ilista ang Inputs/Outputs/Constraints sa Action_Plan.md
+</rule>
+
+<rule>
+name: prestart_strict_guard
+description: "Block work kapag kulang ang PRE-START artifacts"
+actions:
+  - type: reject
+    when: missing_all([
+      "memory-bank/business/client_score.json",
+      "memory-bank/business/capacity_report.md",
+      "memory-bank/business/pricing.ratecard.yaml",
+      "memory-bank/business/estimate_brief.md",
+      "memory-bank/plan/proposal.md"
+    ])
+    message: |
+      ⛔ PRE-START incomplete. Tapusin muna ang /pricing, /screen_client, /capacity, /estimate, /proposal.
+  - type: suggest
+    message: |
+      ✅ Run: python3 tools/prestart/prestart_composite.py
+</rule>
+
+<rule>
+name: clarify_essentials
+description: "Only essential clarifying questions; resolve ambiguities early."
+actions:
+  - type: suggest
+    message: |
+      - Magtanong lang kapag may ambiguity sa inputs/outputs/constraints
+      - Ilista edge cases at validation criteria bago implementation
+</rule>
+
+<rule>
+name: quality_basics
+description: "Modularity, docstrings, cleanliness, size caps."
+actions:
+  - type: suggest
+    message: |
+      - Panatilihing modular at testable ang code; iwas deep nesting
+      - Lagyan ng malinaw na docstrings ang bagong/edited methods
+      - Panatilihin ang files ≤1600 lines; hatiin kung lumalagpas
+      - Gamitin linters/formatters; huwag mag-check in ng lint failures
+</rule>
+
+<rule>
+name: design_over_patches
+description: "Design muna bago quick patch; planuhin ang maintainability."
+actions:
+  - type: suggest
+    message: |
+      - I-outline ang plan sa bullets: What / Why / Expected outcome
+      - I-evaluate impact sa frontend/backend/DB/UI at data flow
+      - Iwasan ang side effects; kung meron, idokumento nang malinaw
+</rule>
+
+<rule>
+name: web_terminology
+description: "Frame solutions in APIs, routes, components, data flow."
+actions:
+  - type: suggest
+    message: |
+      - Ilahad ang APIs (endpoints, request/response, contracts)
+      - I-detalye ang routes/middleware at component structure/state mgmt
+      - I-drowing ang data flow (fetching, state sync, uni/bidirectional)
+</rule>
+
+<rule>
+name: guardrails
+description: "Stability and scope guardrails (soft)."
+actions:
+  - type: suggest
+    message: |
+      - Huwag mag-rename ng methods maliban kung kritikal sa clarity
+      - Huwag mag-introduce ng unnecessary logic/complexity
+      - Huwag mag-wrap ng try/catch kung walang meaningful handling
+      - Panatilihin ang translation keys; huwag baguhin nang walang utos
+</rule>
+

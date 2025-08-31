@@ -8,6 +8,16 @@
   ],
   "results": [
     {
+      "command_id": "validate-system-readiness",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
       "command_id": "planning-to-audit",
       "passed": false,
       "missing_files": [],
@@ -18,7 +28,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE (current=None)"
+        "state not in: PLANNING_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -32,7 +42,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: AUDIT_DONE (current=None)"
+        "state not in: AUDIT_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -47,7 +57,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -62,7 +72,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -77,7 +87,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -92,7 +102,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -107,7 +117,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -122,7 +132,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -136,7 +146,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE (current=None)"
+        "state not in: PLANNING_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -151,7 +161,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: CODEGEN_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: CODEGEN_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -166,7 +176,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: QA_DONE, SYNTHESIS_DONE (current=None)"
+        "state not in: QA_DONE, SYNTHESIS_DONE (current=BACKLOG_READY)"
       ]
     },
     {
@@ -181,7 +191,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: SECURITY_DONE, QA_DONE (current=None)"
+        "state not in: SECURITY_DONE, QA_DONE (current=BACKLOG_READY)"
       ]
     }
   ]

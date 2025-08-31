@@ -1,0 +1,7 @@
+{ "candidates": [
+  { "id":"flow-lint","action_type":"COMMAND_TRIGGER","risk":"LOW",
+    "scores":{"intent":0.95,"state":0.9,"evidence":0.9,"recency":0.8,"pref":0.7},
+    "explanation":"Validate flow definition with default flow id",
+    "preconds":["exists:flow/flow_registry.yaml","exists:pyproject.toml"]
+  }
+]}

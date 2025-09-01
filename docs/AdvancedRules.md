@@ -15,7 +15,7 @@ AdvancedRules is an AI-driven project management and software delivery framework
 ## 1) Architecture Overview
 
 ### Components
-- Orchestrators: decision scoring, trigger, state engine, gate evaluator, post-run (`tools/orchestrator_postrun.py`)
+- Orchestrators: decision scoring, trigger, state engine, gate evaluator, post-run (`tools/orchestrator_postrun.py`; policy: `.cursor/rules/orchestrator_postrun.mdc`)
 - Personas: PO/Planning/PE/Auditor via `tools/runner/plugins/*`; QA/Security/Deploy via `tools/plugins/*`
 - Rules Engine: `.mdc` rules parsing, linting, indexing, enforcement
 - Declarative Flows: DAG definitions with guards, edges, retries

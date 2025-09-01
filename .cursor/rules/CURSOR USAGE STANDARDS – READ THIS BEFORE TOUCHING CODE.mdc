@@ -1,5 +1,7 @@
 ---
+description: "Operational guardrails for using Cursor in this repo"
 alwaysApply: true
+globs: ["**/*"]
 ---
 1. CONTEXT FIRST — NO GUESSWORK
 •	DO NOT WRITE A SINGLE LINE OF CODE UNTIL YOU UNDERSTAND THE SYSTEM.

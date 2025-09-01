@@ -1,3 +1,7 @@
+---
+description: "Security standards and best practices (OWASP, authz, validation)"
+alwaysApply: false
+---
 # Security & Best Practices
 
 ## 🛡️ Security Fundamentals

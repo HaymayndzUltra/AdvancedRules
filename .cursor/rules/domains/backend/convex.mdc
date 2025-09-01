@@ -1,3 +1,8 @@
+---
+description: "Convex development best practices and patterns"
+globs: ["**/*.ts","**/*.tsx","convex/**/*.ts","convex/**/*.tsx"]
+alwaysApply: false
+---
 # Convex Development Rules
 
 ## Technology Stack

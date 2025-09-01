@@ -1,3 +1,7 @@
+---
+description: "Code quality standards and best practices"
+alwaysApply: false
+---
 # Code Quality Standards & Best Practices
 
 ## 🎯 Universal Principles
@@ -130,7 +134,3 @@
 - Setting up new projects or components
 - Implementing new features or bug fixes
 - Refactoring or optimizing existing code
-description:
-globs:
-alwaysApply: true
----

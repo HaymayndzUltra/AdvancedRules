@@ -15,6 +15,7 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 - 📄 **governance_policy.md**
 - 📄 **instrumentation_policy.md** (Deprecated → see OBSERVABILITY_AND_INSTRUMENTATION.md)
 - 📄 **OBSERVABILITY_AND_INSTRUMENTATION.md** (Canonical)
+- 📄 **SYSTEM_REFERENCE.md** (Canonical system overview)
 - 📁 **ADRs**
 - 📁 **checklists**
 - 📁 **reports**

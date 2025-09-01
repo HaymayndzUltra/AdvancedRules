@@ -28,7 +28,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE (current=SECURITY_DONE)"
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
       ]
     },
     {
@@ -42,98 +42,68 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: AUDIT_DONE (current=SECURITY_DONE)"
+        "state not in: AUDIT_DONE (current=SYNTHESIS_DONE)"
       ]
     },
     {
       "command_id": "flow-lint",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "flow-run",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "flow-render",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "memory-index",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "memory-query",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "memory-doctor",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "PLANNING_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: PLANNING_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "codegen-scaffold",
@@ -146,41 +116,11 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: PLANNING_DONE (current=SECURITY_DONE)"
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
       ]
     },
     {
       "command_id": "qa-validate",
-      "passed": false,
-      "missing_files": [],
-      "missing_states": [
-        "CODEGEN_DONE",
-        "SYNTHESIS_DONE"
-      ],
-      "missing_steps": [],
-      "missing_gates": [],
-      "missing_domains": [],
-      "reasons": [
-        "state not in: CODEGEN_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
-    },
-    {
-      "command_id": "security-scan",
-      "passed": false,
-      "missing_files": [],
-      "missing_states": [
-        "QA_DONE",
-        "SYNTHESIS_DONE"
-      ],
-      "missing_steps": [],
-      "missing_gates": [],
-      "missing_domains": [],
-      "reasons": [
-        "state not in: QA_DONE, SYNTHESIS_DONE (current=SECURITY_DONE)"
-      ]
-    },
-    {
-      "command_id": "deploy-package",
       "passed": true,
       "missing_files": [],
       "missing_states": [],
@@ -188,6 +128,31 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": []
+    },
+    {
+      "command_id": "security-scan",
+      "passed": true,
+      "missing_files": [],
+      "missing_states": [],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": []
+    },
+    {
+      "command_id": "deploy-package",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "SECURITY_DONE",
+        "QA_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: SECURITY_DONE, QA_DONE (current=SYNTHESIS_DONE)"
+      ]
     }
   ]
 }

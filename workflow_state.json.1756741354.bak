@@ -1,6 +1,6 @@
 {
-  "prev_state": "AUDIT_DONE",
-  "state": "VALIDATION_DONE",
+  "prev_state": "INITIALIZATION",
+  "state": "BACKLOG_READY",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -229,10 +229,46 @@
       "from": "AUDIT_DONE",
       "to": "VALIDATION_DONE",
       "correlation_id": "16db1ab7-2438-4898-9c41-a6284b40f669"
+    },
+    {
+      "ts": 1756740417.4691145,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE",
+      "correlation_id": "93b312c1-356f-4894-8dd1-8496a8a8cab8"
+    },
+    {
+      "ts": 1756740423.2005641,
+      "from": "SYNTHESIS_DONE",
+      "to": "CODEGEN_DONE",
+      "correlation_id": "5b744e0c-6659-4e74-a4b4-e99d282d8cc2"
+    },
+    {
+      "ts": 1756740428.7940547,
+      "from": "CODEGEN_DONE",
+      "to": "QA_DONE",
+      "correlation_id": "9c332dc4-6e4c-4c5a-9537-79bcf6a43a64"
+    },
+    {
+      "ts": 1756740434.3436093,
+      "from": "QA_DONE",
+      "to": "SECURITY_DONE",
+      "correlation_id": "7ea71fb0-454c-426e-bfef-51b33bf9f38d"
+    },
+    {
+      "ts": 1756740652.3180847,
+      "from": "SECURITY_DONE",
+      "to": "INITIALIZATION",
+      "correlation_id": "8c9dbeab-8908-42f2-b30d-3bb0c43b35ba"
+    },
+    {
+      "ts": 1756741354.8018608,
+      "from": "INITIALIZATION",
+      "to": "BACKLOG_READY",
+      "correlation_id": "c4bede4d-d34d-409f-b3f5-0f298e6bee7b"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-09-01T15:26:51.694127",
+  "last_updated": "2025-09-01T15:42:34.802249",
   "completed_steps": [
     "prestart_validated"
   ],

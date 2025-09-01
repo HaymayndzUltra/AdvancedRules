@@ -1,6 +1,6 @@
 {
-  "prev_state": "AUDIT_DONE",
-  "state": "VALIDATION_DONE",
+  "prev_state": "VALIDATION_DONE",
+  "state": "SYNTHESIS_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -127,8 +127,89 @@
       "from": "AUDIT_DONE",
       "to": "VALIDATION_DONE",
       "correlation_id": "37bc7a2a-44ad-4c72-be1d-d9d5c19970a4"
+    },
+    {
+      "ts": 1756628056.125423,
+      "from": "VALIDATION_DONE",
+      "to": "PLANNING_DONE",
+      "correlation_id": "a38c65f7-6ef5-4cb3-90be-bf646227b224"
+    },
+    {
+      "ts": 1756628391.1781383,
+      "from": "PLANNING_DONE",
+      "to": "CODEGEN_DONE",
+      "correlation_id": "2c2e7bd3-56a0-4d7d-a4be-7dabe2f85a52"
+    },
+    {
+      "ts": 1756628467.738855,
+      "from": "CODEGEN_DONE",
+      "to": "QA_DONE",
+      "correlation_id": "edf13f51-2112-4b53-97f5-9a6fe28ea325"
+    },
+    {
+      "ts": 1756628505.448018,
+      "from": "QA_DONE",
+      "to": "SECURITY_DONE",
+      "correlation_id": "36d18a14-18d0-437d-a14b-d65cd3dd82c2"
+    },
+    {
+      "ts": 1756653083.6940558,
+      "from": "SECURITY_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "7c60bc69-881e-4e50-bc15-23fb06f72fa8"
+    },
+    {
+      "ts": 1756653098.6658592,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "537943c1-c81f-47c7-8d17-201a6a8db778"
+    },
+    {
+      "ts": 1756653231.3203115,
+      "from": "PLANNING_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "da0dbfd1-35f0-489d-bfaf-c5a0afa17fee"
+    },
+    {
+      "ts": 1756671157.5245278,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "ad31e8f9-8d46-4c5d-af42-8486c401d644"
+    },
+    {
+      "ts": 1756712929.9548094,
+      "from": "PLANNING_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "90b05397-129f-41df-b4d0-b6bfb49187e8"
+    },
+    {
+      "ts": 1756712930.135396,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "fd63e7c2-2022-426e-b438-f8d8cd98a73b"
+    },
+    {
+      "ts": 1756712930.3272183,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE",
+      "correlation_id": "b055af67-2a23-46f8-8c96-7343490b6f52"
+    },
+    {
+      "ts": 1756712930.5180147,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE",
+      "correlation_id": "8c0753c2-a230-42d0-9876-324cc0d8af98"
+    },
+    {
+      "ts": 1756712930.6915789,
+      "from": "VALIDATION_DONE",
+      "to": "SYNTHESIS_DONE",
+      "correlation_id": "cf4f731a-9a76-4d46-abb2-6459f4ebdc0c"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T07:10:24.726514"
+  "last_updated": "2025-09-01T07:48:50.692024",
+  "completed_steps": [
+    "prestart_validated"
+  ]
 }

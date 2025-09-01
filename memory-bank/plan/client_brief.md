@@ -1,127 +1,61 @@
-Project Brief: Freelance Developer Personal Booking Website
-Description
+# Client Brief
 
-Ang proyektong ito ay isang personal portfolio at booking website para sa isang freelance developer. Layunin nitong ipakita ang skills, portfolio, at services, habang nagbibigay ng direct booking system para sa mga client. Kasama dito ang calendar integration, online payments, at contact portal para gawing mas madali at propesyonal ang proseso ng pagkuha ng serbisyo.
+## Project Brief — Real-Time AI Voice Assistant (Natural, Empathetic, Business-Ready)
 
-Requirements
+### Summary
+Build a voice assistant that customers can call, sounds warm and human, knows when to pause when interrupted, and completes simple, useful tasks—while keeping personal data safe. We'll start with a small, working demo you can try on your phone, then grow it into a pilot.
 
-Responsive web design (desktop, tablet, mobile friendly).
+### Goals
+- Shorten call handling time without losing the human touch.
+- Let callers finish 1–2 tasks on their own (e.g., create a ticket, check a balance).
+- Keep customer data private and compliant (consent, redaction, access control).
+- Push clear call summaries to your inbox/CRM for team visibility.
 
-Homepage na may malinaw na Call-to-Action ("Book Now" / "Hire Me").
+### What You'll Get
+- A phone line you can call to test the assistant.
+- Natural, brand-appropriate voice that stops talking when you speak.
+- 1–2 real tasks connected to your tools (start simple, expand later).
+- Short email/CRM summaries after each call.
+- Privacy guardrails: consent line at the start, personal details hidden before saving, access logs.
 
-About Me section (skills, background, experience).
+### Scope & Phases
 
-Portfolio showcase (projects, case studies, testimonials).
+**Week 1 – Live Demo (Spike)**
+- Working call loop you can dial; polite interruptions; simple greeting and one basic flow.
+- Call summary sent to your email/CRM sandbox.
 
-Services & Pricing section (hourly rates, packages).
+**Weeks 2–3 – Useful Tasks**
+- Add your first core task (e.g., create/update ticket or appointment).
+- Tune tone and wording to match your brand; add basic reporting (daily calls, completion rate).
 
-Integrated booking system (Calendly, TidyCal, o custom).
+**Weeks 4–5 – Pilot Readiness**
+- Add a second task (e.g., check status/payment intent).
+- Improve failure handling and smooth handoff to a human agent with screen-pop context.
+- QA checklist, privacy checks, and simple dashboard (latency, costs, success rate).
 
-Payment gateway integration (Stripe, PayPal, GCash).
+**Week 6 – Hardening & Handover**
+- Load tests on expected volume, finalize scripts, runbook, and team training.
+- Go-live checklist and pilot sign-off.
 
-Contact form + social media links (LinkedIn, GitHub).
+### Success Measures (sample)
+- Caller can interrupt and the assistant pauses consistently.
+- First task completion rate improves by 10–20% over baseline.
+- Call summaries are accurate and helpful for agents.
+- 100% calls play the consent line; personal details are redacted before storage.
 
-SEO optimization at SSL security.
+### Safeguards & Privacy
+- Consent at call start; clear disclosure.
+- Redaction of names/IDs before saving transcripts.
+- Encrypted storage and access logs.
+- Only the minimum data needed is processed.
 
-Admin dashboard (manage bookings, inquiries, payments).
+### Assumptions
+- You can provide access to a test inbox/CRM sandbox (or we set one up).
+- One "must-have" task is selected for Week 1 (keeps us focused).
+- Cloud phone line is acceptable for the demo; production options can follow.
 
-Goals
-
-Gumawa ng professional online presence para makuha ang tiwala ng clients.
-
-Bigyan ng end-to-end flow ang clients mula portfolio viewing hanggang booking & payment.
-
-Magkaroon ng self-service platform para sa scheduling at project engagement.
-
-Mapadali ang communication at project acquisition process.
-
-Makapagpakita ng credibility at expertise bilang freelance AI/DevOps developer.
-
-Timeline
-
-Week 1: Planning & wireframing (UI/UX design).
-
-Week 2: Development ng core pages (Home, About, Services, Portfolio).
-
-Week 3: Integration ng booking system at contact form.
-
-Week 4: Setup ng payment gateway + testing ng booking flow.
-
-Week 5: SEO optimization, security hardening, at final deployment.
-
-Target Completion: Within 5 weeks (approx. 1 month and 1 week).
-
-Budget
-
-Domain & Hosting: ₱3,000 – ₱5,000 / year.
-
-Booking Integration: ₱500 – ₱1,500 / month (depende kung Calendly Pro o TidyCal lifetime).
-
-Payment Gateway Fees: 2% – 3.5% per transaction (PayPal/Stripe standard rates).
-
-Development Cost: Kung ikaw mismo ang gagawa = ₱0 (time investment only).
-Kung ipapagawa sa iba = ₱50,000 – ₱120,000 (depende sa complexity & custom features).
-
-Project Brief: Freelance Developer Personal Booking Website
-Description
-
-Ang proyektong ito ay isang personal portfolio at booking website para sa isang freelance developer. Layunin nitong ipakita ang skills, portfolio, at services, habang nagbibigay ng direct booking system para sa mga client. Kasama dito ang calendar integration, online payments, at contact portal para gawing mas madali at propesyonal ang proseso ng pagkuha ng serbisyo.
-
-Requirements
-
-Responsive web design (desktop, tablet, mobile friendly).
-
-Homepage na may malinaw na Call-to-Action ("Book Now" / "Hire Me").
-
-About Me section (skills, background, experience).
-
-Portfolio showcase (projects, case studies, testimonials).
-
-Services & Pricing section (hourly rates, packages).
-
-Integrated booking system (Calendly, TidyCal, o custom).
-
-Payment gateway integration (Stripe, PayPal, GCash).
-
-Contact form + social media links (LinkedIn, GitHub).
-
-SEO optimization at SSL security.
-
-Admin dashboard (manage bookings, inquiries, payments).
-
-Goals
-
-Gumawa ng professional online presence para makuha ang tiwala ng clients.
-
-Bigyan ng end-to-end flow ang clients mula portfolio viewing hanggang booking & payment.
-
-Magkaroon ng self-service platform para sa scheduling at project engagement.
-
-Mapadali ang communication at project acquisition process.
-
-Makapagpakita ng credibility at expertise bilang freelance AI/DevOps developer.
-
-Timeline
-
-Week 1: Planning & wireframing (UI/UX design).
-
-Week 2: Development ng core pages (Home, About, Services, Portfolio).
-
-Week 3: Integration ng booking system at contact form.
-
-Week 4: Setup ng payment gateway + testing ng booking flow.
-
-Week 5: SEO optimization, security hardening, at final deployment.
-
-Target Completion: Within 5 weeks (approx. 1 month and 1 week).
-
-Budget
-
-Domain & Hosting: ₱3,000 – ₱5,000 / year.
-
-Booking Integration: ₱500 – ₱1,500 / month (depende kung Calendly Pro o TidyCal lifetime).
-
-Payment Gateway Fees: 2% – 3.5% per transaction (PayPal/Stripe standard rates).
-
-Development Cost: Kung ikaw mismo ang gagawa = ₱0 (time investment only).
-Kung ipapagawa sa iba = ₱50,000 – ₱120,000 (depende sa complexity & custom features).
+### Deliverables
+- Live demo number + short video walkthrough.
+- Connected first task (and second in pilot).
+- Daily/weekly summary reports and a simple dashboard.
+- Runbook (how to operate), privacy notes, and handover session.

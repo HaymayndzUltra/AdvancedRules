@@ -50,11 +50,279 @@ def _extract_project_title(brief_content: str) -> str:
 def generate_product_backlog(brief_content: str) -> str:
     """Generate a prioritized product backlog based on the client brief.
 
-    Minimal adaptation: replace the template title with the extracted project title.
+    Analyzes the brief content to create appropriate backlog items for the project type.
     """
     project_title = _extract_project_title(brief_content)
+    brief_lower = brief_content.lower()
 
-    backlog = """# Product Backlog - Customer Support Ticket Dashboard
+    # Check if this is an AdvancedRules framework project
+    is_advanced_rules = any(keyword in brief_lower for keyword in [
+        'advancedrules', 'ai-powered', 'workflow orchestration', 'multi-role',
+        'plugin system', 'memory bank', 'rule-based decision'
+    ])
+
+    if is_advanced_rules:
+        backlog = f"""# Product Backlog - {project_title}
+
+## Epic: Core Framework Architecture
+**Priority: HIGH** | **Story Points: 34**
+
+### User Story 1: Plugin System Foundation
+**As a** framework developer
+**I want to** establish a robust plugin architecture
+**So that** AI roles can be easily added and managed
+
+**Acceptance Criteria:**
+- [ ] Plugin registration and discovery system
+- [ ] Plugin lifecycle management (load, execute, unload)
+- [ ] Plugin configuration management
+- [ ] Error handling and isolation between plugins
+- [ ] Plugin dependency resolution
+
+**Story Points: 13**
+
+### User Story 2: Memory Bank System
+**As a** framework user
+**I want to** persistent artifact storage
+**So that** project state and history are maintained across sessions
+
+**Acceptance Criteria:**
+- [ ] Artifact indexing and retrieval system
+- [ ] Version control integration for artifacts
+- [ ] Search and filtering capabilities
+- [ ] Data integrity and backup mechanisms
+- [ ] Performance optimization for large artifact sets
+
+**Story Points: 13**
+
+### User Story 3: State Management
+**As a** framework orchestrator
+**I want to** manage workflow state transitions
+**So that** the system can track progress and make decisions
+
+**Acceptance Criteria:**
+- [ ] State transition engine
+- [ ] State persistence and recovery
+- [ ] State validation and consistency checks
+- [ ] Concurrent state management
+- [ ] State history and auditing
+
+**Story Points: 8**
+
+## Epic: AI Role System
+**Priority: HIGH** | **Story Points: 26**
+
+### User Story 4: Product Owner AI
+**As a** project manager
+**I want to** AI-generated product backlogs
+**So that** requirements can be quickly translated into actionable items
+
+**Acceptance Criteria:**
+- [ ] Client brief analysis and understanding
+- [ ] User story generation from requirements
+- [ ] Acceptance criteria creation
+- [ ] Story point estimation
+- [ ] Priority assignment and epic organization
+
+**Story Points: 8**
+
+### User Story 5: Planning AI
+**As a** technical lead
+**I want to** AI-generated technical plans
+**So that** implementation details are thoroughly planned
+
+**Acceptance Criteria:**
+- [ ] Technical specification generation
+- [ ] Architecture design recommendations
+- [ ] Task breakdown and estimation
+- [ ] Risk assessment and mitigation
+- [ ] Timeline and milestone planning
+
+**Story Points: 8**
+
+### User Story 6: Principal Engineer AI
+**As a** senior developer
+**I want to** AI-powered code review and validation
+**So that** code quality is maintained and issues are caught early
+
+**Acceptance Criteria:**
+- [ ] Code quality analysis
+- [ ] Security vulnerability detection
+- [ ] Performance optimization suggestions
+- [ ] Best practice compliance checking
+- [ ] Automated testing recommendations
+
+**Story Points: 10**
+
+## Epic: Decision Making System
+**Priority: HIGH** | **Story Points: 18**
+
+### User Story 7: Rule-Based Engine
+**As a** framework administrator
+**I want to** configurable decision rules
+**So that** the system can make consistent decisions
+
+**Acceptance Criteria:**
+- [ ] Rule definition and management
+- [ ] Rule evaluation engine
+- [ ] Rule conflict resolution
+- [ ] Rule performance monitoring
+- [ ] Rule versioning and rollback
+
+**Story Points: 8**
+
+### User Story 8: Confidence Scoring
+**As a** framework user
+**I want to** understand decision confidence
+**So that** I can assess when human intervention is needed
+
+**Acceptance Criteria:**
+- [ ] Confidence score calculation
+- [ ] Confidence threshold configuration
+- [ ] Low confidence alerts and notifications
+- [ ] Decision explanation generation
+- [ ] Confidence score history tracking
+
+**Story Points: 5**
+
+### User Story 9: Human Override System
+**As a** framework user
+**I want to** intervene in automated decisions
+**So that** I can correct errors and provide guidance
+
+**Acceptance Criteria:**
+- [ ] Manual decision override interface
+- [ ] Override history and justification tracking
+- [ ] Override impact analysis
+- [ ] Learning from human corrections
+- [ ] Override permission management
+
+**Story Points: 5**
+
+## Epic: Integration & Tooling
+**Priority: MEDIUM** | **Story Points: 22**
+
+### User Story 10: GitHub Integration
+**As a** development team
+**I want to** seamless GitHub integration
+**So that** the framework can work with existing workflows
+
+**Acceptance Criteria:**
+- [ ] Repository management and cloning
+- [ ] Pull request creation and management
+- [ ] Issue tracking and synchronization
+- [ ] Commit and branch management
+- [ ] Webhook integration for automation
+
+**Story Points: 8**
+
+### User Story 11: CLI Interface
+**As a** developer
+**I want to** command-line interface
+**So that** I can interact with the framework programmatically
+
+**Acceptance Criteria:**
+- [ ] Comprehensive CLI command set
+- [ ] Command completion and help system
+- [ ] Output formatting options
+- [ ] Error handling and logging
+- [ ] Scripting and automation support
+
+**Story Points: 8**
+
+### User Story 12: Web Dashboard
+**As a** project stakeholder
+**I want to** web-based monitoring dashboard
+**So that** I can track project progress and status
+
+**Acceptance Criteria:**
+- [ ] Real-time project status display
+- [ ] Artifact visualization and navigation
+- [ ] Progress tracking and reporting
+- [ ] Alert and notification management
+- [ ] User management and permissions
+
+**Story Points: 6**
+
+## Epic: Quality Assurance
+**Priority: MEDIUM** | **Story Points: 15**
+
+### User Story 13: Automated Testing
+**As a** development team
+**I want to** comprehensive test automation
+**So that** code quality is maintained and regressions are caught
+
+**Acceptance Criteria:**
+- [ ] Unit test generation and execution
+- [ ] Integration test automation
+- [ ] End-to-end test scenarios
+- [ ] Performance and load testing
+- [ ] Test result reporting and analysis
+
+**Story Points: 8**
+
+### User Story 14: Security Scanning
+**As a** security team
+**I want to** automated security analysis
+**So that** vulnerabilities are identified and addressed early
+
+**Acceptance Criteria:**
+- [ ] Static application security testing (SAST)
+- [ ] Dependency vulnerability scanning
+- [ ] License compliance checking
+- [ ] Security policy enforcement
+- [ ] Security report generation
+
+**Story Points: 7**
+
+## Epic: Deployment & Operations
+**Priority: LOW** | **Story Points: 10**
+
+### User Story 15: Container Deployment
+**As a** DevOps team
+**I want to** containerized deployment
+**So that** the framework can be easily deployed and scaled
+
+**Acceptance Criteria:**
+- [ ] Docker container configuration
+- [ ] Multi-environment support (dev/staging/prod)
+- [ ] Health checks and monitoring
+- [ ] Log aggregation and analysis
+- [ ] Automated scaling and failover
+
+**Story Points: 5**
+
+### User Story 16: Documentation System
+**As a** framework user
+**I want to** comprehensive documentation
+**So that** I can effectively use and extend the framework
+
+**Acceptance Criteria:**
+- [ ] API documentation generation
+- [ ] User guide and tutorials
+- [ ] Plugin development guide
+- [ ] Troubleshooting and FAQ
+- [ ] Video tutorials and examples
+
+**Story Points: 5**
+
+## Total Story Points: 125
+## Estimated Duration: 16-20 working days
+## Risk Level: MEDIUM-HIGH
+
+## Definition of Done
+- [ ] All core AI roles functional and tested
+- [ ] Plugin system stable and extensible
+- [ ] Memory bank system performant and reliable
+- [ ] Integration with GitHub and development tools working
+- [ ] Comprehensive test coverage achieved
+- [ ] Security scanning integrated and passing
+- [ ] Documentation complete and up-to-date
+- [ ] Production deployment successful
+"""
+    else:
+        # Fallback to the original support ticket dashboard
+        backlog = f"""# Product Backlog - {project_title}
 
 ## Epic: Core Dashboard Functionality
 **Priority: HIGH** | **Story Points: 21**
@@ -131,114 +399,12 @@ def generate_product_backlog(brief_content: str) -> str:
 
 **Story Points: 8**
 
-## Epic: Notification System
-**Priority: MEDIUM** | **Story Points: 13**
-
-### User Story 6: Email Notifications
-**As a** support team member
-**I want to** receive email notifications for ticket updates
-**So that** I stay informed about changes without constantly checking the dashboard
-
-**Acceptance Criteria:**
-- [ ] New ticket notifications
-- [ ] Status change notifications
-- [ ] Assignment notifications
-- [ ] Comment notifications
-- [ ] Configurable notification preferences
-
-**Story Points: 8**
-
-### User Story 7: Slack Integration
-**As a** support team member
-**I want to** receive Slack notifications for critical updates
-**So that** I can respond quickly to urgent matters
-
-**Acceptance Criteria:**
-- [ ] Slack webhook integration
-- [ ] Critical ticket alerts
-- [ ] Escalation notifications
-- [ ] Customizable notification rules
-
-**Story Points: 5**
-
-## Epic: Responsive Design
-**Priority: MEDIUM** | **Story Points: 8**
-
-### User Story 8: Mobile & Tablet Support
-**As a** support team member
-**I want to** access the dashboard from any device
-**So that** I can work efficiently regardless of location
-
-**Acceptance Criteria:**
-- [ ] Responsive design for desktop, tablet, and mobile
-- [ ] Touch-friendly interface for mobile devices
-- [ ] Optimized layouts for different screen sizes
-- [ ] Consistent user experience across devices
-
-**Story Points: 8**
-
-## Epic: Testing & Quality Assurance
-**Priority: MEDIUM** | **Story Points: 5**
-
-### User Story 9: Comprehensive Testing
-**As a** development team
-**I want to** ensure the dashboard is thoroughly tested
-**So that** we deliver a high-quality, bug-free product
-
-**Acceptance Criteria:**
-- [ ] Unit tests with Jest (minimum 80% coverage)
-- [ ] Integration tests for API endpoints
-- [ ] End-to-end tests for critical user flows
-- [ ] Performance testing for dashboard load times
-- [ ] Security testing for authentication flows
-
-**Story Points: 5**
-
-## Epic: Deployment & Documentation
-**Priority: LOW** | **Story Points: 5**
-
-### User Story 10: Staging Deployment
-**As a** development team
-**I want to** deploy to a staging environment
-**So that** we can test the dashboard before production release
-
-**Acceptance Criteria:**
-- [ ] Docker containerization
-- [ ] Vercel deployment configuration
-- [ ] Environment-specific configurations
-- [ ] Automated deployment pipeline
-
-**Story Points: 3**
-
-### User Story 11: Documentation
-**As a** support team
-**I want to** have comprehensive documentation
-**So that** I can effectively use and maintain the dashboard
-
-**Acceptance Criteria:**
-- [ ] User manual for support team
-- [ ] API documentation for developers
-- [ ] Setup and installation guide
-- [ ] Troubleshooting guide
-
-**Story Points: 2**
-
-## Total Story Points: 65
-## Estimated Duration: 10-14 working days
-## Risk Level: MEDIUM
-
-## Definition of Done
-- [ ] Code reviewed and approved
-- [ ] Unit tests passing with >80% coverage
-- [ ] Integration tests passing
-- [ ] User acceptance testing completed
-- [ ] Performance requirements met
-- [ ] Security requirements validated
-- [ ] Documentation updated
-- [ ] Staging deployment successful
+## Total Story Points: 34
+## Estimated Duration: 8-10 working days
+## Risk Level: LOW
 """
-    safe_title = project_title if project_title else 'Project'
-    return backlog.replace('Customer Support Ticket Dashboard', safe_title)
+
+    return backlog
 
 def generate_acceptance_criteria(brief_content: str) -> dict:
     """Generate detailed acceptance criteria for each user story.

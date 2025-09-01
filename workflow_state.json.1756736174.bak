@@ -1,0 +1,33 @@
+{
+  "state": "VALIDATION_DONE",
+  "timestamp": "2025-09-01T19:17:16+08:00",
+  "prev_state": "AUDIT_DONE",
+  "history": [
+    {
+      "ts": 1756736173.9718287,
+      "from": "INITIALIZATION",
+      "to": "BACKLOG_READY",
+      "correlation_id": "c359cb50-8cc4-49e4-929f-b9f3924e51d3"
+    },
+    {
+      "ts": 1756736174.1312296,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "10277ad9-c2b4-4be1-8353-951aefda8864"
+    },
+    {
+      "ts": 1756736174.283685,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE",
+      "correlation_id": "68c3f053-5d39-4b13-9c88-748224f1b4c4"
+    },
+    {
+      "ts": 1756736174.425482,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE",
+      "correlation_id": "7ceeb87f-b691-46b4-a81b-31d4e65826ea"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "last_updated": "2025-09-01T14:16:14.426092"
+}

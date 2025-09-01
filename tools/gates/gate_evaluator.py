@@ -124,36 +124,25 @@ def evaluate_gates() -> Dict[str, Any]:
 
 		missing_files = [p for p in must_exist if not _exists(p)]
 		missing_states = [] if (not states_any or state.get("state") in states_any) else states_any
-		# Enforce completed_steps when present; consider gates satisfied as implicit steps
-		missing_steps: List[str] = []
-		if steps_all:
-			state_steps = set(state.get("completed_steps", []) or [])
-			# If a gate is satisfied, treat "<gate_name_lower>_passed" as satisfied
-			satisfied_gate_steps = {f"{g.lower()}_passed" for g in gates if g not in (missing_gates or [])}
-			for s in steps_all:
-				if s in state_steps or s in satisfied_gate_steps:
-					continue
-				missing_steps.append(s)
-		missing_gates: List[str] = []  # Will be populated from rules index
-		missing_domains = [d for d in domains_all if d not in attached_domains]
-		
-		# Enhanced validation using rules index
-		if rules_index and gates:
-			for gate_name in gates:
-				# Check if gate is defined in rules
-				if gate_name in rules_index.get("gates", {}):
-					# Get rules that define this gate
-					gate_rules = rules_index["gates"][gate_name]
-					for rule_id in gate_rules:
-						rule = rules_index.get("rules", {}).get(rule_id, {})
-						# Check rule-specific artifacts
-						for artifact in rule.get("required_artifacts", []):
-							if not _exists(artifact):
-								missing_files.append(artifact)
-								if gate_name not in missing_gates:
-									missing_gates.append(gate_name)
-			# Fallback named-gate heuristics if no rules_index entries
-			if not rules_index:
+		# Compute gate-derived requirements and missing_gates before step enforcement
+		missing_gates: List[str] = []
+		if gates:
+			if rules_index:
+				for gate_name in gates:
+					# Check if gate is defined in rules
+					if gate_name in rules_index.get("gates", {}):
+						# Get rules that define this gate
+						gate_rules = rules_index["gates"][gate_name]
+						for rule_id in gate_rules:
+							rule = rules_index.get("rules", {}).get(rule_id, {})
+							# Check rule-specific artifacts
+							for artifact in rule.get("required_artifacts", []):
+								if not _exists(artifact):
+									missing_files.append(artifact)
+									if gate_name not in missing_gates:
+										missing_gates.append(gate_name)
+			else:
+				# Fallback named-gate heuristics if rules_index is unavailable
 				for gate_name in gates:
 					if gate_name == "DEV_GATE":
 						for path in [
@@ -176,6 +165,19 @@ def evaluate_gates() -> Dict[str, Any]:
 						]:
 							if not _exists(path):
 								missing_files.append(path)
+
+		missing_domains = [d for d in domains_all if d not in attached_domains]
+
+		# Enforce completed_steps when present; consider gates satisfied as implicit steps
+		missing_steps: List[str] = []
+		if steps_all:
+			state_steps = set(state.get("completed_steps", []) or [])
+			# If a gate is satisfied, treat "<gate_name_lower>_passed" as satisfied
+			satisfied_gate_steps = {f"{g.lower()}_passed" for g in gates if g not in (missing_gates or [])}
+			for s in steps_all:
+				if s in state_steps or s in satisfied_gate_steps:
+					continue
+				missing_steps.append(s)
 
 		passed = not (missing_files or missing_states or missing_steps or missing_gates or missing_domains)
 		reasons: List[str] = []

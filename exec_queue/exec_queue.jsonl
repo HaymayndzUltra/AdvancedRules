@@ -4,3 +4,8 @@
 {"ts": 1756671306.4020324, "correlation_id": "cea79b9f-ba96-4da3-91f0-ea0382aa2420", "cmd_id": "validate-system-readiness", "status": "queued", "payload": {"shell": ["python3", "tools/run_role.py", "readiness"]}}
 {"ts": 1756671311.9383147, "correlation_id": "0251ef7e-d82c-4812-98c8-6c1abd39dc0c", "cmd_id": "validate-system-readiness", "status": "queued", "payload": {"shell": ["python3", "tools/run_role.py", "readiness"]}}
 {"ts": 1756671312.0754755, "correlation_id": "da57f7ca-a916-4e7b-9173-24bab7b2a9d4", "cmd_id": "validate-system-readiness", "status": "queued", "payload": {"shell": ["python3", "tools/run_role.py", "readiness"]}}
+{"ts": 1756738829.7180586, "correlation_id": "1f300bb2-6330-4976-8703-a6de3c2123a9", "cmd_id": "flow-lint", "status": "queued", "payload": {"shell": ["arx", "flow", "lint", "--flow={{flow_id}}"]}}
+{"ts": 1756738845.9919198, "correlation_id": "3998a3fa-9859-4803-94ec-72f89944eb60", "cmd_id": "flow-lint", "status": "queued", "payload": {"shell": ["arx", "flow", "lint", "--flow={{flow_id}}"]}}
+{"ts": 1756738846.3962963, "correlation_id": "de8cc071-124a-4325-bea9-385cdc31d545", "cmd_id": "flow-lint", "status": "queued", "payload": {"shell": ["arx", "flow", "lint", "--flow={{flow_id}}"]}}
+{"ts": 1756738846.5947204, "correlation_id": "a344fdfe-72fe-4164-99fd-6e0ac7b6f769", "cmd_id": "audit-to-verify", "status": "queued", "payload": {"shell": ["python3", "tools/run_role.py", "principal_engineer_ai", "--inputs", "memory-bank/plan/Summary_Report.md"]}}
+{"ts": 1756738846.9763334, "correlation_id": "ed4fe3ad-9ffe-4fe4-9156-4de5a3a8ab03", "cmd_id": "flow-run", "status": "queued", "payload": {"shell": ["arx", "flow", "run", "--flow={{flow_id}}", "--task-id={{task_id}}", "--dry-run"]}}

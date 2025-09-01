@@ -19,13 +19,17 @@
     },
     {
       "command_id": "planning-to-audit",
-      "passed": true,
+      "passed": false,
       "missing_files": [],
-      "missing_states": [],
+      "missing_states": [
+        "PLANNING_DONE"
+      ],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": []
+      "reasons": [
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
+      ]
     },
     {
       "command_id": "audit-to-verify",
@@ -38,7 +42,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: AUDIT_DONE (current=PLANNING_DONE)"
+        "state not in: AUDIT_DONE (current=SYNTHESIS_DONE)"
       ]
     },
     {
@@ -103,6 +107,20 @@
     },
     {
       "command_id": "codegen-scaffold",
+      "passed": false,
+      "missing_files": [],
+      "missing_states": [
+        "PLANNING_DONE"
+      ],
+      "missing_steps": [],
+      "missing_gates": [],
+      "missing_domains": [],
+      "reasons": [
+        "state not in: PLANNING_DONE (current=SYNTHESIS_DONE)"
+      ]
+    },
+    {
+      "command_id": "qa-validate",
       "passed": true,
       "missing_files": [],
       "missing_states": [],
@@ -112,34 +130,14 @@
       "reasons": []
     },
     {
-      "command_id": "qa-validate",
-      "passed": false,
-      "missing_files": [],
-      "missing_states": [
-        "CODEGEN_DONE",
-        "SYNTHESIS_DONE"
-      ],
-      "missing_steps": [],
-      "missing_gates": [],
-      "missing_domains": [],
-      "reasons": [
-        "state not in: CODEGEN_DONE, SYNTHESIS_DONE (current=PLANNING_DONE)"
-      ]
-    },
-    {
       "command_id": "security-scan",
-      "passed": false,
+      "passed": true,
       "missing_files": [],
-      "missing_states": [
-        "QA_DONE",
-        "SYNTHESIS_DONE"
-      ],
+      "missing_states": [],
       "missing_steps": [],
       "missing_gates": [],
       "missing_domains": [],
-      "reasons": [
-        "state not in: QA_DONE, SYNTHESIS_DONE (current=PLANNING_DONE)"
-      ]
+      "reasons": []
     },
     {
       "command_id": "deploy-package",
@@ -153,7 +151,7 @@
       "missing_gates": [],
       "missing_domains": [],
       "reasons": [
-        "state not in: SECURITY_DONE, QA_DONE (current=PLANNING_DONE)"
+        "state not in: SECURITY_DONE, QA_DONE (current=SYNTHESIS_DONE)"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "prev_state": "SECURITY_DONE",
-  "state": "BACKLOG_READY",
+  "prev_state": "AUDIT_DONE",
+  "state": "VALIDATION_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -157,8 +157,53 @@
       "from": "SECURITY_DONE",
       "to": "BACKLOG_READY",
       "correlation_id": "7c60bc69-881e-4e50-bc15-23fb06f72fa8"
+    },
+    {
+      "ts": 1756653098.6658592,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "537943c1-c81f-47c7-8d17-201a6a8db778"
+    },
+    {
+      "ts": 1756653231.3203115,
+      "from": "PLANNING_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "da0dbfd1-35f0-489d-bfaf-c5a0afa17fee"
+    },
+    {
+      "ts": 1756671157.5245278,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "ad31e8f9-8d46-4c5d-af42-8486c401d644"
+    },
+    {
+      "ts": 1756738846.0632381,
+      "from": "PLANNING_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "fa6e1f81-00ee-4f64-8f74-a8a3bfffc67a"
+    },
+    {
+      "ts": 1756738846.2519994,
+      "from": "BACKLOG_READY",
+      "to": "PLANNING_DONE",
+      "correlation_id": "452b503c-8566-4e6c-9dac-a6d373fe72d9"
+    },
+    {
+      "ts": 1756738846.4545527,
+      "from": "PLANNING_DONE",
+      "to": "AUDIT_DONE",
+      "correlation_id": "dd05b6ec-708f-463a-a7c9-3cf3860b189b"
+    },
+    {
+      "ts": 1756738846.6525788,
+      "from": "AUDIT_DONE",
+      "to": "VALIDATION_DONE",
+      "correlation_id": "67c87799-9fbe-4343-bc94-2f4be27e296c"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-08-31T15:11:23.695537"
+  "last_updated": "2025-09-01T15:00:46.652952",
+  "completed_steps": [
+    "prestart_validated"
+  ]
 }

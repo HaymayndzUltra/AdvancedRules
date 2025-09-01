@@ -1,94 +1,124 @@
 {
+  "project": "Real-Time AI Voice Assistant",
+  "version": "1.0",
+  "updated": "2025-01-30",
   "criteria": [
     {
-      "story_id": "BW1",
-      "title": "Home Page with Clear CTA",
+      "story_id": "VA-001",
+      "title": "Phone Line Setup & Basic Interaction",
       "criteria": [
-        "Responsive hero section (desktop/tablet/mobile)",
-        "Prominent CTA (\u2018Book Now\u2019 / \u2018Hire Me\u2019)",
-        "Trust signals visible (testimonials/logos)"
+        "Dedicated phone number is callable and answers within 2 rings",
+        "Initial greeting plays with consent disclosure",
+        "Voice sounds natural and warm (not robotic)",
+        "System responds to basic greetings appropriately"
       ]
     },
     {
-      "story_id": "BW2",
-      "title": "Portfolio Showcase",
+      "story_id": "VA-002",
+      "title": "Interruption Handling",
       "criteria": [
-        "Project cards with tags and detail pages",
-        "Case study layout (problem/solution/outcomes)",
-        "Images lazy\u2011loaded; LCP \u2264 2.5s on 4G"
+        "Assistant stops speaking within 200ms when interrupted",
+        "Context is maintained after interruption",
+        "Assistant acknowledges interruption gracefully",
+        "No audio overlap or echo during interruptions"
       ]
     },
     {
-      "story_id": "BW3",
-      "title": "Services & Pricing",
+      "story_id": "VA-003",
+      "title": "Task 1: Ticket Creation",
       "criteria": [
-        "Pricing table (hourly/packages) is readable on mobile",
-        "CTA per plan routes to booking",
-        "FAQ block includes revisions/scope/timeline"
+        "Assistant can gather issue description accurately",
+        "Confirms details before creating ticket",
+        "Provides ticket number to caller",
+        "Ticket appears in CRM within 5 seconds"
       ]
     },
     {
-      "story_id": "BW4",
-      "title": "Booking System Integration",
+      "story_id": "VA-004",
+      "title": "Task 2: Appointment Scheduling",
       "criteria": [
-        "Embed or launch Calendly/TidyCal link configurable",
-        "Timezone handling and confirmation emails",
-        "Availability sync is visible to users"
+        "Shows available time slots clearly",
+        "Handles date/time disambiguation properly",
+        "Sends confirmation to customer's preferred channel",
+        "Updates calendar system in real-time"
       ]
     },
     {
-      "story_id": "BW5",
-      "title": "Payment Gateway",
+      "story_id": "VA-005",
+      "title": "Call Summary Generation",
       "criteria": [
-        "Test/live mode switch via env",
-        "Line items support (packages/deposits)",
-        "Success/failure redirects implemented"
+        "Summary sent within 2 minutes of call end",
+        "Includes key points and actions taken",
+        "PII is properly redacted",
+        "Formatted for easy agent review"
       ]
     },
     {
-      "story_id": "BW6",
-      "title": "Contact Form",
+      "story_id": "VA-006",
+      "title": "Privacy & Consent",
       "criteria": [
-        "Spam controls (honeypot/recaptcha)",
-        "Email delivery with success toast",
-        "Basic rate\u2011limit or throttle"
+        "Consent line plays for 100% of calls",
+        "Recording stops if consent denied",
+        "PII redaction works for names, numbers, addresses",
+        "Audit log captures all data access"
       ]
     },
     {
-      "story_id": "BW7",
-      "title": "Admin Dashboard (Light)",
+      "story_id": "VA-007",
+      "title": "Human Handoff",
       "criteria": [
-        "Filter/search/status updates for inquiries",
-        "CSV export for bookings/payments",
-        "Audit logs for admin actions"
+        "Recognizes when to escalate to human",
+        "Provides context to human agent via screen-pop",
+        "Smooth transfer without caller repetition",
+        "Fallback number provided if transfer fails"
       ]
     },
     {
-      "story_id": "BW8",
-      "title": "SEO & Security",
+      "story_id": "VA-008",
+      "title": "Performance & Reliability",
       "criteria": [
-        "Meta tags and sitemap present",
-        "HTTPS/SSL enforced; basic headers set",
-        "Accessibility AA for text/contrast"
+        "Response latency < 200ms consistently",
+        "Handles 100 concurrent calls",
+        "99.9% uptime during business hours",
+        "Graceful degradation under load"
       ]
     },
     {
-      "story_id": "BW9",
-      "title": "Responsive & Performance",
+      "story_id": "VA-009",
+      "title": "Admin Dashboard",
       "criteria": [
-        "CLS < 0.1, TBT < 300ms (sample page)",
-        "Images optimized; code\u2011split where applicable",
-        "Works on 320px width devices"
+        "Real-time call monitoring interface",
+        "Daily/weekly report generation",
+        "Cost tracking per call/task",
+        "Success rate metrics visible"
       ]
     },
     {
-      "story_id": "BW10",
-      "title": "Docs & Deployment",
+      "story_id": "VA-010",
+      "title": "Integration Testing",
       "criteria": [
-        "README includes setup/env keys/booking links",
-        "Staging deployment with rollback",
-        "Changelog for releases"
+        "CRM integration works bi-directionally",
+        "Email notifications deliver reliably",
+        "Calendar sync has no conflicts",
+        "All APIs handle errors gracefully"
       ]
     }
-  ]
+  ],
+  "non_functional_requirements": {
+    "performance": {
+      "response_time": "< 200ms",
+      "concurrent_calls": "100+",
+      "uptime": "99.9%"
+    },
+    "security": {
+      "encryption": "AES-256 for data at rest",
+      "transmission": "TLS 1.3 for all communications",
+      "authentication": "OAuth 2.0 for API access",
+      "compliance": "GDPR, CCPA, SOC2"
+    },
+    "scalability": {
+      "horizontal": "Auto-scaling based on call volume",
+      "geographic": "Multi-region deployment ready"
+    }
+  }
 }

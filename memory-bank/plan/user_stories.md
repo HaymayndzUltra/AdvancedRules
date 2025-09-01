@@ -1,233 +1,212 @@
-# User Stories - Customer Support Ticket Dashboard
+# User Stories - Real-Time AI Voice Assistant
 
-## Epic 1: Core Dashboard Functionality
+## Epic 1: Core Voice Infrastructure
 
-### US1: Dashboard Overview
-**As a** support team member  
-**I want to** see all incoming tickets at a glance  
-**So that** I can quickly assess workload and prioritize my work
-
-**Acceptance Criteria:**
-- [ ] Display total ticket count prominently at the top of the dashboard
-- [ ] Show tickets grouped by status with clear visual indicators
-- [ ] Display priority levels with color coding (Red=Critical, Orange=High, Yellow=Medium, Green=Low)
-- [ ] Real-time updates occur within 5 seconds of data changes
-- [ ] Dashboard loads within 3 seconds on standard internet connection
-
-**Story Points:** 5  
-**Priority:** HIGH  
-**Dependencies:** None
-
----
-
-### US2: Ticket Filtering
-**As a** support team member  
-**I want to** filter tickets by various criteria  
-**So that** I can focus on specific types of tickets
+### Story VA-001: Phone Line Setup
+**As a** customer  
+**I want to** call a dedicated phone number  
+**So that** I can reach support without waiting in a queue  
 
 **Acceptance Criteria:**
-- [ ] Filter by priority level (Low, Medium, High, Critical)
-- [ ] Filter by status (New, In Progress, Resolved, Closed)
-- [ ] Filter by assignee (All, Unassigned, Specific Agent)
-- [ ] Filter by date range (Today, This Week, This Month, Custom Range)
-- [ ] Search by ticket title or description text
-- [ ] Save custom filter combinations with descriptive names
-- [ ] Clear visual feedback shows which filters are currently active
+- Phone number is toll-free or local
+- Call connects within 2 rings
+- Clear audio quality on both ends
+- Works from mobile and landline
 
-**Story Points:** 8  
-**Priority:** HIGH  
-**Dependencies:** US1 (Dashboard Overview)
-
----
-
-### US3: Ticket Assignment
-**As a** support team lead  
-**I want to** assign tickets to specific agents  
-**So that** workload is distributed evenly and efficiently
+### Story VA-002: Natural Voice Interaction
+**As a** customer  
+**I want to** hear a natural, friendly voice  
+**So that** I feel comfortable talking to the assistant  
 
 **Acceptance Criteria:**
-- [ ] Drag-and-drop ticket assignment from unassigned to agent columns
-- [ ] Bulk assignment for multiple tickets (up to 50 at once)
-- [ ] Assignment history tracking (who assigned what and when)
-- [ ] Agent workload indicators showing current ticket count
-- [ ] Auto-assignment based on agent skills and current workload
-- [ ] Assignment confirmation with option to add notes
+- Voice sounds warm and human-like
+- Appropriate pacing and intonation
+- No robotic or mechanical artifacts
+- Consistent voice throughout call
 
-**Story Points:** 8  
-**Priority:** HIGH  
-**Dependencies:** US1 (Dashboard Overview)
-
----
-
-## Epic 2: Authentication & User Management
-
-### US4: User Authentication
-**As a** support team member  
-**I want to** securely log into the dashboard  
-**So that** I can access my assigned tickets
+### Story VA-003: Interruption Handling
+**As a** customer  
+**I want to** interrupt the assistant when needed  
+**So that** I can clarify or change my request without frustration  
 
 **Acceptance Criteria:**
-- [ ] JWT-based authentication with secure token storage
-- [ ] Secure login/logout functionality with proper session management
-- [ ] Password reset capability with email verification
-- [ ] Session timeout handling with user warnings
-- [ ] Multi-factor authentication option for enhanced security
-- [ ] Failed login attempt logging and rate limiting
+- Assistant stops immediately when I speak
+- No talk-over or echo issues
+- Context maintained after interruption
+- Natural acknowledgment of interruption
 
-**Story Points:** 5  
-**Priority:** HIGH  
-**Dependencies:** None
+## Epic 2: Task Automation
 
----
-
-### US5: User Role Management
-**As a** system administrator  
-**I want to** manage user roles and permissions  
-**So that** different team members have appropriate access levels
+### Story VA-004: Create Support Ticket
+**As a** customer  
+**I want to** report an issue over the phone  
+**So that** I can get help without using a computer  
 
 **Acceptance Criteria:**
-- [ ] Role-based access control with predefined roles (Admin, Lead, Agent)
-- [ ] Permission management per role (read, write, assign, delete)
-- [ ] User account creation with role assignment
-- [ ] User account deactivation with data preservation
-- [ ] Role hierarchy prevents privilege escalation
-- [ ] Permission changes are logged for audit purposes
+- Assistant asks relevant questions
+- Confirms details before submission
+- Provides ticket reference number
+- Option to add additional details
 
-**Story Points:** 8  
-**Priority:** HIGH  
-**Dependencies:** US4 (User Authentication)
-
----
-
-## Epic 3: Notification System
-
-### US6: Email Notifications
-**As a** support team member  
-**I want to** receive email notifications for ticket updates  
-**So that** I stay informed about changes without constantly checking the dashboard
+### Story VA-005: Schedule Appointment
+**As a** customer  
+**I want to** book an appointment by phone  
+**So that** I can secure a time slot quickly  
 
 **Acceptance Criteria:**
-- [ ] New ticket notifications sent to appropriate team members
-- [ ] Status change notifications for assigned tickets
-- [ ] Assignment notifications when tickets are assigned
-- [ ] Comment notifications for ticket discussions
-- [ ] Configurable notification preferences per user
-- [ ] Professional email templates with clear call-to-action
+- Available times clearly presented
+- Easy date/time selection
+- Confirmation sent to my preferred channel
+- Option to reschedule if needed
 
-**Story Points:** 8  
-**Priority:** MEDIUM  
-**Dependencies:** US3 (Ticket Assignment)
-
----
-
-### US7: Slack Integration
-**As a** support team member  
-**I want to** receive Slack notifications for critical updates  
-**So that** I can respond quickly to urgent matters
+### Story VA-006: Check Ticket Status
+**As a** returning customer  
+**I want to** check my ticket status  
+**So that** I know when to expect resolution  
 
 **Acceptance Criteria:**
-- [ ] Slack webhook integration for real-time notifications
-- [ ] Critical ticket alerts for high-priority issues
-- [ ] Escalation notifications for overdue tickets
-- [ ] Customizable notification rules and channels
-- [ ] Integration can be disabled per user preference
+- Locate ticket by number or phone
+- Provide current status clearly
+- Estimate resolution time if available
+- Option to add updates
 
-**Story Points:** 5  
-**Priority:** MEDIUM  
-**Dependencies:** US6 (Email Notifications)
+## Epic 3: Privacy & Compliance
 
----
-
-## Epic 4: Responsive Design
-
-### US8: Mobile & Tablet Support
-**As a** support team member  
-**I want to** access the dashboard from any device  
-**So that** I can work efficiently regardless of location
+### Story VA-007: Consent Management
+**As a** privacy-conscious customer  
+**I want to** control call recording  
+**So that** my privacy preferences are respected  
 
 **Acceptance Criteria:**
-- [ ] Responsive design works on desktop, tablet, and mobile devices
-- [ ] Touch-friendly interface for mobile devices with appropriate touch targets
-- [ ] Optimized layouts for different screen sizes (320px+ width)
-- [ ] Consistent user experience across all device types
-- [ ] Performance maintained across all device types
+- Clear consent request at start
+- Option to decline recording
+- Service still available if declined
+- Consent logged for compliance
 
-**Story Points:** 8  
-**Priority:** MEDIUM  
-**Dependencies:** US1 (Dashboard Overview)
-
----
-
-## Epic 5: Testing & Quality Assurance
-
-### US9: Comprehensive Testing
-**As a** development team  
-**I want to** ensure the dashboard is thoroughly tested  
-**So that** we deliver a high-quality, bug-free product
+### Story VA-008: Data Protection
+**As a** customer  
+**I want** my personal information protected  
+**So that** my data remains secure  
 
 **Acceptance Criteria:**
-- [ ] Unit tests with Jest achieving minimum 80% code coverage
-- [ ] Integration tests covering all API endpoints and database operations
-- [ ] End-to-end tests validating critical user flows
-- [ ] Performance testing ensuring dashboard loads within defined time limits
-- [ ] Security testing validating authentication and authorization flows
+- PII automatically redacted
+- Encrypted storage and transmission
+- Limited access controls
+- Data retention policies followed
 
-**Story Points:** 5  
-**Priority:** MEDIUM  
-**Dependencies:** All development stories
+## Epic 4: Integration & Analytics
 
----
-
-## Epic 6: Deployment & Documentation
-
-### US10: Staging Deployment
-**As a** development team  
-**I want to** deploy to a staging environment  
-**So that** we can test the dashboard before production release
+### Story VA-009: Call Summary for Agents
+**As a** support agent  
+**I want to** see AI call summaries  
+**So that** I can quickly understand customer issues  
 
 **Acceptance Criteria:**
-- [ ] Docker containerization with optimized image sizes
-- [ ] Vercel deployment configuration for frontend
-- [ ] Environment-specific configurations for staging vs production
-- [ ] Automated deployment pipeline with testing gates
-- [ ] Rollback capability if deployment fails
+- Summary available within 2 minutes
+- Key points highlighted
+- Actions taken listed
+- Customer sentiment indicated
 
-**Story Points:** 3  
-**Priority:** LOW  
-**Dependencies:** US9 (Comprehensive Testing)
-
----
-
-### US11: Documentation
-**As a** support team  
-**I want to** have comprehensive documentation  
-**So that** I can effectively use and maintain the dashboard
+### Story VA-010: Manager Dashboard
+**As a** call center manager  
+**I want to** monitor AI performance  
+**So that** I can ensure quality service  
 
 **Acceptance Criteria:**
-- [ ] User manual covering all dashboard features and workflows
-- [ ] API documentation with examples, error codes, and authentication details
-- [ ] Setup and installation guide for development and deployment
-- [ ] Troubleshooting guide for common issues
-- [ ] Documentation is searchable, well-organized, and regularly updated
+- Real-time call volumes
+- Success/failure rates
+- Average handle times
+- Cost per interaction
 
-**Story Points:** 2  
-**Priority:** LOW  
-**Dependencies:** US10 (Staging Deployment)
+### Story VA-011: CRM Integration
+**As a** support agent  
+**I want** AI calls integrated with our CRM  
+**So that** customer history is complete  
 
----
+**Acceptance Criteria:**
+- Automatic ticket creation
+- Call recordings linked
+- Customer profile updated
+- Previous interactions visible
 
-## Story Point Summary
-- **Total Story Points:** 65
-- **High Priority Stories:** 34 points
-- **Medium Priority Stories:** 26 points  
-- **Low Priority Stories:** 5 points
+## Epic 5: Human Escalation
 
-## Sprint Planning Recommendations
-- **Sprint 1 (Weeks 1-2):** Epic 1 (Core Dashboard) + Epic 2 (Authentication) = 47 points
-- **Sprint 2 (Weeks 3-4):** Epic 3 (Notifications) + Epic 4 (Responsive Design) = 34 points
-- **Sprint 3 (Weeks 5-6):** Epic 5 (Testing) + Epic 6 (Deployment) = 7 points
+### Story VA-012: Agent Handoff
+**As a** customer with complex needs  
+**I want to** speak to a human agent  
+**So that** my unique situation gets proper attention  
 
-## Risk Mitigation
-- **Technical Risk:** Start with authentication and core dashboard to establish foundation
-- **Timeline Risk:** Prioritize high-value features for early delivery
-- **Quality Risk:** Include testing story in each sprint for continuous validation
+**Acceptance Criteria:**
+- Easy request for human help
+- Context transferred to agent
+- No need to repeat information
+- Smooth transition experience
+
+### Story VA-013: Screen Pop for Agents
+**As a** support agent receiving transfers  
+**I want to** see call context immediately  
+**So that** I can help without asking redundant questions  
+
+**Acceptance Criteria:**
+- Customer info pre-populated
+- Conversation summary visible
+- Intent and actions shown
+- Relevant knowledge base articles suggested
+
+## Non-Functional Stories
+
+### Story NF-001: Performance Requirements
+**As a** customer  
+**I want** immediate responses  
+**So that** the conversation feels natural  
+
+**Acceptance Criteria:**
+- Response time < 200ms
+- No noticeable delays
+- Smooth conversation flow
+- Consistent performance
+
+### Story NF-002: Reliability
+**As a** business owner  
+**I want** the system always available  
+**So that** customers can always reach us  
+
+**Acceptance Criteria:**
+- 99.9% uptime
+- Graceful degradation
+- Automatic failover
+- Incident alerting
+
+### Story NF-003: Scalability
+**As a** growing business  
+**I want** the system to handle growth  
+**So that** quality doesn't degrade with volume  
+
+**Acceptance Criteria:**
+- Handle 100+ concurrent calls
+- Auto-scaling capability
+- Performance maintained under load
+- Cost scales linearly
+
+## Personas
+
+### Primary Persona: Sarah the Customer
+- Age: 35-50
+- Comfort with technology: Medium
+- Prefers phone over digital channels
+- Values efficiency and clarity
+- Needs: Quick problem resolution
+
+### Secondary Persona: Mike the Support Agent
+- Age: 25-40
+- Tech-savvy professional
+- Handles escalated cases
+- Values context and efficiency
+- Needs: Complete information for complex issues
+
+### Tertiary Persona: Lisa the Call Center Manager
+- Age: 40-55
+- Data-driven decision maker
+- Responsible for team performance
+- Values metrics and insights
+- Needs: Operational visibility

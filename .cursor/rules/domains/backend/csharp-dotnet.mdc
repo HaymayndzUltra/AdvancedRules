@@ -1,3 +1,8 @@
+---
+description: "C# .NET development rules and best practices"
+globs: ["**/*.cs","**/*.csproj","**/*.sln"]
+alwaysApply: false
+---
 # C# .NET Development Rules
 
 ## Technology Stack

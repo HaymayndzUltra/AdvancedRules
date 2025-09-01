@@ -1,4 +1,6 @@
-# ARX Metrics System Runbook
+# ARX Metrics System Runbook (Deprecated - See OBSERVABILITY_AND_INSTRUMENTATION.md)
+
+> This runbook has been consolidated. For the canonical reference, see `docs/OBSERVABILITY_AND_INSTRUMENTATION.md`.
 
 ## Overview
 

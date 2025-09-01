@@ -7,13 +7,14 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 - 📄 **ARX_CLI_SETUP.md**
 - 📄 **CI_CLI_FIX.md**
 - 📄 **INTEGRATION_GUIDE.md**
-- 📄 **METRICS_RUNBOOK.md**
+- 📄 **METRICS_RUNBOOK.md** (Deprecated → see OBSERVABILITY_AND_INSTRUMENTATION.md)
 - 📄 **README.md**
 - 📄 **README_POLICY.md**
 - 📄 **SYSTEM_INVENTORY.md**
 - 📄 **VALIDATION_SUITE_STRUCTURE.md**
 - 📄 **governance_policy.md**
-- 📄 **instrumentation_policy.md**
+- 📄 **instrumentation_policy.md** (Deprecated → see OBSERVABILITY_AND_INSTRUMENTATION.md)
+- 📄 **OBSERVABILITY_AND_INSTRUMENTATION.md** (Canonical)
 - 📁 **ADRs**
 - 📁 **checklists**
 - 📁 **reports**

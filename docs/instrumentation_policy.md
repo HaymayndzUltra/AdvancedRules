@@ -1,4 +1,6 @@
-# Instrumentation Policy
+# Instrumentation Policy (Deprecated - See OBSERVABILITY_AND_INSTRUMENTATION.md)
+
+> This policy has been consolidated. For the canonical reference, see `docs/OBSERVABILITY_AND_INSTRUMENTATION.md`.
 
 ## Overview
 

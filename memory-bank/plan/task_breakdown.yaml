@@ -1,112 +1,238 @@
-schema_version: "1.0.0"
-project: "Freelance Developer Personal Booking Website"
+# Task Breakdown - Real-Time AI Voice Assistant
+version: "1.0"
+updated: "2025-01-30"
+project: "AI Voice Assistant"
 
-epics:
-  - id: marketing-site
-    title: Marketing Site
+phases:
+  - name: "Week 1: Live Demo"
     tasks:
-      - id: home-page-with-clear-cta
-        desc: Home Page with Clear CTA
-        acceptance:
-          - Responsive hero section (desktop/tablet/mobile)
-          - Prominent CTA (“Book Now” / “Hire Me”)
-          - Services summary and trust signals (logos/testimonials)
-          - Fast LCP (≤ 2.5s on 4G)
-      - id: about-me
-        desc: About Me
-        acceptance:
-          - Markdown/JSON-driven content
-          - Downloadable CV link (optional)
-          - Accessibility (WCAG 2.1 AA for text/contrast)
-      - id: portfolio
-        desc: Portfolio
-        acceptance:
-          - Project cards with tags and detail pages
-          - Case study layout (problem/solution/outcomes)
-          - Testimonial carousel or quotes section
-      - id: services-pricing
-        desc: Services & Pricing
-        acceptance:
-          - Pricing table (hourly/packages)
-          - “Book Now” CTA per plan
-          - FAQ block (revisions, scope, timeline)
-  - id: booking-flow-integration
-    title: Booking Flow Integration
+      - id: "T1.1"
+        name: "Setup Cloud Telephony"
+        duration: "8h"
+        dependencies: []
+        subtasks:
+          - "Create Twilio/AWS Connect account"
+          - "Provision phone number"
+          - "Configure webhook endpoints"
+          - "Test inbound routing"
+      
+      - id: "T1.2"
+        name: "Build Voice Processing Pipeline"
+        duration: "16h"
+        dependencies: ["T1.1"]
+        subtasks:
+          - "Integrate STT service"
+          - "Setup TTS with voice selection"
+          - "Implement audio streaming"
+          - "Add interruption detection"
+      
+      - id: "T1.3"
+        name: "Create Basic Conversation Flow"
+        duration: "12h"
+        dependencies: ["T1.2"]
+        subtasks:
+          - "Design greeting script"
+          - "Implement consent handling"
+          - "Build intent recognition"
+          - "Add context management"
+      
+      - id: "T1.4"
+        name: "Deploy Demo Environment"
+        duration: "4h"
+        dependencies: ["T1.3"]
+        subtasks:
+          - "Setup cloud infrastructure"
+          - "Configure monitoring"
+          - "Create test interface"
+          - "Document demo steps"
+
+  - name: "Weeks 2-3: Useful Tasks"
     tasks:
-      - id: booking-widget
-        desc: Booking Widget
-        acceptance:
-          - Embedded/launch widget with configurable link
-          - Timezone handling & confirmations
-          - Availability sync visible
-      - id: policies-notifications
-        desc: Policies & Notifications
-        acceptance:
-          - Policy page linked from booking
-          - Email templates for confirm/reschedule/cancel
-          - Optional ICS calendar attachment
-      - id: calendar-sync-optional
-        desc: Calendar Sync (Optional)
-        acceptance:
-          - Basic sync or documented manual mode
-          - Logging for sync attempts/errors
-  - id: payments
-    title: Payments
+      - id: "T2.1"
+        name: "Implement Ticket Creation"
+        duration: "16h"
+        dependencies: ["T1.4"]
+        subtasks:
+          - "Design conversation tree"
+          - "Build field validation"
+          - "Create confirmation flow"
+          - "Test edge cases"
+      
+      - id: "T2.2"
+        name: "Build CRM Integration"
+        duration: "12h"
+        dependencies: ["T2.1"]
+        subtasks:
+          - "Setup OAuth flow"
+          - "Create API client"
+          - "Implement CRUD operations"
+          - "Add error handling"
+      
+      - id: "T2.3"
+        name: "Develop Call Summarization"
+        duration: "12h"
+        dependencies: ["T2.1"]
+        subtasks:
+          - "Process transcripts"
+          - "Extract key points"
+          - "Format summaries"
+          - "Setup notifications"
+      
+      - id: "T2.4"
+        name: "Tune Voice Personality"
+        duration: "8h"
+        dependencies: ["T1.4"]
+        subtasks:
+          - "Adjust speech parameters"
+          - "Create response variations"
+          - "Test with users"
+          - "Refine based on feedback"
+
+  - name: "Weeks 4-5: Pilot Readiness"
     tasks:
-      - id: checkout
-        desc: Checkout
-        acceptance:
-          - Test + live mode switch via env
-          - Line items for packages/deposits
-          - Success/failure redirects
-      - id: webhooks-receipts
-        desc: Webhooks & Receipts
-        acceptance:
-          - Signature verification
-          - Persist TX status and receipt link
-          - Email receipt to client
-  - id: contact-social
-    title: Contact & Social
+      - id: "T3.1"
+        name: "Add Appointment Scheduling"
+        duration: "16h"
+        dependencies: ["T2.1"]
+        subtasks:
+          - "Integrate calendar API"
+          - "Build availability logic"
+          - "Handle timezone conversion"
+          - "Create confirmations"
+      
+      - id: "T3.2"
+        name: "Implement Human Handoff"
+        duration: "12h"
+        dependencies: ["T2.2"]
+        subtasks:
+          - "Define escalation rules"
+          - "Build context transfer"
+          - "Setup call routing"
+          - "Test handoff scenarios"
+      
+      - id: "T3.3"
+        name: "Build Admin Dashboard"
+        duration: "20h"
+        dependencies: ["T2.3"]
+        subtasks:
+          - "Create React frontend"
+          - "Build metrics API"
+          - "Add real-time updates"
+          - "Implement reporting"
+      
+      - id: "T3.4"
+        name: "Implement Privacy Features"
+        duration: "12h"
+        dependencies: ["T2.3"]
+        subtasks:
+          - "Build PII detection"
+          - "Implement redaction"
+          - "Setup audit logging"
+          - "Configure retention"
+
+  - name: "Week 6: Hardening"
     tasks:
-      - id: contact-form
-        desc: Contact Form
-        acceptance:
-          - Spam controls (honeypot/recaptcha)
-          - Email delivery & success toast
-          - Rate‑limit or basic throttle
-      - id: social-links
-        desc: Social Links
-        acceptance:
-          - LinkedIn/GitHub links
-          - Open in new tab with rel=noopener
-  - id: admin-dashboard
-    title: Admin Dashboard
-    tasks:
-      - id: manage-bookings-inquiries
-        desc: Manage Bookings & Inquiries
-        acceptance:
-          - Filter/search/status updates
-          - CSV export for payments/inquiries
-      - id: settings
-        desc: Settings
-        acceptance:
-          - Booking link, payment keys, SEO meta
-          - Feature flags (test/live)
-  - id: seo-security
-    title: SEO & Security
-    tasks:
-      - id: seo-ssl-security-headers
-        desc: SEO/SSL/Security Headers
-        acceptance:
-          - Meta tags, sitemap, robots, OpenGraph
-          - SSL cert + security headers
-          - Lighthouse SEO ≥ 90
-  - id: deployment-documentation
-    title: Deployment & Documentation
-    tasks:
-      - id: staging-production-docs
-        desc: Staging/Production & Docs
-        acceptance:
-          - Staging deploy (Docker/Vercel)
-          - Environment variables documented
-          - README + runbook + troubleshooting
+      - id: "T4.1"
+        name: "Conduct Load Testing"
+        duration: "12h"
+        dependencies: ["T3.1", "T3.2"]
+        subtasks:
+          - "Setup load test environment"
+          - "Simulate concurrent calls"
+          - "Identify bottlenecks"
+          - "Optimize performance"
+      
+      - id: "T4.2"
+        name: "Security Hardening"
+        duration: "12h"
+        dependencies: ["T3.4"]
+        subtasks:
+          - "Run security scan"
+          - "Fix vulnerabilities"
+          - "Implement safeguards"
+          - "Document security"
+      
+      - id: "T4.3"
+        name: "Create Documentation"
+        duration: "16h"
+        dependencies: ["T4.1", "T4.2"]
+        subtasks:
+          - "Write runbook"
+          - "Create user guides"
+          - "Document APIs"
+          - "Record tutorials"
+      
+      - id: "T4.4"
+        name: "Team Training"
+        duration: "8h"
+        dependencies: ["T4.3"]
+        subtasks:
+          - "Conduct workshops"
+          - "Hands-on practice"
+          - "Q&A sessions"
+          - "Setup support"
+
+milestones:
+  - id: "M1"
+    name: "Demo Ready"
+    date: "End of Week 1"
+    deliverables:
+      - "Working phone line"
+      - "Basic conversation"
+      - "Interruption handling"
+  
+  - id: "M2"
+    name: "MVP Complete"
+    date: "End of Week 3"
+    deliverables:
+      - "Ticket creation working"
+      - "CRM integrated"
+      - "Call summaries generated"
+  
+  - id: "M3"
+    name: "Pilot Ready"
+    date: "End of Week 5"
+    deliverables:
+      - "Two tasks functional"
+      - "Admin dashboard live"
+      - "Privacy compliant"
+  
+  - id: "M4"
+    name: "Production Ready"
+    date: "End of Week 6"
+    deliverables:
+      - "Load tested"
+      - "Security hardened"
+      - "Team trained"
+
+resources:
+  - role: "Lead Developer"
+    allocation: "100%"
+    duration: "6 weeks"
+    
+  - role: "AI/Voice Engineer"
+    allocation: "100%"
+    duration: "6 weeks"
+    
+  - role: "Backend Developer"
+    allocation: "100%"
+    duration: "4 weeks"
+    
+  - role: "Frontend Developer"
+    allocation: "50%"
+    duration: "2 weeks"
+    
+  - role: "DevOps Engineer"
+    allocation: "50%"
+    duration: "2 weeks"
+    
+  - role: "QA Engineer"
+    allocation: "50%"
+    duration: "3 weeks"
+
+critical_path:
+  - "T1.1 → T1.2 → T1.3 → T1.4"
+  - "T1.4 → T2.1 → T2.2"
+  - "T2.1 → T3.1"
+  - "T2.2 → T3.2"
+  - "T3.1 → T4.1 → T4.3 → T4.4"

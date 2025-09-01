@@ -1,6 +1,6 @@
 {
-  "prev_state": "SYNTHESIS_DONE",
-  "state": "BACKLOG_READY",
+  "prev_state": "PLANNING_DONE",
+  "state": "AUDIT_DONE",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -307,28 +307,10 @@
       "from": "PLANNING_DONE",
       "to": "AUDIT_DONE",
       "correlation_id": "732ac476-7240-408d-bd69-0d90f3c0e7f8"
-    },
-    {
-      "ts": 1756741777.9435017,
-      "from": "AUDIT_DONE",
-      "to": "VALIDATION_DONE",
-      "correlation_id": "c133639e-ae13-4bd6-8234-69ebe509ffa8"
-    },
-    {
-      "ts": 1756741778.1344566,
-      "from": "VALIDATION_DONE",
-      "to": "SYNTHESIS_DONE",
-      "correlation_id": "16ab8b61-d651-4fe7-9085-bb3a7d0f582c"
-    },
-    {
-      "ts": 1756742323.682948,
-      "from": "SYNTHESIS_DONE",
-      "to": "BACKLOG_READY",
-      "correlation_id": "1ac151a0-a86b-4507-b4d5-7c4cf7220f7a"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-09-01T15:58:43.683407",
+  "last_updated": "2025-09-01T15:49:37.735750",
   "completed_steps": [
     "prestart_validated"
   ],

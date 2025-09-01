@@ -14,7 +14,10 @@ def main():
     # Minimal happy path
     plan = ROOT / "memory-bank/plan"
     plan.mkdir(parents=True, exist_ok=True)
-    (plan / "client_brief.md").write_text("Client brief", encoding="utf-8")
+    # Only create client_brief.md if it doesn't exist
+    client_brief_path = plan / "client_brief.md"
+    if not client_brief_path.exists():
+        client_brief_path.write_text("Client brief", encoding="utf-8")
     run(["python3", "tools/run_role.py", "product_owner_ai"])
     run(["python3", "tools/run_role.py", "planning_ai"])
     run(["python3", "tools/run_role.py", "auditor_ai"])

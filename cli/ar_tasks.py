@@ -217,8 +217,11 @@ class TaskManager:
             print(output)
 
 
-def main():
+def main(args=None):
     """CLI entry point"""
+    if args is not None:
+        sys.argv = ['ar_tasks.py'] + args
+    
     if len(sys.argv) < 2:
         print("Usage: python ar_tasks.py <command> [options]")
         print("")

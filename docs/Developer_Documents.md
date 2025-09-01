@@ -1,3 +1,9 @@
+> DEPRECATION NOTICE
+>
+> This document has been superseded by the canonical reference:
+> `docs/AdvancedRules.md` (Version 2.0.0, Last Updated: 2025-09-01).
+> Please consult the canonical file for the latest, authoritative details.
+
 ### AdvancedRules Domain-Lab — Developer Documentation (Copy-Friendly)
 
 ### 1) System Overview

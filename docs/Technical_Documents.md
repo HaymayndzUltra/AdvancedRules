@@ -1,3 +1,9 @@
+> DEPRECATION NOTICE
+>
+> This technical overview has been consolidated into the canonical reference:
+> `docs/AdvancedRules.md` (Version 2.0.0, Last Updated: 2025-09-01).
+> Use the canonical doc for system architecture, flows, rules, and ops.
+
 ### AdvancedRules Framework — Technical Documentation
 
 ### Overview

@@ -4,6 +4,7 @@
 This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 
 ## Contents
+- 📄 **AdvancedRules.md** (Canonical)
 - 📄 **ARX_CLI_SETUP.md**
 - 📄 **CI_CLI_FIX.md**
 - 📄 **INTEGRATION_GUIDE.md**
@@ -19,7 +20,8 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 - 📁 **reports**
 
 <!-- MANUAL-NOTES -->
-<!-- Add additional notes below. They will be preserved on sync. -->
+Canonical reference: `AdvancedRules.md` (v2.0.0). Deprecated: `Developer_Documents.md`, `Technical_Documents.md`.
+Specialized guides: Integration, Metrics, Governance, Instrumentation, Validation Suite.
 <!-- MANUAL-NOTES -->
 <!-- Add additional notes below. They will be preserved on sync. -->
 

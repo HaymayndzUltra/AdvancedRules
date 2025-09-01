@@ -21,7 +21,12 @@ This README is auto-synced. Edit below the MANUAL-NOTES marker to add notes.
 - 📁 **reports**
 
 <!-- MANUAL-NOTES -->
-<!-- Add additional notes below. They will be preserved on sync. -->
+Canonical single-source references:
+- 📄 **SYSTEM_HANDBOOK.md** (one-file source of truth)
+- 📄 **SYSTEM_REFERENCE.md** (structured reference)
+- 📄 **OBSERVABILITY_AND_INSTRUMENTATION.md** (canonical telemetry)
+Deprecated (kept for traceability):
+- 📄 **METRICS_RUNBOOK.md**, 📄 **instrumentation_policy.md**
 <!-- MANUAL-NOTES -->
 <!-- Add additional notes below. They will be preserved on sync. -->
 

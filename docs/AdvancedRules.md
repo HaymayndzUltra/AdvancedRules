@@ -15,8 +15,8 @@ AdvancedRules is an AI-driven project management and software delivery framework
 ## 1) Architecture Overview
 
 ### Components
-- Orchestrators: decision scoring, trigger, state engine, gate evaluator, post-run
-- Personas: runner plugins per role (product owner, planning, PE, QA, security, auditor)
+- Orchestrators: decision scoring, trigger, state engine, gate evaluator, post-run (`tools/orchestrator_postrun.py`)
+- Personas: PO/Planning/PE/Auditor via `tools/runner/plugins/*`; QA/Security/Deploy via `tools/plugins/*`
 - Rules Engine: `.mdc` rules parsing, linting, indexing, enforcement
 - Declarative Flows: DAG definitions with guards, edges, retries
 - Memory-bank: artifacts, plans, reports with provenance and validation
@@ -77,9 +77,11 @@ sequenceDiagram
 ### Rule format (frontmatter)
 ```yaml
 ---
-description: "What this rule does"
-globs: ["**/*.ts"]
+title: "TypeScript Best Practices — v1"
+description: "TypeScript coding standards and best practices"
+globs: ["**/*.ts", "**/*.tsx"]
 alwaysApply: false
+priority: medium
 ---
 ```
 
@@ -177,6 +179,7 @@ graph LR
 ### Environment Variables
 - Safety: `ALLOW_RUN`, `ALLOW_WRITES`, `CI`, `GITHUB_ACTIONS`, `ENABLE_REDACTION`
 - Queue: `AR_REDIS_HOST`, `AR_REDIS_PORT`, `CELERY_BROKER_URL`, `CELERY_RESULT_BACKEND`
+- Worker: `ARX_WORKER_QUEUE` (default `q.coder`), `ARX_WORKER_CONCURRENCY` (default `4`)
 - Observability: `AR_METRICS_PORT`, `AR_METRICS_ADDR`
 
 ### CLI Entrypoints
@@ -185,7 +188,7 @@ subcommands: flow, tasks, memory, obs
 - arx flow lint|run|render|list
 - arx tasks plan|print|export
 - arx memory index|query|stats|purge
-- arx obs serve --port --addr
+- arx obs serve --port=<port>
 ```
 
 ### Registry Commands and Gates
@@ -200,6 +203,9 @@ commands:
 - Generate: `python3 tools/rules/index_generator.py --check-parity`
 - Output: `memory-bank/rules_index.json`
 - Used by: `gate_evaluator.py` to derive artifacts required by named gates
+
+### Registry Checksum
+- Verified by trigger against `.cursor/commands/registry.sha256` before executing mapped commands.
 
 ---
 
@@ -278,6 +284,8 @@ ARX_WORKER_QUEUE=q.coder ARX_WORKER_CONCURRENCY=4 python3 workers/flow_worker.py
 
 ### Observability
 ```bash
+arx obs serve --port=9108
+# alternatively via env var
 AR_METRICS_PORT=9108 arx obs serve
 python3 tools/observability/aggregate.py
 ```

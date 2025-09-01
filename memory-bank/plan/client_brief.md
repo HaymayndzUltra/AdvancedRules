@@ -1,4 +1,4 @@
-# Client Brief
+Project Brief: Real-Time AI Voice Assistant
 
 ## Project Brief — Real-Time AI Voice Assistant (Natural, Empathetic, Business-Ready)
 

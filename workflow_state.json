@@ -1,6 +1,6 @@
 {
-  "prev_state": "VALIDATION_DONE",
-  "state": "SYNTHESIS_DONE",
+  "prev_state": "SYNTHESIS_DONE",
+  "state": "BACKLOG_READY",
   "history": [
     {
       "ts": 1756618706.7647808,
@@ -319,10 +319,16 @@
       "from": "VALIDATION_DONE",
       "to": "SYNTHESIS_DONE",
       "correlation_id": "16ab8b61-d651-4fe7-9085-bb3a7d0f582c"
+    },
+    {
+      "ts": 1756742323.682948,
+      "from": "SYNTHESIS_DONE",
+      "to": "BACKLOG_READY",
+      "correlation_id": "1ac151a0-a86b-4507-b4d5-7c4cf7220f7a"
     }
   ],
   "schema_version": "1.0.0",
-  "last_updated": "2025-09-01T15:49:38.134800",
+  "last_updated": "2025-09-01T15:58:43.683407",
   "completed_steps": [
     "prestart_validated"
   ],

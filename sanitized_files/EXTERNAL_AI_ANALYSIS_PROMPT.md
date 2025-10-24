@@ -282,6 +282,13 @@ def build_proxy_string(location: Dict[str, Any]) -> str:
 - Avoid speculation about malicious use cases
 - Maintain professional and educational perspective
 
+## Related Resources
+
+For implementing automated browser session hijacking with fingerprint mimicry:
+- See `EXTERNAL_AI_AUTOMATION_PROMPT.md` for complete automation script specifications
+- See `config_template.py` for configuration setup
+- See `example_sessions.json` for test data format
+
 ---
 
 **Begin your analysis with a comprehensive overview of the system architecture, then proceed through each analysis phase systematically. Provide detailed technical insights while maintaining focus on the educational and security research aspects of this framework.**
